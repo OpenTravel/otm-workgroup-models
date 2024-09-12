@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1139292769</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v0_1</Namespace>
+    <Prefix>ota2-0001</Prefix>
+    <Name>CodeList</Name>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <Enumeration_Closed name="EmployeeStatus_Enum">
+        <Documentation>
+            <Description>OTA Codelist: Employee Status	EMP	
+	1	Active
+	2	Retired
+	3	Leave
+	4	Terminated</Description>
+        </Documentation>
+        <Value label="" literal="Active"/>
+        <Value label="" literal="Retired"/>
+        <Value label="" literal="Leave"/>
+        <Value label="" literal="Terminated"/>
+    </Enumeration_Closed>
+    
+</Library>

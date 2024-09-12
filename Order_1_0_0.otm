@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1123516289</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/order/v1</Namespace>
+    <Prefix>order-0100</Prefix>
+    <Name>Order</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Product_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v2" prefix="prod-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import fileHints="Finance_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/finance/v1" prefix="fin-0100"/>
+    <Context applicationContext="http://www.opentravel.org/OTM/order/v0" context="Order"/>
+    
+    <BusinessObject name="Offer" notExtendable="false">
+        <Documentation>
+            <Description>A product or products available at the given price and terms.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OfferRef" reference="true" repeat="0" type="Offer">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="vendor" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Specifies the vendor for this offer.</Description>
+                </Documentation>
+                <Example context="Order">Vendor Name</Example>
+            </Attribute>
+            <Element mandatory="true" name="TotalPrice" repeat="0" type="TotalPrice">
+                <Documentation>
+                    <Description>Total price for all the products. Price may include itemized price information</Description>
+                </Documentation>
+            </Element>
+            <Element name="TermsAndConditions" repeat="25" type="TermsAndConditions">
+                <Documentation>
+                    <Description>Specifies the terms and conditions for this offer.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Product" repeat="30" type="prod-0200:Product">
+                <Documentation>
+                    <Description>One or more products that make up this offer.</Description>
+                </Documentation>
+            </Element>
+            <Element name="GuaranteesAccepted" repeat="1" type="GuaranteesAccepted">
+                <Documentation>
+                    <Description>A list of guarantees accepted</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}GuaranteesAccepted</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Query context="Order" label="Offer" notExtendable="false">
+            <Element mandatory="true" name="ProductQueries" repeat="2" type="prod-0200:ProductQueries">
+                <Documentation>
+                    <Description>Use 2 if requesting round trip Offers</Description>
+                </Documentation>
+            </Element>
+        </Query>
+        <Custom context="Order" label="Confirmed" notExtendable="false">
+            <Attribute name="description" type="ota2-0200:StringLong">
+                <Documentation>
+                    <Description>A description of the confirmed offer.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="ConfirmationId" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>An identifier for the confirmed offer provided by the vendor.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="Order" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.  This is the confirmation number for the order as a whole and may include a version for the order.  When placing an order, this should be left blank.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OrderRef" reference="true" repeat="0" type="Order">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="Offer" repeat="99" type="Offer">
+                <Documentation>
+                    <Description>Offers will be used to place an order and will typically be replaced with confirmed offer facets when the vendor(s) confirm that they have been accepted.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Traveler" repeat="99" type="ota2-0200:Traveler">
+                <Documentation>
+                    <Description>Profile information for the customer.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Payment" repeat="5" type="Payment">
+                <Documentation>
+                    <Description>Payment details for this order.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TotalPrice" repeat="0" type="TotalPrice">
+                <Documentation>
+                    <Description>Total price for the order.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AcceptableGuarantee" repeat="0" type="AcceptableGuarantee">
+                <Documentation>
+                    <Description>Guarantee payment information (if required) for an order.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Commission" repeat="9" type="Commission">
+                <Documentation>
+                    <Description>Commission information associated with the order</Description>
+                </Documentation>
+            </Element>
+            <Element name="PersonProductRef" repeat="99" type="PersonProductRef">
+                <Documentation>
+                    <Description>Provides a reference between a person and a product.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Custom context="Order" label="Confirmation" notExtendable="false">
+            <Attribute name="description" type="ota2-0200:StringLong">
+                <Documentation>
+                    <Description>A description for a confirmation.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="ConfirmationId" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>An identifier that is the confirmation of this order being placed by the organization that accepted this order.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="TermsAndConditions" notExtendable="false">
+        <Documentation>
+            <Description>The terms and conditions related to an offer.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TermsAndConditionsRef" reference="true"
+                repeat="0" type="TermsAndConditions">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="duration" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Specifies the duration of the trip.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Promotion" repeat="0" type="ota2-0200:Promotion">
+                <Documentation>
+                    <Description>Specifies the terms and conditions as related to the promotion.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RebateProgram" repeat="25" type="RebateProgram">
+                <Documentation>
+                    <Description>Specifies the details of the rebate program.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Description" repeat="0" type="ota2-0200:Description">
+                <Documentation>
+                    <Description>Details of the terms and conditions.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CancelPenalty" repeat="0" type="CancelPenalty">
+                <Documentation>
+                    <Description>Specifies the cancellation penalty.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AcceptableGuarantee" repeat="0" type="AcceptableGuarantee">
+                <Documentation>
+                    <Description>Guarantee information.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="CancelPenalty" notExtendable="false">
+        <Documentation>
+            <Description>Specifies a cancellation penalty of the hotel facility.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Deadline" repeat="0" type="Deadline">
+                <Documentation>
+                    <Description>Specifies the date/time for when a reservation must be canceled by to avoid a penalty.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AmountPercent" repeat="0" type="ota2-0200:AmountPercent">
+                <Documentation>
+                    <Description>Specifes the cancel penalty by amount or percent.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Comment" repeat="100" type="ota2-0200:Comment">
+                <Documentation>
+                    <Description>Comments pertaining to the cancel penalty.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Deadline" notExtendable="false">
+        <Documentation>
+            <Description>Cancellation deadline, absolute or relative.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="absoluteDeadline" type="ota2-0200:DateTime">
+                <Documentation>
+                    <Description>Defines the absolute deadline. Either this or the offset attributes may be used.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="offsetUnitMultiplier" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of units of DeadlineTimeUnit.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="offsetDropTime" type="ota2-0200:OffsetDropTime_Enum">
+                <Documentation>
+                    <Description>An enumerated type indicating when the deadline drop time goes into effect.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="offSetTimeUnit" type="ota2-0200:TimeUnit_Enum">
+                <Documentation>
+                    <Description>The units of time, e.g.: days, hours, etc., that apply to the deadline.</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="Payment" notExtendable="false">
+        <Documentation>
+            <Description>Payment information which may be related to one or more offers.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PaymentRef" reference="true" repeat="0" type="Payment">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="FormOfPayment" repeat="5" type="fin-0100:FormOfPayment">
+                <Documentation>
+                    <Description>Specifies the form of payment.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Amount" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>Total payment amount</Description>
+                </Documentation>
+            </Element>
+            <Element name="Person" repeat="99" type="ota2-0200:Person">
+                <Documentation>
+                    <Description>The person making the payment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OfferRef" reference="true" repeat="99" type="Offer">
+                <Documentation>
+                    <Description>The offer that the payment is for.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="TotalPrice" notExtendable="false">
+        <Documentation>
+            <Description>The total price of the offer incorporating fees and taxes for each product in the offer adjusted according to the codes in the price modifiers.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:Money">
+            <Documentation>
+                <Description>The total price for the offer or order.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Element mandatory="true" name="Total" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>The total price for the offer or order.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProductPrice" repeat="99" type="ProductPrice">
+                <Documentation>
+                    <Description>Price for a given Product reference.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PriceModifiers" repeat="99" type="ota2-0200:PriceModifiers">
+                <Documentation>
+                    <Description>Promotions or discounts applied in the price.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Fee" repeat="99" type="Fee">
+                <Documentation>
+                    <Description>One or more fees associated with the offer or order.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Taxes" repeat="0" type="Taxes">
+                <Documentation>
+                    <Description>Taxes associated with the offer or order.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="estimateInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates the total price is an estimate.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="taxExcludedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, tax is excluded from the total.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="AcceptableGuarantee" notExtendable="false">
+        <Documentation>
+            <Description>The guarantee information to hold a reservation</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="retribution" type="Retribution_Enum">
+                <Documentation>
+                    <Description>An enumerated type defining the type of action taken when the deadline has been exceeded. Valid values: Res Automatically Cancelled, Res No Longer Guaranteed.</Description>
+                    <Implementer>LocalAnonymousType: GuaranteeType_RetributionType</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="code" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Guarantee Code</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="type" type="GuaranteeType_Enum">
+                <Documentation>
+                    <Description>An enumerated type defining the guarantee to be applied to this reservation.</Description>
+                    <Implementer>LocalAnonymousType: GuaranteeType_GuaranteeType</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="holdTime" type="xsd:time">
+                <Documentation>
+                    <Description>The room will held up until this time without a guarantee.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="guaranteePolicyType" type="GuaranteeType_Enum">
+                <Documentation>
+                    <Description>GuaranteePolicyType: An enumerated type that defines the guarantee policy applied to the booking restrictions.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Deadline" repeat="1" type="Deadline">
+                <Documentation>
+                    <Description>The absolute deadline or amount of offset time before a deadline for a payment of cancel goes into effect.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Deadline</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Comment" repeat="20" type="ota2-0200:Comment">
+                <Documentation>
+                    <Description>List of comments.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommentType</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Description" repeat="9" type="ota2-0200:Description">
+                <Documentation>
+                    <Description>Text description of the Guarantee in a given language.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="CurrencyCode" repeat="0" type="ota2-0200:CurrencyCode">
+                <Documentation>
+                    <Description>An ISO 4217 (3) alpha character code that specifies a monetary unit.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PaymentType" repeat="0" type="ota2-0200:PaymentType_Enum">
+                <Documentation>
+                    <Description>Refer to OpenTravel Code List Payment Type (PMT).</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="PersonProductRef" notExtendable="false">
+        <Documentation>
+            <Description>Provides a reference between a person and a product.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Product" repeat="0" type="prod-0200:Product">
+                <Documentation>
+                    <Description>A product reference.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PersonIdentifier" repeat="0" type="ota2-0200:Person_ID">
+                <Documentation>
+                    <Description>A person reference.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="PersonDiscount" notExtendable="false">
+        <Documentation>
+            <Description>Provides a reference between a person and a product.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="PersonIdentifier" repeat="0" type="ota2-0200:Person_ID">
+                <Documentation>
+                    <Description>A person discounts</Description>
+                </Documentation>
+            </Element>
+            <Element name="Discount" repeat="0" type="ota2-0200:RateQualifier">
+                <Documentation>
+                    <Description>Promotions and other rate qualifying discounts applied to this order. Note that promotions may be tied to individuals or to the order as a whole.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Policy" type="ota2-0200:StringLong">
+        <Documentation>
+            <Description>Policy information regarding the ancillary for example Power Cart rental policy.</Description>
+        </Documentation>
+        <Attribute name="type" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>The type of the policy, such as "Tee Time" or "Cart Rental".</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="Applicability_Enum">
+        <Value label="" literal="FromPickupLocation">
+            <Documentation>
+                <Description>Distances are referenced from the pick-up location.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="FromDropoffLocation">
+            <Documentation>
+                <Description>Distances are referenced from the drop-off location.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="BeforePickup">
+            <Documentation>
+                <Description>Times are referenced from the pick-up time.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="AfterDropoff">
+            <Documentation>
+                <Description>Times are referenced from the drop-off time.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="FeeType_Enum">
+        <Documentation>
+            <Description>A descriptor for the fee amount, such as low, high and average.</Description>
+        </Documentation>
+        <Value label="" literal="Low"/>
+        <Value label="" literal="Mid"/>
+        <Value label="" literal="Average"/>
+        <Value label="" literal="High"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="RateCategory_Enum">
+        <Documentation>
+            <Description>The RateCategory attribute defines a set of valid values for the category of a rate. Typically rates are offered as either Leisure rates or Business (Corporate) rates, with a business rate usually including additional costs such as the cost of insurance, etc.  This set of values defines the rate categories. Refer to OpenTravel Code List Rate Category (RTC).</Description>
+        </Documentation>
+        <Value label="" literal="Government"/>
+        <Value label="" literal="Business"/>
+        <Value label="" literal="Leisure"/>
+        <Value label="" literal="Employee"/>
+        <Value label="" literal="VIP"/>
+        <Value label="" literal="All"/>
+        <Value label="" literal="Association"/>
+        <Value label="" literal="Business standard"/>
+        <Value label="" literal="Corporate"/>
+        <Value label="" literal="Industry"/>
+        <Value label="" literal="Fully inclusive"/>
+        <Value label="" literal="Inclusive"/>
+        <Value label="" literal="Negotiated"/>
+        <Value label="" literal="Promotional"/>
+        <Value label="" literal="Credential"/>
+        <Value label="" literal="Standard"/>
+        <Value label="" literal="Consortiums"/>
+        <Value label="" literal="Conventions"/>
+    </Enumeration_Closed>
+    
+    <CoreObject name="GuaranteesAccepted" notExtendable="false">
+        <Documentation>
+            <Description>TODO- (split between type accepted in location and guest provided)GuaranteeAccepted</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="FormOfPayment" repeat="0" type="fin-0100:FormOfPayment">
+                <Documentation>
+                    <Description>Form of Payment for this guarentee.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description>This is to indicate that the information in the model is the default (e.g. if PaymentCard information is completed then this would be considered the default if the boolean is true).</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="noCardHolderInfoReqInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, no credit card holder information is required. If false, it is not required.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="nameReqInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, the credit card holder name is required. If false, it is not required.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="addressReqInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, credit card holder address is required. If false, it is not required.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="phoneReqInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, credit card holder phone number is required. If false, it is not required.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="interbankNbrReqInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, the credit card interbank number is required. If false, it is not required.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="bookingSourceAllowedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, the booking source may be used to guarantee the booking.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="corpDiscountNbrAllowedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, the corporate discount number may be used to guarantee the booking.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Enumeration_Closed name="GuaranteeType_Enum">
+        <Documentation>
+            <Description>An enumerated type defining the guarantee to be applied to this reservation.</Description>
+        </Documentation>
+        <Value label="" literal="GuaranteeRequired">
+            <Documentation>
+                <Description>A guarantee is required.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="CC/DC/Voucher"/>
+        <Value label="" literal="Profile"/>
+        <Value label="" literal="NoGuaranteesAccepted"/>
+        <Value label="" literal="GuaranteesAccepted"/>
+        <Value label="" literal="DepositRequired">
+            <Documentation>
+                <Description>A deposit is required.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="GuaranteesNotRequired">
+            <Documentation>
+                <Description>No guarantee is required.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="DepositNotRequired"/>
+        <Value label="" literal="PrepayRequired">
+            <Documentation>
+                <Description>Indicates prepayment, typically this means payment is required at booking.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="PrepayNotRequired">
+            <Documentation>
+                <Description>Prepayment is not required.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="NoDepositsAccepted">
+            <Documentation>
+                <Description>&gt;Deposits not accepted.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="Retribution_Enum">
+        <Documentation>
+            <Description>An enumerated type defining the type of action taken when the deadline has been exceeded.</Description>
+        </Documentation>
+        <Value label="" literal="ResAutoCancelled"/>
+        <Value label="" literal="ResNotGuaranteed"/>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Commission" notExtendable="false">
+        <Documentation>
+            <Description>Contains details pertaining to commissions.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="statusType" type="Commission_Enum">
+                <Documentation>
+                    <Description>Indicates the status of the commission payment itself (e.g. no-show indicates that a different commission may be applied if the reservation is not fulfilled).</Description>
+                    <Implementer>LocalAnonymousType: CommissionType_StatusType</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="percent" type="ota2-0200:Percent">
+                <Documentation>
+                    <Description>The percent applied to the commissionable amount to determine the commission payable amount.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Percentage</Implementer>
+                </Documentation>
+                <Example context="Order">10</Example>
+            </Attribute>
+            <Attribute name="reasonCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Identifies the reason why a commission is not paid or not paid in full.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="billToID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>TODO- (maybe person ID) Identifies who should be billed for the commission amount.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="maxCommissionUnitApplies" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Maximum number of units for which the commission will be applied. This may be used in conjunction with the frequency attribute.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="capAmount" type="ota2-0200:Money">
+                <Documentation>
+                    <Description>The highest monetary value that may be paid for the commission.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Money</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="CurrencyCode" repeat="0" type="ota2-0200:CurrencyCode">
+                <Documentation>
+                    <Description>Indicates the currency to be applied to the amounts located in the child elements.</Description>
+                    <Implementer>AttributeGroup: CurrencyCodeGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Frequency" repeat="0" type="ota2-0200:ChargeUnit_Enum">
+                <Documentation>
+                    <Description>This is the frequency at which the commission is applied (e.g. per stay, daily). Refer to OpenTravel Code List Charge Type (CHG).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="PersonIdentifier" repeat="1" type="ota2-0200:Person_ID">
+                <Documentation>
+                    <Description>Identifies the recipient of the commission.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}UniqueID_Type</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="CommissionableAmount" repeat="1" type="CommissionableAmount">
+                <Documentation>
+                    <Description>The amount on which commission is calculated.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionableAmount</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="PrepaidAmount" repeat="1" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>The amount of commission paid to the agency prior to the service being rendered.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PrepaidAmount</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="FlatCommission" repeat="1" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>A fixed commission amount.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FlatCommission</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="PayableAmount" repeat="1" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>The amount of commission to be paid.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionPayableAmount</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Comment" repeat="1" type="ota2-0200:Comment">
+                <Documentation>
+                    <Description>Text related to the commission.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="CommissionableAmount" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="CurrencyAmountGroup" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>Provides the currency amount on which the commission is applied.</Description>
+                    <Implementer>AttributeGroup: CurrencyAmountGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="taxInclusiveInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates that the commission is calculated using the rate including tax. When false, indicates that the commission is calculated using the net rate.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Enumeration_Closed name="Commission_Enum">
+        <Value label="" literal="Full">
+            <Documentation>
+                <Description>Indicates full commission.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Partial">
+            <Documentation>
+                <Description>Indicates partial commission.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Non-paying">
+            <Documentation>
+                <Description>Indicates no commission.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="No-show">
+            <Documentation>
+                <Description>Indicates customer did not use the reserved product or service and did not cancel. This "no show" may impact commission.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Adjustment">
+            <Documentation>
+                <Description>Indicates the commission is being adjusted.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Commissionable">
+            <Documentation>
+                <Description>Indicates the requested rate is commissionable.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="AmountDetermination_Enum">
+        <Documentation>
+            <Description>Used to indicate if an amount is inclusive or exclusive of other charges, such as taxes, or is cumulative (amounts have been added to each other).</Description>
+        </Documentation>
+        <Value label="" literal="Inclusive"/>
+        <Value label="" literal="Exclusive"/>
+        <Value label="" literal="Cumulative"/>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Tax" notExtendable="false">
+        <Documentation>
+            <Description>An applicable tax. It allows for a percentage or a flat amount. If one field is used, the other should not be used since logically taxes should be calculated in only one of the two ways.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="sequenceNbr" type="xsd:string">
+                <Documentation>
+                    <Description>A number assigned by the responding system to designate the order of this tax among multiple taxes.</Description>
+                    <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="Amount" repeat="0" type="ota2-0200:Amount">
+                <Documentation>
+                    <Description>The breakdown of the tax including either the amount or percent of the tax.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EffectiveExpire" repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Provides the effective and expiry dates for the tax.</Description>
+                    <Implementer>AttributeGroup: EffectiveExpireOptionalDateGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="TaxType_Enum" repeat="0" type="ota2-0200:TaxType_Enum">
+                <Documentation>
+                    <Description>Identifies the tax (eg. Sales Tax, State Tax)</Description>
+                </Documentation>
+                <Example context="Order"/>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Taxes" notExtendable="false">
+        <Documentation>
+            <Description>A collection of taxes.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Total" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>Used to provide a total of all the taxes.</Description>
+                    <Implementer>AttributeGroup: CurrencyAmountGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Tax" repeat="99" type="Tax">
+                <Documentation>
+                    <Description>An individual tax.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TaxType</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="RebateProgram" notExtendable="false">
+        <Documentation>
+            <Description>Information about a suppliers participation in a rebate program, e.g. a VAT (value added tax) program.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="programName" type="xsd:string">
+                <Documentation>
+                    <Description>The name of the rebate program.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="PaymentCard" repeat="9" type="fin-0100:PaymentCard">
+                <Documentation>
+                    <Description>Information about payments eligible for a rebate program.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentCardType</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="TripPurpose" repeat="0" type="TripPurpose">
+                <Documentation>
+                    <Description>The purpose of the trip. If the customer has a default trip purpose this should be pre-populated with that value and the @TripPurposeRequiredInd should be set to FALSE.</Description>
+                    <Implementer>AttributeGroup: TripInformationGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="participationInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, the supplier is participating in a rebate program, e.g. a VAT (value added tax) program.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TripPurpose" type="ota2-0200:TripPurpose_Enum">
+        <Documentation>
+            <Description>The purpose of the trip. If the customer has a default trip purpose this should be pre-populated with that value and the @TripPurposeRequiredInd should be set to FALSE.</Description>
+            <Implementer>LocalAnonymousType: TripInformation_TripPurpose</Implementer>
+        </Documentation>
+        <Indicator name="promptRequiredInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, the customer does not have a default trip purpose selected and they need to be prompted for the trip purpose.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Fee" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Price" repeat="0" type="ota2-0200:Price">
+                <Documentation>
+                    <Description>The breakdown of the price associated with the fee.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FeeType" repeat="0" type="ota2-0200:FeeType_Enum">
+                <Documentation>
+                    <Description>Identifies the fee (e.g.,agency fee, municipality fee).</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="taxExcludedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, tax is excluded from the price.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="ProductPrice" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Price" repeat="0" type="ota2-0200:Price">
+                <Documentation>
+                    <Description>The details of the price of the product.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Taxes" repeat="0" type="Taxes">
+                <Documentation>
+                    <Description>Taxes for this product.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Fee" repeat="99" type="Fee">
+                <Documentation>
+                    <Description>Fees related to this product.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProductRef" reference="true" repeat="0" type="prod-0200:Product">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="taxExcludedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, tax is excluded from the price.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="feesExcludedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, fees are excluded from the Price.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Service name="Order">
+        <Operation Name="CreateOrder" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Order" repeat="0" type="Order">
+                    <Documentation>
+                        <Description>An order contains offers, persons, and payments. This is sent to the supplier to fill.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="OrderConfirmation" repeat="0" type="Order_Confirmation">
+                    <Documentation>
+                        <Description>An order contains offers, persons, and payments. This confirmed order is received from the supplier to fill.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Order" repeat="0" type="Order">
+                    <Documentation>
+                        <Description>This may contain just the ID or the entire order object.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="DeleteOrder" notExtendable="false">
+            <Documentation>
+                <Description>The order id of the order that was deleted (canceled).</Description>
+            </Documentation>
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Order" repeat="0" type="Order">
+                    <Documentation>
+                        <Description>The order or order Id to be deleted.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="OrderIdentifier" repeat="0" type="Order_ID">
+                    <Documentation>
+                        <Description>The order id of the order that was deleted (canceled).</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="OrderIdentifier" repeat="0" type="Order_ID">
+                    <Documentation>
+                        <Description>The order id of the order that was deleted (canceled).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>605220647</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/order/v1_1</Namespace>
+    <Prefix>order-0101</Prefix>
+    <Name>Order</Name>
+    <Import fileHints="Order_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v1" prefix="order-0100"/>
+    <Import fileHints="Common_2_1_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2_1" prefix="ota2-0201"/>
+    <Import fileHints="Common_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Context applicationContext="http://www.opentravel.org/OTM/order/v0" context="Order"/>
+    
+    <BusinessObject name="Order" notExtendable="false">
+        <Documentation>
+            <Description>A financial arrangement to secure products such as accommodations at a restaurant or hotel, on a boat or plane, etc.</Description>
+        </Documentation>
+        <Extension extends="order-0100:Order"/>
+        <Aliases/>
+        <ID/>
+        <Summary/>
+        <Detail/>
+        <Custom context="Order" label="Confirmation" notExtendable="false"/>
+    </BusinessObject>
+    
+    <CoreObject name="Gratuity" notExtendable="false">
+        <Documentation>
+            <Description>A gratuity expressed as either a percent or amount.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:Percent">
+            <Documentation>
+                <Description>The gratuity expressed as a percentage.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Element name="AmountOrPercent" repeat="0" type="ota2-0201:AmountOrPercent">
+                <Documentation>
+                    <Description>The percent or amount of the gratuity.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="mandatoryInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, a gratuity is mandatory.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="TotalPrice" notExtendable="false">
+        <Documentation>
+            <Description>The total price of the offer incorporating fees and taxes for each product in the offer adjusted according to the codes in the price modifiers.</Description>
+        </Documentation>
+        <Extension extends="order-0100:TotalPrice"/>
+        <Aliases/>
+        <Simple type="ota2-0200:Money">
+            <Documentation>
+                <Description>The total price for the offer or order.</Description>
+            </Documentation>
+        </Simple>
+        <Summary/>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="ProductPrice" notExtendable="false">
+        <Extension extends="order-0100:ProductPrice"/>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Gratuity" repeat="0" type="Gratuity">
+                <Documentation>
+                    <Description>Gratiuity information.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="gratuityIncludedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, the gratuity is included in the total price.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

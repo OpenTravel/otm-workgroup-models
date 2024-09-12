@@ -1,0 +1,3338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>1990596263</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/Common/v4</ns2:Namespace>
+    <ns2:Prefix>ota2-0400</ns2:Prefix>
+    <ns2:Name>CodeList</ns2:Name>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <ns2:Enumeration_Open name="BusinessType_Enum">
+        <ns2:Value label="" literal="Contract"/>
+        <ns2:Value label="" literal="Group"/>
+        <ns2:Value label="" literal="In-House Meeting"/>
+        <ns2:Value label="" literal="Local"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="DistributionType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Defines the preferred method of communication or the method of distribution for the material.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Fax"/>
+        <ns2:Value label="" literal="Email"/>
+        <ns2:Value label="" literal="Mail"/>
+        <ns2:Value label="" literal="Courier"/>
+        <ns2:Value label="" literal="Airport collection"/>
+        <ns2:Value label="" literal="City office"/>
+        <ns2:Value label="" literal="Hotel desk"/>
+        <ns2:Value label="" literal="Will call"/>
+        <ns2:Value label="" literal="Express mail"/>
+        <ns2:Value label="" literal="Telephone"/>
+        <ns2:Value label="" literal="XML"/>
+        <ns2:Value label="" literal="FTP"/>
+        <ns2:Value label="" literal="Website"/>
+        <ns2:Value label="" literal="HTTP"/>
+        <ns2:Value label="" literal="Non-XML"/>
+        <ns2:Value label="" literal="Any"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="EventFunction_Enum">
+        <ns2:Documentation>
+            <ns2:Description>A list of functions that may take place during an event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Board Meeting"/>
+        <ns2:Value label="" literal="Box Lunch"/>
+        <ns2:Value label="" literal="Breakfast"/>
+        <ns2:Value label="" literal="Breakfast Buffet"/>
+        <ns2:Value label="" literal="Breakout"/>
+        <ns2:Value label="" literal="Brunch"/>
+        <ns2:Value label="" literal="Ceremony"/>
+        <ns2:Value label="" literal="Changing Room"/>
+        <ns2:Value label="" literal="Coat Check"/>
+        <ns2:Value label="" literal="Cocktail Reception"/>
+        <ns2:Value label="" literal="Cofee Break"/>
+        <ns2:Value label="" literal="Continental Breakfast"/>
+        <ns2:Value label="" literal="Continuous Break"/>
+        <ns2:Value label="" literal="Dance"/>
+        <ns2:Value label="" literal="Dinner"/>
+        <ns2:Value label="" literal="Dinner Buffet"/>
+        <ns2:Value label="" literal="Exihibits"/>
+        <ns2:Value label="" literal="General Session"/>
+        <ns2:Value label="" literal="Holding Room"/>
+        <ns2:Value label="" literal="Hospitality Room"/>
+        <ns2:Value label="" literal="In-House Meeting"/>
+        <ns2:Value label="" literal="Interview"/>
+        <ns2:Value label="" literal="Lunch"/>
+        <ns2:Value label="" literal="Lunch Buffet"/>
+        <ns2:Value label="" literal="Meal On Own"/>
+        <ns2:Value label="" literal="Meeting"/>
+        <ns2:Value label="" literal="Menu Tasting"/>
+        <ns2:Value label="" literal="No Agenda Hold"/>
+        <ns2:Value label="" literal="Off Site"/>
+        <ns2:Value label="" literal="Office"/>
+        <ns2:Value label="" literal="Reception"/>
+        <ns2:Value label="" literal="Recreation"/>
+        <ns2:Value label="" literal="Registration"/>
+        <ns2:Value label="" literal="Rehearsal"/>
+        <ns2:Value label="" literal="Room Ready"/>
+        <ns2:Value label="" literal="Set Up"/>
+        <ns2:Value label="" literal="Speaker Room"/>
+        <ns2:Value label="" literal="Special"/>
+        <ns2:Value label="" literal="Storage"/>
+        <ns2:Value label="" literal="Tear Down"/>
+        <ns2:Value label="" literal="Trade Show"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="EventType_Enum">
+        <ns2:Value label="" literal="Anniversary"/>
+        <ns2:Value label="" literal="Ball/Gala"/>
+        <ns2:Value label="" literal="Banquet"/>
+        <ns2:Value label="" literal="Bar/Bat Mitzvah"/>
+        <ns2:Value label="" literal="Board meeting"/>
+        <ns2:Value label="" literal="Cast/Crew Accommodations"/>
+        <ns2:Value label="" literal="Committee meeting"/>
+        <ns2:Value label="" literal="Concert"/>
+        <ns2:Value label="" literal="Conference"/>
+        <ns2:Value label="" literal="Corporate Event"/>
+        <ns2:Value label="" literal="Customer meeting"/>
+        <ns2:Value label="" literal="Customer event"/>
+        <ns2:Value label="" literal="Deposition"/>
+        <ns2:Value label="" literal="Educational meeting"/>
+        <ns2:Value label="" literal="Entertainment"/>
+        <ns2:Value label="" literal="Exhibition"/>
+        <ns2:Value label="" literal="Exposition"/>
+        <ns2:Value label="" literal="Fashion Show"/>
+        <ns2:Value label="" literal="Fundraiser"/>
+        <ns2:Value label="" literal="General business meeting"/>
+        <ns2:Value label="" literal="Golf"/>
+        <ns2:Value label="" literal="Holiday"/>
+        <ns2:Value label="" literal="Incentive travel"/>
+        <ns2:Value label="" literal="Interview"/>
+        <ns2:Value label="" literal="Job Fair"/>
+        <ns2:Value label="" literal="Legislative"/>
+        <ns2:Value label="" literal="Local employee gathering"/>
+        <ns2:Value label="" literal="Management"/>
+        <ns2:Value label="" literal="New Product"/>
+        <ns2:Value label="" literal="Off-Site Activity"/>
+        <ns2:Value label="" literal="Off-Site Catering"/>
+        <ns2:Value label="" literal="Outlet/Suite Event"/>
+        <ns2:Value label="" literal="Product launch"/>
+        <ns2:Value label="" literal="Public/consumer show"/>
+        <ns2:Value label="" literal="Rally"/>
+        <ns2:Value label="" literal="Ramadan"/>
+        <ns2:Value label="" literal="Ramadan Iftar / Sohour"/>
+        <ns2:Value label="" literal="Relocation"/>
+        <ns2:Value label="" literal="Retreat"/>
+        <ns2:Value label="" literal="Reunion"/>
+        <ns2:Value label="" literal="Rooms Only"/>
+        <ns2:Value label="" literal="Sales/Marketing"/>
+        <ns2:Value label="" literal="Shareholders meeting"/>
+        <ns2:Value label="" literal="Special event"/>
+        <ns2:Value label="" literal="Sports"/>
+        <ns2:Value label="" literal="Team-building event"/>
+        <ns2:Value label="" literal="Training meeting"/>
+        <ns2:Value label="" literal="Teleconference"/>
+        <ns2:Value label="" literal="Trade show"/>
+        <ns2:Value label="" literal="Tournament"/>
+        <ns2:Value label="" literal="Training"/>
+        <ns2:Value label="" literal="Video conference"/>
+        <ns2:Value label="" literal="Wedding"/>
+        <ns2:Value label="" literal="Wedding Related"/>
+        <ns2:Value label="" literal="Workshop"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="InventoryBlockType_Enum">
+        <ns2:Value label="" literal="AirlineCrew"/>
+        <ns2:Value label="" literal="Complimentary"/>
+        <ns2:Value label="" literal="Contract"/>
+        <ns2:Value label="" literal="Corporate group"/>
+        <ns2:Value label="" literal="Corporate lease"/>
+        <ns2:Value label="" literal="Education"/>
+        <ns2:Value label="" literal="Fraternity"/>
+        <ns2:Value label="" literal="Government/military"/>
+        <ns2:Value label="" literal="Insurance"/>
+        <ns2:Value label="" literal="International association"/>
+        <ns2:Value label="" literal="Marina"/>
+        <ns2:Value label="" literal="National association"/>
+        <ns2:Value label="" literal="Negotiated/special corporate"/>
+        <ns2:Value label="" literal="Other"/>
+        <ns2:Value label="" literal="Permanent lease"/>
+        <ns2:Value label="" literal="Regional/state/local association"/>
+        <ns2:Value label="" literal="Religious"/>
+        <ns2:Value label="" literal="Social"/>
+        <ns2:Value label="" literal="Sports"/>
+        <ns2:Value label="" literal="Tour and travel"/>
+        <ns2:Value label="" literal="Wholesaler"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="MeetingRoomFormat_Enum">
+        <ns2:Value label="" literal="Ballroom"/>
+        <ns2:Value label="" literal="Banquet"/>
+        <ns2:Value label="" literal="Boardroom"/>
+        <ns2:Value label="" literal="Classroom"/>
+        <ns2:Value label="" literal="Classroom - 2 per 6 ft. tables"/>
+        <ns2:Value label="" literal="Classroom - 3 per 6 ft. tables"/>
+        <ns2:Value label="" literal="Classroom - 3 per 8 ft. tables"/>
+        <ns2:Value label="" literal="Classroom - 4 per 8 ft. tables"/>
+        <ns2:Value label="" literal="Classroom (Chevron) - 2 per 6 ft. tables"/>
+        <ns2:Value label="" literal="Classroom (Chevron) - 3 per 6 ft. tables"/>
+        <ns2:Value label="" literal="Classroom (Chevron) - 3 per 8 ft. tables"/>
+        <ns2:Value label="" literal="Classroom (Chevron) - 4 per 8 ft. tables"/>
+        <ns2:Value label="" literal="Cocktail Rounds"/>
+        <ns2:Value label="" literal="Conference"/>
+        <ns2:Value label="" literal="Crescent Rounds"/>
+        <ns2:Value label="" literal="Crescent Rounds of 5"/>
+        <ns2:Value label="" literal="Crescent Rounds of 6"/>
+        <ns2:Value label="" literal="Custom"/>
+        <ns2:Value label="" literal="E-shaped"/>
+        <ns2:Value label="" literal="Existing"/>
+        <ns2:Value label="" literal="Exhibit"/>
+        <ns2:Value label="" literal="8' x 10' exhibits"/>
+        <ns2:Value label="" literal="10' x 10' exhibits"/>
+        <ns2:Value label="" literal="Rounds for 10"/>
+        <ns2:Value label="" literal="Island exhibit"/>
+        <ns2:Value label="" literal="Tabletop exhibits"/>
+        <ns2:Value label="" literal="Peninsula exhibit"/>
+        <ns2:Value label="" literal="Open square"/>
+        <ns2:Value label="" literal="Perimeter exhibit"/>
+        <ns2:Value label="" literal="Flow (no tables or chairs)"/>
+        <ns2:Value label="" literal="Foyer"/>
+        <ns2:Value label="" literal="Hollow square"/>
+        <ns2:Value label="" literal="Perimeter Seating"/>
+        <ns2:Value label="" literal="Reception"/>
+        <ns2:Value label="" literal="Registration"/>
+        <ns2:Value label="" literal="Round tables"/>
+        <ns2:Value label="" literal="Rounds for 8"/>
+        <ns2:Value label="" literal="Rounds for 12"/>
+        <ns2:Value label="" literal="Royal conference"/>
+        <ns2:Value label="" literal="Talk Show"/>
+        <ns2:Value label="" literal="Theatre"/>
+        <ns2:Value label="" literal="Theater - Chevron"/>
+        <ns2:Value label="" literal="Theater - Semi-circle"/>
+        <ns2:Value label="" literal="T-shaped"/>
+        <ns2:Value label="" literal="U-shaped"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ReservationMethod_Enum">
+        <ns2:Value label="" literal="Electronic rooming list"/>
+        <ns2:Value label="" literal="Housing bureau card"/>
+        <ns2:Value label="" literal="Housing bureau web site"/>
+        <ns2:Value label="" literal="GDS"/>
+        <ns2:Value label="" literal="Individual"/>
+        <ns2:Value label="" literal="Manual rooming list"/>
+        <ns2:Value label="" literal="Rooming list"/>
+        <ns2:Value label="" literal="Supplier direct"/>
+        <ns2:Value label="" literal="Supplier web site"/>
+        <ns2:Value label="" literal="Toll free telephone"/>
+        <ns2:Value label="" literal="3rd party web site"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="AudioVisual_Enum">
+        <ns2:Value label="" literal="Audio recording"/>
+        <ns2:Value label="" literal="AV Technician"/>
+        <ns2:Value label="" literal="Background music"/>
+        <ns2:Value label="" literal="Copier"/>
+        <ns2:Value label="" literal="Disc player"/>
+        <ns2:Value label="" literal="Dry erase board with eraser and markers"/>
+        <ns2:Value label="" literal="DVD player"/>
+        <ns2:Value label="" literal="Easel"/>
+        <ns2:Value label="" literal="Flip chart and markers"/>
+        <ns2:Value label="" literal="High speed internet access"/>
+        <ns2:Value label="" literal="Installed stage"/>
+        <ns2:Value label="" literal="Laptop computer"/>
+        <ns2:Value label="" literal="Laser pointer"/>
+        <ns2:Value label="" literal="LCD panel"/>
+        <ns2:Value label="" literal="Microphone"/>
+        <ns2:Value label="" literal="PA system"/>
+        <ns2:Value label="" literal="Podium"/>
+        <ns2:Value label="" literal="Polling devices"/>
+        <ns2:Value label="" literal="Portable stage"/>
+        <ns2:Value label="" literal="Powered speaker"/>
+        <ns2:Value label="" literal="Projector"/>
+        <ns2:Value label="" literal="Screen"/>
+        <ns2:Value label="" literal="Spotlights"/>
+        <ns2:Value label="" literal="Telephone"/>
+        <ns2:Value label="" literal="Video camera"/>
+        <ns2:Value label="" literal="Video conferencing"/>
+        <ns2:Value label="" literal="Video recording"/>
+        <ns2:Value label="" literal="Wireless microphone"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="PreferLevel_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Only">
+            <ns2:Documentation>
+                <ns2:Description>Preference level that indicates request is only for a specific criterion.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Unacceptable">
+            <ns2:Documentation>
+                <ns2:Description>Preference level that indicates request is unnacceptable for a specific criterion.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Preferred">
+            <ns2:Documentation>
+                <ns2:Description>Preference level that indicates request is preferred for a specific criterion.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Required">
+            <ns2:Documentation>
+                <ns2:Description>Preference level that indicates request is required for a specific criterion.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="NoPreference">
+            <ns2:Documentation>
+                <ns2:Description>Preference level that indicates there is no preference.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="MealType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>OTA Code List Airline meal types.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="RGML">
+            <ns2:Documentation>
+                <ns2:Description>Designates a regular meal.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="VLML">
+            <ns2:Documentation>
+                <ns2:Description>VLML - Vegetarian/Milk/Eggs</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="VGML">
+            <ns2:Documentation>
+                <ns2:Description>VGML - Vegetarian/Non Dairy</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="SPML">
+            <ns2:Documentation>
+                <ns2:Description>SPML - Special/Specify</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="SFML">
+            <ns2:Documentation>
+                <ns2:Description>SFML - Seafood</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="RVML">
+            <ns2:Documentation>
+                <ns2:Description>RVML - Raw Vegetarian</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="PRML">
+            <ns2:Documentation>
+                <ns2:Description>PRML - Low Purin</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="ORML">
+            <ns2:Documentation>
+                <ns2:Description>ORML - Oriental</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="NLML">
+            <ns2:Documentation>
+                <ns2:Description>NLML - Non-Lactose</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="MOML">
+            <ns2:Documentation>
+                <ns2:Description>MOML - Moslem</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LSML">
+            <ns2:Documentation>
+                <ns2:Description>LSML - Low Sodium/No Salt</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LPML">
+            <ns2:Documentation>
+                <ns2:Description>LPML - Low Protein</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LFML">
+            <ns2:Documentation>
+                <ns2:Description>LFML - Low Cholesterol</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LCML">
+            <ns2:Documentation>
+                <ns2:Description>LCML - Low Calorie</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="KSML">
+            <ns2:Documentation>
+                <ns2:Description>KSML - Kosher</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="HNML">
+            <ns2:Documentation>
+                <ns2:Description>HNML - Hindu Meal</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="HFML">
+            <ns2:Documentation>
+                <ns2:Description>HFML - High Fiber</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="GFML">
+            <ns2:Documentation>
+                <ns2:Description>GFML - Gluten Free</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="FPML">
+            <ns2:Documentation>
+                <ns2:Description>FPML - Fruit Meal</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="DBML">
+            <ns2:Documentation>
+                <ns2:Description>DBML - Diabetic</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="CHML">
+            <ns2:Documentation>
+                <ns2:Description>CHML - Child Meal</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BLML">
+            <ns2:Documentation>
+                <ns2:Description>BLML - Bland Meal</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BBML">
+            <ns2:Documentation>
+                <ns2:Description>BBML - Baby/Infant Food</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="AVML">
+            <ns2:Documentation>
+                <ns2:Description>AVML - Asian Veg</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="DocumentType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Defines the specific type of identification or certification document.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="NaturalizationCertificate"/>
+        <ns2:Value label="" literal="PassportCard"/>
+        <ns2:Value label="" literal="CrewMemberCertificate"/>
+        <ns2:Value label="" literal="AirNexusCard"/>
+        <ns2:Value label="" literal="MerchantMariner"/>
+        <ns2:Value label="" literal="Non-standard"/>
+        <ns2:Value label="" literal="KnownTravelerNumber"/>
+        <ns2:Value label="" literal="RedressNumber"/>
+        <ns2:Value label="" literal="PermanentResidentCard"/>
+        <ns2:Value label="" literal="PilotsLicense"/>
+        <ns2:Value label="" literal="RefugeeTravelDocument"/>
+        <ns2:Value label="" literal="BorderCrossingCard"/>
+        <ns2:Value label="" literal="VerhicleRegistrationNumber"/>
+        <ns2:Value label="" literal="TaxexEmptionNumber"/>
+        <ns2:Value label="" literal="InsurancePolicyNumber"/>
+        <ns2:Value label="" literal="AlienRegistrationNumber"/>
+        <ns2:Value label="" literal="VaccinationCertificate"/>
+        <ns2:Value label="" literal="NationalIdentityDocument"/>
+        <ns2:Value label="" literal="DriversLicense"/>
+        <ns2:Value label="" literal="MilitaryIdentification"/>
+        <ns2:Value label="" literal="Passport"/>
+        <ns2:Value label="" literal="Visa"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="DurationUnit_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Defines the 'Units' that can be applied to Stay restrictions.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="SUN">
+            <ns2:Documentation>
+                <ns2:Description>Sunday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="SAT">
+            <ns2:Documentation>
+                <ns2:Description>Saturday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="FRI">
+            <ns2:Documentation>
+                <ns2:Description>Friday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="THU">
+            <ns2:Documentation>
+                <ns2:Description>Thursday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="WED">
+            <ns2:Documentation>
+                <ns2:Description>Wednesday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="TUES">
+            <ns2:Documentation>
+                <ns2:Description>Tuesday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="MON">
+            <ns2:Documentation>
+                <ns2:Description>Monday</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Months">
+            <ns2:Documentation>
+                <ns2:Description>Duration in months.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Days">
+            <ns2:Documentation>
+                <ns2:Description>Duration in days.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Hours">
+            <ns2:Documentation>
+                <ns2:Description>Duration in hours.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Minutes">
+            <ns2:Documentation>
+                <ns2:Description>Duration in minutes.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="ReservationBookDesignator_Enum">
+        <ns2:Value label="" literal="Displayable">
+            <ns2:Documentation>
+                <ns2:Description>Only return displayable RBDs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="NonDisplayable">
+            <ns2:Documentation>
+                <ns2:Description>Only return non-displayable RBD's.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="All">
+            <ns2:Documentation>
+                <ns2:Description>Return all RBD's, displayable and non-displayable.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="AccommodationClass_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Rail accommodation types with an "Other" value to support open enumeration list.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="HardCompartmentClass"/>
+        <ns2:Value label="" literal="SoftCompartmentClass"/>
+        <ns2:Value label="" literal="MixedSoftClass"/>
+        <ns2:Value label="" literal="MixedHardClass"/>
+        <ns2:Value label="" literal="HighGradeSoftClass"/>
+        <ns2:Value label="" literal="SpecialClass"/>
+        <ns2:Value label="" literal="HardClass"/>
+        <ns2:Value label="" literal="SoftClass"/>
+        <ns2:Value label="" literal="GranClasse"/>
+        <ns2:Value label="" literal="Deluxe"/>
+        <ns2:Value label="" literal="Coach"/>
+        <ns2:Value label="" literal="Leisure"/>
+        <ns2:Value label="" literal="Business"/>
+        <ns2:Value label="" literal="Premium"/>
+        <ns2:Value label="" literal="SecondClass"/>
+        <ns2:Value label="" literal="FirstClass"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="FlightDistanceQualifier_Enum">
+        <ns2:Value label="" literal="LongHaul">
+            <ns2:Documentation>
+                <ns2:Description>Designates a flight as a long haul.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="ShortHaul">
+            <ns2:Documentation>
+                <ns2:Description>Designates a flight as a short haul.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="BerthPosition_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the position of a berth, e.g. upper, lower, middle.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Upper"/>
+        <ns2:Value label="" literal="Middle"/>
+        <ns2:Value label="" literal="Lower"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="CompartmentPosition_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the position of a compartment, such as upper and lower.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="CloseToRestaurantCar"/>
+        <ns2:Value label="" literal="CloseToExit"/>
+        <ns2:Value label="" literal="CloseToToilet"/>
+        <ns2:Value label="" literal="MiddleOfCar"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="Deck_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the train deck, such as lower level and upper level.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Regular-OneLevelOnly"/>
+        <ns2:Value label="" literal="LowerLevel"/>
+        <ns2:Value label="" literal="UpperLevel"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="NonScheduled_Enum">
+        <ns2:Documentation>
+            <ns2:Description>To specify which types of non-scheduled air service should be included.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="ChartersOnly">
+            <ns2:Documentation>
+                <ns2:Description>Only include non scheduled flights that are charter flights.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="ExcludeCharters">
+            <ns2:Documentation>
+                <ns2:Description>Do not include non scheduled flights that are charters.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="All">
+            <ns2:Documentation>
+                <ns2:Description>Include both charter non scheduled flights and those that are not charters.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="Routing_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the travel routing preference.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Normal">
+            <ns2:Documentation>
+                <ns2:Description>No special conditions.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Mirror">
+            <ns2:Documentation>
+                <ns2:Description>Outbound and inbound route of travel must be the same.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="SeatPosition_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the position of a seat, such as Window and Aisle.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="None"/>
+        <ns2:Value label="" literal="Together"/>
+        <ns2:Value label="" literal="Aisle"/>
+        <ns2:Value label="" literal="Center"/>
+        <ns2:Value label="" literal="Window"/>
+        <ns2:Value label="" literal="Specific"/>
+        <ns2:Value label="" literal="Exit"/>
+        <ns2:Value label="" literal="Table"/>
+        <ns2:Value label="" literal="AdjacentAisle"/>
+        <ns2:Value label="" literal="Individual"/>
+        <ns2:Value label="" literal="Middle"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="BedType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The type(s) of sleeping option(s) in a guest accommodation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Dorm bed"/>
+        <ns2:Value label="" literal="Double/full"/>
+        <ns2:Value label="" literal="Futon"/>
+        <ns2:Value label="" literal="King"/>
+        <ns2:Value label="" literal="Murphy bed"/>
+        <ns2:Value label="" literal="Queen"/>
+        <ns2:Value label="" literal="Run of the house"/>
+        <ns2:Value label="" literal="Sofa bed"/>
+        <ns2:Value label="" literal="Tatami mats"/>
+        <ns2:Value label="" literal="Twin/single"/>
+        <ns2:Value label="" literal="Water bed"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="GuestType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Category of guest.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Contractor"/>
+        <ns2:Value label="" literal="Corporate employee"/>
+        <ns2:Value label="" literal="Corporate transient"/>
+        <ns2:Value label="" literal="Frequent guest"/>
+        <ns2:Value label="" literal="Government"/>
+        <ns2:Value label="" literal="Leisure"/>
+        <ns2:Value label="" literal="Meeting attendee"/>
+        <ns2:Value label="" literal="Retired"/>
+        <ns2:Value label="" literal="Subsidiary"/>
+        <ns2:Value label="" literal="VIP"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="LocationCategory_Enum">
+        <ns2:Value label="" literal="Airport"/>
+        <ns2:Value label="" literal="Bay"/>
+        <ns2:Value label="" literal="Beach"/>
+        <ns2:Value label="" literal="Beachfront"/>
+        <ns2:Value label="" literal="Buisness district"/>
+        <ns2:Value label="" literal="City"/>
+        <ns2:Value label="" literal="Downtown"/>
+        <ns2:Value label="" literal="Entertainment district"/>
+        <ns2:Value label="" literal="Expressway"/>
+        <ns2:Value label="" literal="Financial district"/>
+        <ns2:Value label="" literal="Gulf"/>
+        <ns2:Value label="" literal="Lake"/>
+        <ns2:Value label="" literal="Marina"/>
+        <ns2:Value label="" literal="Mountain"/>
+        <ns2:Value label="" literal="Oceanfront"/>
+        <ns2:Value label="" literal="Park"/>
+        <ns2:Value label="" literal="Resort"/>
+        <ns2:Value label="" literal="River"/>
+        <ns2:Value label="" literal="Rural"/>
+        <ns2:Value label="" literal="Shopping district"/>
+        <ns2:Value label="" literal="Suburban"/>
+        <ns2:Value label="" literal="Theatre district"/>
+        <ns2:Value label="" literal="Waterfront"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="OptionType_Enum">
+        <ns2:Value label="" literal="Yes"/>
+        <ns2:Value label="" literal="No"/>
+        <ns2:Value label="" literal="Not applicable"/>
+        <ns2:Value label="" literal="Not available"/>
+        <ns2:Value label="" literal="Substitute"/>
+        <ns2:Value label="" literal="Exceeds limit"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RoomLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a hotel room location.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Annex room"/>
+        <ns2:Value label="" literal="Away from the elevator"/>
+        <ns2:Value label="" literal="Back of building"/>
+        <ns2:Value label="" literal="Concierge floor"/>
+        <ns2:Value label="" literal="Corner"/>
+        <ns2:Value label="" literal="East"/>
+        <ns2:Value label="" literal="Executive floor"/>
+        <ns2:Value label="" literal="Frequent guest floor"/>
+        <ns2:Value label="" literal="Front of building"/>
+        <ns2:Value label="" literal="Ground floor"/>
+        <ns2:Value label="" literal="Ground floor inside access"/>
+        <ns2:Value label="" literal="Ground floor outside access"/>
+        <ns2:Value label="" literal="High floor"/>
+        <ns2:Value label="" literal="Lobby level"/>
+        <ns2:Value label="" literal="Low floor"/>
+        <ns2:Value label="" literal="Main building"/>
+        <ns2:Value label="" literal="Near stairs"/>
+        <ns2:Value label="" literal="Near the elevator"/>
+        <ns2:Value label="" literal="North"/>
+        <ns2:Value label="" literal="Poolside"/>
+        <ns2:Value label="" literal="Quiet room"/>
+        <ns2:Value label="" literal="South"/>
+        <ns2:Value label="" literal="Top floor"/>
+        <ns2:Value label="" literal="Tower room"/>
+        <ns2:Value label="" literal="West"/>
+        <ns2:Value label="" literal="Wing room"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="BusinessService_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Services, equipment, or supplies provided by the hotel that are generally supportive of work-related activities.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Audio visual equipment"/>
+        <ns2:Value label="" literal="Blackboard"/>
+        <ns2:Value label="" literal="Business center"/>
+        <ns2:Value label="" literal="Business services"/>
+        <ns2:Value label="" literal="Calling card calls"/>
+        <ns2:Value label="" literal="Cellular phone rental"/>
+        <ns2:Value label="" literal="Computer"/>
+        <ns2:Value label="" literal="Computer rental"/>
+        <ns2:Value label="" literal="Copier"/>
+        <ns2:Value label="" literal="E-mail service"/>
+        <ns2:Value label="" literal="Fax Machine"/>
+        <ns2:Value label="" literal="Fee charged for first page"/>
+        <ns2:Value label="" literal="Fee charged for first page of outgoing fax"/>
+        <ns2:Value label="" literal="Fee per additional page of incoming fax"/>
+        <ns2:Value label="" literal="Fee per additional page of outgoing fax"/>
+        <ns2:Value label="" literal="Flip charts"/>
+        <ns2:Value label="" literal="Free fax receipt page limit"/>
+        <ns2:Value label="" literal="Free fax transmission page limit"/>
+        <ns2:Value label="" literal="High speed internet connection"/>
+        <ns2:Value label="" literal="Hotel folio breakdown available to credit card company"/>
+        <ns2:Value label="" literal="Incoming fax complimentary"/>
+        <ns2:Value label="" literal="Individual folios available via e-mail or web"/>
+        <ns2:Value label="" literal="International direct dialing"/>
+        <ns2:Value label="" literal="Laptop"/>
+        <ns2:Value label="" literal="Laptop rental"/>
+        <ns2:Value label="" literal="LCD/Projector"/>
+        <ns2:Value label="" literal="Local calls"/>
+        <ns2:Value label="" literal="Local faxes"/>
+        <ns2:Value label="" literal="Long distance calls"/>
+        <ns2:Value label="" literal="Meeting facilities"/>
+        <ns2:Value label="" literal="Meeting/board rooms"/>
+        <ns2:Value label="" literal="Mobile/cellular phone available"/>
+        <ns2:Value label="" literal="Network/internet printing available"/>
+        <ns2:Value label="" literal="Notary public"/>
+        <ns2:Value label="" literal="Notepads"/>
+        <ns2:Value label="" literal="Office supplies"/>
+        <ns2:Value label="" literal="Outgoing fax complimentary"/>
+        <ns2:Value label="" literal="Overnight delivery/pickup"/>
+        <ns2:Value label="" literal="Pager rental"/>
+        <ns2:Value label="" literal="Pens"/>
+        <ns2:Value label="" literal="Post/parcel service"/>
+        <ns2:Value label="" literal="Printer"/>
+        <ns2:Value label="" literal="Private offices and business services"/>
+        <ns2:Value label="" literal="Scanner"/>
+        <ns2:Value label="" literal="Secretarial services"/>
+        <ns2:Value label="" literal="Staffed business center"/>
+        <ns2:Value label="" literal="Tape recorder"/>
+        <ns2:Value label="" literal="Toll free calls"/>
+        <ns2:Value label="" literal="VCR/DVD machine rental"/>
+        <ns2:Value label="" literal="Voicemail"/>
+        <ns2:Value label="" literal="Whiteboard"/>
+        <ns2:Value label="" literal="Wired internet connection"/>
+        <ns2:Value label="" literal="Wireless internet connection"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="CuisineType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The type of food for which the establishment is known; the style/manner in which the food is prepared and/or served.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Afghan"/>
+        <ns2:Value label="" literal="American"/>
+        <ns2:Value label="" literal="Argentinean"/>
+        <ns2:Value label="" literal="Asian"/>
+        <ns2:Value label="" literal="Asian-Fusion"/>
+        <ns2:Value label="" literal="Austrian"/>
+        <ns2:Value label="" literal="Barbeque"/>
+        <ns2:Value label="" literal="Bavarian"/>
+        <ns2:Value label="" literal="Brazilian"/>
+        <ns2:Value label="" literal="Cajun"/>
+        <ns2:Value label="" literal="California"/>
+        <ns2:Value label="" literal="Canadian"/>
+        <ns2:Value label="" literal="Caribbean"/>
+        <ns2:Value label="" literal="Chinese"/>
+        <ns2:Value label="" literal="Coffee shop"/>
+        <ns2:Value label="" literal="Continental"/>
+        <ns2:Value label="" literal="Creole"/>
+        <ns2:Value label="" literal="Deli"/>
+        <ns2:Value label="" literal="Eclectic"/>
+        <ns2:Value label="" literal="English"/>
+        <ns2:Value label="" literal="Ethiopian"/>
+        <ns2:Value label="" literal="European"/>
+        <ns2:Value label="" literal="French"/>
+        <ns2:Value label="" literal="German"/>
+        <ns2:Value label="" literal="Greek"/>
+        <ns2:Value label="" literal="Grill"/>
+        <ns2:Value label="" literal="Halal"/>
+        <ns2:Value label="" literal="Hawaiian"/>
+        <ns2:Value label="" literal="High-tea"/>
+        <ns2:Value label="" literal="Indian"/>
+        <ns2:Value label="" literal="Indonesian"/>
+        <ns2:Value label="" literal="International"/>
+        <ns2:Value label="" literal="Iranian"/>
+        <ns2:Value label="" literal="Irish"/>
+        <ns2:Value label="" literal="Italian"/>
+        <ns2:Value label="" literal="Japanese"/>
+        <ns2:Value label="" literal="Jewish"/>
+        <ns2:Value label="" literal="Korean"/>
+        <ns2:Value label="" literal="Kosher"/>
+        <ns2:Value label="" literal="Latin American"/>
+        <ns2:Value label="" literal="Lebanese"/>
+        <ns2:Value label="" literal="Mediterranean"/>
+        <ns2:Value label="" literal="Mexican"/>
+        <ns2:Value label="" literal="Middle Eastern"/>
+        <ns2:Value label="" literal="Mixed - cafeteria"/>
+        <ns2:Value label="" literal="Modern Australian"/>
+        <ns2:Value label="" literal="Modern Azerbaijan"/>
+        <ns2:Value label="" literal="Mongolian"/>
+        <ns2:Value label="" literal="Moroccan"/>
+        <ns2:Value label="" literal="Multiple"/>
+        <ns2:Value label="" literal="Muslim"/>
+        <ns2:Value label="" literal="Pacific rim"/>
+        <ns2:Value label="" literal="Pizza"/>
+        <ns2:Value label="" literal="Polish"/>
+        <ns2:Value label="" literal="Polynesian"/>
+        <ns2:Value label="" literal="Pub"/>
+        <ns2:Value label="" literal="Russian"/>
+        <ns2:Value label="" literal="Sandwiches"/>
+        <ns2:Value label="" literal="Scandinavian"/>
+        <ns2:Value label="" literal="Scottish"/>
+        <ns2:Value label="" literal="Seafood"/>
+        <ns2:Value label="" literal="Soul food"/>
+        <ns2:Value label="" literal="South American"/>
+        <ns2:Value label="" literal="Southern US"/>
+        <ns2:Value label="" literal="Southwest US"/>
+        <ns2:Value label="" literal="Spanish"/>
+        <ns2:Value label="" literal="Steak houses"/>
+        <ns2:Value label="" literal="Swiss"/>
+        <ns2:Value label="" literal="Tapas"/>
+        <ns2:Value label="" literal="TexMex"/>
+        <ns2:Value label="" literal="Thai"/>
+        <ns2:Value label="" literal="Turkish"/>
+        <ns2:Value label="" literal="Vegetarian"/>
+        <ns2:Value label="" literal="Vietnamese"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="DisabilityFeature_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies information about a facility, amenity or service that is relevant to people with a disability.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Accessibility to goods and services"/>
+        <ns2:Value label="" literal="Accessible baths"/>
+        <ns2:Value label="" literal="Accessible entrance"/>
+        <ns2:Value label="" literal="Accessible parking"/>
+        <ns2:Value label="" literal="Accessible platform lifts available"/>
+        <ns2:Value label="" literal="Accessible rooms"/>
+        <ns2:Value label="" literal="Accessible self parking available"/>
+        <ns2:Value label="" literal="Accessible van parking"/>
+        <ns2:Value label="" literal="Accommodations have bath in bedroom"/>
+        <ns2:Value label="" literal="Adapted room doors"/>
+        <ns2:Value label="" literal="Adjustable height hand-held shower wand"/>
+        <ns2:Value label="" literal="Americans with Disabilities Act (ADA) compliance"/>
+        <ns2:Value label="" literal="Assistive listening devices for meetings upon request"/>
+        <ns2:Value label="" literal="Audible emergency alarm for sight impaired guest"/>
+        <ns2:Value label="" literal="Bathroom doors in inches"/>
+        <ns2:Value label="" literal="Bathroom doors open outwards"/>
+        <ns2:Value label="" literal="Bathroom vanity in guest rooms for wheelchair user's height"/>
+        <ns2:Value label="" literal="Bathtub grab bars"/>
+        <ns2:Value label="" literal="Bathtub seat"/>
+        <ns2:Value label="" literal="Bed types of wheelchair accessible rooms"/>
+        <ns2:Value label="" literal="Bedroom wheelchair access"/>
+        <ns2:Value label="" literal="Benches in locker rooms."/>
+        <ns2:Value label="" literal="Braille signage provided"/>
+        <ns2:Value label="" literal="Braille/large print literature"/>
+        <ns2:Value label="" literal="Business center"/>
+        <ns2:Value label="" literal="Closed caption TV"/>
+        <ns2:Value label="" literal="Closet rods in guest rooms for disabled person height"/>
+        <ns2:Value label="" literal="Complementary accessible transportation with advanced notice"/>
+        <ns2:Value label="" literal="Complies with Local/State/Federal laws for disabled"/>
+        <ns2:Value label="" literal="Concierge desk is wheelchair accessible"/>
+        <ns2:Value label="" literal="Describe in detail how your kitchen is accessible.">
+            <ns2:Documentation>
+                <ns2:Description>Include special appliances, lowered cabinets, where dishes are kept, are upper cabinets usable.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Does hotel have accessible parking?"/>
+        <ns2:Value label="" literal="Door width in inches"/>
+        <ns2:Value label="" literal="Drinking fountains accessible"/>
+        <ns2:Value label="" literal="Elevator access to all levels"/>
+        <ns2:Value label="" literal="Elevator near accessible rooms"/>
+        <ns2:Value label="" literal="Elevators equipped for accessibility"/>
+        <ns2:Value label="" literal="Elevators have Braille Instructions"/>
+        <ns2:Value label="" literal="Emergency cord/button system in bathroom"/>
+        <ns2:Value label="" literal="Emergency cord/button system in bedroom"/>
+        <ns2:Value label="" literal="Emergency exit signs in Braille"/>
+        <ns2:Value label="" literal="Emergency info in Braille"/>
+        <ns2:Value label="" literal="Emergency instructions in pictorial form"/>
+        <ns2:Value label="" literal="Emergeny procedures for people with disabilites"/>
+        <ns2:Value label="" literal="Exercise facility is wheelchair accessible"/>
+        <ns2:Value label="" literal="Facilities for people with hearing impairment only"/>
+        <ns2:Value label="" literal="Facilities for people with vision impairment only"/>
+        <ns2:Value label="" literal="Feather free bedding/pillows available"/>
+        <ns2:Value label="" literal="Flashing door knocker available"/>
+        <ns2:Value label="" literal="Flat terrain between parking and entrance"/>
+        <ns2:Value label="" literal="Food service lines accessible"/>
+        <ns2:Value label="" literal="Grab bars in bathroom"/>
+        <ns2:Value label="" literal="Guest rooms and access routes are accessible"/>
+        <ns2:Value label="" literal="Hearing impaired services"/>
+        <ns2:Value label="" literal="Hearing induction loop system installed"/>
+        <ns2:Value label="" literal="Height from ground of deadbolt in guest room"/>
+        <ns2:Value label="" literal="Height from ground of elevator external buttons"/>
+        <ns2:Value label="" literal="Height from ground of elevator internal buttons"/>
+        <ns2:Value label="" literal="Height from ground of elevator internal handrails"/>
+        <ns2:Value label="" literal="Height from ground of guest bed including mattress"/>
+        <ns2:Value label="" literal="Height from ground of thermostat in guest room"/>
+        <ns2:Value label="" literal="Height from ground to light switches in bathroom"/>
+        <ns2:Value label="" literal="Height from ground to light switches in guest room"/>
+        <ns2:Value label="" literal="Height from ground to peephole in guest room door"/>
+        <ns2:Value label="" literal="Height of bathroom basin"/>
+        <ns2:Value label="" literal="Height of bathroom toilet seat"/>
+        <ns2:Value label="" literal="Height of controls at highest operable part for bath"/>
+        <ns2:Value label="" literal="Height of controls at highest operable part for roll-in shower"/>
+        <ns2:Value label="" literal="Height of deadbolt in guest room (in feet)"/>
+        <ns2:Value label="" literal="Height of deadbolt in guest room (in Inches)"/>
+        <ns2:Value label="" literal="Height of light switches in guest rooms (feet)"/>
+        <ns2:Value label="" literal="Height of light switches in guest rooms (inches)"/>
+        <ns2:Value label="" literal="Height of non-slip handrails adjacent to bath"/>
+        <ns2:Value label="" literal="Height of non-slip handrails adjacent to bathroom toilet"/>
+        <ns2:Value label="" literal="Height of non-slip handrails in shower area"/>
+        <ns2:Value label="" literal="Height of peephole in guest room (in feet)"/>
+        <ns2:Value label="" literal="Height of peephole in guest room (in inches)"/>
+        <ns2:Value label="" literal="Height of thermostat in guest room (in feet)"/>
+        <ns2:Value label="" literal="Height of thermostat in guest room (in inches)"/>
+        <ns2:Value label="" literal="Hotel entrance is accessible"/>
+        <ns2:Value label="" literal="Hotel restaurant is wheelchair accessible"/>
+        <ns2:Value label="" literal="Impairment aids available"/>
+        <ns2:Value label="" literal="Length/depth of clear floor space in front of bath"/>
+        <ns2:Value label="" literal="Length/depth of clear floor space in front of guest bathroom toilet"/>
+        <ns2:Value label="" literal="Lever handles on guest room doors"/>
+        <ns2:Value label="" literal="Light switches in guest rooms for wheelchair user's height"/>
+        <ns2:Value label="" literal="List available room types for disabled persons- 8 fields"/>
+        <ns2:Value label="" literal="Locker rooms accessible"/>
+        <ns2:Value label="" literal="Lower level seating required"/>
+        <ns2:Value label="" literal="Lowered electrical outlets"/>
+        <ns2:Value label="" literal="Lowered night guards on guest room doors"/>
+        <ns2:Value label="" literal="Number of accessible meeting rooms"/>
+        <ns2:Value label="" literal="Number of accessible rooms with standard tub"/>
+        <ns2:Value label="" literal="Number of each room type equipped for disabled persons- 8 fields"/>
+        <ns2:Value label="" literal="Number of roll-in showers available"/>
+        <ns2:Value label="" literal="Number of rooms with Braille"/>
+        <ns2:Value label="" literal="Number of rooms with wheelchair accessible showers"/>
+        <ns2:Value label="" literal="Number of wheelchair accessible rooms"/>
+        <ns2:Value label="" literal="Other services for persons with disabilities"/>
+        <ns2:Value label="" literal="Passenger has meet and assist requirement"/>
+        <ns2:Value label="" literal="Passenger has oxygen equipment"/>
+        <ns2:Value label="" literal="Pool is wheelchair accessible"/>
+        <ns2:Value label="" literal="Portable bathtub seats"/>
+        <ns2:Value label="" literal="Public areas wheelchair accessible"/>
+        <ns2:Value label="" literal="Public telephones accessible"/>
+        <ns2:Value label="" literal="Raised toilet seat with grab bars"/>
+        <ns2:Value label="" literal="Ramp access"/>
+        <ns2:Value label="" literal="Registration desk is wheelchair accessible"/>
+        <ns2:Value label="" literal="Restaurant/bar menus available in 14pt print"/>
+        <ns2:Value label="" literal="Restaurant/bar menus available in Braille"/>
+        <ns2:Value label="" literal="Restroom facilities accessible"/>
+        <ns2:Value label="" literal="Roll-in shower area with bathroom seat"/>
+        <ns2:Value label="" literal="Roll-in shower available"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to business center is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to exercise facility is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to meeting rooms is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to pool is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to registration area is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to restaurant is accessible"/>
+        <ns2:Value label="" literal="Route from accessible public entrance to spa is accessible"/>
+        <ns2:Value label="" literal="Safety bars in shower"/>
+        <ns2:Value label="" literal="Sales and service counters accessible"/>
+        <ns2:Value label="" literal="Service animals allowed on property for people with disabilities"/>
+        <ns2:Value label="" literal="Service dogs allowed"/>
+        <ns2:Value label="" literal="Special needs menus"/>
+        <ns2:Value label="" literal="Staff proficient in sign language"/>
+        <ns2:Value label="" literal="Staff trained in service to disabled guests"/>
+        <ns2:Value label="" literal="Steps/staircases have color markings"/>
+        <ns2:Value label="" literal="Steps/staircases have handrails"/>
+        <ns2:Value label="" literal="Subtitles/closed captions available on TV"/>
+        <ns2:Value label="" literal="Tactile/14pt print signage throughout hotel"/>
+        <ns2:Value label="" literal="Telephone for hearing impaired"/>
+        <ns2:Value label="" literal="Television amplifier"/>
+        <ns2:Value label="" literal="Toilet seat in guest rooms for disabled person"/>
+        <ns2:Value label="" literal="TTY/TTD compatible"/>
+        <ns2:Value label="" literal="Valet parking accepts and parks vehicles outfitted for wheelchair users"/>
+        <ns2:Value label="" literal="Van accessible parking in self parking"/>
+        <ns2:Value label="" literal="Viabrating alarm available"/>
+        <ns2:Value label="" literal="Vibrating pillows available"/>
+        <ns2:Value label="" literal="Visual emergency alarm for hearing impaired guest"/>
+        <ns2:Value label="" literal="Walk-in shower"/>
+        <ns2:Value label="" literal="What room types have wheel-in showers? (free form stringbox)"/>
+        <ns2:Value label="" literal="Wheelchair accessible elevators"/>
+        <ns2:Value label="" literal="Wheelchair lift required"/>
+        <ns2:Value label="" literal="Wheelchair, passenger has own chair, buses"/>
+        <ns2:Value label="" literal="Wheelchair, passenger has own chair, trains"/>
+        <ns2:Value label="" literal="Wheelchair, passenger requires station wheelchair"/>
+        <ns2:Value label="" literal="Wheelchairs available"/>
+        <ns2:Value label="" literal="Width/diameter of wheelchair turning space in bedroom"/>
+        <ns2:Value label="" literal="Which floors have accessible rooms"/>
+        <ns2:Value label="" literal="Wide corridors"/>
+        <ns2:Value label="" literal="Wide entrance"/>
+        <ns2:Value label="" literal="Wide restaurant entrance"/>
+        <ns2:Value label="" literal="Width/diameter of clear floor space at main hotel entrance"/>
+        <ns2:Value label="" literal="Width/diameter of clear floor space at main restaurant entrance"/>
+        <ns2:Value label="" literal="Width/diameter of clear floor space in front of bath"/>
+        <ns2:Value label="" literal="Width/diameter of clear floor space in front of guest bathroom toilet"/>
+        <ns2:Value label="" literal="Width/diameter of clear opening space at bathroom door"/>
+        <ns2:Value label="" literal="Width/diameter of clear opening space at bedroom door"/>
+        <ns2:Value label="" literal="Width/diameter of elevator clear door opening space"/>
+        <ns2:Value label="" literal="Width/diameter of main corridors"/>
+        <ns2:Value label="" literal="Width/diameter of wheelchair turning space in bathroom"/>
+        <ns2:Value label="" literal="Width/diameter of wheelchair turning space in lobby/reception area"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RecreationService_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the recreational activities available to a guest which may or may not be operated by or located at the hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Animal watching"/>
+        <ns2:Value label="" literal="Antique shopping"/>
+        <ns2:Value label="" literal="Archery"/>
+        <ns2:Value label="" literal="Badminton court"/>
+        <ns2:Value label="" literal="Baseball diamond"/>
+        <ns2:Value label="" literal="Basketball court"/>
+        <ns2:Value label="" literal="Beach"/>
+        <ns2:Value label="" literal="Bike rental"/>
+        <ns2:Value label="" literal="Bike trail"/>
+        <ns2:Value label="" literal="Billiards"/>
+        <ns2:Value label="" literal="Bird watching"/>
+        <ns2:Value label="" literal="Boat tours"/>
+        <ns2:Value label="" literal="Boating"/>
+        <ns2:Value label="" literal="Bocce court"/>
+        <ns2:Value label="" literal="Bowling alley"/>
+        <ns2:Value label="" literal="Boxing"/>
+        <ns2:Value label="" literal="Camping"/>
+        <ns2:Value label="" literal="Canoeing"/>
+        <ns2:Value label="" literal="Children's pool"/>
+        <ns2:Value label="" literal="Children's program"/>
+        <ns2:Value label="" literal="Children's program, onsite"/>
+        <ns2:Value label="" literal="Cricket pitch"/>
+        <ns2:Value label="" literal="Cross country skiing"/>
+        <ns2:Value label="" literal="Dancing"/>
+        <ns2:Value label="" literal="Dart board"/>
+        <ns2:Value label="" literal="Direct access to a beach"/>
+        <ns2:Value label="" literal="Diving"/>
+        <ns2:Value label="" literal="Dog racing"/>
+        <ns2:Value label="" literal="Downhill skiing"/>
+        <ns2:Value label="" literal="Driving range"/>
+        <ns2:Value label="" literal="Extensive health club"/>
+        <ns2:Value label="" literal="Fishing"/>
+        <ns2:Value label="" literal="Fitness center"/>
+        <ns2:Value label="" literal="Fly fishing"/>
+        <ns2:Value label="" literal="Football field"/>
+        <ns2:Value label="" literal="Gambling"/>
+        <ns2:Value label="" literal="Garden"/>
+        <ns2:Value label="" literal="Golf"/>
+        <ns2:Value label="" literal="Golf location (onsite/nearby)"/>
+        <ns2:Value label="" literal="Health club"/>
+        <ns2:Value label="" literal="Helicopter/airplane sightseeing"/>
+        <ns2:Value label="" literal="Hiking trail"/>
+        <ns2:Value label="" literal="Horse racing"/>
+        <ns2:Value label="" literal="Horseback riding"/>
+        <ns2:Value label="" literal="Hot tub"/>
+        <ns2:Value label="" literal="Hunting"/>
+        <ns2:Value label="" literal="Ice skating"/>
+        <ns2:Value label="" literal="Indoor pool"/>
+        <ns2:Value label="" literal="Indoor tennis courts"/>
+        <ns2:Value label="" literal="Indoor/outdoor connecting pool"/>
+        <ns2:Value label="" literal="Jet-ski"/>
+        <ns2:Value label="" literal="Jogging trail"/>
+        <ns2:Value label="" literal="Karaoke"/>
+        <ns2:Value label="" literal="Kayaking"/>
+        <ns2:Value label="" literal="Kids beach club"/>
+        <ns2:Value label="" literal="Kids equestrian club"/>
+        <ns2:Value label="" literal="Kids golf academy"/>
+        <ns2:Value label="" literal="Lake"/>
+        <ns2:Value label="" literal="Limited health club"/>
+        <ns2:Value label="" literal="Massage services"/>
+        <ns2:Value label="" literal="Miniature golf"/>
+        <ns2:Value label="" literal="Mountain biking trail"/>
+        <ns2:Value label="" literal="Mountain climbing"/>
+        <ns2:Value label="" literal="Museum/gallery"/>
+        <ns2:Value label="" literal="Nature preserve trail"/>
+        <ns2:Value label="" literal="Nightclub"/>
+        <ns2:Value label="" literal="Ocean"/>
+        <ns2:Value label="" literal="Outdoor pool"/>
+        <ns2:Value label="" literal="Outdoor tennis courts"/>
+        <ns2:Value label="" literal="Outlet shopping"/>
+        <ns2:Value label="" literal="Paddle court"/>
+        <ns2:Value label="" literal="Parasailing"/>
+        <ns2:Value label="" literal="Playground"/>
+        <ns2:Value label="" literal="Polo"/>
+        <ns2:Value label="" literal="Pool"/>
+        <ns2:Value label="" literal="Putt putt golf"/>
+        <ns2:Value label="" literal="Racquetball court"/>
+        <ns2:Value label="" literal="River"/>
+        <ns2:Value label="" literal="River rafting"/>
+        <ns2:Value label="" literal="Rock climbing"/>
+        <ns2:Value label="" literal="Safari"/>
+        <ns2:Value label="" literal="Sailing"/>
+        <ns2:Value label="" literal="Sauna"/>
+        <ns2:Value label="" literal="Scuba diving"/>
+        <ns2:Value label="" literal="Shopping"/>
+        <ns2:Value label="" literal="Sightseeing tours"/>
+        <ns2:Value label="" literal="Skating rink"/>
+        <ns2:Value label="" literal="Skeet shooting"/>
+        <ns2:Value label="" literal="Ski in/out facilities"/>
+        <ns2:Value label="" literal="Skydiving"/>
+        <ns2:Value label="" literal="Snorkeling"/>
+        <ns2:Value label="" literal="Snow boarding"/>
+        <ns2:Value label="" literal="Snow mobiling"/>
+        <ns2:Value label="" literal="Snow skiing"/>
+        <ns2:Value label="" literal="Soccer field"/>
+        <ns2:Value label="" literal="Solarium"/>
+        <ns2:Value label="" literal="Spa facility"/>
+        <ns2:Value label="" literal="Sports court"/>
+        <ns2:Value label="" literal="Sports events"/>
+        <ns2:Value label="" literal="Squash court"/>
+        <ns2:Value label="" literal="Steam bath"/>
+        <ns2:Value label="" literal="Sun tanning bed"/>
+        <ns2:Value label="" literal="Sunbathing"/>
+        <ns2:Value label="" literal="Surfing"/>
+        <ns2:Value label="" literal="Table tennis"/>
+        <ns2:Value label="" literal="Teen programs"/>
+        <ns2:Value label="" literal="Tennis court"/>
+        <ns2:Value label="" literal="Tennis professional"/>
+        <ns2:Value label="" literal="Theatre"/>
+        <ns2:Value label="" literal="Tubing"/>
+        <ns2:Value label="" literal="Upscale shopping"/>
+        <ns2:Value label="" literal="Velodrome"/>
+        <ns2:Value label="" literal="Volleyball"/>
+        <ns2:Value label="" literal="Walking track"/>
+        <ns2:Value label="" literal="Water activities"/>
+        <ns2:Value label="" literal="Water-skiing"/>
+        <ns2:Value label="" literal="Weightlifting"/>
+        <ns2:Value label="" literal="Whirlpool"/>
+        <ns2:Value label="" literal="Windsurfing"/>
+        <ns2:Value label="" literal="Wine tasting"/>
+        <ns2:Value label="" literal="Winter sports"/>
+        <ns2:Value label="" literal="Wrestling"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="SecurityFeature_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies security features of the services, meeting rooms, guest rooms, and restaurants of a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="2nd lock on guest doors"/>
+        <ns2:Value label="" literal="Audible alarm smoke detectors in guest rooms"/>
+        <ns2:Value label="" literal="Audible alarms in hallways"/>
+        <ns2:Value label="" literal="Audible alarms in public areas"/>
+        <ns2:Value label="" literal="Auto link to fire station"/>
+        <ns2:Value label="" literal="Automated External Defibrillator (AED) on-site"/>
+        <ns2:Value label="" literal="Building meets all current local, state and country building codes"/>
+        <ns2:Value label="" literal="Carbon monoxide detector"/>
+        <ns2:Value label="" literal="Complies with Local/State/Federal fire laws"/>
+        <ns2:Value label="" literal="Connecting doors have deadbolts"/>
+        <ns2:Value label="" literal="Dead bolts on guest room doors"/>
+        <ns2:Value label="" literal="Electronic room key"/>
+        <ns2:Value label="" literal="Elevator auto recall"/>
+        <ns2:Value label="" literal="Emergency back-up generators"/>
+        <ns2:Value label="" literal="Emergency evacuation plan"/>
+        <ns2:Value label="" literal="Emergency exits on each floor"/>
+        <ns2:Value label="" literal="Emergency info in room"/>
+        <ns2:Value label="" literal="Emergency lighting"/>
+        <ns2:Value label="" literal="Evacuation drills"/>
+        <ns2:Value label="" literal="Exterior doors (except lobby entrance) require key access at night"/>
+        <ns2:Value label="" literal="FEMA approved"/>
+        <ns2:Value label="" literal="Fire extinguishers"/>
+        <ns2:Value label="" literal="Fire extinguishers in hallways"/>
+        <ns2:Value label="" literal="Fire extinguishers in public areas"/>
+        <ns2:Value label="" literal="First aid available"/>
+        <ns2:Value label="" literal="Guest room doors self-closing"/>
+        <ns2:Value label="" literal="Hard wired smoke detectors"/>
+        <ns2:Value label="" literal="Health club facilities (pool/gym) require key access for entrance"/>
+        <ns2:Value label="" literal="Hours security"/>
+        <ns2:Value label="" literal="If no 24 hour security, what are the hours?"/>
+        <ns2:Value label="" literal="Lighted parking area"/>
+        <ns2:Value label="" literal="Multiple exits on each floor"/>
+        <ns2:Value label="" literal="Patrolled parking area"/>
+        <ns2:Value label="" literal="Private security available"/>
+        <ns2:Value label="" literal="Property has elevators"/>
+        <ns2:Value label="" literal="Public address system"/>
+        <ns2:Value label="" literal="Room access through exterior corridor"/>
+        <ns2:Value label="" literal="Room access through interior corridor"/>
+        <ns2:Value label="" literal="Room accessible through balcony sliding glass doors"/>
+        <ns2:Value label="" literal="Room windows open"/>
+        <ns2:Value label="" literal="Safety chains on guest doors"/>
+        <ns2:Value label="" literal="Secondary locks on room windows"/>
+        <ns2:Value label="" literal="Secondary locks on sliding glass doors"/>
+        <ns2:Value label="" literal="Secured floors"/>
+        <ns2:Value label="" literal="Security"/>
+        <ns2:Value label="" literal="Security 24 hours/day"/>
+        <ns2:Value label="" literal="Security escorts available on request"/>
+        <ns2:Value label="" literal="Smoke detector in guest rooms"/>
+        <ns2:Value label="" literal="Smoke detector in hallways"/>
+        <ns2:Value label="" literal="Smoke detector in public areas"/>
+        <ns2:Value label="" literal="Sprinklers in guest rooms"/>
+        <ns2:Value label="" literal="Sprinklers in hallways"/>
+        <ns2:Value label="" literal="Sprinklers in public areas"/>
+        <ns2:Value label="" literal="Staff Red Cross certified in CPR"/>
+        <ns2:Value label="" literal="Staff trained in Automated External Defibrillator (AED) usage"/>
+        <ns2:Value label="" literal="Staff trained in CPR"/>
+        <ns2:Value label="" literal="Staff trained in duplicate key issue"/>
+        <ns2:Value label="" literal="Staff trained in first aid"/>
+        <ns2:Value label="" literal="Swingbolt lock"/>
+        <ns2:Value label="" literal="Ventilated stair wells"/>
+        <ns2:Value label="" literal="Video cameras at entrance"/>
+        <ns2:Value label="" literal="Video cameras in public areas"/>
+        <ns2:Value label="" literal="Video surveillance monitored 24 hrs a day"/>
+        <ns2:Value label="" literal="Video surveillance of parking"/>
+        <ns2:Value label="" literal="Video surveillance recorded 24 hrs a day"/>
+        <ns2:Value label="" literal="Viewports in guest room doors"/>
+        <ns2:Value label="" literal="VIP Security"/>
+        <ns2:Value label="" literal="Visual alarm in guest rooms"/>
+        <ns2:Value label="" literal="Visual alarms in hallways"/>
+        <ns2:Value label="" literal="Visual alarms in public areas"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="Gender_Enum">
+        <ns2:Value label="" literal="Male"/>
+        <ns2:Value label="" literal="Female"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="MaritalStatus_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The marital status of a person.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Annulled"/>
+        <ns2:Value label="" literal="Co-habiting"/>
+        <ns2:Value label="" literal="Divorced"/>
+        <ns2:Value label="" literal="Engaged"/>
+        <ns2:Value label="" literal="Married"/>
+        <ns2:Value label="" literal="Separated"/>
+        <ns2:Value label="" literal="Single"/>
+        <ns2:Value label="" literal="Widowed"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="EventStatus_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the status of planning for an event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Event Planned"/>
+        <ns2:Value label="" literal="Event Scheduled (no details at this time)"/>
+        <ns2:Value label="" literal="No Event"/>
+        <ns2:Value label="" literal="Off Site Event"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ProfileStatus_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Status of the profile.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Active"/>
+        <ns2:Value label="" literal="Inactive"/>
+        <ns2:Value label="" literal="Lapsed"/>
+        <ns2:Value label="" literal="Marked for Deletion"/>
+        <ns2:Value label="" literal="Terminated"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ProfileType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the type of profile.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Airline"/>
+        <ns2:Value label="" literal="Arranger"/>
+        <ns2:Value label="" literal="Association"/>
+        <ns2:Value label="" literal="Authorized signer"/>
+        <ns2:Value label="" literal="Billing contact"/>
+        <ns2:Value label="" literal="Car rental"/>
+        <ns2:Value label="" literal="Corporation"/>
+        <ns2:Value label="" literal="CRO"/>
+        <ns2:Value label="" literal="Cruise line"/>
+        <ns2:Value label="" literal="Customer"/>
+        <ns2:Value label="" literal="Employee"/>
+        <ns2:Value label="" literal="Event host"/>
+        <ns2:Value label="" literal="GDS"/>
+        <ns2:Value label="" literal="General service contractor"/>
+        <ns2:Value label="" literal="Group"/>
+        <ns2:Value label="" literal="Hotel"/>
+        <ns2:Value label="" literal="Internet broker"/>
+        <ns2:Value label="" literal="Representation company"/>
+        <ns2:Value label="" literal="Supplier partner"/>
+        <ns2:Value label="" literal="Tour operator"/>
+        <ns2:Value label="" literal="Travel agency"/>
+        <ns2:Value label="" literal="Travel agent"/>
+        <ns2:Value label="" literal="Wholesaler"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="TravelPurpose_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the reason the person is traveling.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Business"/>
+        <ns2:Value label="" literal="Personal/leisure"/>
+        <ns2:Value label="" literal="Group or meeting"/>
+        <ns2:Value label="" literal="Conference"/>
+        <ns2:Value label="" literal="Charter"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="VoluntaryIndicator_Enum">
+        <ns2:Documentation>
+            <ns2:Description>TODO - why is this payment form instead of Voluntary indicator or boolean?</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="voluntary"/>
+        <ns2:Value label="" literal="involuntary"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="RequiredPayments_Enum">
+        <ns2:Value label="" literal="GuaranteeRequired"/>
+        <ns2:Value label="" literal="None"/>
+        <ns2:Value label="" literal="CC/DC/Voucher"/>
+        <ns2:Value label="" literal="Profile"/>
+        <ns2:Value label="" literal="Deposit"/>
+        <ns2:Value label="" literal="PrePay">
+            <ns2:Documentation>
+                <ns2:Description>Indicates prepayment, typically this means payment is required at booking.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="OfficeLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifes the location type of an office (e.g. main, field, division).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Main"/>
+        <ns2:Value label="" literal="Field"/>
+        <ns2:Value label="" literal="Division"/>
+        <ns2:Value label="" literal="Regional"/>
+        <ns2:Value label="" literal="Remote"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="Status_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The status condition.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Complete"/>
+        <ns2:Value label="" literal="Incomplete"/>
+        <ns2:Value label="" literal="Not processed"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ErrorWarningType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Tthe category of error or warning.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Advisory"/>
+        <ns2:Value label="" literal="Application error"/>
+        <ns2:Value label="" literal="Authentication"/>
+        <ns2:Value label="" literal="Authentication timeout"/>
+        <ns2:Value label="" literal="Authorization"/>
+        <ns2:Value label="" literal="Business rule"/>
+        <ns2:Value label="" literal="No implementation"/>
+        <ns2:Value label="" literal="Processing exception"/>
+        <ns2:Value label="" literal="Protocol violation"/>
+        <ns2:Value label="" literal="Required field missing"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PhoneLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Where the phone is located.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Brand reservations office"/>
+        <ns2:Value label="" literal="Central reservations office"/>
+        <ns2:Value label="" literal="Home"/>
+        <ns2:Value label="" literal="Managing company"/>
+        <ns2:Value label="" literal="Mobile"/>
+        <ns2:Value label="" literal="Office"/>
+        <ns2:Value label="" literal="Property direct"/>
+        <ns2:Value label="" literal="Property reservation Office"/>
+        <ns2:Value label="" literal="Sales office"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PhoneUseType_Enum">
+        <ns2:Value label="" literal="Contact"/>
+        <ns2:Value label="" literal="Daytime contact"/>
+        <ns2:Value label="" literal="Emergency contact"/>
+        <ns2:Value label="" literal="Evening contact"/>
+        <ns2:Value label="" literal="Guest use"/>
+        <ns2:Value label="" literal="Mobile"/>
+        <ns2:Value label="" literal="Pickup contact"/>
+        <ns2:Value label="" literal="Toll free number"/>
+        <ns2:Value label="" literal="Travel arranger"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PhoneTechType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Defines the technology associated with this phone number.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Voice"/>
+        <ns2:Value label="" literal="Fax"/>
+        <ns2:Value label="" literal="Pager"/>
+        <ns2:Value label="" literal="TTY"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="TimeUnit_Enum">
+        <ns2:Value label="" literal="Day"/>
+        <ns2:Value label="" literal="Full duration"/>
+        <ns2:Value label="" literal="Hour"/>
+        <ns2:Value label="" literal="Minute"/>
+        <ns2:Value label="" literal="Month"/>
+        <ns2:Value label="" literal="Second"/>
+        <ns2:Value label="" literal="Week"/>
+        <ns2:Value label="" literal="Year"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="OffsetDropTime_Enum">
+        <ns2:Documentation>
+            <ns2:Description>An enumerated type indicating when the deadline drop time goes into effect.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Before arrival"/>
+        <ns2:Value label="" literal="After booking"/>
+        <ns2:Value label="" literal="After confirmation"/>
+        <ns2:Value label="" literal="After arrival"/>
+        <ns2:Value label="" literal="After departure"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="EmployeeStatus_Enum">
+        <ns2:Documentation>
+            <ns2:Description>OTA Codelist: Employee Status	EMP	
+	1	Active
+	2	Retired
+	3	Leave
+	4	Terminated</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Active"/>
+        <ns2:Value label="" literal="Retired"/>
+        <ns2:Value label="" literal="Leave"/>
+        <ns2:Value label="" literal="Terminated"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="FeeType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the type of fee or tax.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Adult rollaway fee"/>
+        <ns2:Value label="" literal="Application Fee"/>
+        <ns2:Value label="" literal="Banquet service fee"/>
+        <ns2:Value label="" literal="Beverage with alcohol"/>
+        <ns2:Value label="" literal="Beverage without alcohol"/>
+        <ns2:Value label="" literal="Child rollaway charge"/>
+        <ns2:Value label="" literal="City hotel fee"/>
+        <ns2:Value label="" literal="Crib fee"/>
+        <ns2:Value label="" literal="Destination amenity fee"/>
+        <ns2:Value label="" literal="Early checkout fee"/>
+        <ns2:Value label="" literal="Exempt"/>
+        <ns2:Value label="" literal="Express Handling Fee"/>
+        <ns2:Value label="" literal="Extra child charge"/>
+        <ns2:Value label="" literal="Extra person charge"/>
+        <ns2:Value label="" literal="Food"/>
+        <ns2:Value label="" literal="Local fee"/>
+        <ns2:Value label="" literal="Maintenance fee"/>
+        <ns2:Value label="" literal="Miscellaneous"/>
+        <ns2:Value label="" literal="Package fee"/>
+        <ns2:Value label="" literal="Pet sanitation fee"/>
+        <ns2:Value label="" literal="Resort fee"/>
+        <ns2:Value label="" literal="Rollaway fee"/>
+        <ns2:Value label="" literal="Room service fee"/>
+        <ns2:Value label="" literal="Service charge"/>
+        <ns2:Value label="" literal="Standard"/>
+        <ns2:Value label="" literal="Standard food and beverage gratuity"/>
+        <ns2:Value label="" literal="State cost recovery fee"/>
+        <ns2:Value label="" literal="Surcharge"/>
+        <ns2:Value label="" literal="Tobacco"/>
+        <ns2:Value label="" literal="Total surcharges"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="TravelSector_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the travel sector.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Air"/>
+        <ns2:Value label="" literal="Car"/>
+        <ns2:Value label="" literal="Cruise"/>
+        <ns2:Value label="" literal="Excursion"/>
+        <ns2:Value label="" literal="Ferry"/>
+        <ns2:Value label="" literal="Golf"/>
+        <ns2:Value label="" literal="Hotel"/>
+        <ns2:Value label="" literal="Insurance"/>
+        <ns2:Value label="" literal="Package option"/>
+        <ns2:Value label="" literal="Rail"/>
+        <ns2:Value label="" literal="Tour"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PaymentCardCode_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The 2 digit code that identifies the credit card.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="VI">
+            <ns2:Documentation>
+                <ns2:Description>Visa</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="UP">
+            <ns2:Documentation>
+                <ns2:Description>China UnionPay</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="TP">
+            <ns2:Documentation>
+                <ns2:Description>Universal Air Travel Card</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="MC">
+            <ns2:Documentation>
+                <ns2:Description>Master Card</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="MA">
+            <ns2:Documentation>
+                <ns2:Description>Maestro</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="JC">
+            <ns2:Documentation>
+                <ns2:Description>Japanese Credit Bureau Credit Card</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="EC">
+            <ns2:Documentation>
+                <ns2:Description>Eurocard</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="DS">
+            <ns2:Documentation>
+                <ns2:Description>Discover Card</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="DN">
+            <ns2:Documentation>
+                <ns2:Description>Diners Club</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="CB">
+            <ns2:Documentation>
+                <ns2:Description>Carte Blanche</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BL">
+            <ns2:Documentation>
+                <ns2:Description>Carte Bleu</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BC">
+            <ns2:Documentation>
+                <ns2:Description>Bank Card</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="AX">
+            <ns2:Documentation>
+                <ns2:Description>American Express</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PaymentType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a type of payment.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Air travel card"/>
+        <ns2:Value label="" literal="Airline payment card"/>
+        <ns2:Value label="" literal="Barter"/>
+        <ns2:Value label="" literal="Business account"/>
+        <ns2:Value label="" literal="Business check"/>
+        <ns2:Value label="" literal="Cash"/>
+        <ns2:Value label="" literal="Certified check"/>
+        <ns2:Value label="" literal="Check"/>
+        <ns2:Value label="" literal="Company name/address"/>
+        <ns2:Value label="" literal="Corporate ID/CD number"/>
+        <ns2:Value label="" literal="Coupon"/>
+        <ns2:Value label="" literal="Credit card"/>
+        <ns2:Value label="" literal="Debit card"/>
+        <ns2:Value label="" literal="Deposit"/>
+        <ns2:Value label="" literal="Direct bill"/>
+        <ns2:Value label="" literal="Frequent guest number"/>
+        <ns2:Value label="" literal="Frequent traveler number"/>
+        <ns2:Value label="" literal="Guarantee to property"/>
+        <ns2:Value label="" literal="Guest name/address"/>
+        <ns2:Value label="" literal="Miscellaneous"/>
+        <ns2:Value label="" literal="Miscellaneous charge order"/>
+        <ns2:Value label="" literal="Mobile payment"/>
+        <ns2:Value label="" literal="Money order"/>
+        <ns2:Value label="" literal="None"/>
+        <ns2:Value label="" literal="Online payment">
+            <ns2:Documentation>
+                <ns2:Description>Online payment such as Paypal, Alipay, ApplePay.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Override guarantee information"/>
+        <ns2:Value label="" literal="Pay by EFT (Electronic Funds Transfer)"/>
+        <ns2:Value label="" literal="Pay by points"/>
+        <ns2:Value label="" literal="Payment manager"/>
+        <ns2:Value label="" literal="Payment service"/>
+        <ns2:Value label="" literal="Personal check"/>
+        <ns2:Value label="" literal="Pre-pay"/>
+        <ns2:Value label="" literal="Traveler's check"/>
+        <ns2:Value label="" literal="Redemption"/>
+        <ns2:Value label="" literal="Special industry program"/>
+        <ns2:Value label="" literal="Ticket"/>
+        <ns2:Value label="" literal="Tour order"/>
+        <ns2:Value label="" literal="Travel agency IATA number"/>
+        <ns2:Value label="" literal="Travel agency name/address"/>
+        <ns2:Value label="" literal="Virtual card"/>
+        <ns2:Value label="" literal="Voucher"/>
+        <ns2:Value label="" literal="Wire payment"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="CommunicationLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a location for communication.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Business"/>
+        <ns2:Value label="" literal="Destination"/>
+        <ns2:Value label="" literal="Home"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="AddressUse_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes how an address is to be used.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Billing"/>
+        <ns2:Value label="" literal="Chain"/>
+        <ns2:Value label="" literal="Contact"/>
+        <ns2:Value label="" literal="Credit card"/>
+        <ns2:Value label="" literal="Delivery"/>
+        <ns2:Value label="" literal="Deposit"/>
+        <ns2:Value label="" literal="Mailing"/>
+        <ns2:Value label="" literal="Physical"/>
+        <ns2:Value label="" literal="Pre-opening office"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="BookingChannel_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a type of booking channel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Agent"/>
+        <ns2:Value label="" literal="Alternative distribution system (ADS)"/>
+        <ns2:Value label="" literal="Central reservation system (CRS)"/>
+        <ns2:Value label="" literal="Global distribution system (GDS)"/>
+        <ns2:Value label="" literal="Internet"/>
+        <ns2:Value label="" literal="Kiosk"/>
+        <ns2:Value label="" literal="Property management system (PMS)"/>
+        <ns2:Value label="" literal="Sales and catering system (SCS)"/>
+        <ns2:Value label="" literal="Tour operator system (TOS)"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="UnitOfMeasure_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Miles">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (statute mile) (mile) (SMI)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Kilometers">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (kilometre) (km) (KMT)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Meters">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (metre) (m) (MTR)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Millimeters">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (millimetre) (mm) (MMT)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Centimeters">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (centimetre) (cm) (CMT)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Yards">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (yard) (yd) (YRD)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Feet">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (foot) (ft) (FOT)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Inches">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (inch) (in) (INH)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Pixels">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (pixel: picture element) (E37)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Block"/>
+        <ns2:Value label="" literal="Megabytes">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (megabyte) (MB) (4L)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Gigabytes">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (gigabyte) (GB) (E34)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square feet">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (square foot) (ft2) (FTK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square meters">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (square metre) (m2) (MTK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Pounds">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (pound) (lb) (LBR)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Kilograms">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (kilogram (kg) (KGM)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square inch">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (square inch) (in2) (INK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square yard">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (square yard) (yd2) (YDK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Acre">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (acre) (acre) (ACR)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square millimeter">
+            <ns2:Documentation>
+                <ns2:Description>Sames as UN/ECE 20 (square millimetre) (mm2)(MMK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Square centimeter">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (square centimetre (cm2) (CMK)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Hectare">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (hectare) (ha) (HAR)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Ounce">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (ounce) (oz) (ONZ)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Gram">
+            <ns2:Documentation>
+                <ns2:Description>Same as UN/ECE 20 (gram) (g) (GRM)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Gallons"/>
+        <ns2:Value label="" literal="Liters"/>
+        <ns2:Value label="" literal="Kilowatts"/>
+        <ns2:Value label="" literal="Cubic meters"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="EmailAddressType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a type of email address.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Business"/>
+        <ns2:Value label="" literal="Listserve"/>
+        <ns2:Value label="" literal="Managing company"/>
+        <ns2:Value label="" literal="Personal"/>
+        <ns2:Value label="" literal="Property"/>
+        <ns2:Value label="" literal="Reservation office"/>
+        <ns2:Value label="" literal="Sales office"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="PositionAccuracy_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the level of accuracy for the positon.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Zip9Code"/>
+        <ns2:Value label="" literal="Zip7Code"/>
+        <ns2:Value label="" literal="Zip5Code"/>
+        <ns2:Value label="" literal="Street"/>
+        <ns2:Value label="" literal="State"/>
+        <ns2:Value label="" literal="Property"/>
+        <ns2:Value label="" literal="Intersection"/>
+        <ns2:Value label="" literal="Exact"/>
+        <ns2:Value label="" literal="County"/>
+        <ns2:Value label="" literal="Country"/>
+        <ns2:Value label="" literal="City"/>
+        <ns2:Value label="" literal="Block"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="DayOfWeek_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Day of the Week types.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Monday"/>
+        <ns2:Value label="" literal="Tuesday"/>
+        <ns2:Value label="" literal="Wednesday"/>
+        <ns2:Value label="" literal="Thursday"/>
+        <ns2:Value label="" literal="Friday"/>
+        <ns2:Value label="" literal="Saturday"/>
+        <ns2:Value label="" literal="Sunday"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="MonthOfYear_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Month of year types</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="January"/>
+        <ns2:Value label="" literal="February"/>
+        <ns2:Value label="" literal="March"/>
+        <ns2:Value label="" literal="April"/>
+        <ns2:Value label="" literal="May"/>
+        <ns2:Value label="" literal="June"/>
+        <ns2:Value label="" literal="July"/>
+        <ns2:Value label="" literal="August"/>
+        <ns2:Value label="" literal="September"/>
+        <ns2:Value label="" literal="October"/>
+        <ns2:Value label="" literal="November"/>
+        <ns2:Value label="" literal="December"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="BankAccountType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Source: OpenTravel</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Savings"/>
+        <ns2:Value label="" literal="Investment"/>
+        <ns2:Value label="" literal="Checking"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PaymentCardIssuer_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Source: OpenTravel</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="VISA"/>
+        <ns2:Value label="" literal="USAirways"/>
+        <ns2:Value label="" literal="UnitedAirlines"/>
+        <ns2:Value label="" literal="StarwoodHotels"/>
+        <ns2:Value label="" literal="SouthwestAirlines"/>
+        <ns2:Value label="" literal="RitzCarlton"/>
+        <ns2:Value label="" literal="Mastercard"/>
+        <ns2:Value label="" literal="Mariott"/>
+        <ns2:Value label="" literal="Hyatt"/>
+        <ns2:Value label="" literal="Hilton"/>
+        <ns2:Value label="" literal="Eurocard"/>
+        <ns2:Value label="" literal="Disney"/>
+        <ns2:Value label="" literal="DiscoverCard"/>
+        <ns2:Value label="" literal="DeltaAirlines"/>
+        <ns2:Value label="" literal="ContinentalAirlines"/>
+        <ns2:Value label="" literal="Citibank"/>
+        <ns2:Value label="" literal="Chase"/>
+        <ns2:Value label="" literal="CapitalOne"/>
+        <ns2:Value label="" literal="BritishAirways"/>
+        <ns2:Value label="" literal="BankOfAmerica"/>
+        <ns2:Value label="" literal="AmericanExpress"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="AgeQualifyingCode_Enum">
+        <ns2:Documentation>
+            <ns2:Description>A code representing a business rule that determines the charges for a guest based upon age range (e.g. Adult, Child, Senior, Child With Adult, Child Without Adult). This attribute allows for an increase in rate by occupant class.
+Person age categories.
+Note: Age categories  are typically used to qualify pricing and/or eligibility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Junior"/>
+        <ns2:Value label="" literal="Under 10"/>
+        <ns2:Value label="" literal="Younger driver"/>
+        <ns2:Value label="" literal="Young driver"/>
+        <ns2:Value label="" literal="Free adult"/>
+        <ns2:Value label="" literal="Free child"/>
+        <ns2:Value label="" literal="Additional occupant without adult"/>
+        <ns2:Value label="" literal="Additional occupant with adult"/>
+        <ns2:Value label="" literal="Senior"/>
+        <ns2:Value label="" literal="Adult"/>
+        <ns2:Value label="" literal="Teenager"/>
+        <ns2:Value label="" literal="Child"/>
+        <ns2:Value label="" literal="Infant"/>
+        <ns2:Value label="" literal="Under 21"/>
+        <ns2:Value label="" literal="Under 17"/>
+        <ns2:Value label="" literal="Under 12"/>
+        <ns2:Value label="" literal="Under 2"/>
+        <ns2:Value label="" literal="Over 65"/>
+        <ns2:Value label="" literal="Over 21"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="DrivingRangeType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the type of driving range.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Covered"/>
+        <ns2:Value label="" literal="Indoor"/>
+        <ns2:Value label="" literal="Outdoor"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="CourseType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The guest policy at the facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="DailyFee"/>
+        <ns2:Value label="" literal="Municipal/Government/Military"/>
+        <ns2:Value label="" literal="Private"/>
+        <ns2:Value label="" literal="Private Limited Access"/>
+        <ns2:Value label="" literal="Resort"/>
+        <ns2:Value label="" literal="SemiPrivate"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="Transportation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Type of tranportation: Air, Rail, Bus, Boat, Private Auto, Other.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Bicycle"/>
+        <ns2:Value label="" literal="Boat"/>
+        <ns2:Value label="" literal="Bus"/>
+        <ns2:Value label="" literal="Cable car"/>
+        <ns2:Value label="" literal="Car"/>
+        <ns2:Value label="" literal="Carriage"/>
+        <ns2:Value label="" literal="Courtesy car"/>
+        <ns2:Value label="" literal="Helicopter"/>
+        <ns2:Value label="" literal="Limousine"/>
+        <ns2:Value label="" literal="Metro"/>
+        <ns2:Value label="" literal="Monorail"/>
+        <ns2:Value label="" literal="Motorbike"/>
+        <ns2:Value label="" literal="Pack animal"/>
+        <ns2:Value label="" literal="Plane"/>
+        <ns2:Value label="" literal="Rental car"/>
+        <ns2:Value label="" literal="Rickshaw"/>
+        <ns2:Value label="" literal="Shuttle"/>
+        <ns2:Value label="" literal="Subway"/>
+        <ns2:Value label="" literal="Sedan chair"/>
+        <ns2:Value label="" literal="Taxi"/>
+        <ns2:Value label="" literal="Train"/>
+        <ns2:Value label="" literal="Trolley"/>
+        <ns2:Value label="" literal="Tube"/>
+        <ns2:Value label="" literal="Walk"/>
+        <ns2:Value label="" literal="Water taxi"/>
+        <ns2:Value label="" literal="Express train"/>
+        <ns2:Value label="" literal="Public"/>
+        <ns2:Value label="" literal="Ferry"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Simple listTypeInd="true" name="DaysOfWeekApplies" type="DayOfWeek_Enum">
+        <ns2:Documentation>
+            <ns2:Description>A list of days of week utiliziing the day of week enumerated list.</ns2:Description>
+        </ns2:Documentation>
+    </ns2:Simple>
+    
+    <ns2:Enumeration_Closed name="TripPurpose_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Typical trip purposes.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Business">
+            <ns2:Documentation>
+                <ns2:Description>The trip purpose is for business only.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BusinessAndPleasure">
+            <ns2:Documentation>
+                <ns2:Description>The trip purpose is for a combination of business and pleasure.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Pleasure">
+            <ns2:Documentation>
+                <ns2:Description>The trip purpose is for pleasure only.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Unknown">
+            <ns2:Documentation>
+                <ns2:Description>The trip purpose is unknown.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="RatePeriod_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The RatePeriodSimpleType simple type defines a set of valid values for the type of rate that may be applied.  Typically rates differ based upon the duration, and the actual rate is then expressed in terms of the period of the rental.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Hourly"/>
+        <ns2:Value label="" literal="Daily"/>
+        <ns2:Value label="" literal="Weekly"/>
+        <ns2:Value label="" literal="Monthly"/>
+        <ns2:Value label="" literal="WeekendDay"/>
+        <ns2:Value label="" literal="Other"/>
+        <ns2:Value label="" literal="Package">
+            <ns2:Documentation>
+                <ns2:Description>The rate period is based on the package.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Bundle">
+            <ns2:Documentation>
+                <ns2:Description>The rate is the same regardless of the number of days the vehicle is rented.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Total">
+            <ns2:Documentation>
+                <ns2:Description>The rate is the total, no specific rate period.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="ToFrom_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Used to indicate whether the context is to a facility or from a facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="ToFacility">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the direction is to the facility based on use (e.g., hotel, car rental location, airport).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="FromFacility">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the direction is from the facility based on use (e.g., hotel, car rental location, airport).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="TaxType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the type of fee or tax.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Assessment/license tax"/>
+        <ns2:Value label="" literal="Bed tax"/>
+        <ns2:Value label="" literal="City tax"/>
+        <ns2:Value label="" literal="Convention tax"/>
+        <ns2:Value label="" literal="Country tax"/>
+        <ns2:Value label="" literal="County tax"/>
+        <ns2:Value label="" literal="Energy tax"/>
+        <ns2:Value label="" literal="Federal tax"/>
+        <ns2:Value label="" literal="Food &amp; beverage tax"/>
+        <ns2:Value label="" literal="Goods and services tax (GST)"/>
+        <ns2:Value label="" literal="Insurance Premium Tax"/>
+        <ns2:Value label="" literal="Lodging tax"/>
+        <ns2:Value label="" literal="National government tax"/>
+        <ns2:Value label="" literal="Occupancy tax"/>
+        <ns2:Value label="" literal="Room Tax"/>
+        <ns2:Value label="" literal="Sales tax"/>
+        <ns2:Value label="" literal="State tax"/>
+        <ns2:Value label="" literal="Surplus Lines Tax"/>
+        <ns2:Value label="" literal="Total tax"/>
+        <ns2:Value label="" literal="Tourism tax"/>
+        <ns2:Value label="" literal="Value Added Tax (VAT)"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ChargeUnit_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Source: Charge Type (CHG) OpenTravel codelist.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Per unit"/>
+        <ns2:Value label="" literal="Per order"/>
+        <ns2:Value label="" literal="Per tray"/>
+        <ns2:Value label="" literal="Per dozen"/>
+        <ns2:Value label="" literal="Per gallon"/>
+        <ns2:Value label="" literal="Round trip"/>
+        <ns2:Value label="" literal="Per room"/>
+        <ns2:Value label="" literal="Per item"/>
+        <ns2:Value label="" literal="Per rental"/>
+        <ns2:Value label="" literal="Per person per night"/>
+        <ns2:Value label="" literal="Per person per stay"/>
+        <ns2:Value label="" literal="Per room per night"/>
+        <ns2:Value label="" literal="Per room per stay"/>
+        <ns2:Value label="" literal="Weekly"/>
+        <ns2:Value label="" literal="Per occurance"/>
+        <ns2:Value label="" literal="Half day"/>
+        <ns2:Value label="" literal="Hourly"/>
+        <ns2:Value label="" literal="Daily"/>
+        <ns2:Value label="" literal="Per function"/>
+        <ns2:Value label="" literal="Per minute"/>
+        <ns2:Value label="" literal="First use"/>
+        <ns2:Value label="" literal="Per person"/>
+        <ns2:Value label="" literal="Unit"/>
+        <ns2:Value label="" literal="Tray"/>
+        <ns2:Value label="" literal="Stay"/>
+        <ns2:Value label="" literal="Room"/>
+        <ns2:Value label="" literal="Reservation/Booking"/>
+        <ns2:Value label="" literal="Rental"/>
+        <ns2:Value label="" literal="OverMinuteCharge"/>
+        <ns2:Value label="" literal="Order"/>
+        <ns2:Value label="" literal="OneWay"/>
+        <ns2:Value label="" literal="OneTimeUse"/>
+        <ns2:Value label="" literal="MinimumCharge"/>
+        <ns2:Value label="" literal="MaximumCharge"/>
+        <ns2:Value label="" literal="Item"/>
+        <ns2:Value label="" literal="Gallon"/>
+        <ns2:Value label="" literal="Complimentary"/>
+        <ns2:Value label="" literal="AdditionsPerStay"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="SegmentCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the segment type.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Budget"/>
+        <ns2:Value label="" literal="Deluxe"/>
+        <ns2:Value label="" literal="Economy"/>
+        <ns2:Value label="" literal="First Class"/>
+        <ns2:Value label="" literal="Luxury"/>
+        <ns2:Value label="" literal="Moderate"/>
+        <ns2:Value label="" literal="Tourist"/>
+        <ns2:Value label="" literal="Upscale"/>
+        <ns2:Value label="" literal="Standard"/>
+        <ns2:Value label="" literal="Midscale"/>
+        <ns2:Value label="" literal="Quality"/>
+        <ns2:Value label="" literal="Midscale without F&amp;B"/>
+        <ns2:Value label="" literal="Upper upscale"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ReferencePoint_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a point of reference.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Airport"/>
+        <ns2:Value label="" literal="Amusement park"/>
+        <ns2:Value label="" literal="Arena"/>
+        <ns2:Value label="" literal="Bar"/>
+        <ns2:Value label="" literal="Bay"/>
+        <ns2:Value label="" literal="Beach"/>
+        <ns2:Value label="" literal="Bus station"/>
+        <ns2:Value label="" literal="City center"/>
+        <ns2:Value label="" literal="Church"/>
+        <ns2:Value label="" literal="Corporation"/>
+        <ns2:Value label="" literal="Educational Institution"/>
+        <ns2:Value label="" literal="Ferry station"/>
+        <ns2:Value label="" literal="Financial district"/>
+        <ns2:Value label="" literal="Financial institution"/>
+        <ns2:Value label="" literal="Lake"/>
+        <ns2:Value label="" literal="Landmark"/>
+        <ns2:Value label="" literal="Library"/>
+        <ns2:Value label="" literal="Marina"/>
+        <ns2:Value label="" literal="Market"/>
+        <ns2:Value label="" literal="Medical facility"/>
+        <ns2:Value label="" literal="Metro/subway station"/>
+        <ns2:Value label="" literal="Monument"/>
+        <ns2:Value label="" literal="Museum"/>
+        <ns2:Value label="" literal="Park"/>
+        <ns2:Value label="" literal="Racetrack"/>
+        <ns2:Value label="" literal="Restaurant"/>
+        <ns2:Value label="" literal="River"/>
+        <ns2:Value label="" literal="Shopping center"/>
+        <ns2:Value label="" literal="Sports facility"/>
+        <ns2:Value label="" literal="Synagogue"/>
+        <ns2:Value label="" literal="Train station"/>
+        <ns2:Value label="" literal="Zoo"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="MealPlan_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Different meal plans</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Breakfast &amp; lunch"/>
+        <ns2:Value label="" literal="Dinner"/>
+        <ns2:Value label="" literal="Lunch"/>
+        <ns2:Value label="" literal="Modified"/>
+        <ns2:Value label="" literal="Breakfast"/>
+        <ns2:Value label="" literal="Family American"/>
+        <ns2:Value label="" literal="Dinner bed and breakfast plan"/>
+        <ns2:Value label="" literal="Bermuda"/>
+        <ns2:Value label="" literal="Self catering"/>
+        <ns2:Value label="" literal="Room only/European plan"/>
+        <ns2:Value label="" literal="As brochured"/>
+        <ns2:Value label="" literal="Half board/modified American plan"/>
+        <ns2:Value label="" literal="Full breakfast"/>
+        <ns2:Value label="" literal="Full board"/>
+        <ns2:Value label="" literal="Family plan"/>
+        <ns2:Value label="" literal="European plan"/>
+        <ns2:Value label="" literal="English breakfast"/>
+        <ns2:Value label="" literal="Continental breakfast"/>
+        <ns2:Value label="" literal="Caribbean breakfast"/>
+        <ns2:Value label="" literal="Buffet breakfast"/>
+        <ns2:Value label="" literal="Bed &amp; breakfast"/>
+        <ns2:Value label="" literal="American/full board"/>
+        <ns2:Value label="" literal="All inclusive"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="AdditionalDetailType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the type of detail being sent.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Advanced booking information"/>
+        <ns2:Value label="" literal="Amenity information"/>
+        <ns2:Value label="" literal="Areas served"/>
+        <ns2:Value label="" literal="Booking guidelines"/>
+        <ns2:Value label="" literal="Cancellation information"/>
+        <ns2:Value label="" literal="Catering description"/>
+        <ns2:Value label="" literal="Check in check out information"/>
+        <ns2:Value label="" literal="Check-in policy"/>
+        <ns2:Value label="" literal="Check-out policy"/>
+        <ns2:Value label="" literal="Children information"/>
+        <ns2:Value label="" literal="Commission information"/>
+        <ns2:Value label="" literal="Contract/negotiated booking information"/>
+        <ns2:Value label="" literal="Corporate booking information"/>
+        <ns2:Value label="" literal="Cuisine description"/>
+        <ns2:Value label="" literal="Customs information for material"/>
+        <ns2:Value label="" literal="Deposit information"/>
+        <ns2:Value label="" literal="Deposit policy for master account"/>
+        <ns2:Value label="" literal="Deposit policy for reservations"/>
+        <ns2:Value label="" literal="Driving directions"/>
+        <ns2:Value label="" literal="Driving directions from the east"/>
+        <ns2:Value label="" literal="Driving directions from the north"/>
+        <ns2:Value label="" literal="Driving directions from the south"/>
+        <ns2:Value label="" literal="Driving directions from the west"/>
+        <ns2:Value label="" literal="Early checkout description"/>
+        <ns2:Value label="" literal="Express check-in policy"/>
+        <ns2:Value label="" literal="Express check-out policy"/>
+        <ns2:Value label="" literal="Extended stay information"/>
+        <ns2:Value label="" literal="Extra charge information"/>
+        <ns2:Value label="" literal="Extra person information"/>
+        <ns2:Value label="" literal="Facility restrictions"/>
+        <ns2:Value label="" literal="Family plan description"/>
+        <ns2:Value label="" literal="Food and beverage minimums for groups"/>
+        <ns2:Value label="" literal="General meeting planning information"/>
+        <ns2:Value label="" literal="Government booking policy"/>
+        <ns2:Value label="" literal="Group booking information"/>
+        <ns2:Value label="" literal="Group meeting planning information"/>
+        <ns2:Value label="" literal="Guarantee information"/>
+        <ns2:Value label="" literal="Inclusion information"/>
+        <ns2:Value label="" literal="Last room availability description"/>
+        <ns2:Value label="" literal="Late arrival information"/>
+        <ns2:Value label="" literal="Late departure information"/>
+        <ns2:Value label="" literal="Maximum stay information"/>
+        <ns2:Value label="" literal="Meal plan description"/>
+        <ns2:Value label="" literal="Meeting room description"/>
+        <ns2:Value label="" literal="Minimum stay information"/>
+        <ns2:Value label="" literal="Miscellaneous information"/>
+        <ns2:Value label="" literal="Offsite facilities information"/>
+        <ns2:Value label="" literal="Offsite recreational activities information"/>
+        <ns2:Value label="" literal="Offsite services information"/>
+        <ns2:Value label="" literal="Onsite facilities information"/>
+        <ns2:Value label="" literal="Onsite recreational activities information"/>
+        <ns2:Value label="" literal="Onsite services information"/>
+        <ns2:Value label="" literal="Oversold policy description"/>
+        <ns2:Value label="" literal="Package information"/>
+        <ns2:Value label="" literal="Pet policy description"/>
+        <ns2:Value label="" literal="Promotional information"/>
+        <ns2:Value label="" literal="Property description"/>
+        <ns2:Value label="" literal="Property location"/>
+        <ns2:Value label="" literal="Rate description"/>
+        <ns2:Value label="" literal="Rate disclaimer information"/>
+        <ns2:Value label="" literal="Restaurant services"/>
+        <ns2:Value label="" literal="Room decor description"/>
+        <ns2:Value label="" literal="Room information"/>
+        <ns2:Value label="" literal="Room type upgrade description"/>
+        <ns2:Value label="" literal="Seasons"/>
+        <ns2:Value label="" literal="Security information"/>
+        <ns2:Value label="" literal="Service charge information"/>
+        <ns2:Value label="" literal="Special events"/>
+        <ns2:Value label="" literal="Special offers description"/>
+        <ns2:Value label="" literal="Surcharge information"/>
+        <ns2:Value label="" literal="Tax information"/>
+        <ns2:Value label="" literal="Travel industry booking information"/>
+        <ns2:Value label="" literal="Visa/travel requirement information"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="InformationType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the type of information being sent.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Address"/>
+        <ns2:Value label="" literal="Advisory"/>
+        <ns2:Value label="" literal="Alias name"/>
+        <ns2:Value label="" literal="Amenities"/>
+        <ns2:Value label="" literal="Attractions"/>
+        <ns2:Value label="" literal="Awards"/>
+        <ns2:Value label="" literal="Contact"/>
+        <ns2:Value label="" literal="Corporate locations"/>
+        <ns2:Value label="" literal="Description"/>
+        <ns2:Value label="" literal="Descriptive content"/>
+        <ns2:Value label="" literal="Dining"/>
+        <ns2:Value label="" literal="Driving directions"/>
+        <ns2:Value label="" literal="Facilities"/>
+        <ns2:Value label="" literal="Geocodes"/>
+        <ns2:Value label="" literal="Location"/>
+        <ns2:Value label="" literal="Long name"/>
+        <ns2:Value label="" literal="Marketing"/>
+        <ns2:Value label="" literal="Pictures"/>
+        <ns2:Value label="" literal="Policy"/>
+        <ns2:Value label="" literal="Recreation"/>
+        <ns2:Value label="" literal="Safety"/>
+        <ns2:Value label="" literal="Services"/>
+        <ns2:Value label="" literal="Short description"/>
+        <ns2:Value label="" literal="Special instructions"/>
+        <ns2:Value label="" literal="Transportation"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PictureCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the category of the mulitmedia item.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Ballroom"/>
+        <ns2:Value label="" literal="Bar/Lounge"/>
+        <ns2:Value label="" literal="Basics"/>
+        <ns2:Value label="" literal="Beach"/>
+        <ns2:Value label="" literal="Business center"/>
+        <ns2:Value label="" literal="Exterior view"/>
+        <ns2:Value label="" literal="Golf course"/>
+        <ns2:Value label="" literal="Guest room"/>
+        <ns2:Value label="" literal="Guest room amenity"/>
+        <ns2:Value label="" literal="Health club"/>
+        <ns2:Value label="" literal="Hot news"/>
+        <ns2:Value label="" literal="Lobby view"/>
+        <ns2:Value label="" literal="Logo"/>
+        <ns2:Value label="" literal="Map"/>
+        <ns2:Value label="" literal="Meeting room"/>
+        <ns2:Value label="" literal="Miscellaneous"/>
+        <ns2:Value label="" literal="Pool view"/>
+        <ns2:Value label="" literal="Promotional"/>
+        <ns2:Value label="" literal="Property amenity"/>
+        <ns2:Value label="" literal="Recreational facility"/>
+        <ns2:Value label="" literal="Restaurant"/>
+        <ns2:Value label="" literal="Spa"/>
+        <ns2:Value label="" literal="Suite"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="BasisType">
+        <ns2:Documentation>
+            <ns2:Description>Provides basis for how an amount was calculated.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Days"/>
+        <ns2:Value label="" literal="Entire"/>
+        <ns2:Value label="" literal="First"/>
+        <ns2:Value label="" literal="First and last"/>
+        <ns2:Value label="" literal="Last"/>
+        <ns2:Value label="" literal="Nights"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="Commission_Enum">
+        <ns2:Value label="" literal="Full">
+            <ns2:Documentation>
+                <ns2:Description>Indicates full commission.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Partial">
+            <ns2:Documentation>
+                <ns2:Description>Indicates partial commission.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Non-paying">
+            <ns2:Documentation>
+                <ns2:Description>Indicates no commission.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="No-show">
+            <ns2:Documentation>
+                <ns2:Description>Indicates customer did not use the reserved product or service and did not cancel. This "no show" may impact commission.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Adjustment">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the commission is being adjusted.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Commissionable">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the requested rate is commissionable.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="RoomGender_Enum">
+        <ns2:Value label="" literal="Male"/>
+        <ns2:Value label="" literal="Female"/>
+        <ns2:Value label="" literal="MaleAndFemale"/>
+        <ns2:Value label="" literal="Unknown"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="Frequency_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Source: Charge Type (CHG) OpenTravel codelist.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Weekly"/>
+        <ns2:Value label="" literal="Stay"/>
+        <ns2:Value label="" literal="PerDozen"/>
+        <ns2:Value label="" literal="Occurrence"/>
+        <ns2:Value label="" literal="Minute"/>
+        <ns2:Value label="" literal="Night"/>
+        <ns2:Value label="" literal="Hourly"/>
+        <ns2:Value label="" literal="HalfDay"/>
+        <ns2:Value label="" literal="FirstUse"/>
+        <ns2:Value label="" literal="Daily"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RatePlanType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Note: Typically used for rate plans that may be published, e.g. have no qualifying criteria, or may be restricted or negotiated, e.g. has qualifying criteria for eligibility and/or has been negotiated between parties.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Weekly"/>
+        <ns2:Value label="" literal="Weekend"/>
+        <ns2:Value label="" literal="TravelIndustry"/>
+        <ns2:Value label="" literal="TourWholesale"/>
+        <ns2:Value label="" literal="SeniorCitizen"/>
+        <ns2:Value label="" literal="RegularRack"/>
+        <ns2:Value label="" literal="Published"/>
+        <ns2:Value label="" literal="PromotionalPackageTour"/>
+        <ns2:Value label="" literal="Promotional"/>
+        <ns2:Value label="" literal="Package"/>
+        <ns2:Value label="" literal="NonLastRoomAvailable"/>
+        <ns2:Value label="" literal="Net"/>
+        <ns2:Value label="" literal="Negotiated"/>
+        <ns2:Value label="" literal="Multi-DayPackage"/>
+        <ns2:Value label="" literal="Monthly"/>
+        <ns2:Value label="" literal="Military"/>
+        <ns2:Value label="" literal="LastRoomAvailable"/>
+        <ns2:Value label="" literal="Group"/>
+        <ns2:Value label="" literal="Government"/>
+        <ns2:Value label="" literal="FamilyPlan"/>
+        <ns2:Value label="" literal="DistressedInventory"/>
+        <ns2:Value label="" literal="DayRate"/>
+        <ns2:Value label="" literal="Corporate"/>
+        <ns2:Value label="" literal="Convention"/>
+        <ns2:Value label="" literal="Contract"/>
+        <ns2:Value label="" literal="Consortia"/>
+        <ns2:Value label="" literal="ClubConcierge"/>
+        <ns2:Value label="" literal="Association"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="GuestRoomInfo_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies a property's accommodation/inventory types for which it is useful to specify a property-level count or availability status.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="1 room cabin"/>
+        <ns2:Value label="" literal="Accessible rooms"/>
+        <ns2:Value label="" literal="Accommodations with balcony"/>
+        <ns2:Value label="" literal="Adjoining rooms or suites"/>
+        <ns2:Value label="" literal="Apartments"/>
+        <ns2:Value label="" literal="Available rooms"/>
+        <ns2:Value label="" literal="Available suites"/>
+        <ns2:Value label="" literal="Buildings"/>
+        <ns2:Value label="" literal="Bungalow"/>
+        <ns2:Value label="" literal="Business class"/>
+        <ns2:Value label="" literal="Business plan"/>
+        <ns2:Value label="" literal="Cabin"/>
+        <ns2:Value label="" literal="Classic"/>
+        <ns2:Value label="" literal="Club levels"/>
+        <ns2:Value label="" literal="Comfort"/>
+        <ns2:Value label="" literal="Concierge levels"/>
+        <ns2:Value label="" literal="Condos"/>
+        <ns2:Value label="" literal="Connecting rooms or suites"/>
+        <ns2:Value label="" literal="Cottage"/>
+        <ns2:Value label="" literal="Deluxe"/>
+        <ns2:Value label="" literal="Deluxe suite"/>
+        <ns2:Value label="" literal="Double bedrooms"/>
+        <ns2:Value label="" literal="Double double bedrooms"/>
+        <ns2:Value label="" literal="Drive up rooms"/>
+        <ns2:Value label="" literal="Economy"/>
+        <ns2:Value label="" literal="Effeciency"/>
+        <ns2:Value label="" literal="Executive floor"/>
+        <ns2:Value label="" literal="Family/oversized accommodations"/>
+        <ns2:Value label="" literal="First floor rooms"/>
+        <ns2:Value label="" literal="Floors"/>
+        <ns2:Value label="" literal="Jacuzzi Suite"/>
+        <ns2:Value label="" literal="Junior suite"/>
+        <ns2:Value label="" literal="King bedrooms"/>
+        <ns2:Value label="" literal="King king bedrooms"/>
+        <ns2:Value label="" literal="Lanai"/>
+        <ns2:Value label="" literal="Large suite"/>
+        <ns2:Value label="" literal="Loft"/>
+        <ns2:Value label="" literal="Luxury"/>
+        <ns2:Value label="" literal="Nonsmoking rooms"/>
+        <ns2:Value label="" literal="Parlour"/>
+        <ns2:Value label="" literal="Penthouses"/>
+        <ns2:Value label="" literal="Premier"/>
+        <ns2:Value label="" literal="Queen bedrooms"/>
+        <ns2:Value label="" literal="Queen queen bedrooms"/>
+        <ns2:Value label="" literal="Room"/>
+        <ns2:Value label="" literal="Run of the house"/>
+        <ns2:Value label="" literal="Separate floors for women"/>
+        <ns2:Value label="" literal="Smoking rooms"/>
+        <ns2:Value label="" literal="Standard"/>
+        <ns2:Value label="" literal="Studios"/>
+        <ns2:Value label="" literal="Suites"/>
+        <ns2:Value label="" literal="Superior"/>
+        <ns2:Value label="" literal="Total available rooms and suites"/>
+        <ns2:Value label="" literal="Total rooms"/>
+        <ns2:Value label="" literal="Twin bedrooms"/>
+        <ns2:Value label="" literal="Twin twin bedrooms"/>
+        <ns2:Value label="" literal="Villa"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RoomViewType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes room view types</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Annex room"/>
+        <ns2:Value label="" literal="Ground floor outside access"/>
+        <ns2:Value label="" literal="Ground floor inside access"/>
+        <ns2:Value label="" literal="Executive floor"/>
+        <ns2:Value label="" literal="Near stairs"/>
+        <ns2:Value label="" literal="Main building"/>
+        <ns2:Value label="" literal="Wing room"/>
+        <ns2:Value label="" literal="Tower room"/>
+        <ns2:Value label="" literal="Quiet room"/>
+        <ns2:Value label="" literal="Poolside"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PropertyStatus_Enum">
+        <ns2:Value label="" literal="Closed"/>
+        <ns2:Value label="" literal="Deflagged"/>
+        <ns2:Value label="" literal="Deleted"/>
+        <ns2:Value label="" literal="Inactive"/>
+        <ns2:Value label="" literal="Locked"/>
+        <ns2:Value label="" literal="Open"/>
+        <ns2:Value label="" literal="Pre-opening"/>
+        <ns2:Value label="" literal="Reactivated"/>
+        <ns2:Value label="" literal="Test"/>
+        <ns2:Value label="" literal="Unlocked"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PropertyClassType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Used to specify the hotel property class or type.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="All suite"/>
+        <ns2:Value label="" literal="All-Inclusive Resort"/>
+        <ns2:Value label="" literal="Apartment"/>
+        <ns2:Value label="" literal="Bed and breakfast"/>
+        <ns2:Value label="" literal="Boutique"/>
+        <ns2:Value label="" literal="Cabin or bungalow"/>
+        <ns2:Value label="" literal="Castle"/>
+        <ns2:Value label="" literal="Campground"/>
+        <ns2:Value label="" literal="Chalet"/>
+        <ns2:Value label="" literal="Conference center"/>
+        <ns2:Value label="" literal="Convention network property"/>
+        <ns2:Value label="" literal="Corporate business transient"/>
+        <ns2:Value label="" literal="Extended stay"/>
+        <ns2:Value label="" literal="Full Service"/>
+        <ns2:Value label="" literal="Golf"/>
+        <ns2:Value label="" literal="Guest farm"/>
+        <ns2:Value label="" literal="Guest house limited service"/>
+        <ns2:Value label="" literal="Historical"/>
+        <ns2:Value label="" literal="Hostel"/>
+        <ns2:Value label="" literal="Hotel"/>
+        <ns2:Value label="" literal="Inn"/>
+        <ns2:Value label="" literal="Limited service"/>
+        <ns2:Value label="" literal="Lodge"/>
+        <ns2:Value label="" literal="Meeting/Convention"/>
+        <ns2:Value label="" literal="Mobile-home"/>
+        <ns2:Value label="" literal="Monastery"/>
+        <ns2:Value label="" literal="Motel"/>
+        <ns2:Value label="" literal="Pension"/>
+        <ns2:Value label="" literal="Ranch"/>
+        <ns2:Value label="" literal="Recreation vehicle park"/>
+        <ns2:Value label="" literal="Resort"/>
+        <ns2:Value label="" literal="Ski"/>
+        <ns2:Value label="" literal="Spa"/>
+        <ns2:Value label="" literal="Time share"/>
+        <ns2:Value label="" literal="Vacation rental"/>
+        <ns2:Value label="" literal="Villa"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ArchitecturalStyle_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the architectural style of the building or room.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Art deco"/>
+        <ns2:Value label="" literal="Contemporary"/>
+        <ns2:Value label="" literal="Historic"/>
+        <ns2:Value label="" literal="Mediterranean"/>
+        <ns2:Value label="" literal="Modern"/>
+        <ns2:Value label="" literal="Southwest"/>
+        <ns2:Value label="" literal="Traditional"/>
+        <ns2:Value label="" literal="Victorian"/>
+        <ns2:Value label="" literal="Themed"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="Proximity_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies if the item in question is onsite, offsite, nearby, etc.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Onsite"/>
+        <ns2:Value label="" literal="Offsite"/>
+        <ns2:Value label="" literal="Nearby"/>
+        <ns2:Value label="" literal="Information not available"/>
+        <ns2:Value label="" literal="Onsite and offsite"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="OrderState_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The traveler was not present to receive the product at the specified time. Note, this does not cancel or complete the order.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Order-Pending">
+            <ns2:Documentation>
+                <ns2:Description>The supplier has received an order and plans to accept it but is unable to confirm the order at this time.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Confirmed">
+            <ns2:Documentation>
+                <ns2:Description>The supplier has received an order and confirms the plan to fulfill the order.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Confirmed-Modified">
+            <ns2:Documentation>
+                <ns2:Description>The supplier has received and accepted a request to modify the order in a manner that does not impact the fulfillment of the order.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Rejected">
+            <ns2:Documentation>
+                <ns2:Description>The supplier has received and decided not to accept an order for some reason.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Waitlisted">
+            <ns2:Documentation>
+                <ns2:Description>The supplier has record of traveler request that may be reviewed and accepted if the requirements for fulfillment are met at later time.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="No-Show">
+            <ns2:Documentation>
+                <ns2:Description>The traveler was not present to receive the product at the specified time. Note, this does not cancel or complete the order.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Completed">
+            <ns2:Documentation>
+                <ns2:Description>The supplier provided the product(s) and/or services to the traveler.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Cancellation-Pending">
+            <ns2:Documentation>
+                <ns2:Description>The cancellation has been requested and is in process.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Cancelled">
+            <ns2:Documentation>
+                <ns2:Description>The order has been cancelled at the request of either the supplier or customer.  The supplier has released hold on resources required to fulfill the order.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="MeetingRoomCode_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Supplies, facilities, materials, equipment available specifically for meetings and events.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="AV Equipment"/>
+        <ns2:Value label="" literal="AV Technician"/>
+        <ns2:Value label="" literal="Blackboards"/>
+        <ns2:Value label="" literal="Bulletin boards"/>
+        <ns2:Value label="" literal="Carpenter"/>
+        <ns2:Value label="" literal="Catered breakfast"/>
+        <ns2:Value label="" literal="Catered dinner"/>
+        <ns2:Value label="" literal="Catered lunch"/>
+        <ns2:Value label="" literal="Copier"/>
+        <ns2:Value label="" literal="Decorator"/>
+        <ns2:Value label="" literal="Direction signs"/>
+        <ns2:Value label="" literal="Electrician"/>
+        <ns2:Value label="" literal="Flip chart and markers"/>
+        <ns2:Value label="" literal="High speed internet access"/>
+        <ns2:Value label="" literal="LCD Projector"/>
+        <ns2:Value label="" literal="Microphone"/>
+        <ns2:Value label="" literal="Name cards/holders"/>
+        <ns2:Value label="" literal="PA system"/>
+        <ns2:Value label="" literal="Pens/Pencils/Pads"/>
+        <ns2:Value label="" literal="Photographer"/>
+        <ns2:Value label="" literal="Podium"/>
+        <ns2:Value label="" literal="Polling devices"/>
+        <ns2:Value label="" literal="Portable stages"/>
+        <ns2:Value label="" literal="Printing services"/>
+        <ns2:Value label="" literal="Projector"/>
+        <ns2:Value label="" literal="Registration services"/>
+        <ns2:Value label="" literal="Security guards"/>
+        <ns2:Value label="" literal="Separate entrance"/>
+        <ns2:Value label="" literal="Separate registration area"/>
+        <ns2:Value label="" literal="Spotlights"/>
+        <ns2:Value label="" literal="Stack chairs"/>
+        <ns2:Value label="" literal="Stenographer"/>
+        <ns2:Value label="" literal="Tables available"/>
+        <ns2:Value label="" literal="Tours"/>
+        <ns2:Value label="" literal="TV"/>
+        <ns2:Value label="" literal="TV production service provider"/>
+        <ns2:Value label="" literal="VCR rental"/>
+        <ns2:Value label="" literal="Video camera"/>
+        <ns2:Value label="" literal="Video conferencing"/>
+        <ns2:Value label="" literal="Video conferencing service provider"/>
+        <ns2:Value label="" literal="Walkie talkies - radio"/>
+        <ns2:Value label="" literal="Walkie talkies - service provider"/>
+        <ns2:Value label="" literal="Wall charts"/>
+        <ns2:Value label="" literal="Whiteboards"/>
+        <ns2:Value label="" literal="Dedicated exhibit space"/>
+        <ns2:Value label="" literal="PC fee"/>
+        <ns2:Value label="" literal="Guest PC fee"/>
+        <ns2:Value label="" literal="Guest PC lead time"/>
+        <ns2:Value label="" literal="Help desk phone number"/>
+        <ns2:Value label="" literal="Beer bottle fee"/>
+        <ns2:Value label="" literal="Call brand cocktail average fee"/>
+        <ns2:Value label="" literal="Coffee/Soda average fee"/>
+        <ns2:Value label="" literal="Per person coffee break fee"/>
+        <ns2:Value label="" literal="Continental breakfast fee"/>
+        <ns2:Value label="" literal="Full breakfast fee"/>
+        <ns2:Value label="" literal="Lunch deli buffet free"/>
+        <ns2:Value label="" literal="Premium cocktails fee"/>
+        <ns2:Value label="" literal="Largest room"/>
+        <ns2:Value label="" literal="Max seating capacity"/>
+        <ns2:Value label="" literal="Number breakout rooms"/>
+        <ns2:Value label="" literal="Meeting package attendee range"/>
+        <ns2:Value label="" literal="Meeting package fee"/>
+        <ns2:Value label="" literal="Meeting package inclusions"/>
+        <ns2:Value label="" literal="Meeting package name"/>
+        <ns2:Value label="" literal="Meeting room contact"/>
+        <ns2:Value label="" literal="Meeting room names"/>
+        <ns2:Value label="" literal="Meeting room rental packages"/>
+        <ns2:Value label="" literal="Meeting room fee"/>
+        <ns2:Value label="" literal="Meeting support service codes"/>
+        <ns2:Value label="" literal="Three package minimum"/>
+        <ns2:Value label="" literal="Meeting floors"/>
+        <ns2:Value label="" literal="Number of meeting rooms"/>
+        <ns2:Value label="" literal="Other equipment and facilities"/>
+        <ns2:Value label="" literal="Screen fee"/>
+        <ns2:Value label="" literal="Second largest room"/>
+        <ns2:Value label="" literal="Suggestions and info"/>
+        <ns2:Value label="" literal="Teleconference service provider"/>
+        <ns2:Value label="" literal="Portable wall rooms"/>
+        <ns2:Value label="" literal="Nonportable wall rooms"/>
+        <ns2:Value label="" literal="Total meeting space"/>
+        <ns2:Value label="" literal="Number of floors containing meeting space"/>
+        <ns2:Value label="" literal="Projector screen rental charge per day"/>
+        <ns2:Value label="" literal="Catering"/>
+        <ns2:Value label="" literal="Number of meeting service personnel on site"/>
+        <ns2:Value label="" literal="Host social function"/>
+        <ns2:Value label="" literal="Lobby bulletin board"/>
+        <ns2:Value label="" literal="PA system installed"/>
+        <ns2:Value label="" literal="PA system portable"/>
+        <ns2:Value label="" literal="Access to meeting areas"/>
+        <ns2:Value label="" literal="Exhibition space on property"/>
+        <ns2:Value label="" literal="Certified wedding planner"/>
+        <ns2:Value label="" literal="Event lighting services"/>
+        <ns2:Value label="" literal="Event planning services"/>
+        <ns2:Value label="" literal="Onsite convention services"/>
+        <ns2:Value label="" literal="Equipment rental"/>
+        <ns2:Value label="" literal="Exhibit services"/>
+        <ns2:Value label="" literal="Heating/cooling controls"/>
+        <ns2:Value label="" literal="Lectern"/>
+        <ns2:Value label="" literal="T1 lines"/>
+        <ns2:Value label="" literal="Teleconferencing"/>
+        <ns2:Value label="" literal="Platform"/>
+        <ns2:Value label="" literal="Voltage available"/>
+        <ns2:Value label="" literal="Wireless internet connectivity"/>
+        <ns2:Value label="" literal="Natural daylight"/>
+        <ns2:Value label="" literal="Group meeting discounts/packages available"/>
+        <ns2:Value label="" literal="Meeting support services"/>
+        <ns2:Value label="" literal="Audio recording"/>
+        <ns2:Value label="" literal="Background music"/>
+        <ns2:Value label="" literal="Closed circuit video"/>
+        <ns2:Value label="" literal="Video recording"/>
+        <ns2:Value label="" literal="Dry erase board with eraser and markers"/>
+        <ns2:Value label="" literal="DVD player"/>
+        <ns2:Value label="" literal="Laser pointer"/>
+        <ns2:Value label="" literal="Monitor cart"/>
+        <ns2:Value label="" literal="Powered speaker"/>
+        <ns2:Value label="" literal="Projection stand"/>
+        <ns2:Value label="" literal="Screen"/>
+        <ns2:Value label="" literal="VHS player"/>
+        <ns2:Value label="" literal="Group meeting discounts"/>
+        <ns2:Value label="" literal="Meeting packages available"/>
+        <ns2:Value label="" literal="Meeting planner"/>
+        <ns2:Value label="" literal="In-house AV department"/>
+        <ns2:Value label="" literal="Outside vendor for AV equipment"/>
+        <ns2:Value label="" literal="Personal AV equipment permitted"/>
+        <ns2:Value label="" literal="Lighting controls"/>
+        <ns2:Value label="" literal="Wireless microphones"/>
+        <ns2:Value label="" literal="Monitors"/>
+        <ns2:Value label="" literal="Chandelier"/>
+        <ns2:Value label="" literal="Perimeter seating"/>
+        <ns2:Value label="" literal="Talk show"/>
+        <ns2:Value label="" literal="Head table"/>
+        <ns2:Value label="" literal="Riser"/>
+        <ns2:Value label="" literal="Dance floor"/>
+        <ns2:Value label="" literal="Data projector"/>
+        <ns2:Value label="" literal="Laptop computer"/>
+        <ns2:Value label="" literal="Easel"/>
+        <ns2:Value label="" literal="Blackboard with eraser and chalk"/>
+        <ns2:Value label="" literal="Lectern (standing)"/>
+        <ns2:Value label="" literal="Lectern (table)"/>
+        <ns2:Value label="" literal="Personal computer - desktop"/>
+        <ns2:Value label="" literal="Personal computer - laptop"/>
+        <ns2:Value label="" literal="Personal computer - Mac"/>
+        <ns2:Value label="" literal="Video monitor"/>
+        <ns2:Value label="" literal="LCD TV"/>
+        <ns2:Value label="" literal="Plasma TV"/>
+        <ns2:Value label="" literal="Outdoor function space"/>
+        <ns2:Value label="" literal="Fixed stage"/>
+        <ns2:Value label="" literal="Banquet service"/>
+        <ns2:Value label="" literal="Total exhibit space"/>
+        <ns2:Value label="" literal="Technical support"/>
+        <ns2:Value label="" literal="Meeting room direct bill"/>
+        <ns2:Value label="" literal="Meeting room direct bill - min"/>
+        <ns2:Value label="" literal="Meeting room direct bill - max"/>
+        <ns2:Value label="" literal="Funds held on credit card"/>
+        <ns2:Value label="" literal="Max amount group charge on credit card"/>
+        <ns2:Value label="" literal="Minimum seating"/>
+        <ns2:Value label="" literal="Wedding location"/>
+        <ns2:Value label="" literal="Simultaneous translation"/>
+        <ns2:Value label="" literal="Broadcasting room"/>
+        <ns2:Value label="" literal="Furniture rental"/>
+        <ns2:Value label="" literal="Linen rental"/>
+        <ns2:Value label="" literal="Portable transformers available"/>
+        <ns2:Value label="" literal="Sound equipment"/>
+        <ns2:Value label="" literal="Flower arrangements"/>
+        <ns2:Value label="" literal="Telephone"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="DiscountsAvailable_Enum">
+        <ns2:Documentation>
+            <ns2:Description>This is used for discounts that may be applied.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="AAA"/>
+        <ns2:Value label="" literal="AARP"/>
+        <ns2:Value label="" literal="Convention"/>
+        <ns2:Value label="" literal="Corporate"/>
+        <ns2:Value label="" literal="Family"/>
+        <ns2:Value label="" literal="Government"/>
+        <ns2:Value label="" literal="Group"/>
+        <ns2:Value label="" literal="Military"/>
+        <ns2:Value label="" literal="Promotional"/>
+        <ns2:Value label="" literal="Senior citizen"/>
+        <ns2:Value label="" literal="Tour"/>
+        <ns2:Value label="" literal="Weekday"/>
+        <ns2:Value label="" literal="Weekend"/>
+        <ns2:Value label="" literal="Full price"/>
+        <ns2:Value label="" literal="Free of charge"/>
+        <ns2:Value label="" literal="Home visiting proof"/>
+        <ns2:Value label="" literal="Red tour"/>
+        <ns2:Value label="" literal="Single bed for child"/>
+        <ns2:Value label="" literal="Child sharing seat"/>
+        <ns2:Value label="" literal="Anniversay"/>
+        <ns2:Value label="" literal="Adventure package"/>
+        <ns2:Value label="" literal="Bed and breakfast package"/>
+        <ns2:Value label="" literal="Dinner"/>
+        <ns2:Value label="" literal="Fishing package"/>
+        <ns2:Value label="" literal="Golf package"/>
+        <ns2:Value label="" literal="Getaway"/>
+        <ns2:Value label="" literal="Holiday package"/>
+        <ns2:Value label="" literal="Honeymoon package"/>
+        <ns2:Value label="" literal="Internet package"/>
+        <ns2:Value label="" literal="Park and fly package"/>
+        <ns2:Value label="" literal="Park"/>
+        <ns2:Value label="" literal="Romance"/>
+        <ns2:Value label="" literal="Recreation package"/>
+        <ns2:Value label="" literal="Shopping package"/>
+        <ns2:Value label="" literal="Ski package"/>
+        <ns2:Value label="" literal="Spa package"/>
+        <ns2:Value label="" literal="Travel agent rates"/>
+        <ns2:Value label="" literal="Theater package"/>
+        <ns2:Value label="" literal="Tennis package"/>
+        <ns2:Value label="" literal="Travel"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="TemperatureUnit">
+        <ns2:Value label="" literal="Celsuis"/>
+        <ns2:Value label="" literal="Fahrenheit"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="RestaurantService_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Type of service(s) offered by the restaurant.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Accommodates diabetic/sugar free requirements"/>
+        <ns2:Value label="" literal="Accommodates gluten free requirements"/>
+        <ns2:Value label="" literal="Accommodates high fiber requirements"/>
+        <ns2:Value label="" literal="Accommodates lactose free requirements"/>
+        <ns2:Value label="" literal="Accommodates low fat requirements"/>
+        <ns2:Value label="" literal="Accommodates low potassium requirements"/>
+        <ns2:Value label="" literal="Accommodates low sodium requirements"/>
+        <ns2:Value label="" literal="Buffet"/>
+        <ns2:Value label="" literal="Catering"/>
+        <ns2:Value label="" literal="Children's menu available"/>
+        <ns2:Value label="" literal="Cooked to order"/>
+        <ns2:Value label="" literal="Dedicated non-smoking section"/>
+        <ns2:Value label="" literal="Delivery service to property available"/>
+        <ns2:Value label="" literal="Full service"/>
+        <ns2:Value label="" literal="Room service"/>
+        <ns2:Value label="" literal="Self service"/>
+        <ns2:Value label="" literal="Smoking section available"/>
+        <ns2:Value label="" literal="Special meal services"/>
+        <ns2:Value label="" literal="Take out"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="Beverage_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies beverage types.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Bourbon"/>
+        <ns2:Value label="" literal="Bordeaux"/>
+        <ns2:Value label="" literal="Brandy"/>
+        <ns2:Value label="" literal="Cabernet Sauvignon"/>
+        <ns2:Value label="" literal="Chardonnay"/>
+        <ns2:Value label="" literal="Chianti"/>
+        <ns2:Value label="" literal="Coffee"/>
+        <ns2:Value label="" literal="Hot tea"/>
+        <ns2:Value label="" literal="Iced tea"/>
+        <ns2:Value label="" literal="Merlot"/>
+        <ns2:Value label="" literal="Pinot Grigio"/>
+        <ns2:Value label="" literal="Pinot Noir"/>
+        <ns2:Value label="" literal="Red wine"/>
+        <ns2:Value label="" literal="Red Zinfandel"/>
+        <ns2:Value label="" literal="Rose"/>
+        <ns2:Value label="" literal="Sake"/>
+        <ns2:Value label="" literal="Shiraz"/>
+        <ns2:Value label="" literal="Soda/pop"/>
+        <ns2:Value label="" literal="Vodka"/>
+        <ns2:Value label="" literal="Water"/>
+        <ns2:Value label="" literal="Whiskey"/>
+        <ns2:Value label="" literal="White wine"/>
+        <ns2:Value label="" literal="White Zinfandel"/>
+        <ns2:Value label="" literal="Gin"/>
+        <ns2:Value label="" literal="Rum"/>
+        <ns2:Value label="" literal="Tequila"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="AvailableMealCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The high level types of meal options available at a dining facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Breakfast"/>
+        <ns2:Value label="" literal="Brunch"/>
+        <ns2:Value label="" literal="Dinner"/>
+        <ns2:Value label="" literal="Happy hour"/>
+        <ns2:Value label="" literal="Lunch"/>
+        <ns2:Value label="" literal="Snack"/>
+        <ns2:Value label="" literal="Afternoon tea"/>
+        <ns2:Value label="" literal="Reception"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RestaurantBarCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The type of facility in which food and/or drink is served.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Beverage"/>
+        <ns2:Value label="" literal="Buffet"/>
+        <ns2:Value label="" literal="Cafe"/>
+        <ns2:Value label="" literal="Cafeteria"/>
+        <ns2:Value label="" literal="Casual"/>
+        <ns2:Value label="" literal="Family"/>
+        <ns2:Value label="" literal="Fast food"/>
+        <ns2:Value label="" literal="Fine dining"/>
+        <ns2:Value label="" literal="Kiosk"/>
+        <ns2:Value label="" literal="Take out"/>
+        <ns2:Value label="" literal="Bar/lounge"/>
+        <ns2:Value label="" literal="Brasserie"/>
+        <ns2:Value label="" literal="Coffee bar"/>
+        <ns2:Value label="" literal="Snack bar"/>
+        <ns2:Value label="" literal="Full service"/>
+        <ns2:Value label="" literal="Pub"/>
+        <ns2:Value label="" literal="Deli"/>
+        <ns2:Value label="" literal="Private dining"/>
+        <ns2:Value label="" literal="Sports bar"/>
+        <ns2:Value label="" literal="Piano bar"/>
+        <ns2:Value label="" literal="Outdoor bar/cafe"/>
+        <ns2:Value label="" literal="Beer garden"/>
+        <ns2:Value label="" literal="Beach bar"/>
+        <ns2:Value label="" literal="Tapas bar"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RestaurantPolicy_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Identifies rules regarding making reservations for a restaurant.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Accepted only for large groups"/>
+        <ns2:Value label="" literal="Not accepted"/>
+        <ns2:Value label="" literal="Recommended"/>
+        <ns2:Value label="" literal="Required"/>
+        <ns2:Value label="" literal="Required for large groups"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="RatingSymbol">
+        <ns2:Documentation>
+            <ns2:Description>Used to identify a symbol used in a rating (i.e. Diamonds, Stars).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Diamond"/>
+        <ns2:Value label="" literal="Star"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="PetsAllowed_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies if pets are allowed at a facility and at a high level the type of pets allowed.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Pets allowed"/>
+        <ns2:Value label="" literal="Pets not allowed"/>
+        <ns2:Value label="" literal="Assistive animals only"/>
+        <ns2:Value label="" literal="Pets by arrangement"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PetPolicy_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the types of animals allowed.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="All pets allowed"/>
+        <ns2:Value label="" literal="Cats only"/>
+        <ns2:Value label="" literal="Dogs only"/>
+        <ns2:Value label="" literal="Domestic pets"/>
+        <ns2:Value label="" literal="Large domestic animals"/>
+        <ns2:Value label="" literal="Midsize domestic animals"/>
+        <ns2:Value label="" literal="Service animals"/>
+        <ns2:Value label="" literal="Service animals only"/>
+        <ns2:Value label="" literal="Small domestic animals"/>
+        <ns2:Value label="" literal="Small domestic animals only"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Closed name="AmountDetermination_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Used to indicate if an amount is inclusive or exclusive of other charges, such as taxes, or is cumulative (amounts have been added to each other).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Inclusive"/>
+        <ns2:Value label="" literal="Exclusive"/>
+        <ns2:Value label="" literal="Cumulative"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Open name="AttractionCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies a type of attraction.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Agricultural"/>
+        <ns2:Value label="" literal="Airport"/>
+        <ns2:Value label="" literal="Amusement park"/>
+        <ns2:Value label="" literal="Aquarium"/>
+        <ns2:Value label="" literal="Archeological"/>
+        <ns2:Value label="" literal="Arena"/>
+        <ns2:Value label="" literal="Auditorium"/>
+        <ns2:Value label="" literal="Bar"/>
+        <ns2:Value label="" literal="Bay"/>
+        <ns2:Value label="" literal="Beach"/>
+        <ns2:Value label="" literal="Botanical garden"/>
+        <ns2:Value label="" literal="Bowling"/>
+        <ns2:Value label="" literal="Bridge"/>
+        <ns2:Value label="" literal="Bus station"/>
+        <ns2:Value label="" literal="Cable cars"/>
+        <ns2:Value label="" literal="Canal"/>
+        <ns2:Value label="" literal="Car rental location"/>
+        <ns2:Value label="" literal="Casino"/>
+        <ns2:Value label="" literal="Cathedral"/>
+        <ns2:Value label="" literal="Cemetery"/>
+        <ns2:Value label="" literal="Church"/>
+        <ns2:Value label="" literal="City center"/>
+        <ns2:Value label="" literal="College"/>
+        <ns2:Value label="" literal="Commercial district"/>
+        <ns2:Value label="" literal="Company"/>
+        <ns2:Value label="" literal="Concert hall"/>
+        <ns2:Value label="" literal="Conference center"/>
+        <ns2:Value label="" literal="Convention and visitors bureau"/>
+        <ns2:Value label="" literal="Convention center"/>
+        <ns2:Value label="" literal="Cultural center"/>
+        <ns2:Value label="" literal="Educational institution"/>
+        <ns2:Value label="" literal="Entertainment district"/>
+        <ns2:Value label="" literal="Equestrian center"/>
+        <ns2:Value label="" literal="Event"/>
+        <ns2:Value label="" literal="Factory"/>
+        <ns2:Value label="" literal="Factory/business tour"/>
+        <ns2:Value label="" literal="Fairground"/>
+        <ns2:Value label="" literal="Farm"/>
+        <ns2:Value label="" literal="Festival"/>
+        <ns2:Value label="" literal="Financial district"/>
+        <ns2:Value label="" literal="Financial institution"/>
+        <ns2:Value label="" literal="Gallery"/>
+        <ns2:Value label="" literal="Handicraft center"/>
+        <ns2:Value label="" literal="Historic building"/>
+        <ns2:Value label="" literal="Hospital"/>
+        <ns2:Value label="" literal="Lake"/>
+        <ns2:Value label="" literal="Landmark"/>
+        <ns2:Value label="" literal="Library"/>
+        <ns2:Value label="" literal="Live theatre"/>
+        <ns2:Value label="" literal="Local bus stop"/>
+        <ns2:Value label="" literal="Marina"/>
+        <ns2:Value label="" literal="Market"/>
+        <ns2:Value label="" literal="Medical facility"/>
+        <ns2:Value label="" literal="Military base"/>
+        <ns2:Value label="" literal="Monument"/>
+        <ns2:Value label="" literal="Mosque"/>
+        <ns2:Value label="" literal="Mountain"/>
+        <ns2:Value label="" literal="Museum"/>
+        <ns2:Value label="" literal="Natural attraction"/>
+        <ns2:Value label="" literal="Nightlife"/>
+        <ns2:Value label="" literal="Non-comercial airport"/>
+        <ns2:Value label="" literal="Ocean"/>
+        <ns2:Value label="" literal="Orchard"/>
+        <ns2:Value label="" literal="Palace"/>
+        <ns2:Value label="" literal="Park"/>
+        <ns2:Value label="" literal="Performing art center"/>
+        <ns2:Value label="" literal="Pier"/>
+        <ns2:Value label="" literal="Planetarium/science center"/>
+        <ns2:Value label="" literal="Port"/>
+        <ns2:Value label="" literal="Race track"/>
+        <ns2:Value label="" literal="Recreation center"/>
+        <ns2:Value label="" literal="Resort"/>
+        <ns2:Value label="" literal="Restaurant"/>
+        <ns2:Value label="" literal="River"/>
+        <ns2:Value label="" literal="School"/>
+        <ns2:Value label="" literal="Shopping"/>
+        <ns2:Value label="" literal="Shopping mall"/>
+        <ns2:Value label="" literal="Ski area"/>
+        <ns2:Value label="" literal="Sports"/>
+        <ns2:Value label="" literal="Stadium"/>
+        <ns2:Value label="" literal="State/national Park"/>
+        <ns2:Value label="" literal="Store"/>
+        <ns2:Value label="" literal="Studio"/>
+        <ns2:Value label="" literal="Suburb"/>
+        <ns2:Value label="" literal="Subway station"/>
+        <ns2:Value label="" literal="Synagogue"/>
+        <ns2:Value label="" literal="Theater/cinema"/>
+        <ns2:Value label="" literal="Tour"/>
+        <ns2:Value label="" literal="Tourist site"/>
+        <ns2:Value label="" literal="Tournament"/>
+        <ns2:Value label="" literal="Trolley stationain station"/>
+        <ns2:Value label="" literal="University"/>
+        <ns2:Value label="" literal="Water park"/>
+        <ns2:Value label="" literal="Waterfront"/>
+        <ns2:Value label="" literal="Winery"/>
+        <ns2:Value label="" literal="Zoo"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RecreationFeatures_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Provides further information on a recreation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Driving range"/>
+        <ns2:Value label="" literal="Golf course total yardage"/>
+        <ns2:Value label="" literal="Number of holes"/>
+        <ns2:Value label="" literal="Par for course"/>
+        <ns2:Value label="" literal="Putting green"/>
+        <ns2:Value label="" literal="Available equipment"/>
+        <ns2:Value label="" literal="Cardiovascular equipment"/>
+        <ns2:Value label="" literal="Free weights"/>
+        <ns2:Value label="" literal="Separate mens and womens lockers"/>
+        <ns2:Value label="" literal="Separate mens and womens steam rooms"/>
+        <ns2:Value label="" literal="Boot warmers"/>
+        <ns2:Value label="" literal="Ski lockers"/>
+        <ns2:Value label="" literal="Snow boarding"/>
+        <ns2:Value label="" literal="Snow mobiling"/>
+        <ns2:Value label="" literal="Body scrub"/>
+        <ns2:Value label="" literal="Body wrap"/>
+        <ns2:Value label="" literal="Facials"/>
+        <ns2:Value label="" literal="Fitness counseling"/>
+        <ns2:Value label="" literal="Foot bath"/>
+        <ns2:Value label="" literal="Lap pool"/>
+        <ns2:Value label="" literal="Manicures/pedicures"/>
+        <ns2:Value label="" literal="Massages"/>
+        <ns2:Value label="" literal="Massage lessons"/>
+        <ns2:Value label="" literal="Paraffin hand treatment"/>
+        <ns2:Value label="" literal="Plunge pools"/>
+        <ns2:Value label="" literal="Spa restaurant"/>
+        <ns2:Value label="" literal="Steam room"/>
+        <ns2:Value label="" literal="Therapy baths"/>
+        <ns2:Value label="" literal="Waxing"/>
+        <ns2:Value label="" literal="Heated pool"/>
+        <ns2:Value label="" literal="Lifeguard on duty"/>
+        <ns2:Value label="" literal="Pool depth"/>
+        <ns2:Value label="" literal="Whirlpool open year round"/>
+        <ns2:Value label="" literal="Appointment required"/>
+        <ns2:Value label="" literal="Classes available"/>
+        <ns2:Value label="" literal="Facility type"/>
+        <ns2:Value label="" literal="Guest priveleges available"/>
+        <ns2:Value label="" literal="Lessons available"/>
+        <ns2:Value label="" literal="Rental information"/>
+        <ns2:Value label="" literal="Restricted age for children without adult supervision"/>
+        <ns2:Value label="" literal="Services available"/>
+        <ns2:Value label="" literal="Teen programs"/>
+        <ns2:Value label="" literal="Towels available"/>
+        <ns2:Value label="" literal="Children's program"/>
+        <ns2:Value label="" literal="Fitness center equipment replacement date"/>
+        <ns2:Value label="" literal="Private"/>
+        <ns2:Value label="" literal="Public"/>
+        <ns2:Value label="" literal="Slope"/>
+        <ns2:Value label="" literal="Rowing machine"/>
+        <ns2:Value label="" literal="Stair stepper"/>
+        <ns2:Value label="" literal="Stationary bike"/>
+        <ns2:Value label="" literal="Treadmill"/>
+        <ns2:Value label="" literal="Green fees"/>
+        <ns2:Value label="" literal="Ellipticals"/>
+        <ns2:Value label="" literal="Complimenary water available"/>
+        <ns2:Value label="" literal="Fresh whole fruit available"/>
+        <ns2:Value label="" literal="Strength equipment"/>
+        <ns2:Value label="" literal="Weight machine"/>
+        <ns2:Value label="" literal="Core/stability training equipment"/>
+        <ns2:Value label="" literal="Sauna room"/>
+        <ns2:Value label="" literal="Spa treatment rooms"/>
+        <ns2:Value label="" literal="Golf school instruction"/>
+        <ns2:Value label="" literal="Clubhouse"/>
+        <ns2:Value label="" literal="Clubhouse restaurant"/>
+        <ns2:Value label="" literal="Golf shop"/>
+        <ns2:Value label="" literal="Men's services"/>
+        <ns2:Value label="" literal="Scalp and hair treatments"/>
+        <ns2:Value label="" literal="Eye treatments"/>
+        <ns2:Value label="" literal="Lip treatments"/>
+        <ns2:Value label="" literal="Ayurvedic treatments"/>
+        <ns2:Value label="" literal="Makeup services"/>
+        <ns2:Value label="" literal="Separate men's and women's lounges"/>
+        <ns2:Value label="" literal="In-suite massage"/>
+        <ns2:Value label="" literal="Couple's massage"/>
+        <ns2:Value label="" literal="Children's services"/>
+        <ns2:Value label="" literal="Tennis clinic"/>
+        <ns2:Value label="" literal="Tennis ball machine rental"/>
+        <ns2:Value label="" literal="Tennis racquet rental"/>
+        <ns2:Value label="" literal="Beach umbrella"/>
+        <ns2:Value label="" literal="Beach cabanas"/>
+        <ns2:Value label="" literal="Hiking routes"/>
+        <ns2:Value label="" literal="Diving center"/>
+        <ns2:Value label="" literal="Beauty cabin"/>
+        <ns2:Value label="" literal="Body treatments"/>
+        <ns2:Value label="" literal="Medical cabin"/>
+        <ns2:Value label="" literal="Pedicure"/>
+        <ns2:Value label="" literal="Respitory thearapy area"/>
+        <ns2:Value label="" literal="Showers"/>
+        <ns2:Value label="" literal="Shop"/>
+        <ns2:Value label="" literal="Swimming pool"/>
+        <ns2:Value label="" literal="Whirlpool"/>
+        <ns2:Value label="" literal="Locker room"/>
+        <ns2:Value label="" literal="Fitness classes"/>
+        <ns2:Value label="" literal="Sports trainer"/>
+        <ns2:Value label="" literal="Thalassotherapy"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="ContactLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies where the contact is located.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Central reservation office"/>
+        <ns2:Value label="" literal="Corporate headquarters"/>
+        <ns2:Value label="" literal="Corporate office"/>
+        <ns2:Value label="" literal="Divisional office"/>
+        <ns2:Value label="" literal="Global sales office"/>
+        <ns2:Value label="" literal="Hotel direct"/>
+        <ns2:Value label="" literal="Local reservation office"/>
+        <ns2:Value label="" literal="Sales office"/>
+        <ns2:Value label="" literal="Franchise company"/>
+        <ns2:Value label="" literal="Management company"/>
+        <ns2:Value label="" literal="Ownership company"/>
+        <ns2:Value label="" literal="Customer service office"/>
+        <ns2:Value label="" literal="Home/residence"/>
+        <ns2:Value label="" literal="Regional sales office"/>
+        <ns2:Value label="" literal="Technical support office"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="HotelStatus_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the legal status/operating status of a given hotel in relation to the contracting company.  It may also be used to describe the system record status.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Closed"/>
+        <ns2:Value label="" literal="Deflagged"/>
+        <ns2:Value label="" literal="Deleted"/>
+        <ns2:Value label="" literal="Inactive"/>
+        <ns2:Value label="" literal="Locked"/>
+        <ns2:Value label="" literal="Open"/>
+        <ns2:Value label="" literal="Pre-opening"/>
+        <ns2:Value label="" literal="Reactivated"/>
+        <ns2:Value label="" literal="Test"/>
+        <ns2:Value label="" literal="Unlocked"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PowerType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Types of power.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Diesel"/>
+        <ns2:Value label="" literal="Electric"/>
+        <ns2:Value label="" literal="Gas"/>
+        <ns2:Value label="" literal="Oil"/>
+        <ns2:Value label="" literal="Solar"/>
+        <ns2:Value label="" literal="Wind"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RecycledProducts_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies products that are recycled.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Aluminum"/>
+        <ns2:Value label="" literal="Batteries"/>
+        <ns2:Value label="" literal="Computer parts"/>
+        <ns2:Value label="" literal="Glass"/>
+        <ns2:Value label="" literal="Lightbulbs"/>
+        <ns2:Value label="" literal="Paper"/>
+        <ns2:Value label="" literal="Plastic"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="RecyclingLocations_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Specifies areas where recycling is implemented.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Common areas"/>
+        <ns2:Value label="" literal="Garage"/>
+        <ns2:Value label="" literal="Guest room"/>
+        <ns2:Value label="" literal="Meeting room"/>
+        <ns2:Value label="" literal="Restaurant"/>
+        <ns2:Value label="" literal="Staff area"/>
+    </ns2:Enumeration_Open>
+    
+</ns2:Library>

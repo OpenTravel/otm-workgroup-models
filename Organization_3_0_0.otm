@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>3685803811</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/organization/v3</ns2:Namespace>
+    <ns2:Prefix>org-0300</ns2:Prefix>
+    <ns2:Name>Organization</ns2:Name>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Common_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/organization/v0" context="org"/>
+    
+    <ns2:BusinessObject name="Facility" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes a facility (e.g. Hotel Facility,Conference Facility, Golf Facility).  A facility must have a single address and a single geolocation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="FacilityRef" reference="true" repeat="0" type="Facility">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FacilityKey" repeat="0" type="FacilityKey">
+                <ns2:Documentation>
+                    <ns2:Description>Allows for the appropriate type of identifier to be used dependent on the type type of facility being described.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Name of the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Location" repeat="0" type="ota2-0400:Location">
+                <ns2:Documentation>
+                    <ns2:Description>Location information for the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="OperationSchedule" repeat="30" type="ota2-0400:OperationSchedule">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of operation schedules.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0400:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Images, descriptions and movies that describe the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Rating" repeat="0" type="ota2-0400:Rating">
+                <ns2:Documentation>
+                    <ns2:Description>The actual award or rating received by the facility.  May also be used for user generated ratings.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Telephone" repeat="5" type="ota2-0400:Telephone">
+                <ns2:Documentation>
+                    <ns2:Description>Telephone number for the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Email" repeat="0" type="ota2-0400:Email">
+                <ns2:Documentation>
+                    <ns2:Description>Email address for the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="10" type="ota2-0400:Text">
+                <ns2:Documentation>
+                    <ns2:Description>Facility description.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Property" repeat="0" type="Property">
+                <ns2:Documentation>
+                    <ns2:Description>An identiefier for the property that this facility is associated with.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SiteURL" repeat="0" type="ota2-0400:URL">
+                <ns2:Documentation>
+                    <ns2:Description>The URL for the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RelativePosition" repeat="0" type="ota2-0400:RelativePosition">
+                <ns2:Documentation>
+                    <ns2:Description>The RelativePosition object contains information about the direction, distance and travel to the location.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="AccessibilityFeatures" repeat="0" type="ota2-0400:AccessibilityFeatures">
+                <ns2:Documentation>
+                    <ns2:Description>Accessibility features offered by the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:BusinessObject name="Property" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A property may contain one or more facilities of the same or differing types.  Example:  The property Disney Orlando has many hotels and golf courses on it.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>Resort</ns2:Aliases>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PropertyRef" reference="true" repeat="0" type="Property">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="name"
+                referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="companyName" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the company that owns this property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Address" repeat="0" type="ota2-0400:Address">
+                <ns2:Documentation>
+                    <ns2:Description>The physical address of the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="URL" repeat="0" type="xsd:anyURI">
+                <ns2:Documentation>
+                    <ns2:Description>The URL for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Telephone" repeat="5" type="ota2-0400:Telephone">
+                <ns2:Documentation>
+                    <ns2:Description>The phone number for this property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Email" repeat="0" type="ota2-0400:Email">
+                <ns2:Documentation>
+                    <ns2:Description>The email for this property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0400:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Rating" repeat="5" type="ota2-0400:Rating">
+                <ns2:Documentation>
+                    <ns2:Description>The rating for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element mandatory="true" name="Facility" repeat="1000" type="Facility">
+                <ns2:Documentation>
+                    <ns2:Description>One or more facilities on this property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    <ns2:Resource abstract="true" businessObjectRef=""
+        firstClass="false" name="ServiceResource"/>
+    
+    <ns2:ValueWithAttrs name="MeetingCenter" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Meeting center details for a facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="meetingRoomCount" referenceRepeat="0" type="ota2-0400:NonNegativeInteger">
+            <ns2:Documentation>
+                <ns2:Description>The total number of unique meeting rooms provided at the hotel facility. For example, if the hotel has a grand ballroom that breaks into Salon A, B, and C -the total number of unique meeting rooms is three.</ns2:Description>
+                <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Example context="org">15</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="largestSeatingCapacity" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The largest seating capacity available in the largest meeting room - generally this is for theatre-style room setup.</ns2:Description>
+                <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Example context="org">200</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="largestRoomSpace" referenceRepeat="0" type="xsd:string">
+            <ns2:Documentation>
+                <ns2:Description>The amount of room space for the largest unique meeting room at the facility.</ns2:Description>
+                <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Example context="org">2000 sq ft</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="unitOfMeasureCode" referenceRepeat="0" type="ota2-0400:OTA_Code">
+            <ns2:Documentation>
+                <ns2:Description>The unit of measure in a code format (e.g., inches, pixels, centimeters). Refer to OpenTravel Code List Unit of Measure Code (UOM).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="meetingRoomCode" referenceRepeat="0" type="ota2-0400:OTA_Code">
+            <ns2:Documentation>
+                <ns2:Description>Used as a qualifier when searching for properties. Refer to OpenTravel Code list Meeting Room Code (MRC).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="Amenity" type="ota2-0400:StringShort">
+        <ns2:Documentation>
+            <ns2:Description>Name of the Amenity</ns2:Description>
+            <ns2:Implementer>Example value: ca1 = Stunning Pool</ns2:Implementer>
+            <ns2:Implementer>Example value: ca1 = Stunning Pool</ns2:Implementer>
+            <ns2:Implementer>Example value: tns = Pool</ns2:Implementer>
+            <ns2:Implementer>Example value: tns = Pool</ns2:Implementer>
+        </ns2:Documentation>
+        <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0400:OTA_Code">
+            <ns2:Documentation>
+                <ns2:Description>Refer to OpenTravel Code List Hotel Amenity Code (HAC).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="BusinessService" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Name of the business service.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="businessServiceCode" referenceRepeat="0" type="ota2-0400:OTA_Code">
+            <ns2:Documentation>
+                <ns2:Description>Used to identify a specific business service. Refer to OpenTravel Code list Business Srvc Type (BUS).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Facility"
+        name="Meeting" notExtendable="false" type="Custom">
+        <ns2:Element name="MeetingCenter" repeat="0" type="MeetingCenter">
+            <ns2:Documentation>
+                <ns2:Description>Meeting center details.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ChoiceObject name="FacilityKey" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Allows for a facility to be identified by and Identifier element or other elements/attributes that are appropriate for the specific type of facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared/>
+    </ns2:ChoiceObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FacilityKey"
+        name="Identifier" notExtendable="false" type="Choice">
+        <ns2:Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+            <ns2:Documentation>
+                <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>63917338</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/product/Ground/v1</Namespace>
+    <Prefix>pgt-0100</Prefix>
+    <Name>Ground</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Common_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <Import fileHints="Product_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v3" prefix="prod-0300"/>
+    <Import fileHints="Order_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v2" prefix="order-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM//product/Ground/v0" context="pgt"/>
+    
+    <Enumeration_Closed name="VehicleCategory_Enum">
+        <Documentation>
+            <Description>Size category of ground transportation vehicle - extracted from 1.0 SIZ code table</Description>
+        </Documentation>
+        <Value label="" literal="Luxury"/>
+        <Value label="" literal="Premium"/>
+        <Value label="" literal="Minivan"/>
+        <Value label="" literal="12 passenger van"/>
+        <Value label="" literal="Stretch"/>
+        <Value label="" literal="Car"/>
+        <Value label="" literal="Minibus"/>
+        <Value label="" literal="SUV"/>
+    </Enumeration_Closed>
+    
+    <BusinessObject name="Driver" notExtendable="false">
+        <Documentation>
+            <Description>Driver information.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="number" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The driver's identification.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>The unique identifier element allows the trading partners to  uniquely identify each Booking Rule, for transaction tracability.</Description>
+                </Documentation>
+            </Element>
+            <Element name="DriverRef" reference="true" repeat="0" type="Driver">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="PersonName" repeat="0" type="ota2-0300:PersonName">
+                <Documentation>
+                    <Description>This provides name information for a person.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TelephoneDetail" repeat="0" type="ota2-0300:Telephone_Detail_List">
+                <Documentation>
+                    <Description>Information about a telephone number, including the actual number and its usage.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SpokenLanguages" repeat="0" type="LanguagesSpoken">
+                <Documentation>
+                    <Description>One or more languages spoken by a person.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Review" repeat="0" type="Review">
+                <Documentation>
+                    <Description>Review's score from 0 to 5, where 5 is the best.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <ValueWithAttrs name="LanguageInfo" type="xsd:language">
+        <Documentation>
+            <Description>Language details pertaining to the service.</Description>
+        </Documentation>
+        <Example context="pgt">en</Example>
+        <Indicator name="primaryLanguageInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, this is the primary language spoken by the driver or the guide.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="requestedInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, it is preferred that the driver speak this language.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Simple listTypeInd="true" name="TransferRequests" type="TransferRequests_Enum"/>
+    
+    <ValueWithAttrs name="Review" type="ota2:Empty">
+        <Documentation>
+            <Description>Review's score from 0 to 5, where 5 is the best.</Description>
+        </Documentation>
+        <Attribute name="text" type="ota2-0300:Text">
+            <Documentation>
+                <Description>Description of the review score.</Description>
+            </Documentation>
+            <Example context="pgt">5: Excellent</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="FlightInfo" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="flightDate" type="ota2-0300:DateTimeLocal">
+                <Documentation>
+                    <Description>Departure or arrival time according to context.</Description>
+                </Documentation>
+                <Example context="pgt">2017-01-20T15:20:00</Example>
+            </Attribute>
+            <Element name="TransportNumber" repeat="0" type="prod-0300:TransportNumber">
+                <Documentation>
+                    <Description>The Airline code and flight identity number,</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="LanguagesSpoken" type="ota2:Empty">
+        <Documentation>
+            <Description>One or more languages spoken by a person. Query: could the value be a text list of the language names, with 'best practice' having the primary language alwys first? e,g English French Spanish. Or is it sufficient for the relevant api to access and display it as required?</Description>
+        </Documentation>
+        <Attribute name="primaryLanguage" type="ota2-0300:LanguageCode">
+            <Documentation>
+                <Description>The primary language spoken.</Description>
+            </Documentation>
+            <Example context="pgt">en</Example>
+        </Attribute>
+        <Attribute name="alternateLanguages" type="ota2-0300:Languages">
+            <Documentation>
+                <Description>Other languages spoken.</Description>
+            </Documentation>
+            <Example context="pgt">es fr de</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="Vehicle" notExtendable="false">
+        <Documentation>
+            <Description>Defines a specific vehicle (make, model, seats etc.)</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+                <Example context="pgt"/>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>a unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="VehicleRef" reference="true" repeat="0" type="Vehicle">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="seats" type="xsd:int">
+                <Documentation>
+                    <Description>The maximum seats in the vehicle - usually This figure is based on the quantity of seat belts in the vehicle.</Description>
+                </Documentation>
+                <Example context="pgt">4</Example>
+            </Attribute>
+            <Attribute name="category" type="VehicleCategory_Enum">
+                <Documentation>
+                    <Description>e.g. car, van, limo etc.</Description>
+                </Documentation>
+                <Example context="pgt">Premium</Example>
+            </Attribute>
+            <Attribute name="bkgClass" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The class of service, e.g. Business.</Description>
+                </Documentation>
+                <Example context="pgt">Business</Example>
+            </Attribute>
+            <Attribute name="modelYear" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The year the vehicle was registered</Description>
+                </Documentation>
+                <Example context="pgt">2016</Example>
+            </Attribute>
+            <Element name="Description" repeat="5" type="ota2-0300:Description">
+                <Documentation>
+                    <Description>A description or image of the vehicle.</Description>
+                </Documentation>
+                <Example context="pgt"/>
+            </Element>
+            <Element name="Luggage" repeat="5" type="Luggage">
+                <Documentation>
+                    <Description>Type and quantity of luggage.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Amenity" repeat="10" type="ota2-0300:Amenity">
+                <Documentation>
+                    <Description>Feature available in the vehicle</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="make" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The make of the vehicle.</Description>
+                </Documentation>
+                <Equivalent context="pgt">Town Car</Equivalent>
+                <Example context="pgt">Lincoln</Example>
+            </Attribute>
+            <Attribute name="model" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The model of the vehicle.</Description>
+                </Documentation>
+                <Equivalent context="pgt"/>
+                <Example context="pgt">Suburban</Example>
+            </Attribute>
+            <Attribute name="year" type="xsd:int">
+                <Documentation>
+                    <Description>The model year of the vehicle.
+Query: should this be a yyyy pattern?</Description>
+                </Documentation>
+                <Example context="pgt">2016</Example>
+            </Attribute>
+            <Attribute name="maxPassengers" type="xsd:int">
+                <Documentation>
+                    <Description>The maximum passengers allowed in  the vehicle.</Description>
+                </Documentation>
+                <Example context="pgt">7</Example>
+            </Attribute>
+            <Attribute name="maxAccessible" type="xsd:int">
+                <Documentation>
+                    <Description>The maximum accessible capacity of the vehicle.</Description>
+                </Documentation>
+                <Example context="pgt">2</Example>
+            </Attribute>
+            <Attribute name="color" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The colour of the vehicle.</Description>
+                </Documentation>
+                <Example context="pgt">Blue</Example>
+            </Attribute>
+            <Element name="Description" repeat="0" type="ota2-0300:TextFree">
+                <Documentation>
+                    <Description>A description of the vehicle(s) available for a transfer.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LicensePlate" repeat="0" type="LicensePlate">
+                <Documentation>
+                    <Description>The license plate/registration of the vehicle.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="disabilityVehicleInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, this vehicle is disability compatible.</Description>
+                </Documentation>
+            </Indicator>
+        </Detail>
+    </BusinessObject>
+    <ChoiceObject name="Operator" notExtendable="false">
+        <Documentation>
+            <Description>The company or driver operating a ground service.</Description>
+        </Documentation>
+        <Aliases/>
+        <Shared>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>An identifier for the Operator or Driver</Description>
+                </Documentation>
+            </Element>
+            <Element name="Description" repeat="0" type="ota2-0300:Description">
+                <Documentation>
+                    <Description>Descriptive text for the operator or driver</Description>
+                </Documentation>
+            </Element>
+        </Shared>
+        <Choice context="pgt" label="Company" notExtendable="false">
+            <Element name="CompanyName" repeat="0" type="ota2-0300:CompanyName">
+                <Documentation>
+                    <Description>The company operating a service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="URL" repeat="0" type="ota2-0300:URL">
+                <Documentation>
+                    <Description>Link to the opertor's website.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="pgt" label="Driver" notExtendable="false">
+            <Element name="Driver" repeat="0" type="Driver">
+                <Documentation>
+                    <Description>Details of the driver for a ground service,</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+    </ChoiceObject>
+    
+    <ValueWithAttrs name="LicensePlate" type="ota2-0300:StringTiny">
+        <Documentation>
+            <Description>Offical vehicle identification.</Description>
+        </Documentation>
+        <Example context="pgt">ABC123</Example>
+        <Attribute name="region" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>The region code of the license (e.g State or Country).</Description>
+            </Documentation>
+            <Example context="pgt">TN</Example>
+        </Attribute>
+        <Attribute name="category" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>Category of the license e.g. Military, Diplomatic etc.</Description>
+            </Documentation>
+            <Example context="pgt">Standard</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PassengerPrefs" type="ota2:Empty">
+        <Documentation>
+            <Description>Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</Description>
+        </Documentation>
+        <Attribute name="maximumPassengers" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The maximum quantity of passengers this vehicle can accommodate. NOTE: This figure is based on the quantity of seat belts in the vehicle.</Description>
+            </Documentation>
+            <Example context="pgt">3</Example>
+        </Attribute>
+        <Attribute name="maximumBaggage" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The (recommended) maximum baggage that can be stored in the vehicle's trunk.</Description>
+            </Documentation>
+            <Example context="pgt">3</Example>
+        </Attribute>
+        <Attribute name="shortDescription" type="ota2-0300:StringText">
+            <Documentation>
+                <Description>A short description of the service type and vehicle.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="notes" type="ota2-0300:StringText">
+            <Documentation>
+                <Description>Other notes related to the ground service, such as "Driver will meet you in baggage claim.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="transferRequests" type="TransferRequests">
+            <Documentation>
+                <Description>One or more requests, e.g. Child Seat</Description>
+            </Documentation>
+            <Example context="pgt">ChildSeat GuideDog FuelEfficientVehicle PetFriendly</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="GroundService_Enum">
+        <Documentation>
+            <Description>Type of gound service e.g. Private, Shared or Hourly</Description>
+        </Documentation>
+        <Value label="" literal="Private"/>
+        <Value label="" literal="Shared"/>
+        <Value label="" literal="Hourly"/>
+    </Enumeration_Closed>
+    
+    <CoreObject name="CustomerCount" notExtendable="false">
+        <Documentation>
+            <Description>A count of the number of customers in an age band.</Description>
+        </Documentation>
+        <Extension extends="CustomerAgeBand"/>
+        <Aliases>AdditionalPassengers</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="quantity" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of customers in this age band in the party.</Description>
+                </Documentation>
+                <Example context="pgt">2</Example>
+            </Attribute>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Luggage" type="xsd:int">
+        <Documentation>
+            <Description>Quantity of luggage.</Description>
+        </Documentation>
+        <Example context="pgt">2</Example>
+        <Attribute name="luggageType" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>e.g. small. medium etc. Should this be an enumeration?</Description>
+            </Documentation>
+            <Example context="pgt">Medium</Example>
+        </Attribute>
+        <Attribute name="remark" type="ota2-0300:TextFree"/>
+    </ValueWithAttrs>
+    
+    <CoreObject name="CustomerAgeBand" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a customer type: Adult,
+Senior,
+Infant,
+Child, etc</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="ageQualifyingCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The code for a customer age band.</Description>
+                </Documentation>
+                <Example context="pgt">A</Example>
+            </Attribute>
+            <Attribute name="description" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>A description of the age band, e.g. Adult.</Description>
+                </Documentation>
+                <Example context="pgt">Adult</Example>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="minAge" type="xsd:int">
+                <Documentation>
+                    <Description>The minimum age for this age band of customer.</Description>
+                </Documentation>
+                <Example context="pgt">16</Example>
+            </Attribute>
+            <Attribute name="maxAge" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The maximum age for this age band of customer .</Description>
+                </Documentation>
+                <Example context="pgt">120</Example>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="GroundServiceQuery" notExtendable="false">
+        <Documentation>
+            <Description>Query criteria for a Ground Service</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Departure" repeat="0" type="prod-0300:Departure">
+                <Documentation>
+                    <Description>The departure point of a ground service.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Arrival" repeat="0" type="prod-0300:Arrival">
+                <Documentation>
+                    <Description>The destination of a ground service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CustomerCount" repeat="5" type="CustomerCount">
+                <Documentation>
+                    <Description>A count of the number of customers in an age band.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TransportTransfer" repeat="0" type="prod-0300:Transport_Transfer">
+                <Documentation>
+                    <Description>Details of the transfer method.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Luggage" repeat="3" type="Luggage">
+                <Documentation>
+                    <Description>Type and quantity of luggage.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PassengerPrefs" repeat="0" type="PassengerPrefs">
+                <Documentation>
+                    <Description>Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Gratuity" repeat="0" type="order-0200:Gratuity">
+                <Documentation>
+                    <Description>Provides details for a gratuity to be added to the service price.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MeetAndGreet" repeat="0" type="MeetAndGreet">
+                <Documentation>
+                    <Description>Details of a meet and greet service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LanguageInfo" repeat="2" type="LanguageInfo">
+                <Documentation>
+                    <Description>Language details pertaining to the service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Comments" repeat="0" type="ota2-0300:Text">
+                <Documentation>
+                    <Description>Comments related to the service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProductAncillary" repeat="10" type="prod-0300:Product_Ancillary">
+                <Documentation>
+                    <Description>Amentities and services available with a ground servic (either included in the price or available for an extra fee). Note, includes pricing.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="MeetAndGreet" type="ota2:Empty">
+        <Documentation>
+            <Description>Details of a meet and greet service.</Description>
+        </Documentation>
+        <Attribute name="greetingSignName" type="ota2-0300:StringShort">
+            <Documentation>
+                <Description>The name to be on the greeting sign.</Description>
+            </Documentation>
+            <Example context="pgt">John Smith</Example>
+        </Attribute>
+        <Indicator name="complimentaryInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, this service is complimentary.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="TransferRequests_Enum">
+        <Documentation>
+            <Description>Additional equirements for a transfer, e.g. child seat or meet and greet service.</Description>
+        </Documentation>
+        <Value label="" literal="GuideDog"/>
+        <Value label="" literal="Multilingual"/>
+        <Value label="" literal="Guide"/>
+        <Value label="" literal="UnaccompaniedMinor"/>
+        <Value label="" literal="PersonalGreeter"/>
+        <Value label="" literal="MeetAndGreet"/>
+        <Value label="" literal="GreetingSign"/>
+        <Value label="" literal="FuelEfficientVehicle"/>
+        <Value label="" literal="PetFriendly"/>
+        <Value label="" literal="ChildSeat"/>
+        <Value label="" literal="FlightMonitoring"/>
+        <Value label="" literal="BabyStroller"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="DeadlineDropTime_Enum">
+        <Documentation>
+            <Description>An enumerated type indicating when the deadline drop time goes into effect.</Description>
+        </Documentation>
+        <Value label="" literal="BeforeArrival"/>
+        <Value label="" literal="AfterBooking"/>
+        <Value label="" literal="AfterConfirmation">
+            <Documentation>
+                <Description>The deadline information applies from when the reservation was confirmed.  In some systems the confirmation time will differ from the booking time.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="AfterArrival">
+            <Documentation>
+                <Description>The deadline applies after the scheduled arrival time.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="AfterDeparture">
+            <Documentation>
+                <Description>The deadline applies after the scheduled departure time.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="BeforeDeparture">
+            <Documentation>
+                <Description>The deadline applies before departure.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Service name="GetGroundOffers">
+        <Operation Name="GetGroundOffers" notExtendable="false">
+            <Request>
+                <Element mandatory="true" name="PayloadStdAttributes"
+                    repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProcessingInfo" repeat="0" type="ota2-0300:ProcessingInfo">
+                    <Documentation>
+                        <Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProductQueries" repeat="0" type="prod-0300:ProductQueries">
+                    <Documentation>
+                        <Description>Ground service search criteria.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element mandatory="true" name="PayloadStdAttributes"
+                    repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Offer" repeat="99" type="order-0200:Offer">
+                    <Documentation>
+                        <Description>One or more Ground Service products available at the given price and terms.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element mandatory="true" name="PayloadStdAttributes"
+                    repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Offer" repeat="0" type="order-0200:Offer">
+                    <Documentation>
+                        <Description>One or mare Ground Service products available at the given price and terms.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

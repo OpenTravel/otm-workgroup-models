@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1431670588</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v1_2</Namespace>
+    <Prefix>ota2-0102</Prefix>
+    <Name>CodeList</Name>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <Enumeration_Open name="FeeTaxType_Enum">
+        <Documentation>
+            <Description>Describes the type of fee or tax.</Description>
+        </Documentation>
+        <Value label="" literal="Adult rollaway fee"/>
+        <Value label="" literal="Application Fee"/>
+        <Value label="" literal="Assessment/license tax"/>
+        <Value label="" literal="Banquet service fee"/>
+        <Value label="" literal="Bed tax"/>
+        <Value label="" literal="Beverage with alcohol"/>
+        <Value label="" literal="Beverage without alcohol"/>
+        <Value label="" literal="Child rollaway charge"/>
+        <Value label="" literal="City hotel fee"/>
+        <Value label="" literal="City tax"/>
+        <Value label="" literal="Convention tax"/>
+        <Value label="" literal="Country tax"/>
+        <Value label="" literal="County tax"/>
+        <Value label="" literal="Crib fee"/>
+        <Value label="" literal="Destination amenity fee"/>
+        <Value label="" literal="Early checkout fee"/>
+        <Value label="" literal="Energy tax"/>
+        <Value label="" literal="Exempt"/>
+        <Value label="" literal="Express Handling Fee"/>
+        <Value label="" literal="Extra child charge"/>
+        <Value label="" literal="Extra person charge"/>
+        <Value label="" literal="Federal tax"/>
+        <Value label="" literal="Food"/>
+        <Value label="" literal="Food &amp; beverage tax"/>
+        <Value label="" literal="Goods and services tax (GST)"/>
+        <Value label="" literal="Insurance Premium Tax"/>
+        <Value label="" literal="Local fee"/>
+        <Value label="" literal="Lodging tax"/>
+        <Value label="" literal="Maintenance fee"/>
+        <Value label="" literal="Miscellaneous"/>
+        <Value label="" literal="National government tax"/>
+        <Value label="" literal="Not known"/>
+        <Value label="" literal="Occupancy tax"/>
+        <Value label="" literal="Package fee"/>
+        <Value label="" literal="Pet sanitation fee"/>
+        <Value label="" literal="Resort fee"/>
+        <Value label="" literal="Rollaway fee"/>
+        <Value label="" literal="Room service fee"/>
+        <Value label="" literal="Room Tax"/>
+        <Value label="" literal="Sales tax"/>
+        <Value label="" literal="Service charge"/>
+        <Value label="" literal="Standard"/>
+        <Value label="" literal="Standard food and beverage gratuity"/>
+        <Value label="" literal="State cost recovery fee"/>
+        <Value label="" literal="State tax"/>
+        <Value label="" literal="Surcharge"/>
+        <Value label="" literal="Surplus Lines Tax"/>
+        <Value label="" literal="Tobacco"/>
+        <Value label="" literal="Total surcharges"/>
+        <Value label="" literal="Total tax"/>
+        <Value label="" literal="Tourism tax"/>
+        <Value label="" literal="Value Added Tax (VAT)"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="TravelSector_Enum">
+        <Documentation>
+            <Description>Specifies the travel sector.</Description>
+        </Documentation>
+        <Value label="" literal="Air"/>
+        <Value label="" literal="Car"/>
+        <Value label="" literal="Cruise"/>
+        <Value label="" literal="Excursion"/>
+        <Value label="" literal="Ferry"/>
+        <Value label="" literal="Golf"/>
+        <Value label="" literal="Hotel"/>
+        <Value label="" literal="Insurance"/>
+        <Value label="" literal="Package option"/>
+        <Value label="" literal="Rail"/>
+        <Value label="" literal="Tour"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PaymentCardCode_Enum">
+        <Documentation>
+            <Description>The 2 digit code that identifies the credit card.</Description>
+        </Documentation>
+        <Value label="" literal="VI">
+            <Documentation>
+                <Description>Visa</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="UP">
+            <Documentation>
+                <Description>China UnionPay</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="TP">
+            <Documentation>
+                <Description>Universal Air Travel Card</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MC">
+            <Documentation>
+                <Description>Master Card</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MA">
+            <Documentation>
+                <Description>Maestro</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="JC">
+            <Documentation>
+                <Description>Japanese Credit Bureau Credit Card</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="EC">
+            <Documentation>
+                <Description>Eurocard</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="DS">
+            <Documentation>
+                <Description>Discover Card</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="DN">
+            <Documentation>
+                <Description>Diners Club</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="CB">
+            <Documentation>
+                <Description>Carte Blanche</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="BL">
+            <Documentation>
+                <Description>Carte Bleu</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="BC">
+            <Documentation>
+                <Description>Bank Card</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="AX">
+            <Documentation>
+                <Description>American Express</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PaymentType_Enum">
+        <Documentation>
+            <Description>Specifies a type of payment.</Description>
+        </Documentation>
+        <Value label="" literal="Air travel card"/>
+        <Value label="" literal="Airline payment card"/>
+        <Value label="" literal="Barter"/>
+        <Value label="" literal="Business account"/>
+        <Value label="" literal="Business check"/>
+        <Value label="" literal="Cash"/>
+        <Value label="" literal="Certified check"/>
+        <Value label="" literal="Check"/>
+        <Value label="" literal="Company name/address"/>
+        <Value label="" literal="Corporate ID/CD number"/>
+        <Value label="" literal="Coupon"/>
+        <Value label="" literal="Credit card"/>
+        <Value label="" literal="Debit card"/>
+        <Value label="" literal="Deposit"/>
+        <Value label="" literal="Direct bill"/>
+        <Value label="" literal="Frequent guest number"/>
+        <Value label="" literal="Frequent traveler number"/>
+        <Value label="" literal="Guarantee to property"/>
+        <Value label="" literal="Guest name/address"/>
+        <Value label="" literal="Miscellaneous"/>
+        <Value label="" literal="Miscellaneous charge order"/>
+        <Value label="" literal="Mobile payment"/>
+        <Value label="" literal="Money order"/>
+        <Value label="" literal="None"/>
+        <Value label="" literal="Override guarantee information"/>
+        <Value label="" literal="Payment manager"/>
+        <Value label="" literal="Payment service"/>
+        <Value label="" literal="Personal check"/>
+        <Value label="" literal="Pre-pay"/>
+        <Value label="" literal="Redemption"/>
+        <Value label="" literal="Special industry program"/>
+        <Value label="" literal="Ticket"/>
+        <Value label="" literal="Tour order"/>
+        <Value label="" literal="Travel agency IATA number"/>
+        <Value label="" literal="Travel agency name/address"/>
+        <Value label="" literal="Traveler's check"/>
+        <Value label="" literal="Virtual card "/>
+        <Value label="" literal="Voucher"/>
+        <Value label="" literal="Wire payment"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="CommunicationLocation_Enum">
+        <Documentation>
+            <Description>Specifies a location for communication.</Description>
+        </Documentation>
+        <Value label="" literal="Business"/>
+        <Value label="" literal="Destination"/>
+        <Value label="" literal="Home"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="AddressUse_Enum">
+        <Documentation>
+            <Description>Describes how an address is to be used.</Description>
+        </Documentation>
+        <Value label="" literal="Billing"/>
+        <Value label="" literal="Chain"/>
+        <Value label="" literal="Contact"/>
+        <Value label="" literal="Credit card"/>
+        <Value label="" literal="Delivery"/>
+        <Value label="" literal="Deposit"/>
+        <Value label="" literal="Mailing"/>
+        <Value label="" literal="Physical"/>
+        <Value label="" literal="Pre-opening office"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="BookingChannel_Enum">
+        <Documentation>
+            <Description>Specifies a type of booking channel.</Description>
+        </Documentation>
+        <Value label="" literal="Agent"/>
+        <Value label="" literal="Alternative distribution system (ADS)"/>
+        <Value label="" literal="Central reservation system (CRS)"/>
+        <Value label="" literal="Global distribution system (GDS)"/>
+        <Value label="" literal="Internet"/>
+        <Value label="" literal="Kiosk"/>
+        <Value label="" literal="Property management system (PMS)"/>
+        <Value label="" literal="Sales and catering system (SCS)"/>
+        <Value label="" literal="Tour operator system (TOS)"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="UnitOfMeasure_Enum">
+        <Documentation>
+            <Description>The unit of measure in a code format. Refer to OpenTravel Code List Unit of Measure Code (UOM).</Description>
+        </Documentation>
+        <Value label="" literal="Miles">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (statute mile) (mile) (SMI)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Kilometers">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (kilometre) (km) (KMT)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Meters">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (metre) (m) (MTR)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Millimeters">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (millimetre) (mm) (MMT)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Centimeters">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (centimetre) (cm) (CMT)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Yards">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (yard) (yd) (YRD)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Feet">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (foot) (ft) (FOT)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Inches">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (inch) (in) (INH)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Pixels">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (pixel: picture element) (E37)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Block"/>
+        <Value label="" literal="Megabytes">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (megabyte) (MB) (4L)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Gigabytes">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (gigabyte) (GB) (E34)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square feet">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (square foot) (ft2) (FTK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square meters">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (square metre) (m2) (MTK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Pounds">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (pound) (lb) (LBR)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Kilograms">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (kilogram (kg) (KGM)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square inch">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (square inch) (in2) (INK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square yard">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (square yard) (yd2) (YDK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Acre">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (acre) (acre) (ACR)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square millimeter">
+            <Documentation>
+                <Description>Sames as UN/ECE 20 (square millimetre) (mm2)(MMK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Square centimeter">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (square centimetre (cm2) (CMK)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Hectare">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (hectare) (ha) (HAR)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Ounce">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (ounce) (oz) (ONZ)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Gram">
+            <Documentation>
+                <Description>Same as UN/ECE 20 (gram) (g) (GRM)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Gallons"/>
+        <Value label="" literal="Liters"/>
+        <Value label="" literal="Kilowatts"/>
+        <Value label="" literal="Cubic meters"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="EmailAddressType_Enum">
+        <Documentation>
+            <Description>Specifies a type of email address.</Description>
+        </Documentation>
+        <Value label="" literal="Business"/>
+        <Value label="" literal="Listserve"/>
+        <Value label="" literal="Managing company"/>
+        <Value label="" literal="Personal"/>
+        <Value label="" literal="Property"/>
+        <Value label="" literal="Reservation office"/>
+        <Value label="" literal="Sales office"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PositionAccuracy_Enum">
+        <Documentation>
+            <Description>Specifies the level of accuracy for the positon.</Description>
+        </Documentation>
+        <Value label="" literal="Block"/>
+        <Value label="" literal="City"/>
+        <Value label="" literal="Country"/>
+        <Value label="" literal="County"/>
+        <Value label="" literal="Exact"/>
+        <Value label="" literal="Intersection"/>
+        <Value label="" literal="Property"/>
+        <Value label="" literal="State"/>
+        <Value label="" literal="Street"/>
+        <Value label="" literal="Zip5Code"/>
+        <Value label="" literal="Zip7Code"/>
+        <Value label="" literal="Zip9Code"/>
+    </Enumeration_Open>
+    
+</Library>

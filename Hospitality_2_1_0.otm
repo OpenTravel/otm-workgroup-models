@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>3634731668</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/hospitality/v2_1</ns2:Namespace>
+    <ns2:Prefix>ph-0201</ns2:Prefix>
+    <ns2:Name>Hospitality</ns2:Name>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Hospitality_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/hospitality/v2" prefix="ph-0200"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/hospitality/v0" context="ph"/>
+    
+    <ns2:CoreObject name="RoomOccupancy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Occupany for the room.</ns2:Description>
+            <ns2:Deprecated>Deprecated. Copied to Common 5.0.</ns2:Deprecated>
+        </ns2:Documentation>
+        <ns2:Extension extends="ph-0200:RoomOccupancy"/>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary/>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+</ns2:Library>

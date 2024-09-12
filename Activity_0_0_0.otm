@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/profile/preferences/activity/v0</Namespace>
+    <Prefix>prefa</Prefix>
+    <Name>Activity</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Preferences_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/preferences/v0" prefix="pref"/>
+    <Import fileHints="CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Common_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/profile/preferences/activity/v0" context="PrefActivity"/>
+    
+    <CoreObject name="VehicleCore" notExtendable="false">
+        <Documentation>
+            <Description>The VehicleCoreType complex type  identifies the core data that is used to describe a vehicle.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="transmissionType" type="VC_VehicleTransmission">
+                <Documentation>
+                    <Description/>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}VehicleTransmissionType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">TransmissionType</Equivalent>
+            </Attribute>
+            <Attribute name="fuelType" type="VC_Fuel">
+                <Documentation>
+                    <Description>The kind of fuel the vehicle uses.</Description>
+                    <Implementer>LocalAnonymousType: VehicleCoreType_FuelType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">FuelType</Equivalent>
+            </Attribute>
+            <Attribute name="driveType" type="VC_DriveTrain">
+                <Documentation>
+                    <Description>Used to define the drive type of a vehicle.</Description>
+                    <Implementer>LocalAnonymousType: VehicleCoreType_DriveType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">DriveType</Equivalent>
+            </Attribute>
+            <Attribute mandatory="true" name="vehicleCategory" type="ota2-0400:OTA_Code">
+                <Documentation>
+                    <Description>The VehicleCategory attribute provides the catgeory of a vehicle.  Refer to OpenTravel Code List Vehicle Category (VEC).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VehicleCategory</Equivalent>
+            </Attribute>
+            <Attribute name="doorCount" type="ota2-0400:StringTiny">
+                <Documentation>
+                    <Description>The number of doors on a vehicle.  This may be an exact number or a range, i.e. 2-4.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">DoorCount</Equivalent>
+            </Attribute>
+            <Attribute mandatory="true" name="size" type="ota2-0400:OTA_Code">
+                <Documentation>
+                    <Description>The Size attribute identifies the size of a vehicle. Refer to OpenTravel Code List Size (SIZ).</Description>
+                    <Implementer>AttributeGroup: VehicleClassGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Indicator name="airConditionInd" publishAsElement="false"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="VehicleCoveragePrefGroup" type="ota2:Empty">
+        <Documentation>
+            <Description>The VehicleCoveragePrefType complex type defines a preference for a particular type of insurance coverage for a rental vehicle.  The preference is expressed using the attribute group PreferLevelType.</Description>
+        </Documentation>
+        <Equivalent context="PrefActivity">VehicleCoveragePrefGroup</Equivalent>
+        <Attribute mandatory="true" name="coverageType" type="ota2-0400:OTA_Code">
+            <Documentation>
+                <Description>Identifies the type of coverage, for example, collision damage waiver.  Refer to OpenTravel Code List Vehicle Coverage Type (VCT).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">CoverageType</Equivalent>
+        </Attribute>
+        <Attribute name="code" type="ota2-0400:StringTiny">
+            <Documentation>
+                <Description>TODO_Allows for an industry-specific code that describes this coverage to be specified, for example, CDW may be indicated when the coverage type is Collision Damage Waiver. (StringLength1to8)</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">Code</Equivalent>
+        </Attribute>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for an associated item.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}PreferLevelType</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">PreferLevel</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="VehicleEquipmentPrefGroup" type="ota2:Empty">
+        <Documentation>
+            <Description>The VehicleEquipmentPrefType complex type identifies the data that is used to provide information on a preferred special equipment when renting a vehicle.</Description>
+        </Documentation>
+        <Equivalent context="PrefActivity">VehicleEquipmentPrefGroup</Equivalent>
+        <Attribute mandatory="true" name="equipType" type="ota2-0400:OTA_Code">
+            <Documentation>
+                <Description>Identifies the specific type of special equipment.  Refer to OpenTravel Code List Equipment Type (EQP).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">EquipType</Equivalent>
+        </Attribute>
+        <Attribute name="Quantity" type="xsd:positiveInteger">
+            <Documentation>
+                <Description/>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">Quantity</Equivalent>
+        </Attribute>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for an associated item.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}PreferLevelType</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">PreferLevel</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="VehicleMakeModelGroup" type="ota2:Empty">
+        <Documentation>
+            <Description>Indicates the make and model of the car with the year. Make and model could be by text or by code.</Description>
+        </Documentation>
+        <Equivalent context="PrefActivity">VehicleMakeModelGroup</Equivalent>
+        <Attribute mandatory="true" name="name" type="ota2-0400:StringShort">
+            <Documentation>
+                <Description>The name of an item.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">Name</Equivalent>
+        </Attribute>
+        <Attribute name="code" type="ota2-0400:StringTiny">
+            <Documentation>
+                <Description>Provides the code identifying the item.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">Code</Equivalent>
+        </Attribute>
+        <Attribute name="modelYear" type="ota2-0400:StringTiny">
+            <Documentation>
+                <Description>The model year of the vehicle.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}gYear</Implementer>
+            </Documentation>
+            <Equivalent context="PrefActivity">ModelYear</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="VehiclePreferences" notExtendable="false">
+        <Documentation>
+            <Description>The VehiclePrefType complex type defines the information that is used when defining a preference of a vehicle.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="VehiclePreferencesRef" reference="true"
+                repeat="0" type="VehiclePreferences">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="airConditionPref" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description/>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PreferLevelType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">AirConditionPref</Equivalent>
+            </Attribute>
+            <Attribute name="transmissionPref" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description/>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PreferLevelType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">TransmissionPref</Equivalent>
+            </Attribute>
+            <Attribute name="fuelPref" type="ota2-0200:PreferLevel_Enum"/>
+            <Attribute name="corePref" type="ota2-0200:PreferLevel_Enum"/>
+            <Attribute name="classPref" type="ota2-0200:PreferLevel_Enum"/>
+            <Attribute name="vendorCarType" type="ota2-0400:StringShort">
+                <Documentation>
+                    <Description>An internal car type assigned by the vendor. This is not the SIPP code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VendorCarType</Equivalent>
+            </Attribute>
+            <Attribute name="vehicleQty" type="xsd:string">
+                <Documentation>
+                    <Description>The total number of cars a customer is eventually interested in reserving. This is not used by suppliers and is in no way intended to imply that multiple cars may be booked in a single reservation.</Description>
+                    <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VehicleQty</Equivalent>
+            </Attribute>
+            <Attribute name="codeGroup" type="ota2:Empty">
+                <Documentation>
+                    <Description>Code used to identify the vehicle. May be used in place of VehicleCoreType. Typically a SIPP code would be passed here. CodeContext Identifies the source authority for the code (e.g., SIPP).</Description>
+                    <Implementer>AttributeGroup: CodeGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="VehicleMakeModel" repeat="1" type="VehicleMakeModelGroup">
+                <Documentation>
+                    <Description>The make and model of the vehicle (e.g.,  Ford Focus). The Code attribute may be used for the SIPP code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}VehMakeModel</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VehMakeModel</Equivalent>
+            </Element>
+            <Element mandatory="true" name="VehicleCore" repeat="0" type="VehicleCore">
+                <Documentation>
+                    <Description>The VehicleCoreType complex type  identifies the core data that is used to describe a vehicle.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="VehicleRentalPref" notExtendable="false">
+        <Documentation>
+            <Description>Vehicle rental preferences can be specified for customers or companies to indicate their preferences for types of vehicles to be rented in specific travel situations. Companies may wish to specify certain class or types of cars that their employees are allowed to rent, or indicate special business needs for trucks for hauling goods, etc. Personal travelers may wish to indicate preferences for types of vehicles such as vans or SUVs for family vacations, or smaller, more sporty models when travelling alone. A customer may prefer to have a convertible or sun roof in a warm destination, but request a ski rack when vacationing in the wintertime.   The VehicleProfileRentalPrefType complex type has elements for specific features on rental cars including vehicle type (major category such as car, truck, SUV) and vehicle class (more precise kind of vehicle), air conditioning, transmission, and special equipment. In addition, the specification captures preferences for vendors and loyalty programs, insurance coverage, forms of payment for rental cars, and other special requirements.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="CompanyNamePref" repeat="20" type="pref:CompanyNamePref">
+                <Documentation>
+                    <Description>Vendor Preferences indicates a preference for a specific car rental agency when used in a travel collection. The VendorPref element uses the Company Name entity to identify the preferred company by name and by vendor code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNamePrefType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VendorPref</Equivalent>
+            </Element>
+            <Element name="VehicleCoveragePref" repeat="30" type="VehicleCoveragePrefGroup">
+                <Documentation>
+                    <Description>A preference for a specific type of vehicle coverage to be used when renting a car in a given travel situation.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CoveragePref</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">CoveragePref</Equivalent>
+            </Element>
+            <Element name="SpecialReqPref" repeat="5" type="pref:PreferenceLevel">
+                <Documentation>
+                    <Description>The special request preference element allows the customer to designate a special request to be associated with the vehicle rental.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}VehicleSpecialReqPrefType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">SpecialReqPref</Equivalent>
+            </Element>
+            <Element name="VehiclePreferences" repeat="10" type="VehiclePreferences">
+                <Documentation>
+                    <Description>The vehicle type preference element allows the customer to designate a major category of vehicle preferred for rental.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}VehiclePrefType</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">VehTypePref</Equivalent>
+            </Element>
+            <Element name="VehicleSpecialEquipPref" repeat="15" type="VehicleEquipmentPrefGroup">
+                <Documentation>
+                    <Description>Indicates a preference for special equipment in a rented car.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SpecialEquipPref</Implementer>
+                </Documentation>
+                <Equivalent context="PrefActivity">SpecialEquipPref</Equivalent>
+            </Element>
+            <Element name="PrivacyGroup" repeat="0" type="ota2-0400:Privacy">
+                <Documentation>
+                    <Description/>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="gasPrePayInd" publishAsElement="false">
+                <Documentation>
+                    <Description>[LegacyDefaultValue: null]</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Enumeration_Closed name="VC_VehicleTransmission">
+        <Documentation>
+            <Description>The VehicleTransmissionSimpleType simple type defines a set of valid values for the transmission type of a vehicle.  The valid values are automatic and manual.  Use of this attribute can help in describing a vehicle.</Description>
+        </Documentation>
+        <Value label="" literal="Automatic"/>
+        <Value label="" literal="Manual"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="VC_DriveTrain">
+        <Value label="" literal="AWD">
+            <Documentation>
+                <Description>Defines all wheel drive.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="4WD">
+            <Documentation>
+                <Description>Defines four wheel drive.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Unspecified">
+            <Documentation>
+                <Description>The drive type of the vehicle is unknown.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="VC_Fuel">
+        <Value label="" literal="Unspecified">
+            <Documentation>
+                <Description>The type of fuel is not known.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Diesel">
+            <Documentation>
+                <Description>The type of fuel is diesel.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Hybrid">
+            <Documentation>
+                <Description>The type of fuel is hybrid.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Electric">
+            <Documentation>
+                <Description>The type of fuel is electric.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="LPG_CompressedGas">
+            <Documentation>
+                <Description>The type of fuel is LPG/Compressed gas.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Hydrogen">
+            <Documentation>
+                <Description>The type of fuel is hydrogen.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MultiFuel">
+            <Documentation>
+                <Description>The type of fuel is multi.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Petrol">
+            <Documentation>
+                <Description>The type of fuel is petrol.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Ethanol">
+            <Documentation>
+                <Description>The type of fuel is ethanol.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+</Library>

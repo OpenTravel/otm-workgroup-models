@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>704300681</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/product/golf/v1</Namespace>
+    <Prefix>pg-0100</Prefix>
+    <Name>Golf</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Product_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v2" prefix="prod-0200"/>
+    <Import fileHints="Organization_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v1" prefix="org-0100"/>
+    <Import fileHints="OrganizationGolf_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/golf/v1" prefix="orggf-0100"/>
+    <Import fileHints="Order_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v1" prefix="order-0100"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/product/golf/v0" context="pg"/>
+    
+    <CoreObject name="GolfActivity" notExtendable="false">
+        <Documentation>
+            <Description>Information associated with a tee time round reservation request.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="numberOfHoles" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of holes that the golfers wish to play within one round. If this differs by day, separate messages must be sent.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="pg">18</Example>
+            </Attribute>
+            <Attribute name="replayRoundQty" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>(Example) If a foursome wants to play two separate rounds within one day, the number of tee times would be 2.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute mandatory="true" name="maxGolferCount" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The maximum number of golfers represented in this tee time round.</Description>
+                </Documentation>
+                <Example context="pg">4</Example>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="startingHole" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The tee on which the round will start. This could be a hole number, or a course designation where there are multiple courses.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+                <Example context="pg">1</Example>
+            </Attribute>
+            <Element name="Course" repeat="0" type="orggf-0100:Course">
+                <Documentation>
+                    <Description>The course for this golf activity.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="GolfFacility" repeat="0" type="orggf-0100:GolfFacility">
+                <Documentation>
+                    <Description>The golf facility for this golf activity.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="TeeTime" notExtendable="false">
+        <Documentation>
+            <Description>Tee time information associated with an availability request.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="roundID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A unique identifier applied to this tee time round.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="pg">12181631</Example>
+            </Attribute>
+            <Attribute name="packageID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>An identification of a package of which this tee time round is a part of.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute mandatory="true" name="numberOfHoles" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of holes that the golfers wish to play within one round. If this differs by day, separate messages must be sent.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="pg">18</Example>
+            </Attribute>
+            <Attribute name="carQty" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of carts/buggies requested.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="pg">1</Example>
+            </Attribute>
+            <Attribute name="replayRoundQty" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>(Example) If a foursome wants to play two separate rounds within one day, the number of tee times would be 2.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="pg">2</Example>
+            </Attribute>
+            <Element mandatory="true" name="DateTimeSpanWindows"
+                repeat="0" type="ota2-0200:DateTimeSpanWindows">
+                <Documentation>
+                    <Description>The date and time for which the tee time round is reserved.</Description>
+                    <Implementer>AttributeGroup: DateTimeSpanGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Discount" repeat="99" type="ota2-0200:RateQualifier">
+                <Documentation>
+                    <Description>Promotions and other rate qualifying discounts requested for this tee time round. Note that promotions may be tied to individual golfers or to the tee time as a whole.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LoyaltyProgram" repeat="99" type="ota2-0200:LoyaltyProgram">
+                <Documentation>
+                    <Description>Membership program(s) associated with a golfer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}MembershipProgram</Implementer>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="GolferCount" repeat="5" type="GolferCount">
+                <Documentation>
+                    <Description>Summary golfer type qualifying information.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="CourseIdentifier" repeat="0" type="orggf-0100:Course_ID">
+                <Documentation>
+                    <Description>Identifies the golf course for this tee time.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element name="NineHoleName" repeat="10" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Name for nine holes within this course.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SpecifiedAmenity" repeat="99" type="ota2-0200:SpecifiedAmenity">
+                <Documentation>
+                    <Description>Amenities requested for this tee time round. Note that amenities may be tied to individual golfers or to the tee time as a whole.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="TeeTimeAvailability" notExtendable="false">
+        <Documentation>
+            <Description>Golf facility and tee time search criteria.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="FacilityGolf" repeat="0" type="org-0100:Facility_Golf">
+                <Documentation>
+                    <Description>The identifier for a golf facility. This includes id and name.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="TeeTime" repeat="99" type="TeeTime">
+                <Documentation>
+                    <Description>Tee time information associated with an availability request.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PriceModifiers" repeat="0" type="ota2-0200:PriceModifiers">
+                <Documentation>
+                    <Description>Allow for the request of a special rate.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="GolferCount" type="xsd:positiveInteger">
+        <Documentation>
+            <Description>The number of golfers in this age group.</Description>
+        </Documentation>
+        <Attribute name="ageQualifyingCode" type="ota2-0200:AgeQualifyingCode_Enum">
+            <Documentation>
+                <Description>An age qualifying code for this golfer. From the OpenTravel Age Qualifying Code List (AQC).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="golferType" type="GolferType_Enum">
+            <Documentation>
+                <Description>Summary golfer type qualifying information.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="handicap" type="ota2-0200:NonNegativeInteger">
+            <Documentation>
+                <Description>A numerical value used  to identify the golfer's potential ability.</Description>
+            </Documentation>
+            <Example context="pg">18</Example>
+        </Attribute>
+        <Indicator name="accessibleInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, tee time rounds that accommodate accessibility needs are requested.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="GolferType_Enum">
+        <Documentation>
+            <Description>Golfer types with an "Other" value to support open enumeration list.</Description>
+        </Documentation>
+        <Value label="" literal="ClubMember">
+            <Documentation>
+                <Description>TBC...</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="GuestOfMember">
+            <Documentation>
+                <Description>TBC...</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="GuestOfResort">
+            <Documentation>
+                <Description>TBC...</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="LocalResident">
+            <Documentation>
+                <Description>TBC...</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="LoyaltyProgramMember">
+            <Documentation>
+                <Description>TBC...</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Service name="Golf">
+        <Operation Name="GetOffers" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProcessingInfo" repeat="0" type="ota2-0200:ProcessingInfo">
+                    <Documentation>
+                        <Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProductQueriesGolf" repeat="0" type="prod-0200:ProductQueries_Golf">
+                    <Documentation>
+                        <Description>Golf facility and tee time search criteria.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProcessingInfo" repeat="0" type="ota2-0200:ProcessingInfo">
+                    <Documentation>
+                        <Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Offer" repeat="0" type="order-0100:Offer">
+                    <Documentation>
+                        <Description>A description of the facility and offers.  The offers include ancillaries (amenities).</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Offer" repeat="0" type="order-0100:Offer">
+                    <Documentation>
+                        <Description>A description of the facility and offers.  The offers include ancillaries (amenities).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

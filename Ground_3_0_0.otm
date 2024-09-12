@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>1168046269</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/Ground/v3</ns2:Namespace>
+    <ns2:Prefix>pgt-0300</ns2:Prefix>
+    <ns2:Name>Ground</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM//product/Ground/v0" context="pgt"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="Ground"
+        notExtendable="false" type="Custom">
+        <ns2:Element name="Segment" repeat="0" type="prod-0500:Segment">
+            <ns2:Documentation>
+                <ns2:Description>A ground service segment.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Transport" name="Transfer"
+        notExtendable="false" type="Choice">
+        <ns2:Attribute name="type" referenceRepeat="0" type="GroundService_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the type of service e.g. Private, Shared or Hourly.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Equivalent context="pgt"/>
+            <ns2:Example context="pgt">Private</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Element name="ClassOfService" repeat="0" type="prod-0500:ClassOfService">
+            <ns2:Documentation>
+                <ns2:Description>e.g First? Query: is this an attribute of VehicleType?</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="PassengerPrefs" repeat="0" type="PassengerPrefs">
+            <ns2:Documentation>
+                <ns2:Description>Query: is this required here, or only in the GSQuery? Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="OperatorCompany" repeat="0" type="Operator_Company">
+            <ns2:Documentation>
+                <ns2:Description>The company operating a ground service.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Vehicle" repeat="0" type="Vehicle">
+            <ns2:Documentation>
+                <ns2:Description>Defines a specific vehicle (make, model, seats etc.)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Driver" repeat="0" type="Driver">
+            <ns2:Documentation>
+                <ns2:Description>Driver information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="LanguageInfo" repeat="0" type="LanguageInfo">
+            <ns2:Documentation>
+                <ns2:Description>Language details pertaining to the service.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Comments" repeat="0" type="ota2-0500:TextFree">
+            <ns2:Documentation>
+                <ns2:Description>Other information about the service.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ContactPerson" repeat="0" type="ota2-0500:ContactPerson_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Operator contact details. Query: is the level of detail overkill here?</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="OperationSchedule" repeat="0" type="ota2-0500:OperationSchedule_Summary"/>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:ProductQueries" name="Ground"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="GroundServiceQuery" repeat="0" type="GroundServiceQuery">
+            <ns2:Documentation>
+                <ns2:Description>Query for a Ground Service.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:Enumeration_Closed name="VehicleCategory_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Size category of ground transportation vehicle - extracted from 1.0 SIZ code table</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Luxury"/>
+        <ns2:Value label="" literal="Premium"/>
+        <ns2:Value label="" literal="Minivan"/>
+        <ns2:Value label="" literal="12 passenger van"/>
+        <ns2:Value label="" literal="Stretch"/>
+        <ns2:Value label="" literal="Car"/>
+        <ns2:Value label="" literal="Minibus"/>
+        <ns2:Value label="" literal="SUV"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:BusinessObject name="Driver" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Driver information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="number" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The driver's identification.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>The unique identifier element allows the trading partners to  uniquely identify each Booking Rule, for transaction tracability.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DriverRef" reference="true" repeat="0" type="Driver">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="PersonName" repeat="0" type="ota2-0500:PersonName">
+                <ns2:Documentation>
+                    <ns2:Description>This provides name information for a person.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TelephoneDetail" repeat="0" type="ota2-0500:Telephone_Detail_List">
+                <ns2:Documentation>
+                    <ns2:Description>Information about a telephone number, including the actual number and its usage.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SpokenLanguages" repeat="0" type="LanguagesSpoken">
+                <ns2:Documentation>
+                    <ns2:Description>One or more languages spoken by a person.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Review" repeat="0" type="Review">
+                <ns2:Documentation>
+                    <ns2:Description>Review's score from 0 to 5, where 5 is the best.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:ValueWithAttrs name="LanguageInfo" type="xsd:language">
+        <ns2:Documentation>
+            <ns2:Description>Language details pertaining to the service.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Example context="pgt">en</ns2:Example>
+        <ns2:Indicator name="primaryLanguageInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>If true, this is the primary language spoken by the driver or the guide.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="requestedInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>If true, it is preferred that the driver speak this language.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Simple listTypeInd="true" name="TransferRequests" type="TransferRequests_Enum"/>
+    
+    <ns2:ValueWithAttrs name="Review" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Review's score from 0 to 5, where 5 is the best.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="text" referenceRepeat="0" type="ota2-0500:Text">
+            <ns2:Documentation>
+                <ns2:Description>Description of the review score.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">5: Excellent</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="FlightInfo" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="flightDate" referenceRepeat="0" type="ota2-0500:DateTimeLocal">
+                <ns2:Documentation>
+                    <ns2:Description>Departure or arrival time according to context.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">2017-01-20T15:20:00</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="TransportNumber" repeat="0" type="prod-0500:TransportNumber">
+                <ns2:Documentation>
+                    <ns2:Description>The Airline code and flight identity number,</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="LanguagesSpoken" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>One or more languages spoken by a person. Query: could the value be a text list of the language names, with 'best practice' having the primary language alwys first? e,g English French Spanish. Or is it sufficient for the relevant api to access and display it as required?</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="primaryLanguage" referenceRepeat="0" type="ota2-0500:LanguageCode">
+            <ns2:Documentation>
+                <ns2:Description>The primary language spoken.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">en</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="alternateLanguages" referenceRepeat="0" type="ota2-0500:Languages">
+            <ns2:Documentation>
+                <ns2:Description>Other languages spoken.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">es fr de</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:BusinessObject name="Vehicle" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Defines a specific vehicle (make, model, seats etc.)</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt"/>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>a unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="VehicleRef" reference="true" repeat="0" type="Vehicle">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="seats" referenceRepeat="0" type="xsd:int">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum seats in the vehicle - usually This figure is based on the quantity of seat belts in the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">4</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="category" referenceRepeat="0" type="VehicleCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>e.g. car, van, limo etc.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">Premium</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="bkgClass" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The class of service, e.g. Business.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">Business</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="modelYear" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The year the vehicle was registered</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">2016</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Description" repeat="5" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>A description of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt"/>
+            </ns2:Element>
+            <ns2:Element name="Luggage" repeat="5" type="Luggage">
+                <ns2:Documentation>
+                    <ns2:Description>Type and quantity of luggage.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Amenity" repeat="10" type="ota2-0500:Amenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Feature available in the vehicle</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="make" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The make of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Equivalent context="pgt">Town Car</ns2:Equivalent>
+                <ns2:Example context="pgt">Lincoln</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="model" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The model of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Equivalent context="pgt"/>
+                <ns2:Example context="pgt">Suburban</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="year" referenceRepeat="0" type="xsd:int">
+                <ns2:Documentation>
+                    <ns2:Description>The model year of the vehicle.
+Query: should this be a yyyy pattern?</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">2016</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxPassengers" referenceRepeat="0" type="xsd:int">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum passengers allowed in  the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">7</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxAccessible" referenceRepeat="0" type="xsd:int">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum accessible capacity of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">2</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="color" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The colour of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">Blue</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:TextFree">
+                <ns2:Documentation>
+                    <ns2:Description>A description of the vehicle(s) available for a transfer.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="LicensePlate" repeat="0" type="LicensePlate">
+                <ns2:Documentation>
+                    <ns2:Description>The license plate/registration of the vehicle.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="disabilityVehicleInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, this vehicle is disability compatible.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    <ns2:ChoiceObject name="Operator" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The company or driver operating a ground service.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>An identifier for the Operator or Driver</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive text for the operator or driver</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Operator"
+        name="Company" notExtendable="false" type="Choice">
+        <ns2:Element name="CompanyName" repeat="0" type="ota2-0500:CompanyName">
+            <ns2:Documentation>
+                <ns2:Description>The company operating a service.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="URL" repeat="0" type="ota2-0500:URL">
+            <ns2:Documentation>
+                <ns2:Description>Link to the opertor's website.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Operator"
+        name="Driver" notExtendable="false" type="Choice">
+        <ns2:Element name="Driver" repeat="0" type="Driver">
+            <ns2:Documentation>
+                <ns2:Description>Details of the driver for a ground service,</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:ValueWithAttrs name="LicensePlate" type="ota2-0500:StringTiny">
+        <ns2:Documentation>
+            <ns2:Description>Offical vehicle identification.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Example context="pgt">ABC123</ns2:Example>
+        <ns2:Attribute name="region" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The region code of the license (e.g State or Country).</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">TN</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="category" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Category of the license e.g. Military, Diplomatic etc.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">Standard</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="PassengerPrefs" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="maximumPassengers" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The maximum quantity of passengers this vehicle can accommodate. NOTE: This figure is based on the quantity of seat belts in the vehicle.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">3</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="maximumBaggage" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The (recommended) maximum baggage that can be stored in the vehicle's trunk.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">3</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="shortDescription" referenceRepeat="0" type="ota2-0500:StringText">
+            <ns2:Documentation>
+                <ns2:Description>A short description of the service type and vehicle.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="notes" referenceRepeat="0" type="ota2-0500:StringText">
+            <ns2:Documentation>
+                <ns2:Description>Other notes related to the ground service, such as "Driver will meet you in baggage claim.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="transferRequests" referenceRepeat="0" type="TransferRequests">
+            <ns2:Documentation>
+                <ns2:Description>One or more requests, e.g. Child Seat</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">ChildSeat GuideDog FuelEfficientVehicle PetFriendly</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Enumeration_Closed name="GroundService_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Type of gound service e.g. Private, Shared or Hourly</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Private"/>
+        <ns2:Value label="" literal="Shared"/>
+        <ns2:Value label="" literal="Hourly"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:CoreObject name="CustomerCount" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A count of the number of customers in an age band.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="CustomerAgeBand"/>
+        <ns2:Aliases>AdditionalPassengers</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of customers in this age band in the party.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">2</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="Luggage" type="xsd:int">
+        <ns2:Documentation>
+            <ns2:Description>Quantity of luggage.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Example context="pgt">2</ns2:Example>
+        <ns2:Attribute name="luggageType" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>e.g. small. medium etc. Should this be an enumeration?</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">Medium</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="remark" referenceRepeat="0" type="ota2-0500:TextFree"/>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="CustomerAgeBand" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Identifies a customer type: Adult,
+Senior,
+Infant,
+Child, etc</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="ageQualifyingCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The code for a customer age band.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">A</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="description" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A description of the age band, e.g. Adult.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">Adult</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="minAge" referenceRepeat="0" type="xsd:int">
+                <ns2:Documentation>
+                    <ns2:Description>The minimum age for this age band of customer.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">16</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxAge" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum age for this age band of customer .</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pgt">120</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GroundServiceQuery" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Query criteria for a Ground Service</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="Departure" repeat="0" type="prod-0500:Departure">
+                <ns2:Documentation>
+                    <ns2:Description>The departure point of a ground service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="Arrival" repeat="0" type="prod-0500:Arrival">
+                <ns2:Documentation>
+                    <ns2:Description>The destination of a ground service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CustomerCount" repeat="5" type="CustomerCount">
+                <ns2:Documentation>
+                    <ns2:Description>A count of the number of customers in an age band.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TransportTransfer" repeat="0" type="Transport_Transfer">
+                <ns2:Documentation>
+                    <ns2:Description>Details of the transfer method.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Luggage" repeat="3" type="Luggage">
+                <ns2:Documentation>
+                    <ns2:Description>Type and quantity of luggage.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PassengerPrefs" repeat="0" type="PassengerPrefs">
+                <ns2:Documentation>
+                    <ns2:Description>Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Gratuity" repeat="0" type="order-0400:Gratuity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Provides details for a gratuity to be added to the service price.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MeetAndGreet" repeat="0" type="MeetAndGreet">
+                <ns2:Documentation>
+                    <ns2:Description>Details of a meet and greet service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="LanguageInfo" repeat="2" type="LanguageInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Language details pertaining to the service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Comments" repeat="0" type="ota2-0500:Text">
+                <ns2:Documentation>
+                    <ns2:Description>Comments related to the service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ProductAncillary" repeat="10" type="prod-0500:Product_Ancillary">
+                <ns2:Documentation>
+                    <ns2:Description>Amentities and services available with a ground servic (either included in the price or available for an extra fee). Note, includes pricing.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="MeetAndGreet" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Details of a meet and greet service.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="greetingSignName" referenceRepeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name to be on the greeting sign.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pgt">John Smith</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Indicator name="complimentaryInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, this service is complimentary.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Enumeration_Closed name="TransferRequests_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Additional equirements for a transfer, e.g. child seat or meet and greet service.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="GuideDog"/>
+        <ns2:Value label="" literal="Multilingual"/>
+        <ns2:Value label="" literal="Guide"/>
+        <ns2:Value label="" literal="UnaccompaniedMinor"/>
+        <ns2:Value label="" literal="PersonalGreeter"/>
+        <ns2:Value label="" literal="MeetAndGreet"/>
+        <ns2:Value label="" literal="GreetingSign"/>
+        <ns2:Value label="" literal="FuelEfficientVehicle"/>
+        <ns2:Value label="" literal="PetFriendly"/>
+        <ns2:Value label="" literal="ChildSeat"/>
+        <ns2:Value label="" literal="FlightMonitoring"/>
+        <ns2:Value label="" literal="BabyStroller"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="DeadlineDropTime_Enum">
+        <ns2:Documentation>
+            <ns2:Description>An enumerated type indicating when the deadline drop time goes into effect.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="BeforeArrival"/>
+        <ns2:Value label="" literal="AfterBooking"/>
+        <ns2:Value label="" literal="AfterConfirmation">
+            <ns2:Documentation>
+                <ns2:Description>The deadline information applies from when the reservation was confirmed.  In some systems the confirmation time will differ from the booking time.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="AfterArrival">
+            <ns2:Documentation>
+                <ns2:Description>The deadline applies after the scheduled arrival time.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="AfterDeparture">
+            <ns2:Documentation>
+                <ns2:Description>The deadline applies after the scheduled departure time.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="BeforeDeparture">
+            <ns2:Documentation>
+                <ns2:Description>The deadline applies before departure.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Service name="GetGroundOffers">
+        <ns2:Documentation>
+            <ns2:Description/>
+            <ns2:Deprecated>All operations on Ground are deprecated and will be removed in the next version.  Please use the operations on GroundOffers.</ns2:Deprecated>
+        </ns2:Documentation>
+        <ns2:Operation Name="GetGroundOffers" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on Ground are deprecated and will be removed in the next version.  Please use the operations on GroundOffers.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Ground are deprecated and will be removed in the next version.  Please use the operations on GroundOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element mandatory="true"
+                    name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+                    <ns2:Documentation>
+                        <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProductQueriesGround" repeat="0" type="ProductQueries_Ground">
+                    <ns2:Documentation>
+                        <ns2:Description>Ground service search criteria.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Ground are deprecated and will be removed in the next version.  Please use the operations on GroundOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element mandatory="true"
+                    name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="OfferSummary" repeat="99" type="order-0400:Offer_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>One or more Ground Service products available at the given price and terms.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Ground are deprecated and will be removed in the next version.  Please use the operations on GroundOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element mandatory="true"
+                    name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="OfferSummary" repeat="0" type="order-0400:Offer_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>One or mare Ground Service products available at the given price and terms.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/profile/preferences/transportation/v0</Namespace>
+    <Prefix>preft</Prefix>
+    <Name>Transportation</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Preferences_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/preferences/v0" prefix="pref"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/profile/preferences/transportation/v0" context="preft"/>
+    
+    <CoreObject name="BerthPref" notExtendable="false">
+        <Documentation>
+            <Description>Berth preference information.</Description>
+            <Implementer>Extension: RailAccommDetailType</Implementer>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for an associated item.</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="BerthPosition" repeat="0" type="ota2-0200:BerthPosition_Enum">
+                <Documentation>
+                    <Description>Berth postion preference.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="AncillaryServicePref" type="StringTiny">
+        <Documentation>
+            <Description>Ancillary service name.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for an associated item.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="ancillaryServiceCode" type="OTA_Code">
+            <Documentation>
+                <Description>An ancillary code list item from the OpenTravel Rail Ancillary Service Code(RAN) code list.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="remark" type="xsd:string">
+            <Documentation>
+                <Description>Remarks about ancillary services and products.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="LocationPref" notExtendable="false">
+        <Documentation>
+            <Description>Location preference.</Description>
+            <Implementer>Extension: LocationType</Implementer>
+        </Documentation>
+        <Aliases>OriginStationPref DestinationStationPref ConnectionPref</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevelGroup" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description/>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="LocationCode" repeat="0" type="Code"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="OperatorPref" type="ota2:Empty">
+        <Documentation>
+            <Description/>
+            <Implementer>Extension: NetworkCodeType</Implementer>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>[LegacyDefaultValue: null]</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="id" type="xsd:ID">
+            <Documentation>
+                <Description>A unique ID (reference place holder) used to identify this rail operator in other elements within this schema.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="networkCode" type="Code">
+            <Documentation>
+                <Description>Defines a network code of a train operator as defined by International Union of Railways (UIC.)</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="RailPreferences" notExtendable="false">
+        <Documentation>
+            <Description>A collection of rail preferences.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RailPreferencesRef" reference="true"
+                repeat="0" type="RailPreferences">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="railTicketType" type="TicketType">
+                <Documentation>
+                    <Description>Type of rail ticket preferred for this collection.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="PrivacyGroup" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description/>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="OperatorPref" repeat="9" type="OperatorPref">
+                <Documentation>
+                    <Description>Preferred rail operator network code(s).</Description>
+                </Documentation>
+            </Element>
+            <Element name="CompanyNamePref" repeat="9" type="pref:CompanyNamePref">
+                <Documentation>
+                    <Description>Specifies any preferences in terms of the company operating the train service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OriginStationPref" repeat="99" type="OriginStationPref">
+                <Documentation>
+                    <Description>Preferred origination station location(s) for travel.</Description>
+                </Documentation>
+            </Element>
+            <Element name="DestinationStationPref" repeat="99" type="DestinationStationPref">
+                <Documentation>
+                    <Description>Preferred destination station location(s) for travel.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ConnectionPref" repeat="99" type="ConnectionPref">
+                <Documentation>
+                    <Description>Preferred connection location(s).</Description>
+                </Documentation>
+            </Element>
+            <Element name="FareRestrictPref" repeat="99" type="FareRestrictPref">
+                <Documentation>
+                    <Description>Preferred fare restriction(s).</Description>
+                </Documentation>
+            </Element>
+            <Element name="FarePref" repeat="99" type="FarePref">
+                <Documentation>
+                    <Description>Preferred fare preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TrainPref" repeat="9" type="TrainPref">
+                <Documentation>
+                    <Description>Train characteristic preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AmenityPref" repeat="9" type="AmenityPref">
+                <Documentation>
+                    <Description>Amenity preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EquipmentPref" repeat="9" type="EquipmentPref">
+                <Documentation>
+                    <Description>Equipment preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AncillaryServicePref" repeat="9" type="AncillaryServicePref">
+                <Documentation>
+                    <Description>Specifies preferences of any service or product offered in conjunction with a basic rail accommodation, such as vehicle transport, pet transport and restaurant car service. Refer to OpenTravel Code List Rail Ancillary Service (RAN).</Description>
+                </Documentation>
+            </Element>
+            <Element name="SSR_Pref" repeat="99" type="SSR_Pref">
+                <Documentation>
+                    <Description>Special Service Request preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OSI_Pref" repeat="99" type="OSI_Pref">
+                <Documentation>
+                    <Description>Other Service Information of the rail operators.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SeatingPref" repeat="0" type="SeatingPref">
+                <Documentation>
+                    <Description>Preferred seating information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BerthPref" repeat="0" type="BerthPref">
+                <Documentation>
+                    <Description>Berth preference information.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="codePref" notExtendable="false">
+        <Aliases>AmenityPref TransportModesPref EquipmentPref PassengerQualifyingInfo</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="CodeGroup" repeat="0" type="Code">
+                <Documentation>
+                    <Description>Used to specify a code and the context of the code.</Description>
+                    <Implementer>AttributeGroup: CodeGroupPref</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TrainPrefGroup" type="ota2:Empty">
+        <Documentation>
+            <Description>Indicates preferences for certain types of trains, such as connections or stopovers, when used for a specific travel situation.</Description>
+        </Documentation>
+        <Equivalent context="preft">TrainPrefGroup</Equivalent>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum"/>
+        <Attribute name="trainType" type="OTA_Code">
+            <Documentation>
+                <Description>Refer to OpenTravel Code List Train Type Code (TTC).</Description>
+            </Documentation>
+            <Equivalent context="preft">TrainType</Equivalent>
+        </Attribute>
+        <Attribute name="MaxConnections" type="xsd:string">
+            <Documentation>
+                <Description>Indicates that if connection is chosen, then this attribute defines the maximum number of connections preferred.</Description>
+            </Documentation>
+            <Equivalent context="preft">MaxConnections</Equivalent>
+        </Attribute>
+        <Attribute name="routingType" type="ota2-0200:Routing_Enum">
+            <Documentation>
+                <Description>Specifies the travel routing preference.</Description>
+                <Implementer>LocalAnonymousType: TrainPrefGroup_RoutingType</Implementer>
+            </Documentation>
+            <Equivalent context="preft">RoutingType</Equivalent>
+        </Attribute>
+        <Indicator name="directAndNonStopOnlyInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, direct and non-stop flights are requested.</Description>
+            </Documentation>
+            <Equivalent context="preft">DirectAndNonStopOnlyInd</Equivalent>
+        </Indicator>
+        <Indicator name="nonStopsOnlyInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, only non-stop flights are requested.</Description>
+            </Documentation>
+            <Equivalent context="preft">NonStopsOnlyInd</Equivalent>
+        </Indicator>
+        <Indicator name="sameOperatorOnlyInd" publishAsElement="false">
+            <Documentation>
+                <Description>Same carrier/operator only.</Description>
+            </Documentation>
+            <Equivalent context="preft">SameOperatorOnlyInd</Equivalent>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <CoreObject name="AirCabinPref" notExtendable="false">
+        <Documentation>
+            <Description>Indicates preferences for choice of airline cabin.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="cabinSubType" type="StringShort">
+                <Documentation>
+                    <Description>Defines a specific cabin sub type within the cabin type (i.e., first, business, economy.)  For example, Premium.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Cabin" repeat="0" type="CabinAir">
+                <Documentation>
+                    <Description>Indicates preferred airline cabin.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="AirEquipmentPref" notExtendable="false">
+        <Documentation>
+            <Description>Indicates preferences for type of airplane.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty">
+            <Documentation>
+                <Description>Name of the preferred type of aircraft.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="Equipment" repeat="0" type="AirEquipment">
+                <Documentation>
+                    <Description>Specifies the aircraft equipment type.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="wideBodyInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates if an airplane with multiple aisles is preferred.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="AirportPref" type="StringTiny">
+        <Documentation>
+            <Description>Departure airport preferences, using IATA airport codes.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for an associated item.</Description>
+                <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="locationCode" type="StringTiny">
+            <Documentation>
+                <Description>A code used to identify a location.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="codeContext" type="StringTiny">
+            <Documentation>
+                <Description>Identifies the context of the identifying code (e.g., IATA, ARC, or internal code).</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="AirPreferences" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a collection of preferences for airline travel.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirPreferencesRef" reference="true"
+                repeat="0" type="AirPreferences">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="airTicketType" type="TicketType">
+                <Documentation>
+                    <Description>Type of airline ticket preferred for this collection.</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="Privacy" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of data between parties.</Description>
+                </Documentation>
+            </Element>
+            <Element name="VendorPref" repeat="100" type="pref:VendorPref">
+                <Documentation>
+                    <Description>Identifies the preferred airline carrier(s) by name.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirportOriginPref" repeat="100000" type="AirportPref">
+                <Documentation>
+                    <Description>Identifies the preferred origination airport for travel (using IATA airport codes).</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirportDestinationPref" repeat="1" type="AirportPref">
+                <Documentation>
+                    <Description>Identifies the preferred destination airport for travel (using IATA airport codes).</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirportRoutePref" repeat="100000" type="AirportPref">
+                <Documentation>
+                    <Description>Indicates the preferred connection airport(s) (using IATA airport codes)..</Description>
+                </Documentation>
+            </Element>
+            <Element name="FareRestrictPref" repeat="100000" type="FareRestrictPref">
+                <Documentation>
+                    <Description>Indicates preferred fare restrictions to be used in search.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FarePref" repeat="99" type="FarePref">
+                <Documentation>
+                    <Description>Indicates preferred fare.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FlightTypePref" repeat="100000" type="FlightTypePref">
+                <Documentation>
+                    <Description>Indicates preferred flight characteristics to be used in a search (e.g., connections, stopovers).</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirEquipmentPref" repeat="100000" type="AirEquipmentPref">
+                <Documentation>
+                    <Description>Indicates preferred equipment type(s) to be used in a search.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirCabinPref" repeat="100000" type="AirCabinPref">
+                <Documentation>
+                    <Description>Indicates preferred cabin(s) to be used in a search.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AirSeatPref" repeat="100000" type="AirSeatPref">
+                <Documentation>
+                    <Description>Indicates preferred seat characteristics. Refer to OpenTravel Code List Seat Preference (STP) for codes.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OtherServiceInfoPref" repeat="99" type="OSI_Pref">
+                <Documentation>
+                    <Description>Other Service Information of the airline.</Description>
+                </Documentation>
+            </Element>
+            <Element name="KeywordPref" repeat="99" type="KeywordPref">
+                <Documentation>
+                    <Description>This element stores data about an airline marketing keyword.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="AirSeatPref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="flightDistanceQualifier" type="ota2-0200:FlightDistanceQualifier_Enum">
+                <Documentation>
+                    <Description>Used to distingish a flight as long haul or short haul.</Description>
+                    <Implementer>LocalAnonymousType: AirlinePrefType_FlightDistanceQualifier</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="passengerTypeCode" type="PassengerCode">
+                <Documentation>
+                    <Description>Code used to indicate the type of traveler (e.g., ADT, CHD, INF, GRP).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="SeatPref" repeat="0" type="SeatingPref">
+                <Documentation>
+                    <Description>Identifies a seating preference.</Description>
+                    <Implementer>AttributeGroup: SeatPrefGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="CompanyNamePref" repeat="100" type="pref:CompanyNamePref">
+                <Documentation>
+                    <Description>Reference to one or more airlines in VendorPref.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="internationalIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates an international flight.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="BookingClassPref" notExtendable="false">
+        <Documentation>
+            <Description>Booking class code and preference level for specifying booking classes preferred/not preferred in a request.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="StringTiny">
+            <Documentation>
+                <Description>Booking class preference.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute mandatory="true" name="resBookDesigCode" type="StringUpperCaseAlpha">
+                <Documentation>
+                    <Description>Booking class code</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for an associated item.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="ReservationBookDesignator" repeat="0" type="ota2-0200:ReservationBookDesignator_Enum">
+                <Documentation>
+                    <Description>To specify the types of RBD's (Res Book Desig Codes) that should be returned as opposed to a specific RBD.</Description>
+                    <Implementer>LocalAnonymousType: BookingClassPref_ResBookDesigCodeType</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="FlightTypePref" notExtendable="false">
+        <Documentation>
+            <Description>Indicates preferences for certain types of flights, such as connections or stopovers, when used for a specific travel situation.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for an associated item.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="maxConnections" type="NonNegativeInteger">
+                <Documentation>
+                    <Description>Indicates that if connection is chosen, then this attribute defines the maximum number of connections preferred.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="nonScheduledFltInfo" type="ota2-0200:NonScheduled_Enum">
+                <Documentation>
+                    <Description>To specify which types of non-scheduled air service should be included.</Description>
+                    <Implementer>LocalAnonymousType: FlightTypePrefGroup_NonScheduledFltInfo</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="FlightType" repeat="0" type="FlightType">
+                <Documentation>
+                    <Description>Indicates type of stops preferred (Nonstop, Direct, Connection).</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoutingType" repeat="0" type="ota2-0200:Routing_Enum">
+                <Documentation>
+                    <Description>Specifies the travel routing preference.</Description>
+                    <Implementer>LocalAnonymousType: FlightTypePrefGroup_RoutingType</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="backhaulIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, include connections where one of the enroute stops is the same as the initial board point or the final off point of the flight.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="groundTransportIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, include flights that include at least one leg that is ground transportation.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="directAndNonStopOnlyInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, direct and non-stop flights are requested.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="nonStopsOnlyInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, only non-stop flights are requested.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="onlineConnectionsOnlyInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, only online connection flights are requested (i.e., same marketing airline).</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="excludeTrainInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, exclude connections that include travel by train for one of the legs.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="KeywordPref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="vendorCode" type="StringTiny">
+                <Documentation>
+                    <Description>Indicates to which airline the element is associated.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="description" type="StringShort">
+                <Documentation>
+                    <Description>Text of the Keyword element.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="keyword" type="StringTiny">
+                <Documentation>
+                    <Description>The keyword is defined by the airline.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="statusCode" type="OTA_Code">
+                <Documentation>
+                    <Description>Confirmation status from the airline. Refer to OpenTravel code list Status (STS).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="numberInParty" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Number of passengers that will benefit from the request.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="VendorPrefRef" reference="true" repeat="0" type="pref:VendorPref">
+                <Documentation>
+                    <Description>Indicates a list of perfered vendor names.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="BookingSeatPref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="seatsNeeded" type="NonNegativeInteger">
+                <Documentation>
+                    <Description>The number of seats needed for the designated booking class.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="BookingClassPref" repeat="0" type="BookingClassPref">
+                <Documentation>
+                    <Description>Booking class code and preference level for specifying booking classes preferred/not preferred in a request.</Description>
+                    <Implementer>AttributeGroup: BookingClassPrefOptionalGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="TODO_TourInfo" notExtendable="false">
+        <Documentation>
+            <Description>Provides the tour code.  Should this go into the tour code facet of TourCodePref or should it be moved to profile?</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="tourTypeCode" type="StringTiny">
+                <Documentation>
+                    <Description>Type of tour (e.g., IT=inclusive Tour, BT= Bulk Tour, NR=Net Remit).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="yearNum" type="Digit">
+                <Documentation>
+                    <Description>Last digit of the year of the tour code creation.</Description>
+                    <Implementer>LocalAnonymousType: AirlinePrefType_YearNum</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="promotionCode" type="StringTiny">
+                <Documentation>
+                    <Description>Promotion code is the identifier used by the host to link directly with a specific named advertising campaign. By including the required code, the client is able to gain access to special offers which may have been created for a specifically targeted group via a CRM system or for a wider advertising campaign using Television or press adverts.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="partyID" type="StringTiny">
+                <Documentation>
+                    <Description>Identifier assigned to a tour group by the airline.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="PromotionVendorCode" repeat="20" type="StringTiny">
+                <Documentation>
+                    <Description>List of the vendor codes associated with a promotion.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="TODO_TourPref" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute name="passengerTypeCode" type="PassengerCode">
+                <Documentation>
+                    <Description>Defined type Passenger type Code used to indicate the type of traveler (e.g., ADT, CHD, INF, GRP).</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="CompanyNamePref"
+                repeat="100" type="pref:CompanyNamePref">
+                <Documentation>
+                    <Description>Reference to one or more airlines in AirlinePrefType/VendorPref.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Custom context="" label="Tour" notExtendable="false">
+            <Element name="TODO_TourInfo" repeat="0" type="TODO_TourInfo">
+                <Documentation>
+                    <Description>Provides the tour code.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Staff" notExtendable="false">
+            <Element name="Employee" repeat="0" type="Employee">
+                <Documentation>
+                    <Description>Provides a tour code for airline staff.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <CoreObject name="FarePref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="code" type="StringTiny">
+                <Documentation>
+                    <Description>Code indicating the type of fare preference (e.g., FM=commission, FD=fare discount).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="description" type="StringShort">
+                <Documentation>
+                    <Description>Free text describing the fare preference.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="rateCategoryCode" type="OTA_Code">
+                <Documentation>
+                    <Description>Provides a rate category for the fare preference. Refer to OpenTravel code list Rate Category (RTC).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="fareBasisCode" type="StringTiny">
+                <Documentation>
+                    <Description>A fare basis code.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="VendorPref" repeat="100" type="pref:VendorPref">
+                <Documentation>
+                    <Description>Reference to one or more airlines in VendorPref.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="FareRestrictPref" type="ota2:Empty">
+        <Documentation>
+            <Description>Identifies the type of fare restriction, such as None, Advance Purchase and Change Penalties. Refer to OpenTravel Code List Fare Restriction (FAR).</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for an associated item.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}PreferLevelType</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="dateTimeSpan" type="TimeSpan">
+            <Documentation>
+                <Description>A date that is associated to the fare restriction.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}DateOrDateTimeType</Implementer>
+            </Documentation>
+        </Attribute>
+        <Indicator name="refundableInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, refundable fares are preferred.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="SeatingPref" type="StringTiny">
+        <Documentation>
+            <Description>Identifies a seating preference.</Description>
+        </Documentation>
+        <Example context="preft">Aisle</Example>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for seat information.</Description>
+                <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="seatDirection" type="xsd:string">
+            <Documentation>
+                <Description>Direction seat faces during travel, when conveyance allows.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="SeatLocation" type="xsd:string">
+            <Documentation>
+                <Description>Location of seat in cabin of conveyance. Suggested values include: Forward, Middle, Aft, ExitRow, Bulkhead, Right or Left Side, etc.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="SeatPosition" type="xsd:string">
+            <Documentation>
+                <Description>Preferred position of seat in a row, such as Aisle, Middle, Center, Window, etc.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="SeatRow" type="xsd:string">
+            <Documentation>
+                <Description>Preferred row for seating, indicates specific row number and/or seat identifier.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="deckLevel" type="xsd:string">
+            <Documentation>
+                <Description>The level of the deck, e.g. "Upper."</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="seatPreference" type="Codes_OTA">
+            <Documentation>
+                <Description>TODO_Refer to OpenTravel Code List Seat Preference (STP). (list)</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfOTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="seatNumber" type="xsd:string">
+            <Documentation>
+                <Description>Used to provide the seat number.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="SSR_Pref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="sSR_Code" type="Code_SSR">
+                <Documentation>
+                    <Description>Code of the special service request to be used for this air travel situation. Refers to standard industry code list.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="vendorCode" type="StringTiny">
+                <Documentation>
+                    <Description>Indicates to which airline the element is associated.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="numberInParty" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Number of passengers that will benefit from the request.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="defaultStatusCode" type="OTA_Code">
+                <Documentation>
+                    <Description>The default status from the airline. Refer to the OpenTravel Code List named Status (STS).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="remark" type="StringShort">
+                <Documentation>
+                    <Description>Text that description of the service request.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="lookupKey" type="StringShort">
+                <Documentation>
+                    <Description>Database key to retrieve the other part of the card number.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="aDA_Requirement" type="OTA_Code">
+                <Documentation>
+                    <Description>Passenger ADA requirements. Refer to OpenTravel Disability Feature Code (PHY) code list.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="CompanyNamePrefRef" reference="true"
+                repeat="10" type="pref:CompanyNamePref">
+                <Documentation>
+                    <Description>Reference to one or more airlines in VendorPref.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="TrainPref" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="TransportModesPref" repeat="0" type="TransportModesPref">
+                <Documentation>
+                    <Description>Additional modes of transportation prefences, e.g. bus.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TrainPrefGroup" repeat="0" type="TrainPrefGroup">
+                <Documentation>
+                    <Description>Indicates preferences for certain types of transfer, such as connections or stopovers, when used for a specific travel situation.</Description>
+                    <Implementer>AttributeGroup: TrainPrefGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="AirEquipment" type="ota2:Empty">
+        <Documentation>
+            <Description>Specifies the aircraft equipment type.</Description>
+        </Documentation>
+        <Attribute name="airEquipType" type="AirEquipCode_IATA">
+            <Documentation>
+                <Description>This is the 3 character IATA code.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="AircraftTailNumber" type="xsd:string">
+            <Documentation>
+                <Description>The aircraft number assigned for the flight.</Description>
+            </Documentation>
+        </Attribute>
+        <Indicator name="changeofGaugeInd" publishAsElement="false">
+            <Documentation>
+                <Description>Indicates there is an equipment change</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="OSI_Pref" type="StringTiny">
+        <Documentation>
+            <Description>The name of the preferred OSI.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="code" type="OSI_Code">
+            <Documentation>
+                <Description>Used to specify a code and the context of the code.</Description>
+                <Implementer>AttributeGroup: CodeGroupPref</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+</Library>

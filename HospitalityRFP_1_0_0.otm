@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/services/HospitalityServices/v1</ns2:Namespace>
+    <ns2:Prefix>sh</ns2:Prefix>
+    <ns2:Name>HospitalityRFP</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="eRFP_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/eRFP/v3" prefix="rfp-0300"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/services/HospitalityServices/v0" context="sh"/>
+    
+    <ns2:Service name="ERFP">
+        <ns2:Operation Name="CreateRFP" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element mandatory="true" name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).  The response may include full eRFP object or just and identifer for the E_RFP.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="ReadRFP" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFPIdentifier" repeat="0" type="rfp-0300:E_RFP_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>An ID for the request for proposal (meeting room and/or sleeping room information for a group) to be returned.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>The request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="DeleteRFP" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFPIdentifier" repeat="0" type="rfp-0300:E_RFP_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>The identifier for the RFP to be deleted.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="UpdateRFP" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).  The response may include the full E_RFP object or simply and identifer for the E_RFP.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="rfp-0300:E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

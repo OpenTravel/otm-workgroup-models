@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>2142571336</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/product/v3</Namespace>
+    <Prefix>prod-0300</Prefix>
+    <Name>Product</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Common_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <Import fileHints="Golf_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/golf/v2" prefix="pg-0200"/>
+    <Import fileHints="Order_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v2" prefix="order-0200"/>
+    <Import fileHints="Ground_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/Ground/v1" prefix="pgt-0100"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import fileHints="CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/product/v0" context="product"/>
+    
+    <BusinessObject name="Journey" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="JourneyRef" reference="true" repeat="0" type="Journey">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="duration" type="xsd:duration"/>
+            <Element mandatory="true" name="Segment" repeat="6" type="Segment"/>
+        </Summary>
+        <Detail/>
+        <Query context="product" label="Product" notExtendable="false">
+            <Attribute mandatory="true" name="departureDateTime" type="xsd:time">
+                <Documentation>
+                    <Description>Date and time of the departure.</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="ArrivalPoint" repeat="0" type="ArrivalPoint">
+                <Documentation>
+                    <Description>An identifier for the departure point.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="DeparturePoint" repeat="0" type="DeparturePoint">
+                <Documentation>
+                    <Description>An identifier for the arrival point.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TransportNumber" repeat="0" type="TransportNumber"/>
+        </Query>
+    </BusinessObject>
+    
+    <CoreObject name="Meal" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="mealCode" type="Meal_Enum">
+                <Documentation>
+                    <Description>Meal(s) served</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="ClassOfService" repeat="0" type="ClassOfService">
+                <Documentation>
+                    <Description>Product that includes these meals</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="Product" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProductRef" reference="true" repeat="0" type="Product">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element name="ProductIdentifier" repeat="0" type="Product_ID">
+                <Documentation>
+                    <Description>A associated  product.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Query context="product" label="Availability" notExtendable="false">
+            <Element mandatory="true" name="ProductQueries" repeat="0" type="ProductQueries"/>
+        </Query>
+        <Custom context="product" label="Transportation" notExtendable="false">
+            <Element mandatory="true" name="Journey" repeat="0" type="Journey"/>
+        </Custom>
+        <Custom context="product" label="Hospitality" notExtendable="false">
+            <Element mandatory="true" name="RoomStay" repeat="0" type="RoomStay">
+                <Documentation>
+                    <Description>A hospitality guest room product.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="product" label="Ancillary" notExtendable="false">
+            <Element mandatory="true" name="Ancillary" repeat="0" type="ota2-0300:Ancillary">
+                <Documentation>
+                    <Description>Amentities and services available with a product(either included in the price of the tee time or available for an extra fee), such as power carts. Note, includes pricing.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="product" label="Activity" notExtendable="false">
+            <Element name="Activity" repeat="0" type="Activity">
+                <Documentation>
+                    <Description>An activity product.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="product" label="Ground" notExtendable="false">
+            <Element name="Segment" repeat="0" type="Segment">
+                <Documentation>
+                    <Description>A ground service segment.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="RestStop" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute mandatory="true" name="code" type="ota2-0300:StringTiny"/>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="name" type="ota2-0300:StringShort"/>
+        </Summary>
+        <Detail>
+            <Attribute mandatory="true" name="description" type="ota2-0300:StringLong"/>
+        </Detail>
+    </BusinessObject>
+    
+    <Enumeration_Closed name="Meal_Enum">
+        <Value label="" literal="B">
+            <Documentation>
+                <Description>Breakfast</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="L">
+            <Documentation>
+                <Description>Lunch</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="D">
+            <Documentation>
+                <Description>Dinner</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="Service_Enum">
+        <Value label="" literal="M">
+            <Documentation>
+                <Description>Meal at Seat</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="D">
+            <Documentation>
+                <Description>Dinning Car</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="B">
+            <Documentation>
+                <Description>Bar Car</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="C">
+            <Documentation>
+                <Description>Meal Cart</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <CoreObject name="OtherServiceInfo" notExtendable="false">
+        <Documentation>
+            <Description>Other Service Information (OSI) for relevant airlines</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="code" type="ota2-0300:OSI_Code">
+                <Documentation>
+                    <Description>A proprietary code used between systems to identify an Other Service Information (OSI) item.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="text" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The OSI text. (1-64)</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Operator" repeat="0" type="ota2-0300:CompanyName">
+                <Documentation>
+                    <Description>The operator to which the OSI applies.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="BerthDetail" type="ota2:Empty">
+        <Documentation>
+            <Description>Defines information about a berth sleeper.</Description>
+        </Documentation>
+        <Attribute name="number" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The berth number.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="position" type="ota2-0200:BerthPosition_Enum">
+            <Documentation>
+                <Description>The berth position, such as Lower and Middle.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="RailAccommDetail" notExtendable="false">
+        <Documentation>
+            <Description>Specific traveler requested accommodation information, including class and type, and associated accommodation attributes such as seat,  berth and compartment number, position, direction and adjacent seating preferences.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RailAccommDetailRef" reference="true"
+                repeat="0" type="RailAccommDetail">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="deck" type="ota2-0200:Deck_Enum">
+                <Documentation>
+                    <Description>The deck level of the accommodation, such as Regular One Level and Lower.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="carNumber" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Car information, such as car number.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="AccommodationClassEnum" repeat="0" type="ota2-0200:AccommodationClass_Enum">
+                <Documentation>
+                    <Description>A commonly offered accommodation class, such as first class and second class.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Compartment" repeat="1" type="Compartment">
+                <Documentation>
+                    <Description>Compartment accommodation information, including type and associated compartment attributes such as number and position.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Custom context="product" label="Seat" notExtendable="false">
+            <Element mandatory="true" name="Seat" repeat="1" type="SeatDetail">
+                <Documentation>
+                    <Description>Seat accommodation information, including the seat type and associated seat attributes, such as seat number, position and direction.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="product" label="Berth" notExtendable="false">
+            <Element mandatory="true" name="Berth" repeat="1" type="BerthDetail">
+                <Documentation>
+                    <Description>Berth accommodation information, including berth type and associated berth attributes, such as  berth number and position.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <ValueWithAttrs name="Compartment" type="ota2:Empty">
+        <Attribute name="number" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The compartment number.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="position" type="ota2-0200:CompartmentPosition_Enum">
+            <Documentation>
+                <Description>The compartment position, such as Close to restaurant car.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="SeatDetail" type="ota2:Empty">
+        <Documentation>
+            <Description>Defines information about a seat on a train.</Description>
+        </Documentation>
+        <Attribute name="number" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The seat number.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="position" type="ota2-0200:SeatPosition_Enum">
+            <Documentation>
+                <Description>The seat position, such as Window, Aisle and Table.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="direction" type="ota2-0300:SeatDirection">
+            <Documentation>
+                <Description>The seat direction, such as Facing and Back.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    <ChoiceObject name="Activity" notExtendable="false">
+        <Documentation>
+            <Description>A golf activity.</Description>
+        </Documentation>
+        <Aliases/>
+        <Shared>
+            <Attribute mandatory="true" name="start" type="xsd:dateTime">
+                <Documentation>
+                    <Description>The start date and or time of the activity.</Description>
+                </Documentation>
+            </Attribute>
+        </Shared>
+        <Choice context="product" label="Golf" notExtendable="false">
+            <Element name="GolfActivity" repeat="0" type="pg-0200:GolfActivity">
+                <Documentation>
+                    <Description>A golf activity.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="product" label="B" notExtendable="false"/>
+        <Choice context="product" label="Hotel" notExtendable="false"/>
+    </ChoiceObject>
+    
+    <ValueWithAttrs name="ClassOfService" type="ota2:Empty">
+        <Attribute name="count" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>Number available for sale or that have been sold</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute mandatory="true" name="code" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>Used to identify this product programmatically.  EG "F" for First Class</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute mandatory="true" name="name" type="ota2-0300:StringShort">
+            <Documentation>
+                <Description>Display name for this product.  EG "First Class"</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="LocationPoint" notExtendable="false">
+        <Documentation>
+            <Description>TODO - this object needs to be reviewed and potentially reworked.</Description>
+        </Documentation>
+        <Aliases>ArrivalPoint DeparturePoint</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="code" type="ota2-0300:StringTiny"/>
+            <Indicator name="kioskInd" publishAsElement="false"/>
+            <Indicator name="curbSideBaggageCheckInd" publishAsElement="false"/>
+        </Summary>
+        <Detail>
+            <Attribute mandatory="true" name="openingTime" type="xsd:time"/>
+            <Attribute mandatory="true" name="closingTime" type="xsd:time"/>
+        </Detail>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TransportNumber" type="ota2-0300:StringTiny">
+        <Attribute mandatory="true" name="carrier" type="ota2-0300:StringTiny"/>
+        <Attribute name="operatingCarrier" type="ota2-0300:StringTiny"/>
+    </ValueWithAttrs>
+    <ChoiceObject name="ProductQueries" notExtendable="false">
+        <Aliases/>
+        <Shared>
+            <Element name="PriceModifiers" repeat="0" type="order-0200:PriceModifiers">
+                <Documentation>
+                    <Description>Attributes that influence the price.</Description>
+                </Documentation>
+            </Element>
+        </Shared>
+        <Choice context="product" label="Golf" notExtendable="false">
+            <Element name="TeeTimeAvailability" repeat="0" type="pg-0200:TeeTimeAvailability">
+                <Documentation>
+                    <Description>Golf product query for tee time availability.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="product" label="Transportation" notExtendable="false">
+            <Element name="JourneyQueryProduct" repeat="0" type="Journey_Query_Product">
+                <Documentation>
+                    <Description>Transporation product query.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="product" label="Hospitality" notExtendable="false">
+            <Element name="RoomStayQueryProduct" repeat="0" type="RoomStay_Query_Product">
+                <Documentation>
+                    <Description>Hospitality query for a room stay.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="product" label="Ground" notExtendable="false">
+            <Element name="GroundServiceQuery" repeat="0" type="pgt-0100:GroundServiceQuery">
+                <Documentation>
+                    <Description>Query for a Ground Service.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+    </ChoiceObject>
+    
+    <CoreObject name="DepartureArrival" notExtendable="false">
+        <Documentation>
+            <Description>Describes a pickup, dropoff or intermediate stop point.</Description>
+        </Documentation>
+        <Aliases>Departure Arrival</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="dateTime" type="ota2-0300:DateTime">
+                <Documentation>
+                    <Description>The date and time of departure or arrival according to context.</Description>
+                </Documentation>
+                <Example context="product">2016-11-28T14:14:00</Example>
+            </Attribute>
+            <Element name="LocationPointChoice" repeat="0" type="LocationPointChoice"/>
+            <Indicator name="asDirectedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, this location will be notified by the customer.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Attribute name="openingTime" type="xsd:time"/>
+            <Attribute name="closingTime" type="xsd:time"/>
+            <Element name="TimeSpan" repeat="0" type="ota2-0300:TimeSpan">
+                <Documentation>
+                    <Description>Start and end times where a departure or arrival is within a range.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    <ChoiceObject name="LocationPointChoice" notExtendable="false">
+        <Documentation>
+            <Description>Provides address details for a location. Comare with JourneyPoint</Description>
+        </Documentation>
+        <Aliases/>
+        <Shared>
+            <Attribute name="name" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>A name for the location.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Location" repeat="0" type="ota2-0300:Location">
+                <Documentation>
+                    <Description>The address of the location.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A local (as opposed to global) identfier for the location</Description>
+                </Documentation>
+            </Element>
+        </Shared>
+        <Choice context="product" label="Address" notExtendable="false">
+            <Element name="Notes" repeat="0" type="ota2-0300:Text"/>
+        </Choice>
+        <Choice context="product" label="Airport" notExtendable="false">
+            <Attribute name="terminal" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The terminal at which the customer is to be delivered or collected.</Description>
+                </Documentation>
+                <Example context="product">2</Example>
+            </Attribute>
+            <Attribute name="gate" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The gate at which the flight is scheduled to arrive or depart. Query: would this normallt be only fr arrivals?</Description>
+                </Documentation>
+                <Example context="product">38B</Example>
+            </Attribute>
+            <Attribute name="country" type="ota2-0300:CountryCode_ISO3166">
+                <Documentation>
+                    <Description>The country in which the airport in located.</Description>
+                </Documentation>
+                <Example context="product">US</Example>
+            </Attribute>
+            <Attribute mandatory="true" name="code" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Code identifying a location e.g. IATA Airport Code.</Description>
+                </Documentation>
+                <Example context="product">LAX</Example>
+            </Attribute>
+            <Element name="FlightInfo" repeat="0" type="pgt-0100:FlightInfo">
+                <Documentation>
+                    <Description>The date and time of the flight's departure or arrival and its number.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="kioskInd" publishAsElement="false"/>
+            <Indicator name="curbSideBaggageCheckInd" publishAsElement="false"/>
+        </Choice>
+    </ChoiceObject>
+    
+    <BusinessObject name="Segment" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>The unique identifier element allows the trading partners to  uniquely identify each Booking Rule, for transaction tracability.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SegmentRef" reference="true" repeat="0" type="Segment">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="numberOfStops" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of intermediate stops.</Description>
+                </Documentation>
+                <Example context="product">1</Example>
+            </Attribute>
+            <Attribute name="duration" type="xsd:duration"/>
+            <Attribute name="status" type="ota2-0300:StringTiny"/>
+            <Element mandatory="true" name="Departure" repeat="0" type="Departure">
+                <Documentation>
+                    <Description>The departure location of the segment.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Arrival" repeat="0" type="Arrival">
+                <Documentation>
+                    <Description>The arrival location of the segment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Transport" repeat="0" type="Transport">
+                <Documentation>
+                    <Description>Transportation details for the segment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Description" repeat="0" type="ota2-0300:TextFree">
+                <Documentation>
+                    <Description>Free text description of the Segment</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    <ChoiceObject name="Transport" notExtendable="false">
+        <Documentation>
+            <Description>Details of a method of transport. Choice facets for Air &amp; Rail to be defined.</Description>
+        </Documentation>
+        <Aliases/>
+        <Shared>
+            <Element name="TransportNumber" repeat="0" type="TransportNumber"/>
+        </Shared>
+        <Choice context="product" label="Transfer" notExtendable="false">
+            <Attribute name="type" type="pgt-0100:GroundService_Enum">
+                <Documentation>
+                    <Description>Identifies the type of service e.g. Private, Shared or Hourly.</Description>
+                </Documentation>
+                <Equivalent context="product"/>
+                <Example context="product">Private</Example>
+            </Attribute>
+            <Element name="ClassOfService" repeat="0" type="ClassOfService">
+                <Documentation>
+                    <Description>e.g First? Query: is this an attribute of VehicleType?</Description>
+                </Documentation>
+            </Element>
+            <Element name="PassengerPrefs" repeat="0" type="pgt-0100:PassengerPrefs">
+                <Documentation>
+                    <Description>Query: is this required here, or only in the GSQuery? Passenger preferences including service type, physically challenged vehicle and other vehicle preferences.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Operator" repeat="0" type="pgt-0100:Operator">
+                <Documentation>
+                    <Description>The company operating a ground service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Vehicle" repeat="0" type="pgt-0100:Vehicle">
+                <Documentation>
+                    <Description>Defines a specific vehicle (make, model, seats etc.)</Description>
+                </Documentation>
+            </Element>
+            <Element name="Driver" repeat="0" type="pgt-0100:Driver">
+                <Documentation>
+                    <Description>Driver information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LanguageInfo" repeat="0" type="pgt-0100:LanguageInfo">
+                <Documentation>
+                    <Description>Language details pertaining to the service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Comments" repeat="0" type="ota2-0300:TextFree">
+                <Documentation>
+                    <Description>Other information about the service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ContactPerson" repeat="0" type="ota2-0300:ContactPerson">
+                <Documentation>
+                    <Description>Operator contact details. Query: is the level of detail overkill here?</Description>
+                </Documentation>
+            </Element>
+            <Element name="OperationSchedule" repeat="0" type="ota2-0300:OperationSchedule"/>
+        </Choice>
+    </ChoiceObject>
+    
+    <CoreObject name="BasicPropertyInfo" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a property.</Description>
+        </Documentation>
+        <Aliases>Site</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="code" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Uniquely identifies a single property for a reservation.</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="name" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>Specifies the proper name of the property.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="cityCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Specifies the three character IATA city code.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="chainCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Identifies the chain.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="chainName" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>Specifies the proper name of the chain.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="brandCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Identifies a brand with in a chain (e.g. Courtyard, Hampton Inn).  This code is optional if the hotel is an independent property that can be identified by a propert code alone.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="brandName" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>Identifies the proper name of the brand.</Description>
+                </Documentation>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+    <ValueWithAttrs name="GuestCount" type="xsd:positiveInteger">
+        <Documentation>
+            <Description>Identifies the number of guests for the reservation.</Description>
+        </Documentation>
+        <Attribute name="ageQualifyingCode" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>TBD - Should this use the AgeQualifyingCode Code List? Specifies the age type of the guest.  (e.g. Adult, Child, Infant).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="age" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>Specifies the specific age of the guest.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="MealsIncluded" type="ota2:Empty">
+        <Documentation>
+            <Description>Specifies which meals are included with this rate plan.</Description>
+        </Documentation>
+        <Attribute name="mealPlanCodes" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>Identifies the type of meal plans included with this rate plan.</Description>
+            </Documentation>
+        </Attribute>
+        <Indicator name="breakfastInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that breakfast is included with this rate plan.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="lunchInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that lunch is included with this rate plan.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="dinnerInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates dinner is included with this rate plan.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="RatePlan" notExtendable="false">
+        <Documentation>
+            <Description>Specifies information regarding a rate plan.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RatePlanRef" reference="true" repeat="0" type="RatePlan">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="ratePlanCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Specifies the code that identifies this rate plan.</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Element name="Comment" repeat="20" type="ota2-0300:Comment">
+                <Documentation>
+                    <Description>Specifies information regarding this rate plan.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MealsIncluded" repeat="0" type="MealsIncluded">
+                <Documentation>
+                    <Description>Specifies the meals that are included with this rate plan.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </BusinessObject>
+    
+    <BusinessObject name="RoomRate" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details of a room rate.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomRateRef" reference="true" repeat="0" type="RoomRate">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="effectiveDate" type="xsd:date">
+                <Documentation>
+                    <Description>Specifies the starting date for this room rate.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="expireDate" type="xsd:date">
+                <Documentation>
+                    <Description>Specifies the end date for this room rate.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Rate2" repeat="0" type="ota2-0300:RoomPrice">
+                <Documentation>
+                    <Description>Specifies the rate for the room.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BasicPropertyInfo" repeat="0" type="BasicPropertyInfo">
+                <Documentation>
+                    <Description>Specifies the property for the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="expireDateExclusiveInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Attribute name="promotionCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Identifyies host to link directly with a specific named advertising campaign. By including the code, the client is able to gain access to special offers which MAY have been created for a specifically targeted group via a CRM system or for a wider advertising campaign using Television or press adverts.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="ratePlanCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Specifies the rate plan code for the product.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="roomTypeCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Specifies the system room type code (ex: A1K, A1Q).</Description>
+                </Documentation>
+            </Attribute>
+        </Detail>
+        <Query context="product" label="Range" notExtendable="false">
+            <Element name="StartRate" repeat="0" type="ota2-0300:RoomPrice">
+                <Documentation>
+                    <Description>Starting price for the rate range query.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EndRate" repeat="0" type="ota2-0300:RoomPrice">
+                <Documentation>
+                    <Description>Ending price for the rate range query.</Description>
+                </Documentation>
+            </Element>
+        </Query>
+    </BusinessObject>
+    
+    <BusinessObject name="RoomStay" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomStayRef" reference="true" repeat="0" type="RoomStay">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element name="RoomType" repeat="30" type="RoomType">
+                <Documentation>
+                    <Description>Specifies the details of the room type for this product.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RatePlan" repeat="30" type="RatePlan">
+                <Documentation>
+                    <Description>Specifies information regarding this rate plan.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomRate" repeat="30" type="RoomRate">
+                <Documentation>
+                    <Description>Specifies the room rate for this room stay.</Description>
+                </Documentation>
+            </Element>
+            <Element name="GuestCount" repeat="10" type="GuestCount">
+                <Documentation>
+                    <Description>Specifies the number of guests for this room stay.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BasicPropertyInfo" repeat="0" type="BasicPropertyInfo">
+                <Documentation>
+                    <Description>Identifies the property for the room stay.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Query context="product" label="Product" notExtendable="false">
+            <Attribute name="arrivalDate" type="ota2-0300:DateTime">
+                <Documentation>
+                    <Description>Specifies the arrival date for the query.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="departureDate" type="ota2-0300:DateTime">
+                <Documentation>
+                    <Description>Specifies the departure date for the query.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="BasicPropertyInfo" repeat="0" type="BasicPropertyInfo">
+                <Documentation>
+                    <Description>Specifies property information for the query.</Description>
+                </Documentation>
+            </Element>
+        </Query>
+        <Query context="product" label="Candidate" notExtendable="false">
+            <Element name="ArrivalDepartureDates" repeat="0" type="ota2-0300:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Identifies the start and/or end dates.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BasicPropertyInfo" repeat="0" type="BasicPropertyInfo">
+                <Documentation>
+                    <Description>Identifies a specific hotel or city for which the availability search applies.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="RoomType" repeat="0" type="RoomType">
+                <Documentation>
+                    <Description>Identifies a type of room.</Description>
+                </Documentation>
+            </Element>
+            <Element name="GuestCount" repeat="0" type="GuestCount">
+                <Documentation>
+                    <Description>Identifies the number of guests and the ages of the guests.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomRateQueryRange" repeat="0" type="RoomRate_Query_Range">
+                <Documentation>
+                    <Description>The rate range for the query.</Description>
+                </Documentation>
+            </Element>
+        </Query>
+    </BusinessObject>
+    
+    <BusinessObject name="RoomType" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details of the room type.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomTypeRef" reference="true" repeat="0" type="RoomType">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="roomTypeCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Identifies the specific system room type code for this room type (e.g. A1K, A1Q).</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="bedTypeCode" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Comment" repeat="20" type="ota2-0300:Comment">
+                <Documentation>
+                    <Description>Specifies information regarding the room type.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="nonSmokingInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true indicates that the room type is non-smoking.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+</Library>

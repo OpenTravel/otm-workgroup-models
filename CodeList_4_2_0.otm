@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>1855058611</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/Common/v4_2</ns2:Namespace>
+    <ns2:Prefix>ota2-0402</ns2:Prefix>
+    <ns2:Name>CodeList</ns2:Name>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <ns2:Enumeration_Open name="CoLocation_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Enumeration of locations a facility can be located within.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Airport"/>
+        <ns2:Value label="" literal="Hotel"/>
+        <ns2:Value label="" literal="Train Station"/>
+        <ns2:Value label="" literal="Event Venue">
+            <ns2:Documentation>
+                <ns2:Description>Sports or convention venue</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Shopping Center"/>
+    </ns2:Enumeration_Open>
+    
+</ns2:Library>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>188861816</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/organization/v4_1</ns2:Namespace>
+    <ns2:Prefix>org-0401</ns2:Prefix>
+    <ns2:Name>Organization</ns2:Name>
+    <ns2:Import fileHints="Organization_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v4" prefix="org-0400"/>
+    <ns2:Import fileHints="Common_5_1_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5_1" prefix="ota2-0501"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/organization/v0" context="org"/>
+    
+    <ns2:BusinessObject name="Facility" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes a facility (e.g. Hotel Facility,Conference Facility, Golf Facility).  A facility must have a single address and a single geolocation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="org-0400:Facility"/>
+        <ns2:Aliases/>
+        <ns2:ID/>
+        <ns2:Summary>
+            <ns2:Element name="Notice" repeat="100" type="ota2-0501:Notice">
+                <ns2:Documentation>
+                    <ns2:Description>Notices (alerts, promotions etc.) associated with this facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+</ns2:Library>

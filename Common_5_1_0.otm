@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>2655864156</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/Common/v5_1</ns2:Namespace>
+    <ns2:Prefix>ota2-0501</ns2:Prefix>
+    <ns2:Name>Common</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="CodeList_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="Common"/>
+    
+    <ns2:BusinessObject name="Notice" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Temporary or time constrained messages relating to a resource or information object.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID"/>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier"/>
+            <ns2:Element name="NoticeRef" reference="true" repeat="0" type="Notice"/>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="created" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Date this notice was created.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="Message" repeat="100" type="ota2-0500:TextFree">
+                <ns2:Documentation>
+                    <ns2:Description>Message text with optional language code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EffectiveDates" repeat="0" type="ota2-0500:DateEffectiveExpire">
+                <ns2:Documentation>
+                    <ns2:Description>Date range this notice is in effect.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Type" repeat="0" type="NoticeEnum">
+                <ns2:Documentation>
+                    <ns2:Description>Type classification of this notice.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RelatedURL" repeat="0" type="ota2-0500:URL">
+                <ns2:Documentation>
+                    <ns2:Description>URL for more information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RelatedResource" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>The resource or object this notice applies to.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:Enumeration_Open name="NoticeEnum">
+        <ns2:Value label="" literal="Alert"/>
+        <ns2:Value label="" literal="Notification"/>
+        <ns2:Value label="" literal="Promotion"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:CoreObject name="BasicHotelPropertyInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Identifies a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>Site</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Uniquely identifies a single property for a reservation.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">WASJW</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the proper name of the property.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">JW Marriott Washington DC</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="chainCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the chain.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">MC</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="brandCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies a brand with in a chain (e.g. Courtyard, Hampton Inn).  This code is optional if the hotel is an independent property that can be identified by a propert code alone.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">FS</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="cityCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the three character IATA city code.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">WAS</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="nameShort" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A short name for the hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="chainName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the proper name of the chain.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">Marriott</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="brandName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the proper name of the brand.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="Common">Full Service</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="areaID" referenceRepeat="0" type="ota2-0500:String">
+                <ns2:Documentation>
+                    <ns2:Description>An identifier of an area as defined by a hotel reservation system to allow for seaches in areas such as suburbs or regions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="hotelCode_TTI" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>TTI hotel reference code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="hotelCodeContext" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the HotelReferenceGroup codes.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="RatePlanCode" type="ota2-0500:StringShort">
+        <ns2:Documentation>
+            <ns2:Description>A string value may be used to request a particular code or an ID if the guest qualifies for a specific rate, such as AARP, AAA, a corporate rate, etc., or to specify a negotiated code as a result of a negotiated rate.</ns2:Description>
+            <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+        </ns2:Documentation>
+        <ns2:Equivalent context="Common">RatePlanGroup</ns2:Equivalent>
+        <ns2:Example context="Common">AAAB</ns2:Example>
+        <ns2:Attribute name="ratePlanType" referenceRepeat="0" type="ota2-0400:RatePlanType_Enum">
+            <ns2:Documentation>
+                <ns2:Description>An enumerated type that allows the query to specify a rate category type, and provides major categories for comparison across brands.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="Common">RatePlanType</ns2:Equivalent>
+            <ns2:Example context="Common">11.RPT</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="ratePlanID" referenceRepeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A text field used to indicate a unique ID that is associated with the rate plan and is essential in the reservation request in order to obtain the rate.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="Common">RatePlanID</ns2:Equivalent>
+            <ns2:Example context="Common">12345678</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="ratePlanCategory" referenceRepeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Supplier systems often group multiple rate plans into a single category. This refers to that category that is specific to the supplier (hotel) CRS/ PMS and should not be confused with a distributor (GDS) rate category.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="Common">RatePlanCategory</ns2:Equivalent>
+            <ns2:Example context="Common">POD</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="promotionCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Used to provide a promotion code of the loyalty redemption.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="Common">L9Z</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="promotionVendorCode" referenceRepeat="0" type="ota2-0500:ListOfTinyStrings">
+            <ns2:Documentation>
+                <ns2:Description>List of the vendor codes associated with a promotion.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="Common">WT1</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Indicator name="ratePlanQualifierInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>The Rate Plan Qualifier is used to control the sort order of RatePlans. Those Rate Plans that are not qualified will appear first, those that are qualified will appear last.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="GuaranteesAccepted" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>TODO- (split between type accepted in location and guest provided)GuaranteeAccepted</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>PaymentsAccepted</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="Type" repeat="50" type="ota2-0400:PaymentType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the forms of guarantee that are acceptable.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PaymentCardCode" repeat="30" type="ota2-0400:PaymentCardCode_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the acceptable forms of payment cards.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="noCardHolderInfoReqInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, no credit card holder information is required. If false, it is not required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="nameReqInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, the credit card holder name is required. If false, it is not required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="addressReqInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, credit card holder address is required. If false, it is not required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="phoneReqInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, credit card holder phone number is required. If false, it is not required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="interbankNbrReqInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, the credit card interbank number is required. If false, it is not required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="bookingSourceAllowedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the booking source may be used to guarantee the booking.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="corpDiscountNbrAllowedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the corporate discount number may be used to guarantee the booking.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="ota2-0500:Feature" name="Access"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="AccessibilityFeature" repeat="0" type="ota2-0400:DisabilityFeature_Enum">
+            <ns2:Documentation>
+                <ns2:Description>A hotel accessibility feature.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="ota2-0500:Feature" name="Secure"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="SecurityFeature" repeat="0" type="ota2-0400:SecurityFeature_Enum">
+            <ns2:Documentation>
+                <ns2:Description>A security feature.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:ValueWithAttrs name="GuestCount" type="xsd:positiveInteger">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the number of guests for the reservation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="ageQualifyingCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>TBD - Should this use the AgeQualifyingCode Code List? Specifies the age type of the guest.  (e.g. Adult, Child, Infant).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="age" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the specific age of the guest.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:BusinessObject name="MultimediaGroup" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="id" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A document relative identifier for this collection of multimedia objects.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="MultimediaGroupRef" reference="true"
+                repeat="0" type="MultimediaGroup"/>
+            <ns2:Element name="GroupId" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>Identifier to uniquely identify this collection of multimedia objects.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="xsd:dateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the collection of multimedia information was last updated.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="Common">LastUpdated</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="Multimedia"
+                repeat="1000" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>A multimedia item.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}MultimediaDescriptionType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="Common">MultimediaDescription</ns2:Equivalent>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:ValueWithAttrs name="RelatedMedia" type="xsd:IDREFS">
+        <ns2:Documentation>
+            <ns2:Description>A list of multimedia item references.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="groupGUID" referenceRepeat="0" type="ota2-0500:GUID">
+            <ns2:Documentation>
+                <ns2:Description>Global identifier of multimedia group containing these multimedia items.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="groupId" referenceRepeat="0" type="xsd:IDREF">
+            <ns2:Documentation>
+                <ns2:Description>Document releative identifier of the mulltimedia group containing these media items.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+</ns2:Library>

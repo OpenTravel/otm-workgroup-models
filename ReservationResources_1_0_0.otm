@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>UnderReview</ns2:Status>
+    <ns2:CrcValue>3373159635</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/resources/GlobalResources/v1</ns2:Namespace>
+    <ns2:Prefix>grr-0100</ns2:Prefix>
+    <ns2:Name>ReservationResources</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Reservation_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/reservation/v3" prefix="res-0300"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM//resources/GlobalResources/v0" context="grr"/>
+    <ns2:Resource abstract="false" basePath="/"
+        businessObjectRef="res-0300:Trip" firstClass="true" name="TripResource">
+        <ns2:Documentation>
+            <ns2:Description>REST exposure of the Trip (Reservation Folio)</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:BaseResource"/>
+        <ns2:ParamGroup facetName="res-0300:Trip_ID" idGroup="true" name="ID">
+            <ns2:Parameter fieldName="Identifier" location="Path"/>
+        </ns2:ParamGroup>
+        <ns2:ActionFacet label="TripRequest" referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet basePayload="ota2-0500:BaseResponse"
+            label="TripResponse" referenceRepeat="0" referenceType="Optional"/>
+        <ns2:Action actionId="CreateOrder" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Provider will create an Order with the appropriate status (Pending, Rejected, or Confirmed).</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/createOrder" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="CreatePayment" common="false">
+            <ns2:Documentation>
+                <ns2:Description>By accepting this request the provider agrees to accept this payment to be credited against the offer(s) in the order.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/createPayment" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="CreateTraveler" common="false">
+            <ns2:Documentation>
+                <ns2:Description>By accepting this request the provider agrees to create and maintain the new traveler object, and to provide access by the T_GUID identifier assigned by the provider.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/createTraveler" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="Get" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Response contains orders and other Trip information that the provider associates with the GUID.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="GET" mimeTypes=""
+                paramGroup="ID" pathTemplate="/Trips/{Identifier}"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="CancelPayment" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Cancels one or more existing payments by removing them from the order.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="PUT"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/cancelPayment" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="PutOrders" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Provider adds or updates existing order(s) in Trip’s order collection.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="PUT"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/putOrders" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse mimeTypes="APPLICATION_JSON"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="PutTravelers" common="false">
+            <ns2:Documentation>
+                <ns2:Description>If the traveler object already exists in the provider’s collection associated with the reservation folio, it will be updated. If a traveler object does not exist, it will be added to collection.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="PUT"
+                mimeTypes="APPLICATION_JSON"
+                pathTemplate="/Trips/putTravelers" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse mimeTypes="APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="CancelOrder" common="false">
+            <ns2:Documentation>
+                <ns2:Description>State of the Order becomes Canceled or Cancel Pending.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="PUT"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/cancelOrder" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="Create" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Provider agrees to create and maintain a  Trip container (reservation) accessible by the provider-assigned GUID.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse mimeTypes="APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="DeleteTraveler" common="false">
+            <ns2:ActionRequest httpMethod="DELETE"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Trips/deleteTravelers" payloadType="TripResource_TripRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="TripResource_TripResponse" statusCodes="200"/>
+        </ns2:Action>
+    </ns2:Resource>
+    
+</ns2:Library>

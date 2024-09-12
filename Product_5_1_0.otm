@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>3551153024</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/v5_1</ns2:Namespace>
+    <ns2:Prefix>prod-0501</ns2:Prefix>
+    <ns2:Name>Product</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/v0" context="product"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="ota2-0500:ReferenceList" name="Product"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="Product" repeat="10000" type="prod-0500:Product">
+            <ns2:Documentation>
+                <ns2:Description>A product item.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

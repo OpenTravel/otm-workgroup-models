@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1704934195</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/demo/test/SolutionOTA/v0</Namespace>
+    <Prefix>solo</Prefix>
+    <Name>SolutionOTA</Name>
+    <Import namespace="http://opentravel.org/common/v02" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Context
+        applicationContext="http://opentravel.org/local/90002773/Solution/v0" context="sol"/>
+    
+    <BusinessObject name="Segment" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="ota2:String_Short"/>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="transportNumber" type="ota2:String_Tiny"/>
+            <Attribute name="departureDateTime" type="xsd:dateTime"/>
+            <Attribute name="arrivalDateTime" type="xsd:dateTime"/>
+            <Attribute mandatory="true" name="numberOfStops" type="xsd:positiveInteger"/>
+            <Attribute mandatory="true" name="duration" type="ota2:Time_Duration"/>
+            <Element mandatory="true" name="DeparturePointIdentifier"
+                repeat="0" type="DeparturePoint_ID"/>
+            <Element mandatory="true" name="ArrivalPointIdentifier"
+                repeat="0" type="ArrivalPoint_ID"/>
+            <Element mandatory="true" name="ProductDetail" repeat="26" type="Product_Detail"/>
+        </Summary>
+        <Detail/>
+        <Query context="sol" label="Request" notExtendable="false">
+            <Attribute name="transportNumber" type="ota2:String_Tiny"/>
+            <Attribute name="departureDateTime" type="xsd:dateTime"/>
+            <Element mandatory="true" name="DeparturePointIdentifier"
+                repeat="0" type="DeparturePoint_ID"/>
+            <Element mandatory="true" name="ArrivalPointIdentifier"
+                repeat="0" type="ArrivalPoint_ID"/>
+        </Query>
+    </BusinessObject>
+    
+    <BusinessObject name="LocationPoint" notExtendable="false">
+        <Aliases>ArrivalPoint DeparturePoint</Aliases>
+        <ID>
+            <Attribute mandatory="true" name="code" type="ota2:String_Tiny"/>
+        </ID>
+        <Summary>
+            <Indicator name="kioskInd" publishAsElement="false"/>
+            <Indicator name="curbSideBaggageCheckInd" publishAsElement="false"/>
+        </Summary>
+        <Detail>
+            <Attribute mandatory="true" name="openingTime" type="xsd:time"/>
+            <Attribute mandatory="true" name="closingTime" type="xsd:time"/>
+        </Detail>
+    </BusinessObject>
+    
+    <BusinessObject name="Product" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute mandatory="true" name="code" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Used to identify this product programmatically.  EG "F" for First Class</Description>
+                </Documentation>
+            </Attribute>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="count" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Number available for sale or that have been sold</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute mandatory="true" name="name" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Display name for this product.  EG "First Class"</Description>
+                </Documentation>
+            </Attribute>
+        </Detail>
+    </BusinessObject>
+    
+    <CoreObject name="Solution" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Segment" repeat="5" type="Segment"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

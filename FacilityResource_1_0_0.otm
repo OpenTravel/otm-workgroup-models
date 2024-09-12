@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/resources/GlobalResources/v1</ns2:Namespace>
+    <ns2:Prefix>fac1</ns2:Prefix>
+    <ns2:Name>FacilityResource</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Organization_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v5" prefix="org-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/resources/GlobalResources/v1" context="fac1"/>
+    <ns2:Resource abstract="false" basePath="/"
+        businessObjectRef="org-0500:Facility" firstClass="true" name="FacilityResource">
+        <ns2:Documentation>
+            <ns2:Description>RESTful service to access all types of facilities.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:BaseResource"/>
+        <ns2:ParamGroup facetName="org-0500:Facility_ID" idGroup="true" name="Identifier">
+            <ns2:Parameter fieldName="Identifier" location="Path"/>
+        </ns2:ParamGroup>
+        <ns2:ActionFacet label="FacilityRequest" referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="FacilityResponse" referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="FacilityList" referenceRepeat="1000" referenceType="Optional"/>
+        <ns2:Action actionId="Get" common="false">
+            <ns2:ActionRequest httpMethod="GET" mimeTypes=""
+                paramGroup="Identifier" pathTemplate="/Facilities/{Identifier}"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="FacilityResource_FacilityResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="Post" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Add a facility to the facilities collection.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Facilities" payloadType="FacilityResource_FacilityRequest"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="FacilityResource_FacilityList" statusCodes="200"/>
+        </ns2:Action>
+    </ns2:Resource>
+    
+</ns2:Library>

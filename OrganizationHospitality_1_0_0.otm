@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>4284007175</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/organization/hospitality/v1</Namespace>
+    <Prefix>orghs-0100</Prefix>
+    <Name>OrganizationHospitality</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Organization_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v1" prefix="org-0100"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/organization/hospitality/v0" context="orghs"/>
+    
+    <CoreObject name="HotelFacility" notExtendable="false">
+        <Documentation>
+            <Description>An abbreviated short summary of hotel descriptive information.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="segmentCategoryCode" type="ota2-0200:OTA_Code">
+                <Documentation>
+                    <Description>Identifies the segment (e.g., luxury, upscale, extended stay) of the property. Refer to OpenTravel Codelist Segment Category Code (SEG).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="HotelReference" repeat="0" type="HotelReference">
+                <Documentation>
+                    <Description>Information about the property facility and chain</Description>
+                    <Implementer>AttributeGroup: HotelReferenceGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Features" repeat="1000" type="ota2-0200:Features">
+                <Documentation>
+                    <Description>Identifies features of a property.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelFeature</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="supplierIntegrationLevel" type="ota2-0200:NonNegativeInteger">
+                <Documentation>
+                    <Description>The level of integration of a property to provide automated transaction information. The lower the number, the higher the integration (e.g., a 1 means the supplier has the highest level of integration automation).</Description>
+                    <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="maxGroupRoomQuantity" type="ota2-0200:NonNegativeInteger">
+                <Documentation>
+                    <Description>Provides the maximum number of rooms that can be booked in a property for a group.</Description>
+                    <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="currencyCode" type="ota2-0200:CurrencyCode_ISO4217">
+                <Documentation>
+                    <Description>The code specifying a monetary unit. Use ISO 4217, three alpha code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="Recreation" repeat="100000" type="Recreation">
+                <Documentation>
+                    <Description>Identifies recreation facilities or amenities of interest.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Recreation</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="BusinessService" repeat="100000" type="org-0100:BusinessService">
+                <Documentation>
+                    <Description>Identifies business services of interest.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Service</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Policy" repeat="1" type="HotelPolicy">
+                <Documentation>
+                    <Description>Policy information for this hotel.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Policy</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="MeetingCenter" repeat="100000" type="org-0100:MeetingCenter">
+                <Documentation>
+                    <Description>Identifies property meeting facility information for a property.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelMeetingFacility</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Amenity" repeat="100000" type="ota2-0200:Amenity">
+                <Documentation>
+                    <Description>Property-level amenities (pool, etc) for searching.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelAmenity</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Ancillary" repeat="0" type="ota2-0200:Ancillary">
+                <Documentation>
+                    <Description>Property level ancillaries that have a cost associated with them.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <Simple listTypeInd="true" name="DayOfOperation" type="ota2-0200:DayOfWeek_Enum">
+        <Documentation>
+            <Description>Days of week</Description>
+        </Documentation>
+    </Simple>
+    
+    <ValueWithAttrs name="Recreation" type="ota2-0200:StringShort">
+        <Documentation>
+            <Description>Name of the recreation.</Description>
+        </Documentation>
+        <Attribute name="code" type="ota2-0200:OTA_Code">
+            <Documentation>
+                <Description>Used to identify a specific recreation activity. Refer to OpenTravel Code list Recreation Srvc Type (RST).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="HotelPolicy" type="ota2:Empty">
+        <Attribute name="checkInTime" type="xsd:time">
+            <Documentation>
+                <Description>The checkin time required by this hotel for a room stay.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="checkOutTime" type="xsd:time">
+            <Documentation>
+                <Description>The checkout time required by this hotel for a room stay.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="SecurityFeatures" notExtendable="false">
+        <Documentation>
+            <Description>Name of the feature.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:StringShort"/>
+        <Summary>
+            <Element name="SecurityFeature" repeat="100" type="ota2-0200:SecurityFeature_Enum">
+                <Documentation>
+                    <Description>Identifies a security feature at a propetry. Refer to OpenTravel Code list Security Feature Code (SEC).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="HotelReference" notExtendable="false">
+        <Documentation>
+            <Description>The property reference identifies a specific property by using the Chain Code, the Brand Code, and the Hotel Code. The codes used are agreed upon by trading partners.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="chainCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The code that identifies a hotel chain or management group. The hotel chain code is decided between vendors. This attribute is optional if the hotel is an independent property that can be identified by the HotelCode attribute.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="brandCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A code that identifies the brand or flag of a hotel, often used for independently-owned or franchised properties who are known by a specific brand.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="hotelCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The code that uniquely identifies a single hotel property. The hotel code is decided between vendors.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="hotelName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A text field used to communicate the proper name of the hotel.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to128</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="chainName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of the hotel chain (e.g., Hilton, Marriott, Hyatt, Starwood).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="brandName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of a brand of hotels (e.g., Courtyard, Hampton Inn).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="hotelCodeContext" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the HotelReferenceGroup codes.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="areaID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>An identifier of an area as defined by a hotel reservation system.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}NumericStringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="tTIcode" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="hotelCityCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>TODO- (need to define location code) The IATA city code; for example DCA, ORD.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+</Library>

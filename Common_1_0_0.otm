@@ -1,0 +1,2371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1771513076</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v1</Namespace>
+    <Prefix>ota2-0100</Prefix>
+    <Name>Common</Name>
+    <Includes>CodeList_1_0_0.otm</Includes>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="Common"/>
+    
+    <Enumeration_Closed name="AccessType_CRUD">
+        <Value label="" literal="Create"/>
+        <Value label="" literal="Read"/>
+        <Value label="" literal="Update"/>
+        <Value label="" literal="Delete"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="AccessType_ReadWrite">
+        <Documentation>
+            <Description>Specifies the type of access that the organization has.</Description>
+        </Documentation>
+        <Value label="" literal="Read">
+            <Documentation>
+                <Description>Indicates read only access.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="ReadWrite">
+            <Documentation>
+                <Description>Indicates both read and write access.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="NoAccess">
+            <Documentation>
+                <Description>Indicates no access.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple name="Code_AirEquip_IATA" pattern="([A-Z]{3})?" type="xsd:string">
+        <Documentation>
+            <Description>IATA defined 3 char equipement code</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="Code_Condition" pattern="[A-F0-9]{3}" type="xsd:string">
+        <Documentation>
+            <Description>An error or warning code.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="Code_OSI" pattern="[A-Z]{4}" type="xsd:string">
+        <Documentation>
+            <Description>A proprietary code used between systems to identify an Other Service Information (OSI) item.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="Code_Passenger" pattern="([a-zA-Z]+)?" type="xsd:string">
+        <Documentation>
+            <Description>Passenger type code containing 3 alpha characters as defined by ATPCO.</Description>
+        </Documentation>
+        <Example context="Common">ADT</Example>
+    </Simple>
+    
+    <Simple name="Code_SSR" pattern="[A-Z]{4}" type="xsd:string">
+        <Documentation>
+            <Description>Special Service Request code containing 4 letters as defined by IATA</Description>
+        </Documentation>
+        <Example context="Common">BIKE</Example>
+    </Simple>
+    
+    <Simple name="Country_Code_ISO3166" pattern="[a-zA-Z]{2}" type="xsd:string">
+        <Documentation>
+            <Description>Specifies a 2 character country code as defined in ISO3166.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">ISO3166</Equivalent>
+        <Example context="Common">IR</Example>
+    </Simple>
+    
+    <Simple name="Currency_Code_ISO4217" pattern="[a-zA-Z]{3}" type="xsd:string">
+        <Documentation>
+            <Description>An ISO 4217 (3) alpha character code that specifies a monetary unit.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">OntologyCurrencyType_CurrencyCode</Equivalent>
+    </Simple>
+    
+    <Simple maxInclusive="9" minInclusive="0" name="Digit" type="xsd:integer">
+        <Documentation>
+            <Description>Single digit between 0 - 9</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="EncryptionTokenType_Mask" pattern="[0-9a-zA-Z]{1,32}" type="xsd:string">
+        <Documentation>
+            <Description/>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Closed name="EncryptionTokenType_AuthenticationMethod">
+        <Value label="" literal="SecurityCode">
+            <Documentation>
+                <Description>This confirms that the security code was used as the type of authentication.  The security code includes items such as CVV, CVV2, CVC, etc.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MagneticStripe">
+            <Documentation>
+                <Description>This confirms that the magnetic stripe was used as the type of authentication.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple name="EncryptionTokenType_Token" pattern="[0-9a-zA-Z]{1,32}" type="xsd:string">
+        <Documentation>
+            <Description/>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Closed name="FlightType">
+        <Documentation>
+            <Description>Specifies a particular type of flight (e.g. direct, stopover).</Description>
+        </Documentation>
+        <Value label="" literal="Nonstop">
+            <Documentation>
+                <Description>Indicates the flight does not make any scheduled stops between 2 points.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Direct">
+            <Documentation>
+                <Description>Indicates the flight makes a scheduled stop(s) between 2 points.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Connection">
+            <Documentation>
+                <Description>Indicates the flight will require a change of aircraft at a connecting point(s).</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="SingleConnection">
+            <Documentation>
+                <Description>A trip with only one connection.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="DoubleConnection">
+            <Documentation>
+                <Description>A trip with only two connections.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="OneStopOnly">
+            <Documentation>
+                <Description>Indicates that the flight makes only one stop.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple name="GUID" type="ota2:String_Short">
+        <Documentation>
+            <Description>A globally unique ID for an object. Objects will typically use the full identifier which includes system context information. This form should only be used when the system that recognizes the GUID is easily determined.</Description>
+        </Documentation>
+        <Example context="Common">E5348603fk54390945486gkdfkdioe</Example>
+    </Simple>
+    
+    <Simple listTypeInd="true" name="Languages" type="xsd:language">
+        <Documentation>
+            <Description>List of codes for languages.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple listTypeInd="true" name="ListOfTinyStrings" type="ota2:String_Tiny">
+        <Documentation>
+            <Description>A list of tiny strings.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple fractionDigits="3" name="Money" type="xsd:decimal">
+        <Documentation>
+            <Description>Specifies an amount, max 3 decimals.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}decimal</Implementer>
+        </Documentation>
+        <Equivalent context="Common">Money</Equivalent>
+    </Simple>
+    
+    <Enumeration_Closed name="NameType">
+        <Documentation>
+            <Description>OTA Code list: Name Type	NAM	
+	1	Former
+	2	Nickname
+	3	Alternate
+	4	Maiden</Description>
+        </Documentation>
+        <Value label="" literal="Alternate"/>
+        <Value label="" literal="Former"/>
+        <Value label="" literal="Maiden"/>
+        <Value label="" literal="Nickname"/>
+    </Enumeration_Closed>
+    
+    <Simple fractionDigits="0" minInclusive="0"
+        name="NonNegativeInteger" type="xsd:integer"/>
+    
+    <Enumeration_Closed name="OptInStatus_Enum">
+        <Value label="" literal="OptedIn">
+            <Documentation>
+                <Description>Opted in.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="OptedOut">
+            <Documentation>
+                <Description>Opted out.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Unknown">
+            <Documentation>
+                <Description>Opt in status is unknown.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple maxInclusive="100.00" minInclusive="0.00" name="Percent" type="xsd:decimal">
+        <Documentation>
+            <Description>A decimal number that indicated percentage.</Description>
+        </Documentation>
+        <Example context="Common"/>
+    </Simple>
+    
+    <Simple name="RuralRouteNumber" pattern="[0-9]{1,5}" type="xsd:string">
+        <Documentation>
+            <Description/>
+            <Implementer>Example value: Imported5 = 2564</Implementer>
+            <Implementer>Example value: Imported4 = 2564</Implementer>
+            <Implementer>Example value: Imported2 = 2564</Implementer>
+            <Implementer>Example value: Imported67 = 2564</Implementer>
+            <Implementer>Example value: Imported123 = 2564</Implementer>
+            <Implementer>Example value: Imported34 = 2564</Implementer>
+            <Implementer>Example value: ca1 = 25645</Implementer>
+        </Documentation>
+        <Example context="Common">2564</Example>
+    </Simple>
+    
+    <Enumeration_Closed name="SeatDirection">
+        <Documentation>
+            <Description>Identifies the orientation of a seat relative to the direction of  travel.</Description>
+        </Documentation>
+        <Value label="" literal="Airline"/>
+        <Value label="" literal="Back"/>
+        <Value label="" literal="Facing"/>
+        <Value label="" literal="Lateral"/>
+        <Value label="" literal="Unknown"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="StaffType_AirlineTourCode">
+        <Value label="" literal="Current">
+            <Documentation>
+                <Description>Staff currently employed (i.e., not retired)</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Duty">
+            <Documentation>
+                <Description>Staff travelling on duty (e.g., deadheading crew).</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="CabinCrew">
+            <Documentation>
+                <Description>Cabin crew staff.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Retired">
+            <Documentation>
+                <Description>Retired staff.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="TechCrew">
+            <Documentation>
+                <Description>Staff travelling as technical crew.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="UnaccompaniedFamilyMember">
+            <Documentation>
+                <Description>Family travelling without the airline staff family member.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="OtherAirlinePersonnel">
+            <Documentation>
+                <Description>Personnel employed by another airline.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple maxLength="8" minLength="2" name="StateProv_Code" type="xsd:string">
+        <Documentation>
+            <Description>The standard code or abbreviation for the state, province, or region.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+        </Documentation>
+        <Equivalent context="Common">StateProvCodeType</Equivalent>
+    </Simple>
+    
+    <Simple name="Telephone_Extension" pattern="[0-9]{1,5}" type="xsd:string">
+        <Documentation>
+            <Description>Extension to reach a specific party at the phone number</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">NumericStringLength1to5</Equivalent>
+    </Simple>
+    
+    <Simple name="Telephone_AreaCityCode" pattern="[0-9]{1,8}" type="xsd:string">
+        <Documentation>
+            <Description>Code assigned for telephones in a specific region, city, or area.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">NumericStringLength1to8</Equivalent>
+    </Simple>
+    
+    <Simple name="Telephone_Number" pattern="[0-9]{7,20}" type="xsd:string">
+        <Documentation>
+            <Description>Central office and subscriber number.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Example context="Common">2358878</Example>
+    </Simple>
+    
+    <Simple name="Telephone_CountryAccessCode" pattern="[0-9]{1,3}" type="xsd:string">
+        <Documentation>
+            <Description>Used for Numeric Strings length 1 to 3.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">NumericStringLength1to3</Equivalent>
+    </Simple>
+    
+    <Enumeration_Closed name="Text_FormatType">
+        <Value label="" literal="PlainText">
+            <Documentation>
+                <Description>Textual data that is in ASCII format.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="HTML">
+            <Documentation>
+                <Description>HTML formatted text.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="TicketType">
+        <Documentation>
+            <Description>Specifies the type of ticket document (e.g. electronic, paper).</Description>
+        </Documentation>
+        <Value label="" literal="eTicket">
+            <Documentation>
+                <Description>An electronic ticket</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Paper">
+            <Documentation>
+                <Description>A paper ticket</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MCO">
+            <Documentation>
+                <Description>A miscellaneous charge order</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="EMD-A"/>
+        <Value label="" literal="EMD-S"/>
+    </Enumeration_Closed>
+    
+    <Simple listTypeInd="true" name="TinyStrings" type="ota2:String_Tiny">
+        <Documentation>
+            <Description>TODO - How to use it</Description>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Closed name="YesNoInherit_Enum">
+        <Value label="" literal="Yes"/>
+        <Value label="" literal="No"/>
+        <Value label="" literal="Inherit">
+            <Documentation>
+                <Description>Value to be inherited from closest set ancestor.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <ValueWithAttrs name="Address_BldgRoom" type="ota2:String">
+        <Example context="Common">Bldg H</Example>
+        <Indicator name="buldingInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, the information is a building name.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Address_StreetNumber" type="ota2:String_Short">
+        <Documentation>
+            <Description/>
+            <Implementer>Extension: StreetNmbrType</Implementer>
+        </Documentation>
+        <Example context="Common">563</Example>
+        <Attribute name="streetNmbrSuffix" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>Usually a letter right after the street number (A in 66-A, B in 123-B etc).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="Common">StreetNmbrSuffix</Equivalent>
+            <Example context="Common">B</Example>
+        </Attribute>
+        <Attribute name="streetDirection" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>Street direction of an address (e.g., N, E, S, NW, SW).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="Common">StreetDirection</Equivalent>
+            <Example context="Common">NNW</Example>
+        </Attribute>
+        <Attribute name="ruralRouteNmbr" type="RuralRouteNumber">
+            <Documentation>
+                <Description>Numerical equivalent of a rural township as defined within a given area (e.g., 12, 99).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to5</Implementer>
+            </Documentation>
+            <Equivalent context="Common">RuralRouteNmbr</Equivalent>
+            <Example context="Common">88</Example>
+        </Attribute>
+        <Attribute name="pO_Box" type="ota2:String_Short">
+            <Documentation>
+                <Description>Defines a Post Office Box number.</Description>
+            </Documentation>
+            <Example context="Common">98567499</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="AmountPercent" type="ota2:Empty">
+        <Attribute name="amount" type="xsd:decimal">
+            <Documentation>
+                <Description>Specifies the amount.</Description>
+            </Documentation>
+            <Example context="Common">5000</Example>
+        </Attribute>
+        <Attribute name="percent" type="Percent">
+            <Documentation>
+                <Description>Specifies the percentage.</Description>
+            </Documentation>
+            <Example context="Common">5</Example>
+        </Attribute>
+        <Attribute name="currencyCode" type="Currency_Code_ISO4217">
+            <Documentation>
+                <Description>Specifies the currency code for the amount.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="decimalPlaces" type="ota2:String">
+            <Documentation>
+                <Description>Implementer: The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPla</Description>
+            </Documentation>
+            <Example context="Common">2</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <Enumeration_Open name="Cabin_Air">
+        <Documentation>
+            <Description>Specifies the cabin type (e.g. first, business, economy).</Description>
+        </Documentation>
+        <Value label="" literal="All"/>
+        <Value label="" literal="Economy">
+            <Documentation>
+                <Description>Economy class compartment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="PremiumEconomy">
+            <Documentation>
+                <Description>Premium Economy class compartment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Business">
+            <Documentation>
+                <Description>Business class compartment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="PremiumBusiness">
+            <Documentation>
+                <Description>Premium Business class compartment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="First">
+            <Documentation>
+                <Description>First class compartment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Suite">
+            <Documentation>
+                <Description>Suites or Sleep compartments.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Cockpit">
+            <Documentation>
+                <Description>Cockpit area.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Open>
+    
+    <CoreObject name="ClubMembership" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a travel club that offers special privileges and related services.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Name" repeat="1" type="CompanyName">
+                <Documentation>
+                    <Description>Name of the travel club.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">TravelClubName</Equivalent>
+            </Element>
+            <Element name="MemberIdentifier" repeat="1" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Identifier assigned to person registered with travel club.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ClubMemberName</Implementer>
+                </Documentation>
+                <Equivalent context="Common">ClubMemberName</Equivalent>
+            </Element>
+            <Element mandatory="true" name="Date_EffectiveExpire"
+                repeat="0" type="Date_EffectiveExpire">
+                <Documentation>
+                    <Description>Used to identify the effective date and/or expiration date.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Privacy" repeat="0" type="Privacy"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="CompanyName" type="ota2:String">
+        <Documentation>
+            <Description>Identifies a company by name.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to128</Implementer>
+        </Documentation>
+        <Equivalent context="Common">CompanyNameType</Equivalent>
+        <Example context="Common">Travel Adventure Partners Incorporated</Example>
+        <Attribute name="division" type="ota2:String_Short">
+            <Documentation>
+                <Description>The division name or ID with which the contact is associated.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Division</Equivalent>
+            <Example context="Common">Travel Division</Example>
+        </Attribute>
+        <Attribute name="department" type="ota2:String_Short">
+            <Documentation>
+                <Description>The department name or ID with which the contact is associated.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Department</Equivalent>
+            <Example context="Common">Adventure department</Example>
+        </Attribute>
+        <Attribute name="shortName" type="ota2:String_Short">
+            <Documentation>
+                <Description>Used to provide the company common name.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">CompanyShortName</Equivalent>
+            <Example context="Common">Adventure Inc</Example>
+        </Attribute>
+        <Attribute name="code" type="Code">
+            <Documentation>
+                <Description>Identifies a company by the company code.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Code</Equivalent>
+            <Example context="Common">AI</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Condition" type="ota2:Empty">
+        <Documentation>
+            <Description>An error or warning</Description>
+        </Documentation>
+        <Attribute mandatory="true" name="code" type="Code_Condition">
+            <Documentation>
+                <Description>Error or Warning code</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Country" type="Country_Code_ISO3166">
+        <Documentation>
+            <Description>ISO 3166 code for a country.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+        </Documentation>
+        <Equivalent context="Common">CountryNameType</Equivalent>
+        <Example context="Common">IR</Example>
+        <Attribute name="name" type="ota2:String_Short">
+            <Documentation>
+                <Description>The name or code of a country (e.g. as used in an address or to specify citizenship of a traveller).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</Implementer>
+            </Documentation>
+            <Example context="Common">Ireland</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Country_Name" type="ota2:String">
+        <Documentation>
+            <Description>The name or code of a country (e.g. as used in an address or to specify citizenship of a traveller).</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</Implementer>
+        </Documentation>
+        <Equivalent context="Common">CountryNameType</Equivalent>
+        <Attribute name="code" type="Country_Code_ISO3166">
+            <Documentation>
+                <Description>ISO 3166 code for a country.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Code</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Currency_Code" type="Currency_Code_ISO4217">
+        <Documentation>
+            <Description>An ISO 4217 (3) alpha character code that specifies a monetary unit.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</Implementer>
+        </Documentation>
+        <Equivalent context="Common">CurrencyCodeGroup</Equivalent>
+        <Example context="Common">USD</Example>
+        <Attribute name="DecimalPlaces" type="xsd:string">
+            <Documentation>
+                <Description>The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces="2" to represent $85).</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">DecimalPlaces</Equivalent>
+            <Example context="Common">2</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Currency_Amount" type="Money">
+        <Documentation>
+            <Description>A monetary amount.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Money</Implementer>
+        </Documentation>
+        <Equivalent context="Common">CurrencyAmountGroup</Equivalent>
+        <Example context="Common">80000</Example>
+        <Attribute name="currencyCode" type="Currency_Code_ISO4217">
+            <Documentation>
+                <Description>An ISO 4217 (3) alpha character code that specifies a monetary unit.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</Implementer>
+            </Documentation>
+            <Equivalent context="Common">CurrencyCode</Equivalent>
+            <Example context="Common">USD</Example>
+        </Attribute>
+        <Attribute name="decimalPlaces" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>Implementer: The ISO 4217 standard "minor unit" is typically used when the amount provided includes the minor unit of currency without a decimal point (e.g., USD 8500 needs DecimalPlaces="2" to represent $85).</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">DecimalPlaces</Equivalent>
+            <Example context="Common">2</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Date_TimeStamp" type="xsd:dateTime">
+        <Documentation>
+            <Description>Time stamp of the creation.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+        </Documentation>
+        <Equivalent context="Common">DateTimeStampGroup</Equivalent>
+        <Attribute name="create" type="xsd:dateTime">
+            <Documentation>
+                <Description>Time stamp of the creation.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+            </Documentation>
+            <Equivalent context="Common">CreateDateTime</Equivalent>
+        </Attribute>
+        <Attribute name="creatorID" type="ota2:String_Short">
+            <Documentation>
+                <Description>ID of creator. The creator could be a software system identifier or an identifier of an employee resposible for the creation.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">CreatorID</Equivalent>
+            <Example context="Common">c123456789</Example>
+        </Attribute>
+        <Attribute name="lastModify" type="xsd:dateTime">
+            <Documentation>
+                <Description>Time stamp of last modification.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+            </Documentation>
+            <Equivalent context="Common">LastModifyDateTime</Equivalent>
+        </Attribute>
+        <Attribute name="lastModifierID" type="ota2:String_Short">
+            <Documentation>
+                <Description>Identifies the last software system or person to modify a record.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">LastModifierID</Equivalent>
+            <Example context="Common">m987654321</Example>
+        </Attribute>
+        <Attribute name="purge" type="xsd:date">
+            <Documentation>
+                <Description>Date an item will be purged from a database (e.g., from a live database to an archive).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="Common">PurgeDate</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Date_EffectiveExpire" type="ota2:Empty">
+        <Documentation>
+            <Description>Used to identify the effective date and/or expiration date.</Description>
+        </Documentation>
+        <Equivalent context="Common">EffectiveExpireOptionalDateGroup</Equivalent>
+        <Attribute name="effective" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the starting date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="Common">EffectiveDate</Equivalent>
+        </Attribute>
+        <Attribute name="expire" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the ending date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="Common">ExpireDate</Equivalent>
+        </Attribute>
+        <Indicator name="expireDateExclusiveInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+            </Documentation>
+            <Equivalent context="Common">ExpireDateExclusiveInd</Equivalent>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Email" type="ota2:String">
+        <Documentation>
+            <Description>Electronic email addresses, in IETF specified format.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+        </Documentation>
+        <Equivalent context="Common">EmailType</Equivalent>
+        <Attribute name="emailType" type="Code_OTA">
+            <Documentation>
+                <Description>Defines the purpose of the e-mail address (e.g. personal, business, listserve). Refer to OpenTravel Code List Email Address Type (EAT).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="Common">EmailType</Equivalent>
+        </Attribute>
+        <Attribute name="remark" type="ota2:String_Text">
+            <Documentation>
+                <Description>A remark associated with the e-mail address.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Remark</Equivalent>
+        </Attribute>
+        <Attribute name="textFormat" type="ota2:String_Short">
+            <Documentation>
+                <Description>Example: text/plain</Description>
+                <Implementer>LocalAnonymousType: EmailType_TextFormat</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TextFormat</Equivalent>
+        </Attribute>
+        <Attribute name="privacy" type="Privacy"/>
+        <Indicator name="validInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, this is a valid email address that has been system verified via a successful email transmission.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+            </Documentation>
+            <Equivalent context="Common">ValidInd</Equivalent>
+        </Indicator>
+        <Indicator name="defaultInd" publishAsElement="false">
+            <Documentation>
+                <Description>If true, this identifies this is the default email address.</Description>
+                <Implementer>AttributeGroup: DefaultIndGroup</Implementer>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Identifier" type="GUID">
+        <Documentation>
+            <Description>Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.
+
+The URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.</Description>
+        </Documentation>
+        <Example context="Common">guid12345</Example>
+        <Attribute name="url" type="xsd:anyURI">
+            <Documentation>
+                <Description>Uri of the creating system. The URI should be an URL and be globally unique. Should only be omitted when the context is clearly implied for the containing document.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="system" type="ota2:String_Short">
+            <Documentation>
+                <Description>Name or identifier for the creating system.</Description>
+            </Documentation>
+            <Example context="Common">sysABC3344</Example>
+        </Attribute>
+        <Attribute name="company" type="ota2:String_Short">
+            <Documentation>
+                <Description>Name of the company that manages the reference system.</Description>
+            </Documentation>
+            <Example context="Common">Acme</Example>
+        </Attribute>
+        <Attribute name="instance" type="GUID">
+            <Documentation>
+                <Description>The identification of a record as it exists at a point in time. An instance is used in update messages where the sender must assure the server that the update sent refers to the most recent modification level of the object being updated.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Instance</Equivalent>
+            <Example context="Common">i0987654321</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PasswordHint" type="ota2:Empty">
+        <Documentation>
+            <Description>Alternate method to password for account access.</Description>
+        </Documentation>
+        <Attribute mandatory="true" name="answer" type="ota2:String_Short"/>
+        <Attribute mandatory="true" name="question" type="ota2:String_Short"/>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Person_Name" notExtendable="false">
+        <Documentation>
+            <Description>This provides name information for a person.</Description>
+        </Documentation>
+        <Aliases>RelatedTraveler_Simple_Person_Name</Aliases>
+        <Simple type="ota2:String">
+            <Documentation>
+                <Description>Full name.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="type" type="NameType">
+                <Documentation>
+                    <Description>Type of name of the individual, such as former, nickname, alternate or alias name. Refer to OpenTravel Code List Name Type (NAM).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">NameType</Equivalent>
+            </Attribute>
+            <Attribute name="language" type="xsd:language">
+                <Documentation>
+                    <Description>The language the name is represented in, e.g. an Eastern name versus a Western name.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Language</Equivalent>
+            </Attribute>
+            <Element name="Prefix" repeat="3" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Salutation of honorific (e.g. Mr., Mrs., Ms., Miss, Dr.)</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">NamePrefix</Equivalent>
+                <Example context="Common">Mr.</Example>
+            </Element>
+            <Element name="Given" repeat="5" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Given name, first name or names.</Description>
+                </Documentation>
+                <Example context="Common">John</Example>
+            </Element>
+            <Element name="Middle" repeat="5" type="ota2:String_Short">
+                <Documentation>
+                    <Description>The middle name of the person name.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SurnamePrefix" repeat="1" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>The surname prefix, e.g "van der", "von", "de".</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">SurnamePrefix</Equivalent>
+            </Element>
+            <Element mandatory="true" name="Surname" repeat="0" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Family name, last name. 
+Note: Simple form of person name should be used for the full name.
+May also be used for full name if the sending system does not have the ability to separate a full name into its parts, e.g. the surname element may be used to pass the full name.</Description>
+                </Documentation>
+                <Example context="Common">Smith</Example>
+            </Element>
+            <Element name="Suffix" repeat="3" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Hold various name suffixes and letters (e.g. Jr., Sr., III, Ret., Esq.)</Description>
+                </Documentation>
+            </Element>
+            <Element name="Title" repeat="3" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Degree or honors (e.g., Ph.D., M.D.)</Description>
+                </Documentation>
+            </Element>
+            <Element name="Person_Document" repeat="1" type="Person_Document">
+                <Documentation>
+                    <Description>Document  information for verification purposes and also used for additional filtering for common names.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Document</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Document</Equivalent>
+            </Element>
+            <Element name="Privacy" repeat="0" type="Privacy"/>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, this is the default or primary name within a collection of names.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Price" type="xsd:decimal">
+        <Documentation>
+            <Description>Specifies price after all applicable taxes of a product such as the rate for a room or fare for a flight.</Description>
+        </Documentation>
+        <Attribute name="amountBeforeTax" type="xsd:decimal">
+            <Documentation>
+                <Description>The price before taxes are applied.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="currencyCode" type="ota2:Code_Currency">
+            <Documentation>
+                <Description>The currency code for the amount.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Privacy" type="ota2:Empty">
+        <Documentation>
+            <Description>Allows for control of the sharing of data between parties.</Description>
+        </Documentation>
+        <Attribute name="shareMarketInd" type="YesNoInherit_Enum">
+            <Documentation>
+                <Description>Permission for sharing data for marketing purposes.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="shareSyncInd" type="YesNoInherit_Enum">
+            <Documentation>
+                <Description>Permission for sharing data for synchronization of information held by other travel service providers.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="optInStatus" type="OptInStatus_Enum">
+            <Documentation>
+                <Description>If present and set to opt out, a customer has explicitly opted out of marketing communication. When set to opt out it overrides the ShareMarketInd.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="optInDate" type="xsd:dateTime">
+            <Documentation>
+                <Description>The date and time of opt in.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="optOutDate" type="xsd:dateTime">
+            <Documentation>
+                <Description>The date and time of opt out.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PropertyBrand" type="ota2:String_Short">
+        <Documentation>
+            <Description>Brand Code</Description>
+        </Documentation>
+        <Example context="Common">MB</Example>
+        <Attribute name="brandName" type="ota2:String_Short">
+            <Example context="Common">My Brand</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PropertyChain" type="ota2:String_Short">
+        <Documentation>
+            <Description>Hotel Chain Code</Description>
+        </Documentation>
+        <Example context="Common">MC</Example>
+        <Attribute name="chainName" type="ota2:String_Short">
+            <Example context="Common">My Chain</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PropertyCode" type="ota2:String_Short">
+        <Example context="Common">MHN</Example>
+        <Attribute name="hotelName" type="ota2:String_Short">
+            <Example context="Common">My Hotel Name</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="ReservationId" type="ota2:String_Short">
+        <Documentation>
+            <Description>Contains the reservation (resId) or cancellation number for the reservation.</Description>
+        </Documentation>
+        <Attribute name="type" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>Specifies the type of reservation ID (e.g. reservation number, cancellation number).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="source" type="ota2:String_Short">
+            <Documentation>
+                <Description>Specifies a unique identifier to indicate the source system which generated the resId.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="sourceContext" type="ota2:String_Short">
+            <Documentation>
+                <Description>Specifies the context of the source.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="StateProv" type="StateProv_Code">
+        <Documentation>
+            <Description>The standard code or abbreviation for the state, province, or region.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvCodeType</Implementer>
+        </Documentation>
+        <Equivalent context="Common">StateProvType</Equivalent>
+        <Example context="Common">TX</Example>
+        <Attribute name="name" type="ota2:String_Short">
+            <Documentation>
+                <Description>State, province, or region name or code needed to identify location.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</Implementer>
+            </Documentation>
+            <Example context="Common">Texas</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="StateProv_Name" type="ota2:String">
+        <Documentation>
+            <Description>State, province, or region name or code needed to identify location.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</Implementer>
+        </Documentation>
+        <Equivalent context="Common">StateProvType</Equivalent>
+        <Attribute name="stateCode" type="StateProv_Code">
+            <Documentation>
+                <Description>The standard code or abbreviation for the state, province, or region.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvCodeType</Implementer>
+            </Documentation>
+            <Equivalent context="Common">StateCode</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Telephone" notExtendable="false">
+        <Documentation>
+            <Description>Information about a telephone number, including the actual number and its usage.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:String_Short"/>
+        <Summary>
+            <Attribute name="countryAccessCode" type="Telephone_CountryAccessCode">
+                <Documentation>
+                    <Description>Code assigned by telecommunications authorities for international country access identifier.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to3</Implementer>
+                </Documentation>
+                <Equivalent context="Common">CountryAccessCode</Equivalent>
+            </Attribute>
+            <Attribute name="areaCityCode" type="Telephone_AreaCityCode">
+                <Documentation>
+                    <Description>Code assigned for telephones in a specific region, city, or area.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AreaCityCode</Equivalent>
+            </Attribute>
+            <Attribute mandatory="true" name="phoneNumber" type="Telephone_Number">
+                <Documentation>
+                    <Description>Telephone number assigned to a single location.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PhoneNumber</Equivalent>
+            </Attribute>
+            <Attribute name="extension" type="Telephone_Extension">
+                <Documentation>
+                    <Description>Extension to reach a specific party at the phone number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}NumericStringLength1to5</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Extension</Equivalent>
+            </Attribute>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>Used elsewhere in the message to reference a specific telephone number (including faxes).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="Common">RPH</Equivalent>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="pIN" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Additional codes used for pager or telephone access rights.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PIN</Equivalent>
+            </Attribute>
+            <Attribute name="remark" type="ota2:String_Text">
+                <Documentation>
+                    <Description>A remark associated with the telephone number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Remark</Equivalent>
+            </Attribute>
+            <Element name="Privacy" repeat="0" type="Privacy"/>
+            <Element name="PhoneLocationType" repeat="0" type="PhoneLocation_Enum">
+                <Documentation>
+                    <Description>Describes the location of the phone, such as Home, Office, Property Reservation Office, etc.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PhoneLocationType</Equivalent>
+            </Element>
+            <Element name="PhoneTechType" repeat="0" type="PhoneTechType_Enum">
+                <Documentation>
+                    <Description>Indicates type of technology associated with this telephone number, such as Voice, Data, Fax, Pager, Mobile, TTY, etc.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PhoneTechType</Equivalent>
+            </Element>
+            <Element name="PhoneUseType" repeat="0" type="PhoneUseType_Enum">
+                <Documentation>
+                    <Description>Describes the type of telephone number, in the context of its general use (e.g. Home, Business, Emergency Contact, Travel Arranger, Day, Evening). Refer to OpenTravel Code List Phone Use Type (PUT).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PhoneUseType</Equivalent>
+            </Element>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates a default value should be used.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+                </Documentation>
+                <Equivalent context="Common">DefaultInd</Equivalent>
+            </Indicator>
+        </Detail>
+        <Roles>
+            <Role value="Home"/>
+            <Role value="Office"/>
+            <Role value="Mobile"/>
+            <Role value="Other"/>
+        </Roles>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Text_Free" type="ota2:String_Text">
+        <Documentation>
+            <Description>Textual information to provide descriptions and/or additional information.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">FreeTextType</Equivalent>
+        <Example context="Common">Some fee text.</Example>
+        <Attribute name="language" type="xsd:language">
+            <Documentation>
+                <Description>Language of the text.</Description>
+                <Implementer>AttributeGroup: LanguageGroup</Implementer>
+            </Documentation>
+            <Example context="Common">en</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Text" type="ota2:String_Text">
+        <Documentation>
+            <Description>Provides text and indicates whether it is formatted or not.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Example context="Common">Formatted text example.</Example>
+        <Attribute name="language" type="xsd:language">
+            <Documentation>
+                <Description>The language in which the text is provided.</Description>
+                <Implementer>AttributeGroup: LanguageGroup</Implementer>
+            </Documentation>
+            <Example context="Common">en</Example>
+        </Attribute>
+        <Attribute name="textFormat" type="Text_FormatType">
+            <Documentation>
+                <Description>Indicates the format of text used in the description e.g. unformatted  or html.</Description>
+                <Implementer>LocalAnonymousType: FormattedTextTextType_TextFormat</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TextFormat</Equivalent>
+            <Example context="Common">Sample Formatted text</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Text_Paragraph" notExtendable="false">
+        <Documentation>
+            <Description>An indication of a new paragraph for a sub-section of a formatted text message.</Description>
+        </Documentation>
+        <Aliases>Text_Comments Description</Aliases>
+        <Simple type="ota2:String_Text">
+            <Documentation>
+                <Description>Simple text content.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="name" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>This will allow you to define the information that is being sent, typically used when multiple occurrences of ParagraphType are being sent.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Name</Equivalent>
+                <Example context="Common">paragraph name</Example>
+            </Attribute>
+            <Attribute name="number" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The sequence number for the paragraph.</Description>
+                    <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="Common">ParagraphNumber</Equivalent>
+            </Attribute>
+            <Attribute name="language" type="xsd:language">
+                <Documentation>
+                    <Description>The language for this paragraph.</Description>
+                    <Implementer>AttributeGroup: LanguageGroup</Implementer>
+                </Documentation>
+                <Example context="Common">en</Example>
+            </Attribute>
+            <Element name="Text" repeat="1000" type="Text">
+                <Documentation>
+                    <Description>Text content.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FormattedTextTextType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Text</Equivalent>
+            </Element>
+            <Element name="Image" repeat="1000" type="xsd:string">
+                <Documentation>
+                    <Description>An image for this paragraph.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Image</Equivalent>
+            </Element>
+            <Element name="URL" repeat="1000" type="xsd:anyURI">
+                <Documentation>
+                    <Description>A URL for this paragraph.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+                </Documentation>
+                <Equivalent context="Common">URL</Equivalent>
+            </Element>
+            <Element name="Paragraph_ListItem" repeat="1000" type="Paragraph_ListItem">
+                <Documentation>
+                    <Description>Formatted text content and an associated item or sequence number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ListItem</Implementer>
+                </Documentation>
+                <Equivalent context="Common">ListItem</Equivalent>
+            </Element>
+            <Element name="DateTimeStamp" repeat="0" type="Date_TimeStamp">
+                <Documentation>
+                    <Description>Creation date time, Creator ID, last modification date time and last modifier ID for the paragraph.</Description>
+                    <Implementer>AttributeGroup: DateTimeStampGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TimeSpan" type="ota2:Empty">
+        <Documentation>
+            <Description>Specifies the arrival date and departure date which covers the whole Reservation.</Description>
+        </Documentation>
+        <Attribute mandatory="true" name="start" type="ota2:DateTime">
+            <Documentation>
+                <Description>Specifies the start date for the booking as a whole.</Description>
+            </Documentation>
+            <Example context="Common">2016-08-22T19:32:52Z</Example>
+        </Attribute>
+        <Attribute mandatory="true" name="end" type="ota2:DateTime">
+            <Documentation>
+                <Description>Specifies the end date for the booking as a whole.</Description>
+            </Documentation>
+            <Example context="Common">2016-08-28T04:32:52Z</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="URL" type="xsd:anyURI">
+        <Documentation>
+            <Description>Web site address, in IETF specified format.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+        </Documentation>
+        <Equivalent context="Common">URL_Type</Equivalent>
+        <Attribute name="type" type="ota2:String_Short">
+            <Documentation>
+                <Description>Defines the purpose of the URL address, such as personal, business, public, etc.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Type</Equivalent>
+        </Attribute>
+        <Indicator name="defaultInd" publishAsElement="false">
+            <Documentation>
+                <Description>Indicates whether or not this is the default URL.</Description>
+                <Implementer>AttributeGroup: DefaultIndGroup</Implementer>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <CoreObject name="UsernamePassword" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="password" type="ota2:String_Short">
+                <Documentation>
+                    <Description/>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Password</Equivalent>
+            </Attribute>
+            <Attribute mandatory="true" name="username" type="ota2:String_Short">
+                <Documentation>
+                    <Description/>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Username</Equivalent>
+            </Attribute>
+            <Element name="PasswordHint" repeat="10" type="PasswordHint">
+                <Documentation>
+                    <Description>Alternate method to password for account access.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PasswordHint</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PasswordHint</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Paragraph_ListItem" type="ota2:Empty">
+        <Attribute name="listItem" type="xsd:integer">
+            <Documentation>
+                <Description>The item or sequence number.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}integer</Implementer>
+            </Documentation>
+            <Equivalent context="Common">ListItem</Equivalent>
+        </Attribute>
+        <Attribute name="formattedText" type="Text">
+            <Documentation>
+                <Description>Provides text and indicates whether it is formatted or not.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="SocialMedia" type="ota2:Empty">
+        <Documentation>
+            <Description>Specifies social media information used for communication with the traveler.</Description>
+        </Documentation>
+        <Equivalent context="Common">SocialMediaType</Equivalent>
+        <Attribute mandatory="true" name="type" type="ota2:String_Short">
+            <Documentation>
+                <Description>Identifies the social media site (e.g. Twitter, Facebook, etc.).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Type</Equivalent>
+        </Attribute>
+        <Attribute mandatory="true" name="userName" type="ota2:String_Short">
+            <Documentation>
+                <Description>Specifies the user name for this specific social media type.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">UserName</Equivalent>
+        </Attribute>
+        <Indicator name="preferredContactInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, this social media type is the preferred method for social media communication.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+            </Documentation>
+            <Equivalent context="Common">PreferredContactInd</Equivalent>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <CoreObject name="DateTimeSpanWindows" notExtendable="false">
+        <Aliases>StayRestrictions</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="TimeSpan" repeat="0" type="TimeSpan">
+                <Documentation>
+                    <Description>Start and end dates.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element name="StartWindow" repeat="0" type="TimeSpan">
+                <Documentation>
+                    <Description>The earliest and latest dates acceptable for the start date.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EndWindow" repeat="0" type="TimeSpan">
+                <Documentation>
+                    <Description>The earliest and latest dates acceptable for the end date.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Duration" repeat="100" type="xsd:duration">
+                <Documentation>
+                    <Description>The duration data type represents a combination of year, month, day and time values representing a single duration of time, encoded as a single string.</Description>
+                </Documentation>
+            </Element>
+            <Element name="DurationUnit" repeat="0" type="DurationUnit_Enum">
+                <Documentation>
+                    <Description>The unit of elapsed time or the day of the week applied to the value.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Code" type="ota2:String_Tiny">
+        <Documentation>
+            <Description>Any code used to specify an item, for example, type of traveler, service code, room amenity, etc.</Description>
+        </Documentation>
+        <Attribute name="codeContext" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>Identifies the source authority for the code.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Person_Document" notExtendable="false">
+        <Documentation>
+            <Description>Unique number assigned by authorities to document.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:String"/>
+        <Summary>
+            <Element name="DocType" repeat="0" type="DocumentType_Enum">
+                <Documentation>
+                    <Description>Indicates the type of document (e.g. Passport, Military ID, Drivers License, national ID, Vaccination Certificate). Refer to OpenTravel Code List Document Type (DOC).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">DocType</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Simple name="Code_OTA"
+        pattern="[0-9A-Z]{1,4}(\.[A-Z]{3}(\.X){0,1}){0,1}" type="xsd:string">
+        <Documentation>
+            <Description>Used for codes in the OpenTravel Code tables. Possible values of this pattern are 1, 101, 1001, 101.EQP, 1001.EQP or 1001.EQP.X.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="Common">OTA_CodeType</Equivalent>
+        <Example context="Common">2</Example>
+    </Simple>
+    
+    <Simple listTypeInd="true" name="Codes_OTA" type="Code_OTA">
+        <Documentation>
+            <Description>List of OpenTravel Codes.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+        </Documentation>
+        <Equivalent context="Common">ListOfOTA_CodeType</Equivalent>
+    </Simple>
+    
+    <Simple name="TicketNumber" type="ota2:String_Tiny">
+        <Documentation>
+            <Description>The ticket number which is exchanged.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Open name="ErrorCodes_Enum">
+        <Documentation>
+            <Description>The ErrorCode  MUST be present and is defined as free-text with a list of recommended enumerated values, to indicate the error type.</Description>
+        </Documentation>
+        <Value label="" literal="SessionFailure-100">
+            <Documentation>
+                <Description>his value is used to indicate that the request version is not supported.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="SessionFailure-101">
+            <Documentation>
+                <Description>his value is used to indicate that the session has expired.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="SessionFailure-102">
+            <Documentation>
+                <Description>This value is used to indicate that the session is already closed.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="SessionFailure-103">
+            <Documentation>
+                <Description>This value is used to indicate that a parameter in the request is not supported.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Unknown">
+            <Documentation>
+                <Description>Indicates an unknown error. Additional information may be provided within the textual part of the element.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Malformed">
+            <Documentation>
+                <Description>Indicates that the XML message was not well-formed. Additional information may be provided within the ErrorMessage attribute.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Validation">
+            <Documentation>
+                <Description>Indicates that a well-formed XML message was sent, but did not pass the validation check. Additional information may be provided within the ErrorMessage attribute.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="UnrecognizedRoot">
+            <Documentation>
+                <Description>Indicates an unrecognized payload root element was received. Additional information may be provided within the ErrorMessage attribute.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="UnrecognizedVersion">
+            <Documentation>
+                <Description>Indicates that the version attribute in the Schema element of the Manifest of the header is not recognized. Additional information, such as version number(s) supported, may be provided within the ErrorMessage attribute.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ErrorMessage_Enum">
+        <Documentation>
+            <Description>A textual description to provide more information about the specific error.</Description>
+        </Documentation>
+        <Value label="" literal="OTA version not supported"/>
+        <Value label="" literal="Session has expired"/>
+        <Value label="" literal="Session already closed"/>
+        <Value label="" literal="Parameter not supported"/>
+    </Enumeration_Open>
+    
+    <ValueWithAttrs name="ErrorReport" type="ota2:Empty">
+        <Attribute name="status" type="ErrorStatus_Enum">
+            <Documentation>
+                <Description>[LegacyDefaultValue: null]</Description>
+                <Implementer>LocalAnonymousType: OTA_ErrorRS_Status</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Status</Equivalent>
+        </Attribute>
+        <Attribute mandatory="true" name="errorCode" type="ErrorCodes_Enum">
+            <Documentation>
+                <Description>The ErrorCode attribute MUST be present and is defined as free-text with a list of recommended enumerated values, to indicate the error type.</Description>
+            </Documentation>
+            <Equivalent context="Common">ErrorCode</Equivalent>
+        </Attribute>
+        <Attribute name="severity" type="ota2:String_Short">
+            <Documentation>
+                <Description>An optional indicator to reflect the severity of this condition.</Description>
+                <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Severity</Equivalent>
+        </Attribute>
+        <Attribute name="errorMessage" type="ErrorCodes_Enum">
+            <Documentation>
+                <Description>A textual description to provide more information about the specific error.</Description>
+            </Documentation>
+            <Equivalent context="Common">ErrorMessage</Equivalent>
+        </Attribute>
+        <Attribute name="docURL" type="xsd:anyURI">
+            <Documentation>
+                <Description>If present, this attribute refers to an online description of the error that occurred.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+            </Documentation>
+            <Equivalent context="Common">DocURL</Equivalent>
+        </Attribute>
+        <Attribute name="payloadStdAttributes" type="PayloadStdAttributes">
+            <Documentation>
+                <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="PayloadStdAttributes" type="ota2:Empty">
+        <Documentation>
+            <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+        </Documentation>
+        <Equivalent context="Common">OTA_PayloadStdAttributes</Equivalent>
+        <Attribute name="echoToken" type="ota2:String_Short">
+            <Documentation>
+                <Description>Implementer: A reference for additional message identification, assigned by the requesting host system. When a request message includes an echo token the corresponding response message MUST include an echo token with an identical value.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to128</Implementer>
+            </Documentation>
+            <Equivalent context="Common">EchoToken</Equivalent>
+        </Attribute>
+        <Attribute name="timeStamp" type="xsd:dateTime">
+            <Documentation>
+                <Description>YYYY-MM-DDThh:mm:ssZ with time values using the 24 hour clock:
+20 November 2003, 1:59:38 pm UTC becomes 2003-11-20T13:59:38Z</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TimeStamp</Equivalent>
+        </Attribute>
+        <Attribute name="target" type="TargetEnvironment_Enum">
+            <Documentation>
+                <Description>Test or Production target system indicator.</Description>
+                <Implementer>LocalAnonymousType: OTA_PayloadStdAttributes_Target</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Target</Equivalent>
+        </Attribute>
+        <Attribute name="targetName" type="ota2:String_Short">
+            <Documentation>
+                <Description>The name of the Test or Production system.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TargetName</Equivalent>
+        </Attribute>
+        <Attribute mandatory="true" name="version" type="xsd:decimal">
+            <Documentation>
+                <Description>The OpenTravel message version indicated by a decimal value.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}decimal</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Version</Equivalent>
+        </Attribute>
+        <Attribute name="transactionIdentifier" type="xsd:string">
+            <Documentation>
+                <Description>Unique identifier to relate all messages within a transaction (e.g. this would be sent in all request and response messages that are part of an on-going transaction).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TransactionIdentifier</Equivalent>
+        </Attribute>
+        <Attribute name="sequenceNmbr" type="xsd:string">
+            <Documentation>
+                <Description>Implementer: Message resynchronization typically is required if a system has been off-line and needs to retrieve messages that were missed.</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">SequenceNmbr</Equivalent>
+        </Attribute>
+        <Attribute name="transactionStatusCode" type="TransactionStatusCode_Enum">
+            <Documentation>
+                <Description>This indicates where this message falls within a sequence of messages.</Description>
+                <Implementer>LocalAnonymousType: OTA_PayloadStdAttributes_TransactionStatusCode</Implementer>
+            </Documentation>
+            <Equivalent context="Common">TransactionStatusCode</Equivalent>
+        </Attribute>
+        <Attribute name="correlationID" type="ota2:String_Short">
+            <Documentation>
+                <Description>Allows end-to-end correlation of log messages with the corresponding Web service message throughout the processing of the Web service message.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">CorrelationID</Equivalent>
+        </Attribute>
+        <Attribute name="primaryLangID" type="xsd:language">
+            <Documentation>
+                <Description>ISO 639 (3) character language codes: http://en.wikipedia.org/wiki/Lists_of_ISO_639_codes</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language</Implementer>
+            </Documentation>
+            <Equivalent context="Common">PrimaryLangID</Equivalent>
+        </Attribute>
+        <Attribute name="altLangID" type="xsd:language">
+            <Documentation>
+                <Description>ISO 639 (3) character language codes: http://en.wikipedia.org/wiki/Lists_of_ISO_639_codes</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language</Implementer>
+            </Documentation>
+            <Equivalent context="Common">AltLangID</Equivalent>
+        </Attribute>
+        <Indicator name="retransmissionIndicatorInd" publishAsElement="false">
+            <Documentation>
+                <Description>Implementer: It is recommended that this attribute is used (i.e., set to TRUE) only when a message is retransmitted.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+            </Documentation>
+            <Equivalent context="Common">RetransmissionIndicator</Equivalent>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="TargetEnvironment_Enum">
+        <Value label="" literal="Test">
+            <Documentation>
+                <Description>A test system.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Production">
+            <Documentation>
+                <Description>A production system.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="ErrorStatus_Enum">
+        <Value label="" literal="NotProcessed">
+            <Documentation>
+                <Description>The error occurred prior to processing of the request (or if during the processing of the request, before the intentions of the request were completed).</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Incomplete">
+            <Documentation>
+                <Description>The error occurred during processing of the request. The request was partially completed.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Complete">
+            <Documentation>
+                <Description>The error occurred after successful processing of the request. The requested process was completed.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Unknown">
+            <Documentation>
+                <Description>The status of the request is unknown.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="TransactionStatusCode_Enum">
+        <Value label="" literal="Start">
+            <Documentation>
+                <Description>This is the first message within a transaction.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="End">
+            <Documentation>
+                <Description>This is the last message within a transaction.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Rollback">
+            <Documentation>
+                <Description>This indicates that all messages within the current transaction must be ignored.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="InSeries">
+            <Documentation>
+                <Description>This is any message that is not the first or last message within a transaction.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Continuation">
+            <Documentation>
+                <Description>Specifies that this is a followup request asking for more of what was requested in the previous request.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Subsequent">
+            <Documentation>
+                <Description>This request message is a subsequent request based on the previous message sent in this transaction.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <ValueWithAttrs name="ErrorWarning" type="ota2:String">
+        <Documentation>
+            <Description>The error in textual format.</Description>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+        </Documentation>
+        <Equivalent context="Common">ErrorWarningAttributeGroup</Equivalent>
+        <Attribute name="language" type="ota2:Code_Language_ISO_3">
+            <Documentation>
+                <Description>The language in which the error is returned.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="type" type="ErrorWarningType_Enum">
+            <Documentation>
+                <Description>The category of error or warning.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="shortText" type="ota2:String_Short">
+            <Documentation>
+                <Description>An abbreviated version of the error in textual format.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="code" type="Code_OTA">
+            <Documentation>
+                <Description>If present, this refers to a table of coded values exchanged between applications to identify errors or warnings. Refer to OpenTravel Code List Error Codes (ERR).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Code</Equivalent>
+        </Attribute>
+        <Attribute name="DocURL" type="xsd:anyURI">
+            <Documentation>
+                <Description>If present, this URL refers to an online description of the error that occurred.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+            </Documentation>
+            <Equivalent context="Common">DocURL</Equivalent>
+        </Attribute>
+        <Attribute name="tag" type="ota2:String">
+            <Documentation>
+                <Description>If present, this attribute may identify an unknown or misspelled tag that caused an error in processing. It is recommended that the Tag attribute use XPath notation to identify the location of a tag in the event that more than one tag of the same name is present in the document. Alternatively, the tag name alone can be used to identify missing data [Type=ReqFieldMissing].</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Tag</Equivalent>
+        </Attribute>
+        <Attribute name="recordID" type="ota2:String_Short">
+            <Documentation>
+                <Description>If present, this attribute allows for batch processing and the identification of the record that failed amongst a group of records. This value may contain a concatenation of a unique failed transaction ID with specific record(s) associated with that transaction.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="Common">RecordID</Equivalent>
+        </Attribute>
+        <Attribute name="nodeList" type="ota2:String">
+            <Documentation>
+                <Description>An XPath expression that selects all the nodes whose data caused this error. Further, this expression should have an additional contraint which contains the data of the node. This will provide the offending data back to systems that cannot maintain the original message.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="status" type="Status_Enum">
+            <Documentation>
+                <Description>Identfies the status condition.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="POS" notExtendable="false">
+        <Documentation>
+            <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Source" repeat="10" type="Source">
+                <Documentation>
+                    <Description>This holds the details about the requestor. It may be repeated to also accommodate the delivery systems.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SourceType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Source</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Position" type="ota2:Empty">
+        <Documentation>
+            <Description>TODO-(use enums and other for lat,long??)Used to specify the geographic coordinates of a location.</Description>
+        </Documentation>
+        <Equivalent context="Common">PositionGroup</Equivalent>
+        <Attribute name="latitude" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>The measure of the angular distance on a meridian north or south of the equator.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Latitude</Equivalent>
+        </Attribute>
+        <Attribute name="longitude" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>The measure of the angular distance on a meridian east or west of the prime meridian.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Longitude</Equivalent>
+        </Attribute>
+        <Attribute name="altitude" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>The height of an item, typically above sea level.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Altitude</Equivalent>
+        </Attribute>
+        <Attribute name="altitudeUnitOfMeasureCode" type="Code_OTA">
+            <Documentation>
+                <Description>Provides the unit of measure for the altitude (e.g., feet, meters, miles, kilometers). Refer to OpenTravel Code List Unit of Measure Code (UOM).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="Common">AltitudeUnitOfMeasureCode</Equivalent>
+        </Attribute>
+        <Attribute name="positionAccuracyCode" type="Code_OTA">
+            <Documentation>
+                <Description>Indicates the accuracy of the property's geo-coding, since the property's longitude and latitude may not always be exact. Refer to OpenTravel Code List Position Accuracy Code (PAC).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+            </Documentation>
+            <Equivalent context="Common">PositionAccuracyCode</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="RequestorID" notExtendable="false">
+        <Documentation>
+            <Description>An identifier of the entity making the request (e.g. ATA/IATA/ID number, Electronic Reservation Service Provider (ERSP), Association of British Travel Agents.(ABTA)).</Description>
+            <Implementer>Extension: UniqueID_Type</Implementer>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>An identifier of the entity making the request (e.g. ATA/IATA/ID number, Electronic Reservation Service Provider (ERSP), Association of British Travel Agents.(ABTA)).</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="messagePassword" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>This password provides an additional level of security that the recipient can use to validate the sending party's authority to use the message.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">MessagePassword</Equivalent>
+            </Attribute>
+            <Attribute name="name" type="Person_Name">
+                <Documentation>
+                    <Description>The name of the person making the request- may be the travel agent, a traveler on a direct booking, or a third party.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Name</Equivalent>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="Source" notExtendable="false">
+        <Documentation>
+            <Description>TODO-(is there a code??) Provides information on the source of a request.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="agentSine" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Identifies the party within the requesting entity.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AgentSine</Equivalent>
+            </Attribute>
+            <Attribute name="pseudoCityCode" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>An identification code assigned to an office/agency by a reservation system.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PseudoCityCode</Equivalent>
+            </Attribute>
+            <Attribute name="iSOCountry" type="Country_Code_ISO3166">
+                <Documentation>
+                    <Description>ISO 3166-3 character country codes: url=http://simple.wikipedia.org/wiki/ISO_3166-1_alpha-3</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+                    <Reference>Reference" xml:lang="en"&gt;ISO 3166-3 character country codes: url=http://simple.wikipedia.org/wiki/ISO_3166-1_alpha-3</Reference>
+                </Documentation>
+                <Equivalent context="Common">ISOCountry</Equivalent>
+            </Attribute>
+            <Attribute name="iSOCurrency" type="Currency_Code_ISO4217">
+                <Documentation>
+                    <Description>http://www.iso.org/iso/support/currency_codes_list-1.htm</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</Implementer>
+                    <Reference>http://www.iso.org/iso/support/currency_codes_list-1.htm</Reference>
+                </Documentation>
+                <Equivalent context="Common">ISOCurrency</Equivalent>
+            </Attribute>
+            <Attribute name="agentDutyCode" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>An authority code assigned to a requestor.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AgentDutyCode</Equivalent>
+            </Attribute>
+            <Attribute name="airlineVendorID" type="ota2:Code_Airline_IATA">
+                <Documentation>
+                    <Description>The IATA assigned airline code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}UpperCaseAlphaNumericLength2to3</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AirlineVendorID</Equivalent>
+            </Attribute>
+            <Attribute name="airportCode" type="ota2:Code_Airport_IATA">
+                <Documentation>
+                    <Description>The IATA assigned airport code.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}UpperCaseAlphaNumericLength3to5</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AirportCode</Equivalent>
+            </Attribute>
+            <Attribute name="firstDepartPoint" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>TODO-(Code??)The point of first departure in a trip.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength3</Implementer>
+                </Documentation>
+                <Equivalent context="Common">FirstDepartPoint</Equivalent>
+            </Attribute>
+            <Attribute name="eRSP_UserID" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>TODO-(Should this be an Identifier)Electronic Reservation Service Provider (ERSP) assigned identifier used to identify the individual using the ERSP system.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">ERSP_UserID</Equivalent>
+            </Attribute>
+            <Attribute name="terminalID" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>This is the electronic address of the device from which information is entered.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="Common">TerminalID</Equivalent>
+            </Attribute>
+            <Element name="RequestorID" repeat="1" type="RequestorID">
+                <Documentation>
+                    <Description>An identifier of the entity making the request (e.g. ATA/IATA/ID number, Electronic Reservation Service Provider (ERSP), Association of British Travel Agents.(ABTA)).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RequestorID</Implementer>
+                </Documentation>
+                <Equivalent context="Common">RequestorID</Equivalent>
+            </Element>
+            <Element name="Position" repeat="1" type="Position">
+                <Documentation>
+                    <Description>Specifies the latitude and longitude of a source.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Position</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Position</Equivalent>
+            </Element>
+            <Element name="BookingChannel" repeat="1" type="BookingChannel">
+                <Documentation>
+                    <Description>Specifies the booking channel type and whether it is the primary means of connectivity of the source.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}BookingChannel</Implementer>
+                </Documentation>
+                <Equivalent context="Common">BookingChannel</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="BookingChannel" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="type" type="Code_OTA">
+                <Documentation>
+                    <Description>The type of booking channel (e.g. Global Distribution System (GDS), Alternative Distribution System (ADS), Sales and Catering System (SCS), Property Management System (PMS), Central Reservation System (CRS), Tour Operator System (TOS), Internet and ALL). Refer to OpenTravel Code List Booking Channel Type (BCT).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="CompanyName" repeat="1" type="CompanyName">
+                <Documentation>
+                    <Description>Identifies the company that is associated with the booking channel.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">CompanyName</Equivalent>
+            </Element>
+            <Indicator name="primaryInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates whether the enumerated booking channel is the primary means of connectivity used by the source.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Result" notExtendable="false">
+        <Documentation>
+            <Description>When present indicates that errors or warnings occurred during processing.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Errors" repeat="50" type="ErrorWarning">
+                <Documentation>
+                    <Description>One or more errors that occurred during the processing of the message.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Warnings" repeat="50" type="ErrorWarning">
+                <Documentation>
+                    <Description>One or more warnings that occurred during the processing of the message.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Status" repeat="0" type="Status_Enum">
+                <Documentation>
+                    <Description>If present, recommended values are those enumerated in the Status_Enum(NotProcessed | Incomplete | Complete | Unknown) however, the data type is designated an open enumeration, recognizing that trading partners may identify additional status conditions not included in the enumeration.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Comments" notExtendable="false">
+        <Documentation>
+            <Description>Textual information.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="TextualComment" repeat="100" type="ota2:String_Long">
+                <Documentation>
+                    <Description>Text description.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="name" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Used to identify the information found in the comment.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="language" type="ota2:Code_Language_ISO_3">
+                <Documentation>
+                    <Description>Identifies the language of the comment.</Description>
+                </Documentation>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+    <BusinessObject name="Company" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>Identifier provides the ability to create a globally unique identifier. For the identifier to be globally unique it must have a system provided identifier and the system must be identified using a global naming authority. System identification uses the domain naming system (DNS) to assure they are globally unique and should be an URL. The system provided ID will typically be a primary or surrogate key in a database.
+
+The URL, system and company attributes can be omitted only when the system context can be implied by a parent or ancestor element.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="Name" repeat="20" type="CompanyName">
+                <Documentation>
+                    <Description>Detailed name information for the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">CompanyName</Equivalent>
+            </Element>
+            <Element name="Address" repeat="100" type="Address">
+                <Documentation>
+                    <Description>A jurisdiction in which a company is authorized to do business. Uses the Address entity to indicate the location of business using any of the components of the address (e.g., city, state, zip code, country).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AddressType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">BusinessLocale</Equivalent>
+            </Element>
+            <Element name="Telephone" repeat="100" type="Telephone">
+                <Documentation>
+                    <Description>Information about a telephone number, including the actual number and its usage.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Email" repeat="100" type="Email">
+                <Documentation>
+                    <Description>Electronic email addresses, in IETF specified format.</Description>
+                </Documentation>
+            </Element>
+            <Element name="URL" repeat="100" type="URL">
+                <Documentation>
+                    <Description>Information on a URL for the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}URL_Type</Implementer>
+                </Documentation>
+                <Equivalent context="Common">URL</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <BusinessObject name="Person" notExtendable="false">
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>Provides a unique reference to this contact person.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="Common">RPH</Equivalent>
+            </Attribute>
+            <Element mandatory="true" name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>An identifier used to uniquely reference an object in a system (e.g. an airline reservation reference, customer profile reference, booking confirmation number, or a reference to a previous availability quote).</Description>
+                </Documentation>
+            </Element>
+            <Element name="OtherID" repeat="5" type="Identifier">
+                <Documentation>
+                    <Description>These identifiers are assigned by systems other than the system that generated this record.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="gender" type="Gender_Enum">
+                <Documentation>
+                    <Description>The gender of the person.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="maritalStatus_Enum" type="MaritalStatus_Enum">
+                <Documentation>
+                    <Description>Specifies the marital status of the person.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="birthDate" type="xsd:date">
+                <Documentation>
+                    <Description>The birth date of the person.</Description>
+                    <Implementer>AttributeGroup: BirthDateGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="Person_Name" repeat="1" type="Person_Name">
+                <Documentation>
+                    <Description>Name information for a person.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PersonName</Equivalent>
+            </Element>
+            <Element name="Address" repeat="5" type="Address">
+                <Documentation>
+                    <Description>Information about an address that identifies a location for a specific purposes.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AddressInfoType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Address</Equivalent>
+            </Element>
+            <Element name="Telephone" repeat="0" type="Telephone">
+                <Documentation>
+                    <Description>Information about a telephone number, including the actual number and its usage.</Description>
+                    <Implementer>Example value: p = 555-555-5555</Implementer>
+                </Documentation>
+                <Example context="Common">555-555-5555</Example>
+            </Element>
+            <Element name="Email" repeat="5" type="Email">
+                <Documentation>
+                    <Description>Electronic email addresses, in IETF specified format.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EmailType</Implementer>
+                    <Implementer>Example value: p = john.smith@email.com</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Email</Equivalent>
+                <Example context="Common">john.smith@email.com</Example>
+            </Element>
+            <Element name="Privacy" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of data between parties.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Comments" repeat="0" type="Text_Free">
+                <Documentation>
+                    <Description>Textual information about the person.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="Address" notExtendable="false">
+        <Documentation>
+            <Description>Provides address information. Unformatted addresses are captured using the simple facet.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:String_Long">
+            <Documentation>
+                <Description>When the address is unformatted (FormattedInd="false") these lines will contain free form address details. When the address is formatted and street number and street name must be sent independently, the street number will be sent using StreetNmbr, and the street name will be sent in the first AddressLine occurrence.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to255</Implementer>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Element name="AddressLine" repeat="4" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Address in an unstructured format.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BldgRoom" repeat="2" type="Address_BldgRoom">
+                <Documentation>
+                    <Description>Building name, room, apartment, or suite number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}BldgRoom</Implementer>
+                </Documentation>
+                <Equivalent context="Common">BldgRoom</Equivalent>
+            </Element>
+            <Element name="Number" repeat="1" type="Address_StreetNumber">
+                <Documentation>
+                    <Description>May contain the street number and optionally the street name.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StreetNmbr</Implementer>
+                </Documentation>
+                <Equivalent context="Common">StreetNmbr</Equivalent>
+                <Example context="Common">111</Example>
+            </Element>
+            <Element name="Street" repeat="1" type="ota2:String_Short">
+                <Documentation>
+                    <Description>May contain the street number when the Street number element is missing.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to255</Implementer>
+                </Documentation>
+                <Equivalent context="Common">AddressLine</Equivalent>
+                <Example context="Common">Travers Street</Example>
+            </Element>
+            <Element name="City" repeat="1" type="ota2:String_Short">
+                <Documentation>
+                    <Description>City (e.g., Dublin), town, or postal station (i.e., a postal service territory, often used in a military address).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="Common">CityName</Equivalent>
+                <Example context="Common">Dublin</Example>
+            </Element>
+            <Element name="County" repeat="1" type="ota2:String_Short">
+                <Documentation>
+                    <Description>County or Region Name (e.g., Fairfax).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="Common">County</Equivalent>
+                <Example context="Common">Fairfax</Example>
+            </Element>
+            <Element name="StateProv" repeat="1" type="StateProv">
+                <Documentation>
+                    <Description>State or Province name (e.g., Texas).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">StateProv</Equivalent>
+                <Example context="Common">Texas</Example>
+            </Element>
+            <Element name="Country" repeat="1" type="Country">
+                <Documentation>
+                    <Description>Country name (e.g., Ireland).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CountryNameType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">CountryName</Equivalent>
+                <Example context="Common">IE</Example>
+            </Element>
+            <Element name="PostalCode" repeat="1" type="ota2:String_Short">
+                <Documentation>
+                    <Description>Post Office Code number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="Common">PostalCode</Equivalent>
+                <Example context="Common">32165-9999</Example>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="Language" type="xsd:language">
+                <Documentation>
+                    <Description>Example: en</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Language</Equivalent>
+                <Example context="Common">en</Example>
+            </Attribute>
+            <Attribute name="type" type="Code_OTA">
+                <Documentation>
+                    <Description>Defines the type of address (e.g. home, business, other). Refer to OpenTravel Code List Communication Location Type (CLT).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Type</Equivalent>
+                <Example context="Common">CLT</Example>
+            </Attribute>
+            <Attribute name="use" type="Code_OTA">
+                <Documentation>
+                    <Description>Describes the use of the address (e.g. mailing, delivery, billing, etc.). Refer to OpenTravel Code List Address Use Type (AUT).</Description>
+                </Documentation>
+                <Example context="Common">AUT</Example>
+            </Attribute>
+            <Element name="Remark" repeat="0" type="ota2:String_Text">
+                <Documentation>
+                    <Description>A remark associated with this address.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="Common">Remark</Equivalent>
+                <Example context="Common">This address should be used for all official correspondences.</Example>
+            </Element>
+            <Element name="Privacy" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of address information between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="validInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, this is a valid and complete mailing address that has been verified through an address verification service or previously mailed materials have not been returned.</Description>
+                </Documentation>
+            </Indicator>
+        </Detail>
+        <Roles>
+            <Role value="Home"/>
+            <Role value="Business"/>
+            <Role value="Destination"/>
+            <Role value="Other"/>
+        </Roles>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Code_External" type="ota2:String_Short">
+        <Documentation>
+            <Description>Code with additional information describing the code authority.</Description>
+        </Documentation>
+        <Equivalent context="Common">OTA_CodeExtGroup</Equivalent>
+        <Attribute name="Description" type="xsd:string">
+            <Documentation>
+                <Description>Description of who manages this set of codes.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">Description</Equivalent>
+            <Example context="Common">Visa</Example>
+        </Attribute>
+        <Attribute name="name" type="xsd:string">
+            <Documentation>
+                <Description>This may be a source authority/ owner name, ID or code.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">SourceName</Equivalent>
+        </Attribute>
+        <Attribute name="uRL" type="xsd:anyURI">
+            <Documentation>
+                <Description>Implementer: This is A URL to the code source authority/ owner.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+            </Documentation>
+            <Equivalent context="Common">SourceURL</Equivalent>
+        </Attribute>
+        <Attribute name="id" type="xsd:ID">
+            <Documentation>
+                <Description>Implementer: This is used for a database or key ID for the code item (if it is different from the @CodeExtension) in relationship to the obsolete code indicator.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="Common">UniqueID</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Employee" type="ota2:Empty">
+        <Documentation>
+            <Description>Employment identification; using an employee ID number, title, level within the company, and an indication of their status (e.g., active, retired, on leave, or terminated from employment).  Additional information about an employee can be entered into the element, including the name of the employee, if it differs from the person name identified as a customer or contact.</Description>
+        </Documentation>
+        <Attribute name="id" type="xsd:ID">
+            <Documentation>
+                <Description>Identifier assigned to the employee.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="level" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>Level in employer organization (e.g. seniority) that coveys privileges.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="title" type="ota2:String_Short">
+            <Documentation>
+                <Description>Title of employee in the employer company that conveys rank or privileges.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="status" type="EmployeeStatus_Enum">
+            <Documentation>
+                <Description>Status of employment.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="description" type="ota2:String_Short">
+            <Documentation>
+                <Description>Description of the staff tour code.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="employer" type="ota2:String_Tiny">
+            <Documentation>
+                <Description>The airlineThe empoyer to which the EmployeeID is associated.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+</Library>

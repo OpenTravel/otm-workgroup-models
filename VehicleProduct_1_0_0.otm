@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/vehicle/v1</ns2:Namespace>
+    <ns2:Prefix>veh</ns2:Prefix>
+    <ns2:Name>VehicleProduct</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Organization_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v5" prefix="org-0500"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0500:FacilityKey" name="RentalVehicle"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="FacilityCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifies the facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the chain for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the brand for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="VehicleRental"
+        notExtendable="false" type="Custom">
+        <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows"/>
+        <ns2:Element name="Category" repeat="0" type="Category"/>
+        <ns2:Element name="Features" repeat="0" type="Features"/>
+        <ns2:Element name="Capacity" repeat="0" type="Capacity"/>
+        <ns2:Element name="Distances" repeat="0" type="Distances"/>
+        <ns2:Element name="RateCode" repeat="0" type="ota2-0500:Code"/>
+        <ns2:Element name="PickUpFacility" repeat="1" type="org-0500:PickUpFacility"/>
+        <ns2:Element name="DropOffFacility" repeat="0" type="org-0500:DropOffFacility"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:ValueWithAttrs name="Distances" type="">
+        <ns2:Attribute name="unit" referenceRepeat="0" type="ota2-0500:String"/>
+        <ns2:Attribute name="covered" referenceRepeat="0" type="xsd:decimal"/>
+        <ns2:Attribute name="overage" referenceRepeat="0" type="xsd:decimal"/>
+        <ns2:Indicator name="unlimitedInd" publishAsElement="false"/>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="Capacity" type="">
+        <ns2:Attribute name="doors" referenceRepeat="0" type="xsd:int"/>
+        <ns2:Attribute name="seats" referenceRepeat="0" type="xsd:int"/>
+        <ns2:Attribute name="luggage" referenceRepeat="0" type="xsd:int"/>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="Features" type="">
+        <ns2:Indicator name="bluetoothEquipedInd" publishAsElement="false"/>
+        <ns2:Indicator name="smokeFreeInd" publishAsElement="false"/>
+        <ns2:Indicator name="airConditionedInd" publishAsElement="false"/>
+        <ns2:Indicator name="connectedCarInd" publishAsElement="false"/>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="Category" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0500:String"/>
+        <ns2:Summary>
+            <ns2:Element name="Name" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="Make" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="Model" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="MPG" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="VehicleCode" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="VehicleType" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="VehicleTransmission" repeat="0" type="ota2-0500:String"/>
+            <ns2:Element name="ImageURL" repeat="0" type="ota2-0500:URL"/>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="Vehicle"
+        notExtendable="false" type="Query">
+        <ns2:Element name="Category" repeat="0" type="Category"/>
+        <ns2:Element name="RateCode" repeat="0" type="ota2-0500:String"/>
+        <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows"/>
+        <ns2:Element name="PickupTime" repeat="0" type="xsd:time"/>
+        <ns2:Element name="DropoffTime" repeat="0" type="xsd:time"/>
+    </ns2:ContextualFacet>
+    <ns2:Resource abstract="false" basePath="/"
+        businessObjectRef="prod-0500:Product" firstClass="true" name="VehicleRentalResource">
+        <ns2:Extension extends="ota2-0500:BaseResource"/>
+        <ns2:ParamGroup facetName="prod-0500:Product_ID" idGroup="true" name="Identifier">
+            <ns2:Parameter fieldName="Identifier" location="Path"/>
+        </ns2:ParamGroup>
+        <ns2:ActionFacet label="Request" referenceFacet="Query_Vehicle"
+            referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="VehicleRentalResponse"
+            referenceRepeat="0" referenceType="Optional"/>
+        <ns2:ActionFacet label="VehicleRentalList"
+            referenceFacet="VehicleRental" referenceRepeat="1000" referenceType="Optional"/>
+        <ns2:Action actionId="Get" common="false">
+            <ns2:ActionRequest httpMethod="GET" mimeTypes=""
+                paramGroup="Identifier" pathTemplate="/Products/{Identifier}"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="VehicleRentalResource_VehicleRentalResponse" statusCodes="200"/>
+        </ns2:Action>
+        <ns2:Action actionId="Query" common="false">
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Products" payloadType="VehicleRentalResource_Request"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="VehicleRentalResource_VehicleRentalResponse" statusCodes="200"/>
+        </ns2:Action>
+    </ns2:Resource>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="order-0400:ProductPrice" name="VehicleRental"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="RateCode" repeat="0" type="ota2-0500:String"/>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

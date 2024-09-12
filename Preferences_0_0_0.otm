@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/profile/preferences/v0</Namespace>
+    <Prefix>pref</Prefix>
+    <Name>Preferences</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Activity_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/preferences/activity/v0" prefix="prefa"/>
+    <Import fileHints="Transportation_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/preferences/transportation/v0" prefix="preft"/>
+    <Import fileHints="Profile_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/v0" prefix="prof"/>
+    <Import
+        fileHints="CodeList_2_0_0.otm Common_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Hospitality_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/profile/preferences/hospitality/v0" prefix="prefh"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/profile/preferences/v0" context="pref"/>
+    
+    <CoreObject name="AddressPref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies an address preference. TODO-does this make sense in preference</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Allows for control of the sharing of address preferences between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="Address" repeat="1" type="Address">
+                <Documentation>
+                    <Description>Defines a physical address.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="CompanyNamePref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a preferred company by name.</Description>
+        </Documentation>
+        <Aliases>VendorPref HotelNamePref</Aliases>
+        <Simple type="StringTiny">
+            <Documentation>
+                <Description>Preferred company name.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify the preference level for this company.</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>Id for this instance</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="CompanyName" repeat="0" type="CompanyName">
+                <Documentation>
+                    <Description>Identifies a company by name.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="ContactPref" type="ota2:Empty">
+        <Documentation>
+            <Description>Level of preference for this method of being contacted.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Level of preference for this method of being contacted.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="contactMethodCode" type="ota2-0200:DistributionType_Enum">
+            <Documentation>
+                <Description>Method of contact. Refer to OpenTravel Code List DistributionType (DTB).</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="LoyaltyPref" type="ota2:Empty">
+        <Documentation>
+            <Description>Identifies a preference for a loyalty program.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to specify the preference level for this loyalty program.</Description>
+                <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="id" type="xsd:ID">
+            <Documentation>
+                <Description>Identification of loyalty program by reference number or index.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="NamePref" notExtendable="false">
+        <Documentation>
+            <Description>Enables a preference to be indicated for name information.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for name information.</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="UniqueID" repeat="1" type="Identifier">
+                <Documentation>
+                    <Description>Unique identifier for a person or profile.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PersonName" repeat="1" type="PersonName">
+                <Documentation>
+                    <Description>Name information.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="OtherSrvcPref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies other service preferences.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for a service perference.</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="OtherSrvcName" repeat="1" type="StringTiny">
+                <Documentation>
+                    <Description>The name identfiying the service.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CompanyNamePref" repeat="5" type="CompanyNamePref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a vendor.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LoyaltyPref" repeat="5" type="LoyaltyPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a loyalty program.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PaymentFormPref" repeat="5" type="PaymentFormPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a form of payment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SpecRequestPref" repeat="5" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a special request.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Privacy" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of data between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="TravelPurpose" repeat="0" type="ota2-0200:TravelPurpose_Enum">
+                <Documentation>
+                    <Description>Refer to OpenTravel Code List Travel Purpose (TVP).</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="PaymentFormPref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a form of payment preference.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to indicate a level of preference for a form of payment.</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="FormOfPayment" repeat="0" type="ota2-0200:PaymentType_Enum">
+                <Documentation>
+                    <Description>Ways of providing funds and guarantees for travel by the individual.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="Preference" notExtendable="false">
+        <Documentation>
+            <Description>Travel preferences</Description>
+        </Documentation>
+        <Aliases>HotelStayPreferences AirTravelPreferences RailTravelPreferences VehicleRentalPreferences</Aliases>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PreferenceRef" reference="true" repeat="0" type="Preference">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="primaryLangID" type="LanguageCode">
+                <Documentation>
+                    <Description>TODO - Used to specify the preferred language.</Description>
+                    <Implementer>AttributeGroup: PrimaryLangID_Group</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="altLangID" type="LanguageCode">
+                <Documentation>
+                    <Description>TODO - Used to specify the preferred alternate language.</Description>
+                    <Implementer>AttributeGroup: AltLangID_Group</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="Privacy" repeat="0" type="Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of common preferences between parties.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PreferredCurrency" repeat="0" type="CurrencyCode_ISO4217">
+                <Documentation>
+                    <Description>Currency code preferred.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EmployeeType" repeat="1" type="Employee">
+                <Documentation>
+                    <Description>Defines the category of the traveler and the purpose of the trip for which these preferences apply. 
+Typically used for company profiles.</Description>
+                </Documentation>
+            </Element>
+            <Element name="NamePref" repeat="100000" type="NamePref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for name information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TelephonePref" repeat="100000" type="TelephonePref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for telephone information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AddressPref" repeat="100000" type="AddressPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for address information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PaymentFormPref" repeat="100000" type="PaymentFormPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for form of payment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="InterestPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a traveler's interests.</Description>
+                </Documentation>
+            </Element>
+            <Element name="InsurancePref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for insurance.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SeatingPref" repeat="100000" type="preft:SeatingPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for seating.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TicketDistribPref" repeat="100000" type="TicketDistribPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a method of ticket distribution.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MediaEntertainPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for media and entertainment.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PetInfoPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for pet information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MealPref" repeat="100000" type="MealPref">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for food and beverage.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LoyaltyPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a loyalty program.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SpecRequestPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a special request.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RelatedTravelerPref" repeat="100000" type="PreferenceLevel">
+                <Documentation>
+                    <Description>Enables a preference to be indicated for a related traveler.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ContactPref" repeat="99" type="ContactPref">
+                <Documentation>
+                    <Description>The traveller's preferred means of being contacted.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProfileIdentifier" repeat="0" type="prof:Profile_ID">
+                <Documentation>
+                    <Description>The profile to which this preference applies.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="smokingIndicatorGroupInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Used to indicate if smoking is preferred.</Description>
+                    <Implementer>AttributeGroup: SmokingIndicatorGroup</Implementer>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+        <Custom context="" label="Hospitality" notExtendable="false">
+            <Element name="HotelPreferences" repeat="0" type="prefh:HotelPreferences">
+                <Documentation>
+                    <Description>These are the hotel preference elements used on an instance of a profile.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Air" notExtendable="false">
+            <Element name="AirPreferences" repeat="0" type="preft:AirPreferences">
+                <Documentation>
+                    <Description>Identifies a collection of preferences for airline travel.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Rail" notExtendable="false">
+            <Element name="RailPreferences" repeat="0" type="preft:RailPreferences">
+                <Documentation>
+                    <Description>A collection of rail preferences.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="VehicleRental" notExtendable="false">
+            <Element name="VehiclePreferences" repeat="0" type="prefa:VehiclePreferences">
+                <Documentation>
+                    <Description>The VehiclePrefType complex type defines the information that is used when defining a preference of a vehicle.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <ValueWithAttrs name="PreferenceLevel" type="ota2:Empty">
+        <Attribute name="preferLevelEnum" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="uniqueId" type="Identifier">
+            <Documentation>
+                <Description>Identifier provides the ability to reference a globally unique identifier to which this preference applies.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="id" type="xsd:ID">
+            <Documentation>
+                <Description>This references the to object which this preference is applied.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="Preferences" notExtendable="false">
+        <Documentation>
+            <Description>Collection of travel preferences</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PreferencesRef" reference="true" repeat="0" type="Preferences">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element name="AirTravelPreferences" repeat="0" type="AirTravelPreferences">
+                <Documentation>
+                    <Description>Air travel preferences</Description>
+                </Documentation>
+            </Element>
+            <Element name="HotelStayPreferences" repeat="0" type="HotelStayPreferences">
+                <Documentation>
+                    <Description>Hotel stay preferences</Description>
+                </Documentation>
+            </Element>
+            <Element name="RailTravelPreferences" repeat="0" type="RailTravelPreferences">
+                <Documentation>
+                    <Description>Rail travel preferences</Description>
+                </Documentation>
+            </Element>
+            <Element name="VehicleRentalPreferences" repeat="0" type="VehicleRentalPreferences">
+                <Documentation>
+                    <Description>Vehicle rental preferences</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="TelephonePref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a telephone number preference.</Description>
+        </Documentation>
+        <Aliases>PhonePref</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Telephone" repeat="0" type="Telephone">
+                <Documentation>
+                    <Description>Identifies a telephone number.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TicketDistribPref" type="ota2:Empty">
+        <Documentation>
+            <Description>Identifies a preference for a type of ticket distribution.</Description>
+        </Documentation>
+        <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+            <Documentation>
+                <Description>Used to indicate a level of preference for a method of ticket distribution.</Description>
+                <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="distribType" type="ota2-0200:DistributionType_Enum">
+            <Documentation>
+                <Description>Ticket distribution method such as Fax, Email, Courier, Mail, Airport_Pickup, City_Office, Hotel_Desk,
+ WillCall, etc. Refer to OpenTravel Code List Distribution Type (DTB).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="TicketTime" type="xsd:duration">
+            <Documentation>
+                <Description>Ticket turnaround time desired, amount of time requested to deliver tickets.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}duration</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="remark" type="StringShort">
+            <Documentation>
+                <Description>A remark associated with the ticket distribution preference.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="MealPref" notExtendable="false">
+        <Documentation>
+            <Description>Identifies a food and beverage preference.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="StringTiny">
+            <Documentation>
+                <Description>Meal preference.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="preferLevel" type="ota2-0200:PreferLevel_Enum">
+                <Documentation>
+                    <Description>Used to specify the preference level for a meal type.</Description>
+                    <Implementer>AttributeGroup: PreferLevelGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="favoriteFood" type="StringShort">
+                <Documentation>
+                    <Description>Dining preferences used with this collection.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="beverage" type="StringShort">
+                <Documentation>
+                    <Description>Type of drink(s) preferred.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="foodAllergies" type="String">
+                <Documentation>
+                    <Description>Food allergies of passenger.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="MealType" repeat="0" type="ota2-0200:MealType_Enum">
+                <Documentation>
+                    <Description>Type of meal required (e.g.,vegetarian, Kosher, low fat, etc.)</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Service name="PreferenceService">
+        <Operation Name="Create" notExtendable="false">
+            <Request>
+                <Element name="Preference" repeat="0" type="Preference">
+                    <Documentation>
+                        <Description>The preference to be created.</Description>
+                    </Documentation>
+                </Element>
+                <Element mandatory="true" name="UniqueID" repeat="1" type="Identifier">
+                    <Documentation>
+                        <Description>Used to convey the identity of the profile, the owner of the profile, or an id provided by the client.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="POS" repeat="1" type="POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">POS</Equivalent>
+                </Element>
+                <Element mandatory="true" name="PayloadStdAttributes"
+                    repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element mandatory="true" name="Preference" repeat="99" type="Preference">
+                    <Documentation>
+                        <Description>The unique id of the preference created by the request.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Delete" notExtendable="false">
+            <Request>
+                <Element mandatory="true" name="PreferenceIdentifier"
+                    repeat="99" type="Preference_ID">
+                    <Documentation>
+                        <Description>Identifies the preference to be deleted.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="POS" repeat="1" type="POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">POS</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element mandatory="true" name="Preference" repeat="1" type="Preference">
+                    <Documentation>
+                        <Description>Identifies the preference deleted.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Read" notExtendable="false">
+            <Request>
+                <Element mandatory="true" name="PreferenceIdentifier"
+                    repeat="99" type="Preference_ID">
+                    <Documentation>
+                        <Description>Identifies the preference to be returned.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="POS" repeat="1" type="POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">POS</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="Preference" repeat="0" type="Preference">
+                    <Documentation>
+                        <Description>The preference that was requested</Description>
+                    </Documentation>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Update" notExtendable="false">
+            <Request>
+                <Element name="Preference" repeat="0" type="Preference">
+                    <Documentation>
+                        <Description>The updated preference.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="1" type="POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">POS</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element mandatory="true" name="Preference" repeat="1" type="Preference">
+                    <Documentation>
+                        <Description>The preference that was updated.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="pref">UniqueID</Equivalent>
+                </Element>
+                <Element name="PayloadStdAttributes" repeat="0" type="PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+    </Service>
+    
+</Library>

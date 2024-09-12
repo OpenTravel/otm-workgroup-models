@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>3868377596</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/organization/hospitality/v1_1</Namespace>
+    <Prefix>orghs-0101</Prefix>
+    <Name>OrganizationHospitality</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import
+        fileHints="OrganizationHospitality_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/hospitality/v1" prefix="orghs-0100"/>
+    <Import fileHints="Common_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/organization/hospitality/v0" context="orghs"/>
+    
+    <CoreObject name="HotelFacility" notExtendable="false">
+        <Documentation>
+            <Description>An abbreviated short summary of hotel descriptive information.</Description>
+        </Documentation>
+        <Extension extends="orghs-0100:HotelFacility"/>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="chainCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The code that identifies a hotel chain or management group. The hotel chain code is decided between vendors. This attribute is optional if the hotel is an independent property that can be identified by the HotelCode attribute.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="brandCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A code that identifies the brand or flag of a hotel, often used for independently-owned or franchised properties who are k</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="hotelCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The code that uniquely identifies a single hotel property. The hotel code is decided between vendors.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="hotelName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A text field used to communicate the proper name of the hotel.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="chainName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of the hotel chain (e.g., Hilton, Marriott, Hyatt, Starwood).</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail>
+            <Attribute name="hotelCodeContext" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the Hotel.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="tTICode" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html.</Description>
+                </Documentation>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+</Library>

@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>2897639814</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/v5</ns2:Namespace>
+    <ns2:Prefix>prod-0500</ns2:Prefix>
+    <ns2:Name>Product</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Hospitality_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/hospitality/v2" prefix="ph-0200"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import
+        fileHints="OrganizationHospitality_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/hospitality/v4" prefix="orghs-0400"/>
+    <ns2:Import fileHints="Ground_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/Ground/v3" prefix="pgt-0300"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Import fileHints="Golf_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/golf/v3" prefix="pg-0300"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/v0" context="product"/>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="ph-0200:RoomStay"
+        name="Product" notExtendable="false" type="Query">
+        <ns2:Element name="BasicPropertyInfo" repeat="10000" type="ph-0200:BasicPropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Specifies property information for the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BaseHospitalityFacilityQuery" repeat="0" type="orghs-0400:BaseHospitalityFacilityQuery_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Specifies query information such as dates, guest counts and amenities.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:BusinessObject name="Journey" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="JourneyRef" reference="true" repeat="0" type="Journey">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="duration"
+                referenceRepeat="0" type="xsd:duration"/>
+            <ns2:Element mandatory="true" name="Segment" repeat="6" type="Segment"/>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Journey"
+        name="Product" notExtendable="false" type="Query">
+        <ns2:Attribute mandatory="true" name="departureDateTime"
+            referenceRepeat="0" type="xsd:time">
+            <ns2:Documentation>
+                <ns2:Description>Date and time of the departure.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Element mandatory="true" name="ArrivalPoint" repeat="0" type="ArrivalPoint">
+            <ns2:Documentation>
+                <ns2:Description>An identifier for the arrival point.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element mandatory="true" name="DeparturePoint" repeat="0" type="DeparturePoint">
+            <ns2:Documentation>
+                <ns2:Description>An identifier for the departure point.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="TransportNumber" repeat="0" type="TransportNumber"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="Meal" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="mealCode" referenceRepeat="0" type="Meal_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Meal(s) served</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="ClassOfService"
+                repeat="0" type="ClassOfService">
+                <ns2:Documentation>
+                    <ns2:Description>Product that includes these meals</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="Product" notExtendable="false">
+        <ns2:Aliases>AssociatedProduct</ns2:Aliases>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ProductRef" reference="true" repeat="0" type="Product">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element name="AssociatedProductIdentifier" repeat="100" type="AssociatedProduct_ID">
+                <ns2:Documentation>
+                    <ns2:Description>A associated  product.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Product"
+        name="Ancillary" notExtendable="false" type="Custom">
+        <ns2:Element mandatory="true" name="Ancillary" repeat="0" type="ota2-0500:Ancillary_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Amentities and services available with a product(either included in the price of the tee time or available for an extra fee), such as power carts. Note, includes pricing.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Product"
+        name="Activity" notExtendable="false" type="Custom">
+        <ns2:Element name="Activity" repeat="0" type="Activity">
+            <ns2:Documentation>
+                <ns2:Description>An activity product.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Product"
+        name="Transportation" notExtendable="false" type="Custom">
+        <ns2:Element name="Journey" repeat="0" type="Journey">
+            <ns2:Documentation>
+                <ns2:Description>Transporation product query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Product"
+        name="Availability" notExtendable="false" type="Query">
+        <ns2:Element mandatory="true" name="ProductQueries" repeat="0" type="ProductQueries"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:Enumeration_Closed name="Meal_Enum">
+        <ns2:Value label="" literal="B">
+            <ns2:Documentation>
+                <ns2:Description>Breakfast</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="L">
+            <ns2:Documentation>
+                <ns2:Description>Lunch</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="D">
+            <ns2:Documentation>
+                <ns2:Description>Dinner</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="Service_Enum">
+        <ns2:Value label="" literal="M">
+            <ns2:Documentation>
+                <ns2:Description>Meal at Seat</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="D">
+            <ns2:Documentation>
+                <ns2:Description>Dinning Car</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="B">
+            <ns2:Documentation>
+                <ns2:Description>Bar Car</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="C">
+            <ns2:Documentation>
+                <ns2:Description>Meal Cart</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:CoreObject name="OtherServiceInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Other Service Information (OSI) for relevant airlines</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0500:OSI_Code">
+                <ns2:Documentation>
+                    <ns2:Description>A proprietary code used between systems to identify an Other Service Information (OSI) item.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="text" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The OSI text. (1-64)</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Operator" repeat="0" type="ota2-0500:CompanyName">
+                <ns2:Documentation>
+                    <ns2:Description>The operator to which the OSI applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ChoiceObject name="Activity" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A golf activity.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Attribute mandatory="true" name="start"
+                referenceRepeat="0" type="xsd:dateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The start date and or time of the activity.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    
+    <ns2:ValueWithAttrs name="ClassOfService" type="ota2:Empty">
+        <ns2:Attribute name="count" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>Number available for sale or that have been sold</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute mandatory="true" name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Used to identify this product programmatically.  EG "F" for First Class</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute mandatory="true" name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Display name for this product.  EG "First Class"</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="LocationPoint" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>TODO - this object needs to be reviewed and potentially reworked.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>ArrivalPoint DeparturePoint</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="code"
+                referenceRepeat="0" type="ota2-0500:StringTiny"/>
+            <ns2:Indicator name="kioskInd" publishAsElement="false"/>
+            <ns2:Indicator name="curbSideBaggageCheckInd" publishAsElement="false"/>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute mandatory="true" name="openingTime"
+                referenceRepeat="0" type="xsd:time"/>
+            <ns2:Attribute mandatory="true" name="closingTime"
+                referenceRepeat="0" type="xsd:time"/>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="TransportNumber" type="ota2-0500:StringTiny">
+        <ns2:Attribute mandatory="true" name="carrier"
+            referenceRepeat="0" type="ota2-0500:StringTiny"/>
+        <ns2:Attribute name="operatingCarrier" referenceRepeat="0" type="ota2-0500:StringTiny"/>
+    </ns2:ValueWithAttrs>
+    <ns2:ChoiceObject name="ProductQueries" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Element name="PriceModifiers" repeat="0" type="order-0400:PriceModifiers">
+                <ns2:Documentation>
+                    <ns2:Description>Attributes that influence the price.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="LoyaltyProgram" repeat="0" type="ota2-0500:LoyaltyProgram_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>The loyalty program associated with the person.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="ProductQueries"
+        name="Transportation" notExtendable="false" type="Choice">
+        <ns2:Element name="JourneyQueryProduct" repeat="0" type="Journey_Query_Product"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="DepartureArrival" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes a pickup, dropoff or intermediate stop point.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>Departure Arrival</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="dateTime" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time of departure or arrival according to context.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="product">2016-11-28T14:14:00</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="LocationPointChoice" repeat="0" type="LocationPointChoice"/>
+            <ns2:Indicator name="asDirectedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, this location will be notified by the customer.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="openingTime" referenceRepeat="0" type="xsd:time"/>
+            <ns2:Attribute name="closingTime" referenceRepeat="0" type="xsd:time"/>
+            <ns2:Element name="TimeSpan" repeat="0" type="ota2-0500:TimeSpan">
+                <ns2:Documentation>
+                    <ns2:Description>Start and end times where a departure or arrival is within a range.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    <ns2:ChoiceObject name="LocationPointChoice" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides address details for a location. Comare with JourneyPoint</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A name for the location.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Location" repeat="0" type="ota2-0500:Location_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>The address of the location.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A local (as opposed to global) identfier for the location</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="LocationPointChoice" name="Address"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="Notes" repeat="0" type="ota2-0500:Text"/>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="LocationPointChoice" name="Airport"
+        notExtendable="false" type="Choice">
+        <ns2:Attribute name="terminal" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The terminal at which the customer is to be delivered or collected.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="product">2</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="gate" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The gate at which the flight is scheduled to arrive or depart. Query: would this normallt be only fr arrivals?</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="product">38B</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="country" referenceRepeat="0" type="ota2-0500:CountryCode_ISO3166">
+            <ns2:Documentation>
+                <ns2:Description>The country in which the airport in located.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="product">US</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute mandatory="true" name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Code identifying a location e.g. IATA Airport Code.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="product">LAX</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Element name="FlightInfo" repeat="0" type="pgt-0300:FlightInfo_Summary">
+            <ns2:Documentation>
+                <ns2:Description>The date and time of the flight's departure or arrival and its number.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Indicator name="kioskInd" publishAsElement="false"/>
+        <ns2:Indicator name="curbSideBaggageCheckInd" publishAsElement="false"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:BusinessObject name="Segment" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>The unique identifier element allows the trading partners to  uniquely identify each Booking Rule, for transaction tracability.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SegmentRef" reference="true" repeat="0" type="Segment">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="numberOfStops" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of intermediate stops.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="product">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="duration" referenceRepeat="0" type="xsd:duration"/>
+            <ns2:Attribute name="status" referenceRepeat="0" type="ota2-0500:StringTiny"/>
+            <ns2:Element mandatory="true" name="Departure" repeat="0" type="Departure">
+                <ns2:Documentation>
+                    <ns2:Description>The departure location of the segment.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="Arrival" repeat="0" type="Arrival">
+                <ns2:Documentation>
+                    <ns2:Description>The arrival location of the segment.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Transport" repeat="0" type="Transport">
+                <ns2:Documentation>
+                    <ns2:Description>Transportation details for the segment.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:TextFree">
+                <ns2:Documentation>
+                    <ns2:Description>Free text description of the Segment</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ChoiceObject name="Transport" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details of a method of transport. Choice facets for Air &amp; Rail to be defined.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Element name="TransportNumber" repeat="0" type="TransportNumber"/>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    
+    <ns2:CoreObject name="PropertyInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Identifies a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>Site</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Uniquely identifies a single property for a reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the proper name of the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="cityCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the three character IATA city code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="chainCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the chain.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="chainName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the proper name of the chain.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="brandCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies a brand with in a chain (e.g. Courtyard, Hampton Inn).  This code is optional if the hotel is an independent property that can be identified by a propert code alone.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="brandName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the proper name of the brand.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="GuestCount" type="xsd:positiveInteger">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the number of guests for the reservation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="ageQualifyingCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>TBD - Should this use the AgeQualifyingCode Code List? Specifies the age type of the guest.  (e.g. Adult, Child, Infant).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="age" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the specific age of the guest.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="MealsIncluded" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Specifies which meals are included with this rate plan.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="mealPlanCodes" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the type of meal plans included with this rate plan.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Indicator name="breakfastInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that breakfast is included with this rate plan.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="lunchInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that lunch is included with this rate plan.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="dinnerInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates dinner is included with this rate plan.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="eveningReceptionInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates an evening reception is included with this rate plan.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Product"
+        name="Golf" notExtendable="false" type="Custom">
+        <ns2:Element name="TeeTime" repeat="0" type="pg-0300:TeeTime">
+            <ns2:Documentation>
+                <ns2:Description>A golf tee time product.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

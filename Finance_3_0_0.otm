@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>3922119128</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/finance/v3</ns2:Namespace>
+    <ns2:Prefix>fin-0300</ns2:Prefix>
+    <ns2:Name>Finance</ns2:Name>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="CodeList_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Common_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/finance/v0" context="fin"/>
+    
+    <ns2:ValueWithAttrs name="BankAccountType" type="ota2:Empty">
+        <ns2:Attribute name="listBankAccountType" referenceRepeat="0" type="ota2-0300:BankAccountType_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Specifies a type of bank account (checking, savings, etc.)</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="accountCode" referenceRepeat="0" type="ota2-0400:CodeExternal">
+            <ns2:Documentation>
+                <ns2:Description>Code extension definition without dimension information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="BankAcct" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Customer bank account definition.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="checkNumber" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The check number.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CheckNumber</ns2:Equivalent>
+                <ns2:Example context="fin">999</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="PrivacyGroup" repeat="0" type="ota2-0400:Privacy">
+                <ns2:Documentation>
+                    <ns2:Description>Data use and sharing permissions.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: PrivacyGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BankAcctName" repeat="1" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Name as found on a bank account.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">BankAcctName</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="BankAcctNumber" repeat="1" type="BankAcctNumber">
+                <ns2:Documentation>
+                    <ns2:Description>Account number.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">BankAcctName</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="BankID" repeat="0" type="BankID">
+                <ns2:Documentation>
+                    <ns2:Description>Bank ID or routing number.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Type" repeat="1" type="BankAccountType">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies a type of bank account (Savings, Checking, etc.)</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}List_BankAccountType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Type</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Indicator name="checksAcceptedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Implementer: If true, checks are accepted.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="EncryptionToken" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>OpenTravel Best Practice: Use of Encrypted, Masked or Tokenized Information: Certain OpenTravel schema may have combinations payment and/or account information with other personally identifying information, such as customer name and date of birth. For enhanced customer privacy and security, it is RECOMMENDED that the payment and account information be protected, using tokenization or some other encryption method and displayed in a masked format.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases>BankAcctNumber BankID CardNumber SeriesCode MagneticStripe AuthenticationVerification TransactionPassword</ns2:Aliases>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="encryptionKey" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>This contains a key required to retrieve the full payment instrument details compliant with PCI DSS standards.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">KHC32198gt4</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="encryptionKeyMethod"
+                referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>This contains a reference to the key generation method being used - this is NOT the key value.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">RotatingKeyEnvironment_DailyKey</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="encryptionMethod" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>When using the OpenTravel Encryption element, it is RECOMMENDED that all trading partners be informed of all encryption methods being used in advance of implementation to ensure message processing compatibility.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">Triple DES</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="encryptedValue" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>The value in an encrypted format.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">5dfc52b51bd35553df8592078de921bc</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="mask" referenceRepeat="0" type="ota2-0400:EncryptionTokenTypeMask">
+                <ns2:Documentation>
+                    <ns2:Description>Masked data.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: EncryptionTokenType_Mask</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">xxxxxxxxxxxx9922</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="token" referenceRepeat="0" type="EncryptionTokenType_Token">
+                <ns2:Documentation>
+                    <ns2:Description>Tokenized Information.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: EncryptionTokenType_Token</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">AEGHV234AUD54367</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="tokenProviderID" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>This contains a provider ID if multiple providers are used for secure information exchange.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">Shift4 (payment)</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="authenticationMethod"
+                referenceRepeat="0" type="AuthenticationMethod_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the method that was used to authenticate the card.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: EncryptionTokenType_AuthenticationMethod</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">Check digit</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="PlainText" repeat="1" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Non-secure (plain text) value.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Warning" repeat="1" type="ota2-0400:ErrorWarning">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies an error that occurred in the processing of the payment card.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}WarningType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="DirectBill" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Company name and location for sending invoice for remittances for travel services.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="directBill_ID" referenceRepeat="0" type="ota2-0400:String">
+                <ns2:Documentation>
+                    <ns2:Description>Identifier for the organization to be billed directly for travel services.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">DirectBill_ID</ns2:Equivalent>
+                <ns2:Example context="fin">7654</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="billingAccount" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The account assigned by the subscriber for billing reconciliation of a corporate account.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">BillingNumber</ns2:Equivalent>
+                <ns2:Example context="fin">00034723</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Privacy" repeat="0" type="ota2-0400:Privacy">
+                <ns2:Documentation>
+                    <ns2:Description>Allows for control of the sharing of direct bill data between parties.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: PrivacyGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CompanySummary" repeat="0" type="ota2-0400:Company_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Company to which remittance should be sent.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="FormOfPayment" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the form of payment.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FormOfPaymentRef" reference="true"
+                repeat="0" type="FormOfPayment">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="costCenterID" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A reference to identify the billing department for allocating cost of travel to company account.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CostCenterID</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="paymentTransactionTypeCode"
+                referenceRepeat="0" type="PaymentTransactionType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>This is used to indicate either a charge, reserve (deposit) or refund.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: PaymentFormType_PaymentTransactionTypeCode</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">PaymentTransactionTypeCode</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="guaranteeID" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Provides the identifier as specified by the GuaranteeTypeCode (e.g., Corporate ID or IATA number).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">GuaranteeID</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="remark" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A remark associated with the payment form.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Remark</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Element name="Privacy" repeat="0" type="ota2-0400:Privacy">
+                <ns2:Documentation>
+                    <ns2:Description>Data use and sharing permissions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuaranteeTypeCode" repeat="0" type="ota2-0300:PaymentType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to specify the method of guarantee. Refer to OpenTravel Code List Payment Type (PMT).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">GuaranteeTypeCode</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Indicator name="guaranteeIndicatorInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates this represents a guarantee rather than a payment form.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="Cash" notExtendable="false" type="Custom">
+        <ns2:Indicator name="cashInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>Indicates that cash is being used as the form of payment.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="PaymentCard" notExtendable="false" type="Custom">
+        <ns2:Element name="PaymentCard" repeat="0" type="PaymentCard">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the payment card information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="BankAccount" notExtendable="false" type="Custom">
+        <ns2:Element name="BankAcct" repeat="0" type="BankAcct">
+            <ns2:Documentation>
+                <ns2:Description>Customer bank account definition.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="LoyaltyRedemption" notExtendable="false" type="Custom">
+        <ns2:Attribute name="redemptionQuantity" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The quantity of loyalty units being redeemed.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">1000</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Element name="PromotionCode" repeat="0" type="ota2-0400:Code">
+            <ns2:Documentation>
+                <ns2:Description>Used to provide a promotion code of the loyalty redemption and the list of vendors supporting the promotion (in CodeContext).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="LoyaltyCertificate" repeat="9" type="LoyaltyCertificate">
+            <ns2:Documentation>
+                <ns2:Description>A certificate may be needed in order to redeem miles or points. Certificates may be used in combination with each other as part of a reservation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="DirectBill" notExtendable="false" type="Custom">
+        <ns2:Element name="DirectBill" repeat="0" type="DirectBill">
+            <ns2:Documentation>
+                <ns2:Description>Company name and location for sending invoice for remittances for travel services.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="Voucher" notExtendable="false" type="Custom">
+        <ns2:Element name="Voucher" repeat="0" type="Voucher">
+            <ns2:Documentation>
+                <ns2:Description>A form of payment using a voucher or coupon.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BillingAccountName" repeat="0" type="ota2-0400:CompanyName">
+            <ns2:Documentation>
+                <ns2:Description>The name of the Billing Account for which the voucher has been issued.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="AddressSummary" repeat="0" type="ota2-0400:Address_Summary">
+            <ns2:Documentation>
+                <ns2:Description>The address of the Billing Account for which the voucher has been issued.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="MiscChargeOrder" notExtendable="false" type="Custom">
+        <ns2:Attribute name="ticketNumber" referenceRepeat="0" type="ota2-0400:TicketNumber">
+            <ns2:Documentation>
+                <ns2:Description>The ticket number of the miscellaneous charge order (MCO).</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">9028</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Element name="OriginalIssue" repeat="0" type="OriginalIssueAttributes">
+            <ns2:Documentation>
+                <ns2:Description>Provides information about the original document on which the reissue is based.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Indicator name="paperMCO_ExistInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>Indicates if a paper or electronic MCO exists.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="FormOfPayment"
+        name="Ticket" notExtendable="false" type="Custom">
+        <ns2:Attribute name="ticketNumber" referenceRepeat="0" type="ota2-0400:TicketNumber">
+            <ns2:Documentation>
+                <ns2:Description>The ticket number which is exchanged.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">1234</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="reasonForReroute" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Gives more information about the rerouting.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin"/>
+        </ns2:Attribute>
+        <ns2:Element name="OriginalIssueAttributes" repeat="0" type="OriginalIssueAttributes">
+            <ns2:Documentation>
+                <ns2:Description>Provides information about the original document on which the reissue is based.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Rerouting" repeat="0" type="Rerouting">
+            <ns2:Documentation>
+                <ns2:Description>If present, indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ConjunctionTicketNbr" repeat="16" type="ConjunctionTicketNbr">
+            <ns2:Documentation>
+                <ns2:Description>Conjunction ticket number in case a conjunction ticket is exchanged.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:ValueWithAttrs name="LoyalLevel" type="ota2-0400:StringTiny">
+        <ns2:Documentation>
+            <ns2:Description>Indicates special privileges in program assigned to individual.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Example context="fin">Platinum</ns2:Example>
+        <ns2:Attribute name="loyalLevel" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Indicates special privileges in program assigned to individual.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">Platinum</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="loyalLevelCode" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>Provides a numeric code assigned to a particular loyalty level.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">3</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="LoyaltyCertificate" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Identifies the Loyalty Program, membership, form factor used by the certificate and its current status.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Equivalent context="fin">LoyaltyCertificateGroup</ns2:Equivalent>
+        <ns2:Attribute name="iD" referenceRepeat="0" type="xsd:ID">
+            <ns2:Documentation>
+                <ns2:Description>A unique identifying value assigned by the creating system. The ID attribute may be used to reference a primary-key value within a database or in a particular implementation.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ID</ns2:Equivalent>
+            <ns2:Example context="fin">2398379983749</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="iD_Context" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the source of the code that identifies program or promotion within a loyalty scheme.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ID_Context</ns2:Equivalent>
+            <ns2:Example context="fin">Marriott Rewards</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="certificateNumber" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The loyalty redemption certificate identifier.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">CertificateNumber</ns2:Equivalent>
+            <ns2:Example context="fin">90374638372</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="memberNumber" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Unique identifier of the member in the program.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">MemberNumber</ns2:Equivalent>
+            <ns2:Example context="fin">283746397988</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="programName" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>This identifies the loyalty program.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ProgramName</ns2:Equivalent>
+            <ns2:Example context="fin">Marriott Rewards</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="effectiveDate" referenceRepeat="0" type="xsd:date">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the starting date.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">EffectiveDate</ns2:Equivalent>
+            <ns2:Example context="fin">0901</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="expireDate" referenceRepeat="0" type="xsd:date">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the ending date.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ExpireDate</ns2:Equivalent>
+            <ns2:Example context="fin">1022</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="numberOfNights" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The number of accommodation nights that are covered by this certificate.</ns2:Description>
+                <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">NmbrOfNights</ns2:Equivalent>
+            <ns2:Example context="fin">3</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="format" referenceRepeat="0" type="LoyaltyCertificateFormat_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Indicates what form the certificate is in e.g. Paper or Electronic.</ns2:Description>
+                <ns2:Implementer>LocalAnonymousType: LoyaltyCertificateGroup_Format</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">Format</ns2:Equivalent>
+            <ns2:Example context="fin"/>
+        </ns2:Attribute>
+        <ns2:Attribute name="status" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Used to define the status of the certificate e.g. Available, Voided, Cancelled, Reserved, Used.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">Status</ns2:Equivalent>
+            <ns2:Example context="fin">Available</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Indicator name="expireDateExclusiveInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="OriginalIssueAttributes" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Provides information about the original document on which the reissue is based.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Equivalent context="fin">OriginalIssueAttributes</ns2:Equivalent>
+        <ns2:Attribute name="ticketNumber" referenceRepeat="0" type="ota2-0400:TicketNumber">
+            <ns2:Documentation>
+                <ns2:Description>The original ticket number in a series if reissuances.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">OriginalTicketNumber</ns2:Equivalent>
+            <ns2:Example context="fin">238473638474</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="issuePlace" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Place where the original ticket was issued.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">OriginalIssuePlace</ns2:Equivalent>
+            <ns2:Example context="fin">Boston</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="issueDate" referenceRepeat="0" type="xsd:date">
+            <ns2:Documentation>
+                <ns2:Description>Date when the original ticket was issued.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">OriginalIssueDate</ns2:Equivalent>
+            <ns2:Example context="fin">1999-07-16</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="issueIATA" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>IATA office number, which issued original ticket.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">OriginalIssueIATA</ns2:Equivalent>
+            <ns2:Example context="fin">32938473829</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="paymentForm" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Payment type for the original ticket.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">OriginalPaymentForm</ns2:Equivalent>
+            <ns2:Example context="fin">Credit card</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="checkInhibitor" referenceRepeat="0" type="CheckInhibitor_Enum">
+            <ns2:Documentation>
+                <ns2:Description>When present, indicates that the check digit of the ticket number or the interline agreement do not need to be checked.</ns2:Description>
+                <ns2:Implementer>LocalAnonymousType: OriginalIssueAttributes_CheckInhibitorType</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">CheckInhibitorType</ns2:Equivalent>
+        </ns2:Attribute>
+        <ns2:Attribute name="coupons" referenceRepeat="0" type="Coupons">
+            <ns2:Documentation>
+                <ns2:Description>Gives a list of references to coupon numbers of the ticket which will be taken for payment.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfRPH</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">CouponRPHs</ns2:Equivalent>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="PaymentCard" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the details of the debit or credit card.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0400:EncryptionTokenTypeMask">
+            <ns2:Documentation>
+                <ns2:Description>The masked payment card number.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Simple>
+        <ns2:Summary>
+            <ns2:Attribute name="id" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>XML ID only for use within the document.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">RPH</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="effectiveDate" referenceRepeat="0" type="ota2-0400:DateMMYY">
+                <ns2:Documentation>
+                    <ns2:Description>Start month and year.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: PaymentCardDateGroup</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="fin">0116</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="expireDate" referenceRepeat="0" type="ota2-0400:DateMMYY">
+                <ns2:Documentation>
+                    <ns2:Description>End month and year.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="fin">0117</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Privacy" repeat="0" type="ota2-0400:Privacy">
+                <ns2:Documentation>
+                    <ns2:Description>Data use and sharing permissions.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: PrivacyGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CardCode" repeat="0" type="CardAssociationCode">
+                <ns2:Documentation>
+                    <ns2:Description>Card code association such as VI for Visa, MC for Mastercard or AX for American Express, etc.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentCardCodeType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardCode</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="CardType" repeat="1" type="PaymentCardType_Issuer">
+                <ns2:Documentation>
+                    <ns2:Description>Example: BritishAirwaysVisaSignatureCard</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Issuer</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Issuer</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="Issuer" repeat="1" type="ota2-0400:CodeExternal">
+                <ns2:Documentation>
+                    <ns2:Description>Example: Mastercard</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}List_PaymentCardIssuer</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardType</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="CardHolderName" repeat="1" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder name.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardHolderName</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="CardNumber" repeat="1" type="CardNumber">
+                <ns2:Documentation>
+                    <ns2:Description>Credit card number embossed on the card.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardNumber</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="AuthenticationVerification" repeat="1" type="AuthenticationVerification">
+                <ns2:Documentation>
+                    <ns2:Description>Verification digits.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">SeriesCode</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="MagneticStripe" repeat="3" type="MagneticStripe">
+                <ns2:Documentation>
+                    <ns2:Description>Magnetic stripe.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">MagneticStripe</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="SeriesCode" repeat="0" type="SeriesCode">
+                <ns2:Documentation>
+                    <ns2:Description>The 3 character CVV code or series code found on the back of the payment card.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="secureInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, all or a portion of this data is secure, via tokenization, encryption and/or masking.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="countryOfIssue" referenceRepeat="0" type="ota2-0400:CountryCode_ISO3166">
+                <ns2:Documentation>
+                    <ns2:Description>Example: US</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CountryOfIssue</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="companyCardReference"
+                referenceRepeat="0" type="ota2-0400:StringAlphaNumeric">
+                <ns2:Documentation>
+                    <ns2:Description>Note: This is a reference for a company sponsor for the card.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1to19</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CompanyCardReference</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="remark" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Example: Travel rewards card.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Remark</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Element name="CardHolderId" repeat="0" type="ota2-0400:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder reference ID</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardHolderRPH</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="PersonNameSummary" repeat="1" type="ota2-0400:PersonName_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Description: The details of the Card Holder's Name.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CardHolderNameDetails</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="AddressSummary" repeat="1" type="ota2-0400:Address_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder address.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AddressType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Address</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="TelephoneSummary" repeat="100000" type="ota2-0400:Telephone_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder telephone number.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Telephone</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Telephone</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="Email" repeat="100000" type="ota2-0400:Email_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder email.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EmailType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Email</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="CustomerLoyalty" repeat="100000" type="CustomerLoyalty">
+                <ns2:Documentation>
+                    <ns2:Description>Card holder loyalty program.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CustLoyalty</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CustLoyalty</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="SignatureOnFile" repeat="1" type="SignatureOnFile">
+                <ns2:Documentation>
+                    <ns2:Description>Note: This indicates if the signature is authorized as a form of guarantee. In some countries, the customer can sign the payment card slip as a form of guarantee.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SignatureOnFile</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">SignatureOnFile</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="ThreeDomainSecurity" repeat="1" type="ThreeDomainSecurity">
+                <ns2:Documentation>
+                    <ns2:Description>Note: This contains 3-D Secure protocol information for online credit and debit card transactions for programs such as Verified by Visa, MasterCard SecureCode, J/Secure and SafeKey.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ThreeDomainSecurity</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ThreeDomainSecurity</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Indicator name="extendedPaymentInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Implementer: If true, the credit card company is requested to delay the date on which the amount of this transaction is applied to the customer's account.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="PaymentCardType_Issuer" type="ota2-0400:StringShort">
+        <ns2:Documentation>
+            <ns2:Description>Code of the payment card issuer.</ns2:Description>
+            <ns2:Implementer>Extension: List_PaymentCardIssuer</ns2:Implementer>
+        </ns2:Documentation>
+        <ns2:Example context="fin">786</ns2:Example>
+        <ns2:Attribute name="issuerCode" referenceRepeat="0" type="ota2-0300:PaymentCardIssuer_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">900</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="SignatureOnFile" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Signature on file.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="Date_EffectiveExpire" repeat="0" type="ota2-0400:DateEffectiveExpire">
+                <ns2:Documentation>
+                    <ns2:Description>The date range for which the signature on file is valid.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="signatureOnFileInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates a signature has been obtained.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="TaxRegistrationDetails" type="ota2:Empty">
+        <ns2:Attribute name="taxID" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The tax registration identifier e.g., Australian Business Number (ABN).</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">9878909</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="recipientName" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The recipient's name.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">John Doe</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="recipientAddress" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Free text for the recipient's address.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">1 Maple St, New York, NY 20190</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="ThreeDomainSecurity_Gateway" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="eCI" referenceRepeat="0" type="ota2-0400:StringCharacterOne">
+                <ns2:Documentation>
+                    <ns2:Description>The ECI indicates the security level associated with an Internet purchase transaction.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ECI</ns2:Equivalent>
+                <ns2:Example context="fin">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="merchantID" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Merchant ID.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">MerchantID</ns2:Equivalent>
+                <ns2:Example context="fin">mycart</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="processorID" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Processor ID.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ProcessorID</ns2:Equivalent>
+                <ns2:Example context="fin">201</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="uRL" referenceRepeat="0" type="xsd:anyURI">
+                <ns2:Documentation>
+                    <ns2:Description>Transaction URL.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">URL</ns2:Equivalent>
+                <ns2:Example context="fin">http://www.url here</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="AuthenticationVerification" repeat="1" type="AuthenticationVerification">
+                <ns2:Documentation>
+                    <ns2:Description>Cardholder authentication value information.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AuthenticationVerificationValue</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">AuthenticationVerificationValue</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="TransactionPassword" repeat="1" type="TransactionPassword">
+                <ns2:Documentation>
+                    <ns2:Description>Merchant transaction password information.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TransactionPassword</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">TransactionPassword</ns2:Equivalent>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="ThreeDomainSecurity" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>3-D secure financial authorization information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element mandatory="true"
+                name="ThreeDomainSecurity_Gateway" repeat="0" type="ThreeDomainSecurity_Gateway">
+                <ns2:Documentation>
+                    <ns2:Description>Merchant gateway information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true"
+                name="ThreeDomainSecurity_Results" repeat="0" type="ThreeDomainSecurity_Results">
+                <ns2:Documentation>
+                    <ns2:Description>Transaction results.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="ThreeDomainSecurity_Results" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="cAVV" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Authentication certificate.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CAVV</ns2:Equivalent>
+                <ns2:Example context="fin">AAABAFaQRwAAAAAAEZBHAAAAAAA=ECI05</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="pAResStatus" referenceRepeat="0" type="ota2-0400:StringCharacterOne">
+                <ns2:Documentation>
+                    <ns2:Description>Transaction status.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Y</ns2:Equivalent>
+                <ns2:Example context="fin">Y</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="signatureVerfication"
+                referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Card or issuer participation.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">SignatureVerfication</ns2:Equivalent>
+                <ns2:Example context="fin"/>
+            </ns2:Attribute>
+            <ns2:Attribute name="transactionID" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Authentication transaction ID.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">TransactionID</ns2:Equivalent>
+                <ns2:Example context="fin">9D920E9-6FCF-4A74-A4E0-D6A591D1108F</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="xID" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Unique transaction reference.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">XID</ns2:Equivalent>
+                <ns2:Example context="fin">2bxUs1emK0SCevbivcApzAcAAQk=</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TicketingAccountInformation" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="number" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Ticketing account number.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="fin">48576547</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="costCenter" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Ticketing cost center.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="fin">Cost center name</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="companyNumber" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Ticketing company number.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="fin">325</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="clientReference" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Ticketing client reference.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="fin">786</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="TaxRegistrationDetails" repeat="0" type="TaxRegistrationDetails">
+                <ns2:Documentation>
+                    <ns2:Description>Ticketing Goods and Services Tax (GST) details (typically the Australian market).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="Voucher" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>A form of payment using a voucher or coupon.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Equivalent context="fin">VoucherGroup</ns2:Equivalent>
+        <ns2:Attribute name="seriesCode" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Identification of a series of coupons or vouchers identified by serial number(s).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">SeriesCode</ns2:Equivalent>
+            <ns2:Example context="fin">87462746283</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="effectiveDate" referenceRepeat="0" type="xsd:date">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the starting date.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">EffectiveDate</ns2:Equivalent>
+            <ns2:Example context="fin">1999-07-16</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="expireDate" referenceRepeat="0" type="xsd:date">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the ending date.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ExpireDate</ns2:Equivalent>
+            <ns2:Example context="fin">2022-07-16</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="billingNumber" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Reference of the billing account which handles the payment transaction.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">BillingNumber</ns2:Equivalent>
+            <ns2:Example context="fin">234872648</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="supplierIdentifier" referenceRepeat="0" type="ota2-0400:Identifier">
+            <ns2:Documentation>
+                <ns2:Description>Unique identifier of the electronic voucher, created by the supplier.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">SupplierIdentifier</ns2:Equivalent>
+            <ns2:Example context="fin">6473243874</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="identifier" referenceRepeat="0" type="xsd:ID">
+            <ns2:Documentation>
+                <ns2:Description>Unique identifier of the electronic voucher.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">Identifier</ns2:Equivalent>
+        </ns2:Attribute>
+        <ns2:Attribute name="valueType" referenceRepeat="0" type="ota2-0400:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>Defines the type of voucher (e.g., full credit or partial credit).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="fin">ValueType</ns2:Equivalent>
+            <ns2:Example context="fin">Full</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Indicator name="groupDaysApplyInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, specifies the Group Days Apply Value can be used for this Voucher Billing Account.  This indicator is used to allow the usage of a car rental days voucher when part of an inclusive tour.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="electronicIndicatorInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates the voucher is electronic. An E-voucher is a value document issued by the Travel Agent for the customer. The e-voucher can be used as a proof of reservation, but more normally, as a full-payment or partial payment.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="expireDateExclusiveInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Enumeration_Closed name="Card_Enum">
+        <ns2:Value label="" literal="credit"/>
+        <ns2:Value label="" literal="debit"/>
+        <ns2:Value label="" literal="centralBill"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Simple name="Coupon" pattern="[0-9]{1,8}" type="xsd:string">
+        <ns2:Documentation>
+            <ns2:Description>Gives the coupon number of the ticket, which will be taken for payment.</ns2:Description>
+        </ns2:Documentation>
+    </ns2:Simple>
+    
+    <ns2:Simple listTypeInd="true" name="Coupons" type="Coupon">
+        <ns2:Documentation>
+            <ns2:Description>Gives the coupon numbers of the ticket, which will be taken for payment.</ns2:Description>
+        </ns2:Documentation>
+    </ns2:Simple>
+    
+    <ns2:Enumeration_Closed name="ShareMarketInd_Enum">
+        <ns2:Documentation>
+            <ns2:Description>If the value=Inherit, specifies data sharing permissions for marketing purposes.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Yes"/>
+        <ns2:Value label="" literal="No"/>
+        <ns2:Value label="" literal="Inherit"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="AuthenticationMethod_Enum">
+        <ns2:Value label="" literal="SecurityCode">
+            <ns2:Documentation>
+                <ns2:Description>This confirms that the security code was used as the type of authentication.  The security code includes items such as CVV, CVV2, CVC, etc.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="MagneticStripe">
+            <ns2:Documentation>
+                <ns2:Description>This confirms that the magnetic stripe was used as the type of authentication.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Simple name="EncryptionTokenType_Token"
+        pattern="[0-9a-zA-Z]{1,32}" type="xsd:string">
+        <ns2:Documentation>
+            <ns2:Description/>
+            <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+        </ns2:Documentation>
+        <ns2:Equivalent context="fin">EncryptionTokenType_Token</ns2:Equivalent>
+    </ns2:Simple>
+    
+    <ns2:Enumeration_Closed name="LoyaltyCertificateFormat_Enum">
+        <ns2:Value label="" literal="Paper"/>
+        <ns2:Value label="" literal="Electronic"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="CheckInhibitor_Enum">
+        <ns2:Value label="" literal="CheckDigit">
+            <ns2:Documentation>
+                <ns2:Description>The CheckDigit of the TicketNumber does not need to be verified.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="InterlineAgreement">
+            <ns2:Documentation>
+                <ns2:Description>No automatic interline agreement check needs to be performed on the ticket to be reissued.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Both">
+            <ns2:Documentation>
+                <ns2:Description>Neither the ticket number check digit nor the interline agreement needs to be checked.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="PaymentTransactionType_Enum">
+        <ns2:Value label="" literal="charge">
+            <ns2:Documentation>
+                <ns2:Description>This indicates that an actual payment has been made.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="reserve">
+            <ns2:Documentation>
+                <ns2:Description>This indicates that a hold for the indicated amount has been placed on a credit card or that a cash amount has been taken from the customer to guarantee final payment.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="refund">
+            <ns2:Documentation>
+                <ns2:Description>This indicates that the payment amount of this PaymentDetail element is for a refund.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="Rerouting_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="voluntary"/>
+        <ns2:Value label="" literal="involuntary"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="SingleVendor_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Indicates if program is affiliated with a group of related offers accumulating credits.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="SingleVndr">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the program is not part of an alliance.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="Alliance">
+            <ns2:Documentation>
+                <ns2:Description>Indicates the program is part of an alliance.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:ValueWithAttrs name="ConjunctionTicketNbr" type="ota2-0400:StringShort">
+        <ns2:Documentation>
+            <ns2:Description>Conjunction ticket number in case a conjunction ticket is exchanged.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="coupons" referenceRepeat="0" type="Coupons">
+            <ns2:Documentation>
+                <ns2:Description>Gives the coupon numbers of the ticket, which will be taken for payment.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="fin">2387</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="Rerouting" type="Rerouting_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Example context="fin">Rerouted due to overbooking</ns2:Example>
+        <ns2:Attribute name="reason" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>Gives more information about the rerouting.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Simple name="CardAssociationCode" pattern="([a-zA-Z]{2})?" type="ota2-0400:StringTiny">
+        <ns2:Example context="fin">AX</ns2:Example>
+    </ns2:Simple>
+    
+    <ns2:CoreObject name="CustomerLoyalty" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Program rewarding frequent use by accumulating credits for services provided by vendors.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="id" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A reference placeholder for this loyalty membership.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}RPH_Type</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">RPH</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="programID" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Identifier to indicate the company owner of the loyalty program.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ProgramID</ns2:Equivalent>
+                <ns2:Example context="fin">2342</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="membershipID" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Unique identifier of the member in the program (membership number, account number, etc.).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">MembershipID</ns2:Equivalent>
+                <ns2:Example context="fin">30293837653</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="allianceLoyaltyLevelName"
+                referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Name of the alliance loyalty level (e.g.,OneWorld  uses Emerald, Ruby, etc and SkyTeam uses Elite, etc.)</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to128</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">AllianceLoyaltyLevelName</ns2:Equivalent>
+                <ns2:Example context="fin">Emerald</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="customerType" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Original assessment of the customer by the travel agent.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CustomerType</ns2:Equivalent>
+                <ns2:Example context="fin">Businessman</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="customerValue" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The supplier's ranking of the customer (e.g., VIP, numerical ranking).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">CustomerValue</ns2:Equivalent>
+                <ns2:Example context="fin">VIP</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="password" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The password for the member in the program.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">Password</ns2:Equivalent>
+                <ns2:Example context="fin">Password1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="loyalLevel" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates special privileges in program assigned to individual.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">LoyalLevel</ns2:Equivalent>
+                <ns2:Example context="fin">Platinum</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="loyalLevelCode" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Provides a numeric code assigned to a particular loyalty level.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}Numeric1to3</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">LoyalLevelCode</ns2:Equivalent>
+                <ns2:Example context="fin">5</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="singleVendorInd" referenceRepeat="0" type="SingleVendor_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates if program is affiliated with a group of related offers accumulating credits.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: CustomerLoyaltyGroup_SingleVendorInd</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">SingleVendorInd</ns2:Equivalent>
+            </ns2:Attribute>
+            <ns2:Attribute name="signupDate" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates when the member signed up for the loyalty program.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">SignupDate</ns2:Equivalent>
+                <ns2:Example context="fin">1999-07-16</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="effectiveDate" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the starting date.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">EffectiveDate</ns2:Equivalent>
+                <ns2:Example context="fin">1999-07-16</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="expireDate" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the ending date.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ExpireDate</ns2:Equivalent>
+                <ns2:Example context="fin">2007-07-16</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="TravelSector" repeat="0" type="ota2-0300:TravelSector_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the travel sector. Refer to OpenTravel Code List Travel Sector (TVS).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">TravelSector</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="Privacy" repeat="0" type="ota2-0400:Privacy">
+                <ns2:Documentation>
+                    <ns2:Description>Permission for sharing data for synchronization of information held by other travel service providers.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: CustomerLoyaltyGroup_ShareSynchInd</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">ShareSynchInd</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="VendorCode" repeat="0" type="ota2-0400:Code">
+                <ns2:Documentation>
+                    <ns2:Description>Indicate the partner(s)/vendor(s) for which the customer loyalty number is valid.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfStringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">VendorCode</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Indicator name="expireDateExclusiveIndicatorInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="primaryLoyaltyIndicatorInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates this is the primary customer loyalty program and when false, indicates this is not the primary customer loyalty program.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="fin">PrimaryLoyaltyIndicator</ns2:Equivalent>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+</ns2:Library>

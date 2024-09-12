@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>2181067078</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/reservation/v2</ns2:Namespace>
+    <ns2:Prefix>res-0200</ns2:Prefix>
+    <ns2:Name>Reservation</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Common_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import fileHints="Order_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v3" prefix="order-0300"/>
+    <ns2:Import fileHints="Organization_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v3" prefix="org-0300"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/reservation/v0" context="res"/>
+    
+    <ns2:BusinessObject name="Reservation" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A container associating travelers and orders pertaining to a particular trip or event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReservationRef" reference="true"
+                repeat="0" type="Reservation">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="OrderConfirmation"
+                repeat="99" type="order-0300:Order_Confirmation">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of confirmed offers.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="Receipt" repeat="99" type="Receipt">
+                <ns2:Documentation>
+                    <ns2:Description>Receipt for the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TimeSpan" repeat="0" type="ota2-0400:TimeSpan">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the start date and end date that covers the whole reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TravelerSummary" repeat="99" type="ota2-0400:Traveler_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>For travelers uniquely identified in the order this should just be the traveler ID.  For travelers not identified in the orders, this may be more detailed information about the traveler.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactPerson" repeat="0" type="ota2-0400:ContactPerson_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Information pertaining to the contact for the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Comment" repeat="30" type="ota2-0400:Comment">
+                <ns2:Documentation>
+                    <ns2:Description>Comments pertaining to the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Facility" repeat="99" type="org-0300:Facility">
+                <ns2:Documentation>
+                    <ns2:Description>One or more facilities associated with this reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Reservation"
+        name="Cancellation" notExtendable="false" type="Custom">
+        <ns2:Element name="CancellationID" repeat="0" type="ota2-0400:Identifier">
+            <ns2:Documentation>
+                <ns2:Description>Confirmation of the cancellation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Reservation"
+        name="ByTraveler" notExtendable="false" type="Query">
+        <ns2:Element name="TravelerCriteria" repeat="0" type="TravelerCriteria">
+            <ns2:Documentation>
+                <ns2:Description>Traveler information on which the query is being preformed.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Verification" repeat="0" type="Verification">
+            <ns2:Documentation>
+                <ns2:Description>Verification Information for the travler.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="TimeSpan" repeat="0" type="ota2-0400:TimeSpan">
+            <ns2:Documentation>
+                <ns2:Description>The time span for which the query is to be performed.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:BusinessObject name="Receipt" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>An identifier provided by the vendor or supplier confirming the reservation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0400:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReceiptRef" reference="true" repeat="0" type="Receipt">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="PaymentSummary"
+                repeat="0" type="order-0300:Payment_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Payment details for the reservation.  Intended to be used when the reservation holder processes a single payment for all of the orders in the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="OrderIdentifier"
+                repeat="0" type="order-0300:Order_ID">
+                <ns2:Documentation>
+                    <ns2:Description>An identifier to the order for which this receipt applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the reservation for which this receipt applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="Verification" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Fields that can be used to control access to reservations.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="PersonNameSummary" repeat="0" type="ota2-0400:PersonName_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Person name information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Email_Simple" repeat="0" type="ota2-0400:Email_Simple">
+                <ns2:Documentation>
+                    <ns2:Description>Email associated with the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Telephone_Simple" repeat="0" type="ota2-0400:Telephone_Simple">
+                <ns2:Documentation>
+                    <ns2:Description>The telephone number associated with the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PaymentCard_Masked" repeat="0" type="ota2-0400:EncryptionTokenTypeMask">
+                <ns2:Documentation>
+                    <ns2:Description>Masked payment card number that can be used to control access to reservations.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TravelerCriteria" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Criteria used to retreive a reservation for a specific traveler.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="PersonIdentifier" repeat="0" type="ota2-0400:Person_ID">
+                <ns2:Documentation>
+                    <ns2:Description>The person identifier with which the search should be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PersonNameSummary" repeat="0" type="ota2-0400:PersonName_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Person name information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Email_Simple" repeat="0" type="ota2-0400:Email_Simple">
+                <ns2:Documentation>
+                    <ns2:Description>Email associated with the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Telephone_Simple" repeat="0" type="ota2-0400:Telephone_Simple">
+                <ns2:Documentation>
+                    <ns2:Description>The telephone number associated with the reservation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:Service name="Reservation">
+        <ns2:Operation Name="Create" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="OrderSummary" repeat="100" type="order-0300:Order_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>The details of the order being reserved.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Reservation" repeat="0" type="Reservation">
+                    <ns2:Documentation>
+                        <ns2:Description>The reservation identifier (confirmation number) and optionally the details of the reservation.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Reservation" repeat="0" type="Reservation">
+                    <ns2:Documentation>
+                        <ns2:Description>The reservation identifier (confirmation number) and optionally the details of the reservation.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="Read" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>The reservation identifier of the reservation to be retrieved.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Verification" repeat="0" type="Verification">
+                    <ns2:Documentation>
+                        <ns2:Description>Information that may be used to verify the correct reservation is being returned.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Reservation" repeat="0" type="Reservation">
+                    <ns2:Documentation>
+                        <ns2:Description>The reservation requested.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification/>
+        </ns2:Operation>
+        <ns2:Operation Name="Search" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ReservationQueryByTraveler"
+                    repeat="0" type="Reservation_Query_ByTraveler">
+                    <ns2:Documentation>
+                        <ns2:Description>Information on which the query should be performed.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Reservation" repeat="100" type="Reservation">
+                    <ns2:Documentation>
+                        <ns2:Description>Reservations, if any, that meet the search criteria.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification/>
+        </ns2:Operation>
+        <ns2:Operation Name="Cancel" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>The reservation identifier of the reservation to be retrieved.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Verification" repeat="0" type="Verification">
+                    <ns2:Documentation>
+                        <ns2:Description>Information that may be used to verify the correct reservation is being returned.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ReservationCancellation" repeat="0" type="Reservation_Cancellation">
+                    <ns2:Documentation>
+                        <ns2:Description>Cancellation details for the reservation.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0400:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0400:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0400:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ReservationCancellation" repeat="0" type="Reservation_Cancellation">
+                    <ns2:Documentation>
+                        <ns2:Description>Cancellation details for the reservation.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

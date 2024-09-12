@@ -1,0 +1,2312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>4193256557</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/organization/hospitality/v4</ns2:Namespace>
+    <ns2:Prefix>orghs-0400</ns2:Prefix>
+    <ns2:Name>OrganizationHospitality</ns2:Name>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Hospitality_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/hospitality/v2" prefix="ph-0200"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Import fileHints="Organization_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v4" prefix="org-0400"/>
+    <ns2:Import fileHints="CodeList_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/organization/hospitality/v0" context="orghs"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:Facility" name="Hotel"
+        notExtendable="false" type="Custom">
+        <ns2:Element name="BasicPropertyInfo" repeat="0" type="ph-0200:BasicPropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Identifies a property (e.g. hotel, hostel, etc.).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="SegmentCategory" repeat="0" type="ota2-0400:SegmentCategory_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the segment (e.g., luxury, upscale, extended stay) of the property. Refer to OpenTravel Codelist Segment Category Code (SEG).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="HotelDetails" repeat="0" type="HotelDetails">
+            <ns2:Documentation>
+                <ns2:Description>Detailed hotel facility information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="RateRange" repeat="0" type="ota2-0500:RateRange">
+            <ns2:Documentation>
+                <ns2:Description>The rate range for rooms at this facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="GDS_Codes" repeat="0" type="GDS_Codes">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the equivalent GDS information for the property.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:Facility" name="Hotel"
+        notExtendable="false" type="Query">
+        <ns2:Element name="HotelName" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A name or partial name of hotel used in searching for a hotel facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifies the brand or flag of a hotel, often used for independently-owned or franchised properties who are known by a specific brand.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandName" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of a brand of hotels (e.g., Courtyard, Hampton Inn).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The code that identifies a hotel chain or management group. The hotel chain code is decided between vendors. This attribute is optional if the hotel is an independent property that can be identified by the HotelCode attribute.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainName" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of the hotel chain (e.g., Hilton, Marriott, Hyatt, Starwood).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Radius" repeat="0" type="ota2-0500:Radius">
+            <ns2:Documentation>
+                <ns2:Description>The radius of the search.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ReferencePointSummary" repeat="0" type="ota2-0500:ReferencePoint_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Specifies a reference point from which the search should be preformed.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="DetailedHotelSearchCriteria" repeat="0" type="DetailedHotelSearchCriteria">
+            <ns2:Documentation>
+                <ns2:Description>Detailed search criteria for hotel facilities.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:Facility" name="HotelAvail"
+        notExtendable="false" type="Query">
+        <ns2:Element name="BaseHospitalityFacilityQuery" repeat="0" type="BaseHospitalityFacilityQuery">
+            <ns2:Documentation>
+                <ns2:Description>Base information for the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="PropertyInfo" repeat="0" type="prod-0500:PropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Property information such as brand code or chain code to be used within the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:Facility" name="HotelAvailRetrieve"
+        notExtendable="false" type="Query">
+        <ns2:Element mandatory="true" name="FacilityIdentifier"
+            repeat="100" type="org-0400:Facility_ID">
+            <ns2:Documentation>
+                <ns2:Description>Uniquely identifies a single property for a reservation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BaseHospitalityFacilityQuery" repeat="0" type="BaseHospitalityFacilityQuery">
+            <ns2:Documentation>
+                <ns2:Description>Base information used in the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:FacilityKey" name="Hotel"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="FacilityCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifies the facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the chain for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandCode" repeat="0" type="ota2-0500:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the brand for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="HotelDetails" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>An abbreviated short summary of hotel descriptive information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="supplierIntegrationLevel"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The level of integration of a property to provide automated transaction information. The lower the number, the higher the integration (e.g., a 1 means the supplier has the highest level of integration automation).</ns2:Description>
+                    <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxGroupRoomQuantity"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Provides the maximum number of rooms that can be booked in a property for a group.</ns2:Description>
+                    <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="currencyCode" referenceRepeat="0" type="ota2-0500:CurrencyCode_ISO4217">
+                <ns2:Documentation>
+                    <ns2:Description>The code specifying a monetary unit. Use ISO 4217, three alpha code.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">usd</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="hotelCodeContext" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the Hotel.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">Sabre</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="tTICode" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Recreation" repeat="100000" type="Recreation">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies recreation facilities or amenities of interest.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Recreation</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BusinessService" repeat="100000" type="org-0400:BusinessService">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies business services of interest.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Service</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Policy" repeat="1" type="HotelCheckInOutPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>Policy information for this hotel.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Policy</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MeetingCenter" repeat="100000" type="org-0400:MeetingCenter">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies property meeting facility information for a property.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelMeetingFacility</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Amenity" repeat="100000" type="ota2-0500:Amenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Property-level amenities (pool, etc) for searching.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelAmenity</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Ancillary" repeat="0" type="ota2-0500:Ancillary_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Property level ancillaries that have a cost associated with them.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="HotelCheckInOutPolicy" type="ota2:Empty">
+        <ns2:Attribute name="checkInTime" referenceRepeat="0" type="xsd:time">
+            <ns2:Documentation>
+                <ns2:Description>The checkin time required by this hotel for a room stay.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="orghs"/>
+            <ns2:Example context="orghs">16:00:00</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="checkOutTime" referenceRepeat="0" type="xsd:time">
+            <ns2:Documentation>
+                <ns2:Description>The checkout time required by this hotel for a room stay.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Example context="orghs">12:00:00</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="DetailedHotelSearchCriteria" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The property reference identifies a specific property by using the Chain Code, the Brand Code, and the Hotel Code. The codes used are agreed upon by trading partners.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="hotelCodeContext" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the HotelReferenceGroup codes.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">Sabre</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="tTIcode" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="BedType" repeat="0" type="ota2-0400:BedType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Bed type for the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelAmenity" repeat="100" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>A hotel amenity to be included in the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomAmenities" repeat="100" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>A room amenity to be included in the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Rating" repeat="0" type="ota2-0500:RatingValue">
+                <ns2:Documentation>
+                    <ns2:Description>The minimum hotel rating value of the hotels to be returned (e.g. only return hotels with a 3.5 rating or higher).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeatureAccessibility" repeat="100" type="org-0400:Feature_Accessibility">
+                <ns2:Documentation>
+                    <ns2:Description>An accessibility feature to be used in the search.   This item repeats so multiple accessibility features can be included in search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeatureSecurity" repeat="100" type="org-0400:Feature_Security">
+                <ns2:Documentation>
+                    <ns2:Description>A security feature to be used in the search.   This item repeats so multiple security features can be included in search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="petsAllowedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, pets are allowed at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="smokingRoomsInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this hotel facility offers smoking rooms.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="aDACompliantInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this hotel facility is ADA compliant.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="exactMatchInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, only properties/rate plans that exactly match the search criteria should be returned.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="adultsOnlyInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this property only accepts adult guests, children not permitted.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="BaseHospitalityFacilityQuery" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>This object is intended to be extended for use in facility queries.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="numberOfRooms" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>The number of rooms being queried for.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="DateTimeSpan" repeat="0" type="ota2-0500:TimeSpan">
+                <ns2:Documentation>
+                    <ns2:Description>Arrival and departure information for the availability query.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestCount" repeat="99" type="prod-0500:GuestCount">
+                <ns2:Documentation>
+                    <ns2:Description>The number of guests for this availability search.  May optionally include their ages or age categories.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateRange" repeat="0" type="ota2-0500:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>The rate range for which responses should be returned.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DetailedHotelSearchCriteria" repeat="0" type="DetailedHotelSearchCriteria">
+                <ns2:Documentation>
+                    <ns2:Description>Detailed search criteria for hotel facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomTypeCode" repeat="100" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>Room type codes for which the search is to be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RatePlanCode" repeat="100" type="ph-0200:RatePlanCode">
+                <ns2:Documentation>
+                    <ns2:Description>Rate plan codes for which the search is to be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="Recreation" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Name of the recreation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0500:StringShort"/>
+        <ns2:Summary>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the recreation facility
+.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="sort" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Used to define the display order.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="yearReplaced" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>The year when recreation associated equipment was last replaced.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="language" referenceRepeat="0" type="xsd:language">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the language in which the attraction information is sent.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Proximity" repeat="0" type="ota2-0400:Proximity_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Denotes whether a recreation is onsite, offsite or information is not available.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ID" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier for this recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RecreationService" repeat="0" type="ota2-0400:RecreationService_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to identify a specific recreation activity. Refer to OpenTravel Code list Recreation Srvc Type (RST).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactInformation" repeat="10" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Contact information for the recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="OperationSchedule" repeat="100" type="ota2-0500:OperationSchedule">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of days, times, and fees of operation for the recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReferencePoint" repeat="100" type="ota2-0500:ReferencePoint">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies where the recreation facility is located.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information about the recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RecreationFeature" repeat="100" type="RecreationFeature">
+                <ns2:Documentation>
+                    <ns2:Description>Provides furher desciption regarding the recreation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive infomation regarding the recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="includedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this recreation is included with basic room rates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="featuredInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, this is a featured recreation for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="HotelDescriptiveContent" notExtendable="false">
+        <ns2:Extension extends="org-0400:DescriptiveContent"/>
+        <ns2:Aliases/>
+        <ns2:ID/>
+        <ns2:Summary>
+            <ns2:Element name="BasicPropertyInfo" repeat="0" type="ph-0200:BasicPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Provides identifying information for a hotel such as hotel, chain, and brand codes as well as hotel name and city code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelPropertyInfo" repeat="0" type="HotelPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Contains descriptive information about a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FacilityInfo" repeat="0" type="FacilityInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Information pertaining to the hotel facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelPolicies" repeat="0" type="HotelPolicies">
+                <ns2:Documentation>
+                    <ns2:Description>Information pertaining to the policy information as it applies to the hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="AreaInformation" repeat="1" type="org-0400:AreaInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Defines well-known locations and attractions of local interest in the geographical area of the hotel facility as well as other area hotels.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="AffiliationInfo" repeat="0" type="org-0400:AffiliationInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Provides information regarding affiliations, loyalty programs and award ratings.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information about a collection of multimedia objects.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactInformation" repeat="100" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Provides contact information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GDS_Information" repeat="0" type="GDS_Information">
+                <ns2:Documentation>
+                    <ns2:Description>This allows for information for GDS's to be specified.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EffectivePeriod" repeat="100" type="EffectivePeriod">
+                <ns2:Documentation>
+                    <ns2:Description>The periods for which content is visible. This may be either specific times of year that repeat annually or actual dates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomBlockInformation" repeat="0" type="RoomBlockInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Describes room block information accepted by the hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EnvironmentalImpact" repeat="0" type="ota2-0500:EnvironmentalImpact">
+                <ns2:Documentation>
+                    <ns2:Description>Property environmental impact and green program/ initiative information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="CategoryCodes" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Collection of descriptive details about a hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="LocationCategory" repeat="0" type="ota2-0400:LocationCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the general location of the hotel such as airport, suburban, downtown.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SegmentCategory" repeat="0" type="ota2-0400:SegmentCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the type of hotel such as luxury, extended stay, economy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelCategory" repeat="5" type="ota2-0400:PropertyClassType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the class or type of hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ArchitecturalStyle" repeat="5" type="ota2-0400:ArchitecturalStyle_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the architectural style of the building or room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestRoomInfo" repeat="99" type="GuestRoomInfo">
+                <ns2:Documentation>
+                    <ns2:Description>The types and quantities of guest rooms at a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Documentation>
+                <ns2:Description>The types and quantities of guest rooms at a hotel.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GuestRoomInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The types and quantities of guest rooms at a hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="GuestRoomInfo_Enum" repeat="0" type="ota2-0400:GuestRoomInfo_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>A type of guest room in the hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Quantity" repeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The quanity of rooms that the hotel has of this type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateRangeInfo" repeat="0" type="ota2-0500:RateRangeInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Rate range and the dates for which they apply.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information regarding a guest room, this may include items such as images, videos and textual descriptions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TextParagraph" repeat="0" type="ota2-0500:TextParagraph">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive text that describes the guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Documentation>
+                <ns2:Description>Multimedia information about the guest room.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    <ns2:ChoiceObject name="Service" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A hotel service or amenity available to the guest such as a business center, concierge, valet parking, massage, newspapers, etc.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Shared>
+            <ns2:Attribute name="inventoryCode" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Identification code of the business service for inventory and booking purposes if the service is an inventoriable item.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the total number of service items being described.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="sort" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Used to define the display order.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="codeDetail" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>May be used to give further detail on the code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Proximity" repeat="0" type="ota2-0400:Proximity_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Denotes whether a service is onsite, offsite or information is not available</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactInformation" repeat="0" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Contact information pertaining to a service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RelativePosition" repeat="0" type="ota2-0500:RelativePosition">
+                <ns2:Documentation>
+                    <ns2:Description>Directions to the service provider.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="OperationSchedule" repeat="99" type="ota2-0500:OperationSchedule">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of days, times, and fees.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information about the service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive text that describes the service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="includedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this service is included in the room rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="availableToAnyGuestInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When tre the service is available to all guests at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="featuredInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this is a featured service for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Shared>
+    </ns2:ChoiceObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Service"
+        name="Business" notExtendable="false" type="Choice">
+        <ns2:Element name="BusinessService" repeat="100" type="ota2-0400:BusinessService_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Specifies a business service that is offered by the property.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Service"
+        name="HotelAmenity" notExtendable="false" type="Choice">
+        <ns2:Element name="HotelAmenity" repeat="500" type="ota2-0500:Code">
+            <ns2:Documentation>
+                <ns2:Description>Specifies a hotel amenity offered by the property.  Refer to OpenTravel Code List Hotel Amenity Code (HAC).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Service"
+        name="MealPlan" notExtendable="false" type="Choice">
+        <ns2:Element name="MealPlan" repeat="30" type="ota2-0400:MealPlan_Enum">
+            <ns2:Documentation>
+                <ns2:Description>This describes available meal plans for a property.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Service"
+        name="MeetingRoom" notExtendable="false" type="Choice">
+        <ns2:Element name="MeetingRoomCode_Enum" repeat="0" type="ota2-0400:MeetingRoomCode_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Specifies supplies, facilities, materials, equipment available specifically for meetings and events.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:DescriptiveContentFeature" name="Security"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="SecurityFeature_Enum" repeat="0" type="ota2-0400:SecurityFeature_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Identifies an offered security feature.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:DescriptiveContentFeature"
+        name="Accessibility" notExtendable="false" type="Choice">
+        <ns2:Element name="AccessibilityCode" repeat="0" type="ota2-0400:DisabilityFeature_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Specifies an offered feature specifically related to accessibility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="UnitOfMeasure_Enum" repeat="0" type="ota2-0400:UnitOfMeasure_Enum">
+            <ns2:Documentation>
+                <ns2:Description>May be used to identify the unit of measure and measurement described in the accessibility code.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="FacilityInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides information pertaining to the hotel facitilty itself.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="MeetingRooms" repeat="0" type="org-0400:MeetingRooms">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of meeting rooms offered at a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestRooms" repeat="0" type="GuestRooms">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of guest room types that are offered by a property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Restaurants" repeat="0" type="org-0400:Restaurants">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of restaurants related to a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GuestRooms" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of guest room information for a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="maxOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of guests the property can accommodate at one time.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="GuestRoom" repeat="1000" type="GuestRoom">
+                <ns2:Documentation>
+                    <ns2:Description>An accommodation occupied by a guest.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GuestRoom" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>An accommodation occupied by a guest.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="iD" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>This may be used to uniquely identify a guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="language" referenceRepeat="0" type="ota2-0500:LanguageCode">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the language in which the guest room information is being sent.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="sort" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Used to define the display order.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="roomTypeName" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="nonSmokingQuantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Designates the number of non-smoking rooms by room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of guests allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="minOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Minimum number of guests allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxAdultOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of adults allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxChildOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of children allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Proximity" repeat="0" type="ota2-0400:Proximity_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Denotes the general location of the guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomTypeCode" repeat="0" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>The hotel specific room type code that does not reference the OpenTravel Code Table as there are numerous hotel room types that are chain specific.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TypeRoom" repeat="5" type="TypeRoom">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the guest room type; in composite types there can be multiple occurrences.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DescriptiveContentAmenity" repeat="1000" type="DescriptiveContentAmenity">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of room amenity items available to the guest.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DescriptiveContentFeatureAccessibility"
+                repeat="1000" type="DescriptiveContentFeature_Accessibility">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of features offered for this room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DescriptiveContentFeatureSecurity"
+                repeat="1000" type="DescriptiveContentFeature_Security">
+                <ns2:Documentation>
+                    <ns2:Description>Security features of a guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information about the guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive text that describes the guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="compositeInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates that the room type contains multiple rooms sold as a single unit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TypeRoom" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes the guest room type.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="standardBedQuantity"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the usual number of beds for this room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="standardOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the usual number of guests that occupy this room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxRollaways" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of rollaway beds allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="size" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Number of square units (feet or meters) that defines the size of a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="count" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Number of rooms of this room type that makes up a larger unit (composite) such as a two bedroom suite could be comprised of two king rooms plus other room types.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Text name of the type of room such as "Two Bedroom Villas".</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="roomTypeCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>(Formerly, RoomInventoryCode) A code value that indicates the type of room for which this request is made, e.g.: double, king, etc. Values may use the Hotel Descriptive Content table or a codes specific to the property or hotel brand.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="gDSRoomTypeCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Specific system room type code, ex: A1K, A1Q etc.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="roomID" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A string value representing the unique identification of a room if the request is looking for a specific room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="floor" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Floor on which the room is located.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="inventoryBlockCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A code or identification number that identifies the room stay as part of a group, package tour, or block of rooms designated in the inventory.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="configuration" referenceRepeat="0" type="ota2-0500:String">
+                <ns2:Documentation>
+                    <ns2:Description>Textual description of room configuration.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="sizeMeasurement" referenceRepeat="0" type="ota2-0500:String">
+                <ns2:Documentation>
+                    <ns2:Description>Textual description of room dimensions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The quantity of this room type at the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="roomGender" referenceRepeat="0" type="ota2-0400:RoomGender_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to request or specify a gender assignment for a room. Note: Typically used by Hosteliers.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxCribs" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of cribs allowed in a room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="RoomCategory" repeat="0" type="ota2-0400:SegmentCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the category of the room. Typical values would be Moderate, Standard, or Deluxe.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomLocationCode" repeat="0" type="ota2-0400:RoomLocation_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the location of the room within the hotel structure. Typical values would be "Near Exit","Close to elevator", "Low Floor" or "High Floor".</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomView" repeat="0" type="ota2-0400:RoomViewType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the view of the room. Typical values would be "Ocean view", "Pool view" or "Garden View".</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BedType" repeat="5" type="ota2-0400:BedType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomClassification" repeat="0" type="ota2-0400:GuestRoomInfo_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the room classification (e.g., cabin, apartment).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomArchitecture" repeat="0" type="ota2-0400:ArchitecturalStyle_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the architectural style of a room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="nonsmokingInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this room type is non-smoking.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="compositeInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the room (suite) is a composite of smaller units.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="shareRoomInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the room requires or has sharing available. Note: Typically used by Hosteliers.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="DescriptiveContentAmenity" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Tangible room item(s) (e.g., newspaper) available to the guest.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The quantity of the amenity being described.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="amenityID" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifying value assigned by the creating system.  The ID attribute may be used to reference a primary-key value within a database or in a particular implementation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="RoomAmenity" repeat="0" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>Refer to OpenTravel Code List Room Amenity Type (RMA).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="OperationSchedule" repeat="100" type="ota2-0500:OperationSchedule">
+                <ns2:Documentation>
+                    <ns2:Description>Collection of days, times, and fees.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactInformation" repeat="10" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Used to include additional information regarding the amenity (e.g. the provider of the service).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MultimediaCollection" repeat="0" type="ota2-0500:MultimediaCollection">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information about the amenity.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Descriptive text that describes the amenity.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="includedInRateInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this indicates that the amenity or service is included in the room rate (i.e., this service or amenity has no additional charge).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelPolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of policy information as it applies to the hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="HotelPolicy" repeat="100" type="HotelPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the policies of the hotel, such as the type of payments, or whether children or pets are accepted.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="guaranteeRoomTypeViaGDSInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that room types can be guaranteed on reservations booked through GDS channels.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="guaranteeRoomTypeViaCRCInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that room types can be guaranteed on reservations booked by central reservation centers.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="guaranteeRoomTypeViaPropertyInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that room types can be guaranteed on reservations booked by the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelPolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes the policies of the hotel, such as the type of payments, or whether children or pets are accepted.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="defaultValidBookingMinOffset"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the default minimum number of days in advance that a booking must be made at this hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The code identifying this policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate the effective dates of the policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DaysOfWeek" repeat="7" type="ota2-0400:DayOfWeek_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate the effective day(s) for the policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelCancelPolicy" repeat="0" type="HotelCancelPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the cancellation policy of the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuaranteesAccepted" repeat="0" type="order-0400:GuaranteesAccepted">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the type of guarantees and payments accepted at a property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PaymentsAccepted" repeat="0" type="order-0400:PaymentsAccepted">
+                <ns2:Documentation>
+                    <ns2:Description>Acceptable forms of payment for the property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelPolicyInformation" repeat="0" type="HotelPolicyInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Basic property policy information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="TaxPolicies" repeat="0" type="TaxPolicies">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of tax policies at a property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PetPolicies" repeat="0" type="PetPolicies">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of policies pertaining to pets at a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeePolicies" repeat="0" type="FeePolicies">
+                <ns2:Documentation>
+                    <ns2:Description>Fee policies for an organization.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RatePolicies" repeat="0" type="RatePolicies">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies rate policies for a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GroupPolicies" repeat="0" type="GroupPolicies">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of group policy information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelCancelPolicy" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="CancelPenalty" repeat="100" type="ota2-0500:CancelPenalty">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the cancellation penalty of the hotel facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="cancelPolicyInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates a cancel policy exits. When false, no cancel policy exists. Typically this indicator is used when details are not being sent.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelPolicyInformation" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Basic policy information for a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="checkInTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The usual check-in time for a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="checkOutTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The usual check-out time for the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="minGuestAge" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The minimum guest age allowed for a guest at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="usualStayFreeCutoffAge"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The usual age limit at which a child can stay free with an adult at the hotel facility.  If 	this value is not set, then there is no cutoff limit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="usualStayFreeChildPerAdult"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The usual number of children meeting the UsualStayFreeCutoffAge allowed to stay free with an adult at the hotel. If this value is not set, then there is no cutoff limit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="totalGuestCount" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The total guest count allowed in a room at the hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="MaxChildAge" repeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum age for a child price.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Provides additional information regarding policy information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="defaultTaxServiceIncludedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, taxes and service charges are included, by default, with this facility's rates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="kidsStayFreeInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, there is no charge for children.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="adultsOnlyInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this property only accepts adult guests, children not permitted.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="couplesOnlyInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this property only accepts couples.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TaxPolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Property tax policies.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="TaxPolicy" repeat="100" type="TaxPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>A tax policy at a property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TaxPolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A tax policy for a property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:Tax"/>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="nightsForTaxExemptionQuantity"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Length of stay required for tax exemption.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="taxableNightsQuantity"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum number of taxable nights.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows">
+                <ns2:Documentation>
+                    <ns2:Description>The date span for which the policy applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Textual description of the taxes.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="PetPolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The pet policy for a hotel.  Includes if pets are allowed and if so, detials on the types and sizes of pets allowed.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="maxPetQuantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum number of pets allowed in the accomodation.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="PetPolicy_Enum" repeat="20" type="ota2-0400:PetPolicy_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the types of pets allowed if any.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="UnitOfMeasure" repeat="0" type="ota2-0500:UnitOfMeasure">
+                <ns2:Documentation>
+                    <ns2:Description>Used to designate the maximum pet weight and unit of weight measure (e.g., pounds or kilograms).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="NonRefundableFee" repeat="0" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the charge associated with a pet staying in the room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ChargeFrequency" repeat="0" type="ota2-0400:ChargeUnit_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies how often the charge is applied, (e.g per day, per week)</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>A textual description of the pet policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="refundableDepositInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the pet deposit is refundable.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="restrictionInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, there is a restriction associated with this pet policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="PetPolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of policies pertaining to pets.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="PetsAllowed_Enum" repeat="0" type="ota2-0400:PetsAllowed_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies at a high level if pets are allowed and if so the types allowed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PetPolicy" repeat="100" type="PetPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>A policy pertaining to pet at a facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="FeePolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>An organization's policy for a specific fee.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:Fee"/>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="type" referenceRepeat="0" type="ota2-0400:AmountDetermination_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate if the amount is inclusive or exclusive of other charges, such as taxes, or is cumulative (amounts have been added to each other).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows">
+                <ns2:Documentation>
+                    <ns2:Description>The date range for this policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="mandatoryInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates the fee is mandatory. When false, the fee is not mandatory.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="taxableInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this fee is subject to tax.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="FeePolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of policies for fees at an organization.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="FeePolicy" repeat="100" type="FeePolicy">
+                <ns2:Documentation>
+                    <ns2:Description>The details of a fee policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RatePolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Defines the policy for a specific rate type (e.g. government rates, preferred rates, etc.).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="minRoomNightCommittment"
+                referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the minimum number of nights a guest has to stay in a room in order to be eligible for the rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="RatePlanType" repeat="0" type="ota2-0400:RatePlanType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The type of the rate policy e.g. government and preferred.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestType" repeat="0" type="ota2-0400:GuestType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The guest type(s) for the policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateOfferType" repeat="0" type="ota2-0400:RatePlanType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate the alternate rate plan type to be offered.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Details about the rate policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="subjectToChangeInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this rate type is subject to change without notice.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="IdRequiredInd" publishAsElement="true">
+                <ns2:Documentation>
+                    <ns2:Description>When true, ID is required at check-in.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="corporateIdInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, a corporate ID is required to book a corporate rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RatePolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Defines the policies for various rate types (e.g. government rates, preferred rates, etc.)</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="RatePolicy" repeat="100" type="RatePolicy">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies a rate policy.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GroupPolicies" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of group policy information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="maxNumberOfRooms" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum number of sleepings rooms the hotel will accept as a group.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="LocalDMCRole" repeat="0" type="Role_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Local Destination Management Company Role (e.g. suggested or required).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GroupPolicy" repeat="100" type="GroupPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>A policy for groups at this facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:Enumeration_Closed name="Role_Enum">
+        <ns2:Value label="" literal="Required"/>
+        <ns2:Value label="" literal="Suggested"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:CoreObject name="GroupPolicy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information pertaining to a facilities group poliy.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="contractLanguage" referenceRepeat="0" type="xsd:language">
+                <ns2:Documentation>
+                    <ns2:Description>The language that the contract is available in.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="contractCurrency" referenceRepeat="0" type="ota2-0500:CurrencyCode_ISO4217">
+                <ns2:Documentation>
+                    <ns2:Description>Currency the contract is is provided in.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RecreationFeature" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>RecreationDetail is used to give furher desciption regarding the recreation. These codes are passed in the code attribute and include details such as if a golf course has a driving range and what the total yardage for the course is.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="RecreationFeature" repeat="0" type="ota2-0400:RecreationFeatures_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies details of a recreation facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeatureValue" repeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Value associated with the RecreationFeature enumeration.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Further description regarding the recreation service.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="OtherHotel" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides information on other area hotels.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="SegmentCategory" repeat="0" type="ota2-0400:SegmentCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the segment (e.g., luxury, upscale, extended stay) of the other hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BasicPropertyInfo" repeat="0" type="ph-0200:BasicPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>The hotel reference identifies a specific hotel by using the Chain Code, the Brand Code, and the Hotel Code. The codes used are agreed upon by trading partners.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactInformation" repeat="100" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Provides contact information such as address and phone information for the other hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReferencePoint" repeat="100" type="ota2-0500:ReferencePoint">
+                <ns2:Documentation>
+                    <ns2:Description>Provides information on the location of the other hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="competitorInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates this hotel is a competitor.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="DistributionSystem" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the affiliate distribution systems for the property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="BasicPropertyInfo" repeat="0" type="ph-0200:BasicPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the affiliation information for the distribution system.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CompanyName" repeat="0" type="ota2-0500:CompanyName">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the company name for the affiliated distribution system.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="Brand" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Brands affiliated with the property.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="URL" repeat="0" type="ota2-0500:URL">
+                <ns2:Documentation>
+                    <ns2:Description>The universal resource locator (URL) for the marketing brand as found on the Internet.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BasicPropertyInfo" repeat="0" type="ph-0200:BasicPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Affiliated brand information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Marketing" repeat="0" type="ota2-0500:String">
+                <ns2:Documentation>
+                    <ns2:Description>Name of brand, marketing chain, representation company or other affiliation(s).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="PartnerInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides information on marketing and service partnerships (e.g., a theme park that offers discounts if you book this hotel). This is not a loyalty partnership.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="ContactInformation" repeat="10" type="ota2-0500:ContactInformation">
+                <ns2:Documentation>
+                    <ns2:Description>Provides general information for the partner.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the partnership program.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GDS_Information" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>This allows for information for GDS's to be specified.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="masterChainCode" referenceRepeat="0" type="ota2-0500:StringLength2">
+                <ns2:Documentation>
+                    <ns2:Description>This is the 2 character master chain code that identifes a specific chain that is recognized by all GDS's.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="GDS_Codes" repeat="0" type="GDS_Codes">
+                <ns2:Documentation>
+                    <ns2:Description>The element acts as a container for GDS_Code. It is used to send item for each GDS.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GDS_Status" repeat="100" type="GDS_Status">
+                <ns2:Documentation>
+                    <ns2:Description>Hotel status per GDS.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GDS_Codes" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of GDS_Code items.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="GDS_Code" repeat="100" type="GDS_Code">
+                <ns2:Documentation>
+                    <ns2:Description>Provides detailed information regarding the specified GDS.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Indicator name="loadGDSInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this indicates rates will be loaded to specified GDSs. This attribute is also under GDS_Code to associate the rate load for an individual GDS. (This may also be used to idicate the willingness to upload rates to GDSs even if not specified in the request message.)</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GDS_Code" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides detailed information regarding the specified GDS.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="gDS_PropertyCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>This is the GDS Property Code used to identify a specific hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="gDS_Name" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Type of GDS for hotel such as Apollo, Amadeus, Sabre, Worldspan etc.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="chainCode" referenceRepeat="0" type="ota2-0500:StringLength2">
+                <ns2:Documentation>
+                    <ns2:Description>This is the 2 character GDS Chain Code used to identify a specific chain.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="gDS_RoomTypeCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A GDS channel room code.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="gDS_PropertyShortName"
+                referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A property short name per channel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="gDS_PropertyLongName"
+                referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A property long name per channel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="GDS_CodeInfo" repeat="100" type="GDS_CodeInfo">
+                <ns2:Documentation>
+                    <ns2:Description>This holds detailed information pertaining to the agencies authorized to book this rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="loadGDSInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>This attribute is used in conjunction with the GDS_Name. When true, this indicates rates will be loaded to the GDS specified by the GDS_Name.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GDS_CodeInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>This holds detailed information pertaining to the agencies authorized to book this rate.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="pseudoCityCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>This is used to pass the pseudo city code (i.e., the code that identifies a specific agency location) of the agency that has authority to book the negotiated rate(s)).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="agencyName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>This is the agency with authority to book the negotiated rate(s).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GDS_Status" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Hotel status per GDS.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="code" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Hotel status per GDS.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>GDS name.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="HotelStatus" repeat="0" type="ota2-0400:HotelStatus_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Property Status.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="EffectivePeriod" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The period for which content is visible. This may be either specific times of year that repeat annually or actual dates.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="DateEffectiveExpire" repeat="0" type="ota2-0500:DateEffectiveExpire">
+                <ns2:Documentation>
+                    <ns2:Description>The period for which content is visible. This may be either specific times of year that repeat annually or actual dates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RoomBlockInformation" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes room block information accepted by the hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="totalRoomQuantity" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The total quantity of rooms that are available for room blocks.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="cancelPeriodDays" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of days advance notice to cancel a room block.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="BlackoutDates" repeat="100" type="org-0400:BlackoutDates">
+                <ns2:Documentation>
+                    <ns2:Description>Date(s) the room block is not available.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="availableInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, room blocks are accepted.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HospitalityMultimedia" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the collection of multimedia information was last updated.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="RoomType" repeat="0" type="ph-0200:RoomType">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the room type to which the mulitmedia information applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Multimedia" repeat="100" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Mulitmedia Information for the hospitality facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="FacilityMultimediaInfo" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="MeetingRoomsMultimedia" repeat="0" type="MeetingRoomsMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information related to the meeting rooms.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RestaurantsMultimedia" repeat="0" type="RestaurantsMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information related to the restaurants.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestRoomsMultimedia" repeat="0" type="GuestRoomsMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information related to the guest rooms.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FacilitiesMultimedia" repeat="0" type="FacilitiesMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information related to the more general hotel facility such as lobby space, pools and recreational facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="MeetingRoomMultimedia" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Multimedia information pertaining to meeting rooms.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the multimedia information was last updated.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="meetingRoomName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Name of the meeting room for which the multimedia information applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="MeetingRoomType" repeat="0" type="ota2-0400:MeetingRoomFormat_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Name of the meeting room type for which the multimedia information applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Multimedia" repeat="100000" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to a meeting room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GuestRoomMultimedia" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the multimedia information was last updated.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Multimedia" repeat="10000" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to the guest rooms.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomType" repeat="0" type="ph-0200:RoomType">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the room information (room type) for the multimedia information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RestaurantMultimedia" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the multimedia information was last updated.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="restaurantName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the restaurant to which the multimedia information applies.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Multimedia" repeat="10000" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to a restaurant.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="FacilityMultimedia" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="lastUpdated" referenceRepeat="0" type="ota2-0500:DateTime">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time when the multimedia information was last updated.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="facilityName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the facility to which the multimedia information applies (e.g. Pool, Health Club, Lobby)</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Multimedia" repeat="10000" type="ota2-0500:Multimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to the facility such as the lobby, pool or recreational facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="MeetingRoomsMultimedia" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of meeting room mutlimedia information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="MeetingRoomMultimedia" repeat="10000" type="MeetingRoomMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Mulitmedia information for a meeting room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GuestRoomsMultimedia" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of guest room mulitmedia information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="GuestRoomMultimedia" repeat="10000" type="GuestRoomMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information for a guest room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="FacilitiesMultimedia" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Multimedia information pertaining to the facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="FacilityMultimedia" repeat="10000" type="FacilityMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RestaurantsMultimedia" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Multimedia information pertaining to the restaurants.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="RestaurantMultimedia" repeat="10000" type="RestaurantMultimedia">
+                <ns2:Documentation>
+                    <ns2:Description>Multimedia information pertaining to a restaruant.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="HotelDescriptiveContent" name="Hotels"
+        notExtendable="false" type="Query">
+        <ns2:Attribute name="maxRepsonses" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+            <ns2:Documentation>
+                <ns2:Description>The max number of responses to be returned.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Element name="BasicPropertyInfo" repeat="10000" type="ph-0200:BasicPropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the property(s) whose descriptive content is to be returned.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="HotelPropertyInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Property information specific to a hotel.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="pMSSystem" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the Property Management System being used by this hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="CategoryCodes" repeat="0" type="CategoryCodes">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of descriptive details about the hotel property.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ServiceBusiness" repeat="100" type="Service_Business">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies business services offered at a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ServiceHotelAmenity" repeat="1000" type="Service_HotelAmenity">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies amenities offered at a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ServiceMealPlan" repeat="100" type="Service_MealPlan">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies meal plans offered at a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ServiceMeetingRoom" repeat="100" type="Service_MeetingRoom">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies meeting room services and items offered at a hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelDescriptiveRequestInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides for the ability to query for specific hotel data if no specific data is specified return full hotel content.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="languageRequested" referenceRepeat="0" type="xsd:language">
+                <ns2:Documentation>
+                    <ns2:Description>The language in which the hotel property information should be returned.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="BasicPropertyInfo" repeat="10000" type="ph-0200:BasicPropertyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies who's informatation should be returned.  This may be a single property or mutliple properties based on the selections.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelRequestInfo" repeat="0" type="HotelRequestInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Is used to indicate whether hotel information is being requested.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FacilityRequestInfo" repeat="0" type="FacilityRequestInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate the specific facility information being requested.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PolicyRequestInfo" repeat="0" type="PolicyInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate if policy information is being requested.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="AreaRequestInfo" repeat="0" type="AreaInfo">
+                <ns2:Documentation>
+                    <ns2:Description>When true, area information is being requested.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="AffiliationRequestInfo" repeat="0" type="AffiliationInfoRequest">
+                <ns2:Documentation>
+                    <ns2:Description>Used to indicate if specific affilitation information is being requested.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="HotelRequestInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Used to indicate whether hotel information is being requested.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="hotelStatus" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>This is a description of the operating status of the Hotel. This information may support the code in HotelStatusCode.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="HotelStatusCode" repeat="0" type="ota2-0400:PropertyStatus_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>This indicates the operating status (e.g. Open, Closed, Deflagged, Pre-opening) of the hotels to be returned in the response. Refer to OpenTravel Code List HotelStatusCode.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="sendDataInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, send hotel property info data.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="PolicyInfo" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Used to indicate if policy information is being requested.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Indicator name="sendPoliciesInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, policy information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="FacilityRequestInfo" type="ota2:Empty">
+        <ns2:Indicator name="sendMeetingRoomsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, send meeting room information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendGuestRoomsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, send guest room information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendRestaurantsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, send restaurant information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="AreaInfo" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Used to specifiy if area information is being requested.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Indicator name="sendRefPointsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, reference point information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendAttractionsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, attraction information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendRecreationsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, recreation information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:ValueWithAttrs name="AffiliationInfoRequest" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Used to indicated if affiliation information is being requested.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Indicator name="sendDistribSystemsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, distribution system information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendBrandInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true Brand information is being rquested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendLoyalProgramsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, loyalty program information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="sendAwardsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, award information is being requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+</ns2:Library>

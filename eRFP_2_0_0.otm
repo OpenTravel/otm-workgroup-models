@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>353639847</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/product/eRFP/v2</Namespace>
+    <Prefix>rfp-0200</Prefix>
+    <Name>eRFP</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Product_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v2" prefix="prod-0200"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/product/eRFP/v0" context="rfp"/>
+    
+    <BusinessObject name="Contact" notExtendable="false">
+        <Documentation>
+            <Description>Contact for the event.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ContactRef" reference="true" repeat="0" type="Contact">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="comments" type="ota2-0200:StringLong">
+                <Documentation>
+                    <Description>Comments related to the contact.</Description>
+                </Documentation>
+            </Attribute>
+            <Indicator name="primaryInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates that his is the primary contact.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+        <Custom context="rfp" label="Company" notExtendable="false">
+            <Element name="Company" repeat="0" type="ota2-0200:Company">
+                <Documentation>
+                    <Description>Detailed information about a company.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Person" notExtendable="false">
+            <Element name="Person" repeat="0" type="ota2-0200:Person">
+                <Documentation>
+                    <Description>Detailed information about a contact person.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <CoreObject name="Contacts" notExtendable="false">
+        <Documentation>
+            <Description>A collection of contact information for each contact.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="Contact" repeat="100" type="Contact">
+                <Documentation>
+                    <Description>Information related to a single contact.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="EventBlock" notExtendable="false">
+        <Documentation>
+            <Description>Information pertaining to the event requirements.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EventBlockRef" reference="true" repeat="0" type="EventBlock">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="peakMeetingRoom" type="xsd:integer">
+                <Documentation>
+                    <Description>Number of meeting rooms needed on the peak day of the event.</Description>
+                    <Implementer>Example value: rfp1 = 3</Implementer>
+                </Documentation>
+                <Example context="rfp">3</Example>
+            </Attribute>
+            <Element mandatory="true" name="EventDay" repeat="100" type="EventDay">
+                <Documentation>
+                    <Description>Specifies event information for a single day.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FoodAndBeveragesBudget" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>Specifies budget for food and beverage only.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="EventDay" notExtendable="false">
+        <Documentation>
+            <Description>Function details for a specific day of the event.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="dayNumber" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number which indicates the day of the room requirements (e.g. 1, 2, 3, etc).</Description>
+                    <Implementer>Example value: rfp1 = 1</Implementer>
+                </Documentation>
+                <Example context="rfp">1</Example>
+            </Attribute>
+            <Element name="EventFunction" repeat="100" type="EventFunction">
+                <Documentation>
+                    <Description>Specifies the details of the function.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="EventStatus" repeat="0" type="ota2-0200:EventStatus_Enum">
+                <Documentation>
+                    <Description>The status for events for this day.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="EventFunction" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details of the function.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="eventId" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier for this event.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="startTime" type="xsd:time">
+                <Documentation>
+                    <Description>The time the event is scheduled to begin.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="endTime" type="xsd:time">
+                <Documentation>
+                    <Description>The time the event is scheduled to finish.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="attendeeQuantity" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of people attending this event.</Description>
+                    <Implementer>Example value: rfp1 = 50</Implementer>
+                </Documentation>
+                <Example context="rfp">50</Example>
+            </Attribute>
+            <Attribute name="functionName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of the event.</Description>
+                    <Implementer>Example value: rfp1 = Break-out session</Implementer>
+                </Documentation>
+                <Example context="rfp">Break-out session</Example>
+            </Attribute>
+            <Attribute name="meetingSpaceId" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Identifies a specific meeting room.</Description>
+                    <Implementer>Example value: rfp1 = 246542</Implementer>
+                </Documentation>
+                <Example context="rfp">246542</Example>
+            </Attribute>
+            <Attribute name="meetingSpaceName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name identifying the meeting room or space.</Description>
+                    <Implementer>Example value: rfp1 = Grand Ballroom</Implementer>
+                </Documentation>
+                <Example context="rfp">Grand Ballroom</Example>
+            </Attribute>
+            <Element name="EventFunctionType" repeat="0" type="ota2-0200:EventFunction_Enum">
+                <Documentation>
+                    <Description>Indicates the type of event being requested (e.g. breakfast meeting or reception).</Description>
+                </Documentation>
+            </Element>
+            <Element name="MeetingSpaceSize" repeat="0" type="SpaceSize">
+                <Documentation>
+                    <Description>This identifies the space requirement.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="twentyFourHourHoldInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates a room is held on a 24-hour basis (i.e., ensures a room set-up is not disturbed).</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Attribute name="comments" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Comments regarding the event function.</Description>
+                    <Implementer>Example value: rfp1 = Comments about this function.</Implementer>
+                </Documentation>
+                <Example context="rfp">Comments about this function.</Example>
+            </Attribute>
+            <Element name="AVNeeds" repeat="100" type="ota2-0200:AudioVisual_Enum">
+                <Documentation>
+                    <Description>AV requirements for this function.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomSetup" repeat="0" type="ota2-0200:MeetingRoomFormat_Enum">
+                <Documentation>
+                    <Description>Indicates the arrangement of the meeting space (e.g. conference or banquet style). Refer to OpenTravel Code List Meeting Room Format Code (MRF).</Description>
+                </Documentation>
+            </Element>
+            <Element name="EventSubFunction" repeat="100" type="EventSubFunction">
+                <Documentation>
+                    <Description>Specifies the details of a subfunction taking place within a function.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="EventSubFunction" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details of the sub function.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="name" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Used to identify the event.</Description>
+                    <Implementer>Example value: rfp1 = Roll-in lunch</Implementer>
+                </Documentation>
+                <Example context="rfp">Roll-in lunch</Example>
+            </Attribute>
+            <Attribute name="startTime" type="xsd:time">
+                <Documentation>
+                    <Description>The time the event is scheduled to begin.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="endTime" type="xsd:time">
+                <Documentation>
+                    <Description>The time the event is scheduled to finish.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="attendeeQuantity" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of people attending this event.</Description>
+                    <Implementer>Example value: rfp1 = 50</Implementer>
+                </Documentation>
+                <Example context="rfp">50</Example>
+            </Attribute>
+            <Element name="Id" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique ID for this event subfunction.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SubFunctionType" repeat="0" type="ota2-0200:EventFunction_Enum">
+                <Documentation>
+                    <Description>Indicates the type of event being requested (e.g. breakfast meeting, reception).</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element name="AVNeeds" repeat="100" type="ota2-0200:AudioVisual_Enum">
+                <Documentation>
+                    <Description>AV requirments for this sub-function.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="RequestInfo" notExtendable="false">
+        <Documentation>
+            <Description>Specifics about the Event.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>Unique identifier supplied by the requesting system.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="rFPName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A name identifiying the RFP.</Description>
+                    <Implementer>Example value: rfp1 = Booking for ABC Convention</Implementer>
+                </Documentation>
+                <Example context="rfp">ABC Convention</Example>
+            </Attribute>
+            <Attribute name="responseDue" type="ota2-0200:DateTimeWithTimeZone">
+                <Documentation>
+                    <Description>The date the requestor requires a response/proposal.</Description>
+                </Documentation>
+                <Example context="rfp">2017-11-05T08:15:30-05:00</Example>
+            </Attribute>
+            <Attribute name="decisionDue" type="ota2-0200:DateTimeWithTimeZone">
+                <Documentation>
+                    <Description>The date in which the client intends to make a decision.</Description>
+                </Documentation>
+                <Example context="rfp">2017-11-05T08:15:30-05:00</Example>
+            </Attribute>
+            <Attribute name="totalAttendees" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>An estimate of the total number of attendees for the event.</Description>
+                    <Implementer>Example value: rfp1 = 200</Implementer>
+                </Documentation>
+                <Example context="rfp">500</Example>
+            </Attribute>
+            <Attribute name="peakRoomQuantity" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of rooms needed for the peak night of the event.</Description>
+                    <Implementer>Example value: rfp1 = 100</Implementer>
+                </Documentation>
+                <Example context="rfp">100</Example>
+            </Attribute>
+            <Attribute name="rFPDescription" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A comment field used to convey free form information about the RFP</Description>
+                    <Implementer>Example value: rfp1 = Text about the event.</Implementer>
+                </Documentation>
+                <Example context="rfp">Text about the event.</Example>
+            </Attribute>
+            <Attribute name="eventName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A name identifiying the event.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="EventType" repeat="0" type="ota2-0200:EventType_Enum">
+                <Documentation>
+                    <Description>The type of event.</Description>
+                    <Implementer>Example value: rfp1 = Conference</Implementer>
+                </Documentation>
+                <Example context="rfp">Conference</Example>
+            </Element>
+            <Element name="BusinessType" repeat="0" type="ota2-0200:BusinessType_Enum">
+                <Documentation>
+                    <Description>The business category for this event.</Description>
+                    <Implementer>Example value: rfp1 = Group</Implementer>
+                </Documentation>
+                <Example context="rfp">Group</Example>
+            </Element>
+            <Element name="MarketSegment" repeat="0" type="ota2-0200:InventoryBlockType_Enum">
+                <Documentation>
+                    <Description>Used to identify the market segment for the meeting.</Description>
+                    <Implementer>Example value: rfp1 = Corporate Group</Implementer>
+                </Documentation>
+                <Example context="rfp">Corporate Group</Example>
+            </Element>
+            <Element name="TotalEventBudget" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>A general indication of the planner's budget for the event.</Description>
+                </Documentation>
+            </Element>
+            <Element name="LargestMeetingSpace" repeat="0" type="SpaceSize">
+                <Documentation>
+                    <Description>The largest meeting room required for the event.</Description>
+                    <Implementer>Example value: rfp1 = 1000 sq ft</Implementer>
+                </Documentation>
+                <Example context="rfp">1000 sq ft</Example>
+            </Element>
+            <Element name="TotalMeetingSpace" repeat="0" type="SpaceSize">
+                <Documentation>
+                    <Description>The total amount of meeting space needed for the event.</Description>
+                    <Implementer>Example value: rfp1 = 7000 sq ft</Implementer>
+                </Documentation>
+                <Example context="rfp">7000 sq ft</Example>
+            </Element>
+            <Element name="ExpectedCommissionRate" repeat="0" type="ota2-0200:AmountPercent">
+                <Documentation>
+                    <Description>The commission rate expected for this event.</Description>
+                </Documentation>
+                <Example context="rfp">5</Example>
+            </Element>
+            <Element name="PreferredContactMethod" repeat="0" type="ota2-0200:DistributionType_Enum">
+                <Documentation>
+                    <Description>The prefered method of contact.</Description>
+                    <Implementer>Example value: rfp1 = Email</Implementer>
+                </Documentation>
+                <Example context="rfp">Email</Example>
+            </Element>
+            <Indicator name="roomBlockInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates a room block is requested. When false, indicates no room block is requested and RoomBlock will not be passed.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="eventBlockInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates function space is required. When false, indicates no function space is required and EventBlock will not be passed.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="commisionInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, commission will be paid on this event.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="E_RFP" notExtendable="false">
+        <Documentation>
+            <Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="E_RFPRef" reference="true" repeat="0" type="E_RFP">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="RequestInfo" repeat="0" type="RequestInfo">
+                <Documentation>
+                    <Description>Specifics about the Event.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Contacts" repeat="0" type="Contacts">
+                <Documentation>
+                    <Description>Profile information for the submitter of the request.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Dates" repeat="1" type="Dates">
+                <Documentation>
+                    <Description>A collection of dates which allows you to request preferred and/or alternate dates.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Sites" repeat="0" type="Sites">
+                <Documentation>
+                    <Description>A collection of sites for which the request is being submitted (e.g. a hotel, national sales office, convention center).</Description>
+                </Documentation>
+            </Element>
+            <Element name="RoomBlock" repeat="0" type="RoomBlock">
+                <Documentation>
+                    <Description>This is information pertaining to room requirements for this request.</Description>
+                </Documentation>
+            </Element>
+            <Element name="EventBlock" repeat="0" type="EventBlock">
+                <Documentation>
+                    <Description>This is information pertaining to the event requirements for this request.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="comments" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Comments related to the request.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="AdditionalInfo" repeat="0" type="AdditionalInfo">
+                <Documentation>
+                    <Description>A collection of additional information requests.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </BusinessObject>
+    
+    <CoreObject name="RoomBlock" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details for a room block.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="organizerCheckInDaysBefore" type="xsd:integer">
+                <Documentation>
+                    <Description>Specifies the number of days the organizers will be checking in before the event.</Description>
+                    <Implementer>Example value: rfp1 = 2</Implementer>
+                </Documentation>
+                <Example context="rfp">2</Example>
+            </Attribute>
+            <Attribute name="organizerCheckOutDaysAfter" type="xsd:integer">
+                <Documentation>
+                    <Description>Specifies the number of days the organizers will be staying after the event.</Description>
+                    <Implementer>Example value: rfp1 = 1</Implementer>
+                </Documentation>
+                <Example context="rfp">1</Example>
+            </Attribute>
+            <Element name="BudgetedRoomRate" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>A general indication of the planner's budget for individual room nights and/or delegate rates.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="StayDay" repeat="100" type="StayDay">
+                <Documentation>
+                    <Description>Room requirements for a particular day of the room block.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ReservationMethod" repeat="0" type="ota2-0200:ReservationMethod_Enum">
+                <Documentation>
+                    <Description>Rooming List, Individual, Housing Agency</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="sleepingRoomInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, sleeping rooms are required.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="SpaceSize" type="xsd:decimal">
+        <Documentation>
+            <Description>The numeric value associated with the measurement.</Description>
+            <Implementer>Example value: rfp1 = 1200</Implementer>
+            <Implementer>Example value: rfp1 = 1200</Implementer>
+        </Documentation>
+        <Example context="rfp">1200</Example>
+        <Attribute name="unitOfMeasure" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>This is the standard unit of measure name (e.g., it could be generic such as metric or imperial or specific such as inches, feet, yards, miles, millimeters, centimeters, meters, kilometers- according to usage).</Description>
+            </Documentation>
+            <Example context="rfp">Sq. Ft.</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Sites" notExtendable="false">
+        <Documentation>
+            <Description>A collection of site information.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Site" repeat="100" type="prod-0200:Site">
+                <Documentation>
+                    <Description>The site information for the RFP.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="StayDay" notExtendable="false">
+        <Documentation>
+            <Description>Sleeping room details for a specific day of the event.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="dayNumber" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number which indicates the day of the room requirements (e.g. 1, 2, 3, etc).</Description>
+                    <Implementer>Example value: rfp1 = 1</Implementer>
+                </Documentation>
+                <Example context="rfp">1</Example>
+            </Attribute>
+            <Element mandatory="true" name="StayDayRoom" repeat="100" type="StayDayRoom">
+                <Documentation>
+                    <Description>Identifies the room requirements.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="StayDayRoom" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the room requirements for this day of the room block.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute mandatory="true" name="numberOfUnits" type="xsd:integer">
+                <Documentation>
+                    <Description>This is the required number of rooms for a particular day for a particular room type.</Description>
+                    <Implementer>Example value: rfp1 = 75</Implementer>
+                </Documentation>
+                <Example context="rfp">75</Example>
+            </Attribute>
+            <Attribute name="occupancyType" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Single, Double, Triple, Quad. Not ENUM.</Description>
+                    <Implementer>Example value: rfp1 = Single</Implementer>
+                </Documentation>
+                <Example context="rfp">Single</Example>
+            </Attribute>
+            <Element name="RoomType" repeat="0" type="prod-0200:RoomType">
+                <Documentation>
+                    <Description>This is where a requester specifies the room type they wish to procure (e.g. king, double, double double, accessible). This is NOT an OpenTravel Codelist due to the infinite number of possible room types.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Attribute name="comments" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Comment related to the StayDayRoom.</Description>
+                    <Implementer>Example value: rfp1 = Comments about this stay day.</Implementer>
+                </Documentation>
+                <Example context="rfp">Comments about this stay day.</Example>
+            </Attribute>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="Dates" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the date(s) or date window(s) for the RFP.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="comments" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Comments regarding the set of date ranges as a whole.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="DateTimeSpanWindows" repeat="100" type="ota2-0200:DateTimeSpanWindows">
+                <Documentation>
+                    <Description>Specifies the date range or date windows for the event.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="flexibleInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates that the event dates are flexible.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="AdditionalInfo" type="ota2:Empty">
+        <Documentation>
+            <Description>Group of indicators specifiying what additional information is provided.</Description>
+        </Documentation>
+        <Indicator name="attachDocumentInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, there is a document attachment.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="aVNeedsInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that there are audio visual requirements for this event.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="decisionFactorsInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that there are specific decision factors for this event.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="contractualRequirementsInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that there are contractual requirements for this event.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="billingInfoInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that billing information is provided for this event.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="otherSuppliersInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that other suppliers are required for this event.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="thirdPartyPlannerInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that there is third party planner information included in the RFP.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Service name="ERFP">
+        <Operation Name="Create" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).  The response may include full eRFP object or just and identifer for the E_RFP.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="Delete" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFPIdentifier" repeat="0" type="E_RFP_ID">
+                    <Documentation>
+                        <Description>The identifier for the RFP to be deleted.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="Read" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFPIdentifier" repeat="0" type="E_RFP_ID">
+                    <Documentation>
+                        <Description>An ID for the request for proposal (meeting room and/or sleeping room information for a group) to be returned.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>The request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="Update" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).  The response may include the full E_RFP object or simply and identifer for the E_RFP.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="E_RFP" repeat="0" type="E_RFP">
+                    <Documentation>
+                        <Description>A request for proposal (meeting room and/or sleeping room information for a group).</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

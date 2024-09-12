@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>500652991</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v2_1</Namespace>
+    <Prefix>ota2-0201</Prefix>
+    <Name>CodeList</Name>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <Enumeration_Open name="SegmentCategory_Enum">
+        <Documentation>
+            <Description>Describes the segment type.</Description>
+        </Documentation>
+        <Value label="" literal="Budget"/>
+        <Value label="" literal="Deluxe"/>
+        <Value label="" literal="Economy"/>
+        <Value label="" literal="First Class"/>
+        <Value label="" literal="Luxury"/>
+        <Value label="" literal="Moderate"/>
+        <Value label="" literal="Tourist"/>
+        <Value label="" literal="Upscale"/>
+        <Value label="" literal="Standard"/>
+        <Value label="" literal="Midscale"/>
+        <Value label="" literal="Quality"/>
+        <Value label="" literal="Midscale without F&amp;B"/>
+        <Value label="" literal="Upper upscale"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ReferencePoint_Enum">
+        <Documentation>
+            <Description>Specifies a point of reference.</Description>
+        </Documentation>
+        <Value label="" literal="Airport"/>
+        <Value label="" literal="Amusement park"/>
+        <Value label="" literal="Arena"/>
+        <Value label="" literal="Bar"/>
+        <Value label="" literal="Bay"/>
+        <Value label="" literal="Beach"/>
+        <Value label="" literal="Bus station"/>
+        <Value label="" literal="City center"/>
+        <Value label="" literal="Church"/>
+        <Value label="" literal="Corporation"/>
+        <Value label="" literal="Educational Institution"/>
+        <Value label="" literal="Ferry station"/>
+        <Value label="" literal="Financial district"/>
+        <Value label="" literal="Financial institution"/>
+        <Value label="" literal="Lake"/>
+        <Value label="" literal="Landmark"/>
+        <Value label="" literal="Library"/>
+        <Value label="" literal="Marina"/>
+        <Value label="" literal="Market"/>
+        <Value label="" literal="Medical facility"/>
+        <Value label="" literal="Metro/subway station"/>
+        <Value label="" literal="Monument"/>
+        <Value label="" literal="Museum"/>
+        <Value label="" literal="Park"/>
+        <Value label="" literal="Racetrack"/>
+        <Value label="" literal="Restaurant"/>
+        <Value label="" literal="River"/>
+        <Value label="" literal="Shopping center"/>
+        <Value label="" literal="Sports facility"/>
+        <Value label="" literal="Synagogue"/>
+        <Value label="" literal="Train station"/>
+        <Value label="" literal="Zoo"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="MealPlan_Enum">
+        <Documentation>
+            <Description>Different meal plans</Description>
+        </Documentation>
+        <Value label="" literal="Breakfast &amp; lunch"/>
+        <Value label="" literal="Dinner"/>
+        <Value label="" literal="Lunch"/>
+        <Value label="" literal="Modified"/>
+        <Value label="" literal="Breakfast"/>
+        <Value label="" literal="Family American"/>
+        <Value label="" literal="Dinner bed and breakfast plan"/>
+        <Value label="" literal="Bermuda"/>
+        <Value label="" literal="Self catering"/>
+        <Value label="" literal="Room only/European plan"/>
+        <Value label="" literal="As brochured"/>
+        <Value label="" literal="Half board/modified American plan"/>
+        <Value label="" literal="Full breakfast"/>
+        <Value label="" literal="Full board"/>
+        <Value label="" literal="Family plan"/>
+        <Value label="" literal="European plan"/>
+        <Value label="" literal="English breakfast"/>
+        <Value label="" literal="Continental breakfast"/>
+        <Value label="" literal="Caribbean breakfast"/>
+        <Value label="" literal="Buffet breakfast"/>
+        <Value label="" literal="Bed &amp; breakfast"/>
+        <Value label="" literal="American/full board"/>
+        <Value label="" literal="All inclusive"/>
+    </Enumeration_Open>
+    
+</Library>

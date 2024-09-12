@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/resources/HospitalityResources/v2</ns2:Namespace>
+    <ns2:Prefix>rh-0200</ns2:Prefix>
+    <ns2:Name>HospitalityContent</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Common_5_1_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5_1" prefix="ota2-0501"/>
+    <ns2:Import
+        fileHints="OrganizationHospitality_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/hospitality/v5" prefix="orghs-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM//resources/HospitalityResources/v0" context="rh"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="orghs-0500:HotelDescriptiveContent" name="Info"
+        notExtendable="false" type="Query">
+        <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+            <ns2:Documentation>
+                <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="HotelDescriptiveRequestInfo" repeat="0" type="orghs-0500:HotelDescriptiveRequestInfo">
+            <ns2:Documentation>
+                <ns2:Description>Specifies the hotel content to be returned.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="orghs-0500:HotelDescriptiveContent" name="Get"
+        notExtendable="false" type="Query">
+        <ns2:Element mandatory="true" name="BasicHotelPropertyInfo"
+            repeat="0" type="ota2-0501:BasicHotelPropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Specifies who's informatation should be returned.  This may be a single property or mutliple properties based on the selections.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+            <ns2:Documentation>
+                <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:Resource abstract="false" basePath="/"
+        businessObjectRef="orghs-0500:HotelDescriptiveContent"
+        firstClass="true" name="HotelDescriptiveContentResource">
+        <ns2:Extension extends="ota2-0500:BaseResource"/>
+        <ns2:ParamGroup facetName="HotelDescriptiveContent_Query_Get"
+            idGroup="false" name="QueryGet">
+            <ns2:Parameter fieldName="displayCurrency" location="Query"/>
+            <ns2:Parameter fieldName="maxResponses" location="Query"/>
+            <ns2:Parameter fieldName="summaryResultsInd" location="Query"/>
+            <ns2:Parameter fieldName="code" location="Query"/>
+            <ns2:Parameter fieldName="chainCode" location="Query"/>
+            <ns2:Parameter fieldName="brandCode" location="Query"/>
+            <ns2:Parameter fieldName="cityCode" location="Query"/>
+            <ns2:Parameter fieldName="areaID" location="Query"/>
+            <ns2:Parameter fieldName="hotelCode_TTI" location="Query"/>
+        </ns2:ParamGroup>
+        <ns2:ActionFacet basePayload="ota2-0500:BaseResponse"
+            label="HotelDescriptiveContentListResponse"
+            referenceRepeat="10000" referenceType="Optional"/>
+        <ns2:ActionFacet label="SubstitutionGroup" referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="HotelDescriptiveContentQueryInfo"
+            referenceFacet="Query_Info" referenceRepeat="0" referenceType="Required"/>
+        <ns2:Action actionId="Query" common="false">
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/HotelDescriptiveContents/Query" payloadType="HotelDescriptiveContentResource_HotelDescriptiveContentQueryInfo"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="HotelDescriptiveContentResource_HotelDescriptiveContentListResponse" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="Notification" common="false">
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/HotelDescriptiveContents/Notifications" payloadType="HotelDescriptiveContentResource_SubstitutionGroup"/>
+            <ns2:ActionResponse mimeTypes="" payloadType="" statusCodes="201"/>
+        </ns2:Action>
+        <ns2:Action actionId="Get" common="false">
+            <ns2:ActionRequest httpMethod="GET" mimeTypes=""
+                paramGroup="QueryGet" pathTemplate="/HotelDescriptiveContents"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="HotelDescriptiveContentResource_HotelDescriptiveContentListResponse" statusCodes="200"/>
+        </ns2:Action>
+    </ns2:Resource>
+    
+</ns2:Library>

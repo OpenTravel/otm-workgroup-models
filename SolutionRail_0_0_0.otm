@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>984236180</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/demo/test/SolutionRail/v0</Namespace>
+    <Prefix>solr</Prefix>
+    <Name>SolutionRail</Name>
+    <Import namespace="http://opentravel.org/common/v02" prefix="ota2"/>
+    <Import fileHints="SolutionOTA_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/demo/test/SolutionOTA/v0" prefix="solo"/>
+    <Context
+        applicationContext="http://opentravel.org/local/90002773/SolutionRail/v0" context="solr"/>
+    <Context applicationContext="sol" context="sol"/>
+    
+    <BusinessObject name="Segment" notExtendable="false">
+        <Extension extends="solo:Segment"/>
+        <Aliases/>
+        <ID/>
+        <Summary/>
+        <Detail>
+            <Element name="Service" repeat="10" type="Enum_Service"/>
+        </Detail>
+        <Query context="sol" label="Request" notExtendable="false"/>
+    </BusinessObject>
+    
+    <Enumeration_Closed name="Enum_Service">
+        <Value literal="M">
+            <Documentation>
+                <Description>Meal at Seat</Description>
+            </Documentation>
+        </Value>
+        <Value literal="D">
+            <Documentation>
+                <Description>Dinning Car</Description>
+            </Documentation>
+        </Value>
+        <Value literal="B">
+            <Documentation>
+                <Description>Bar Car</Description>
+            </Documentation>
+        </Value>
+        <Value literal="C">
+            <Documentation>
+                <Description>Meal Cart</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Solution" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="SegmentDetail" repeat="5" type="Segment_Detail"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

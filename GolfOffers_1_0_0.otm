@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/services/GolfServices/v1</ns2:Namespace>
+    <ns2:Prefix>sg</ns2:Prefix>
+    <ns2:Name>GolfOffers</ns2:Name>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/services/GolfServices/v0" context="sg"/>
+    
+    <ns2:Service name="GolfOffers">
+        <ns2:Operation Name="FindGolfOffers" notExtendable="false">
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+                    <ns2:Documentation>
+                        <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element mandatory="true" name="ProductQueries"
+                    repeat="0" type="prod-0500:ProductQueries">
+                    <ns2:Documentation>
+                        <ns2:Description>Golf facility and tee time search criteria.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Absence of this object indicates a successful transaction. When this object is present, it generally indicates that an error or warning occurred but may also be used to explicitly indicate a successful transaction.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Offer" repeat="100" type="order-0400:Offer">
+                    <ns2:Documentation>
+                        <ns2:Description>A description of the facility and offers.  The offers include ancillaries (amenities).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Absence of this object indicates a successful transaction. When this object is present, it generally indicates that an error or warning occurred but may also be used to explicitly indicate a successful transaction.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Offer" repeat="100" type="order-0400:Offer">
+                    <ns2:Documentation>
+                        <ns2:Description>A description of the facility and offers.  The offers include ancillaries (amenities).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>391012015</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v2_1</Namespace>
+    <Prefix>ota2-0201</Prefix>
+    <Name>Common</Name>
+    <Includes>CodeList_2_1_0.otm</Includes>
+    <Import fileHints="Common_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="Common"/>
+    
+    <Simple fractionDigits="1" maxInclusive="5" minInclusive="0"
+        name="RatingValue" type="xsd:decimal">
+        <Example context="Common">3.5</Example>
+    </Simple>
+    <ChoiceObject name="AmountOrPercent" notExtendable="false">
+        <Documentation>
+            <Description>Allows for either an amount or a percent to be expressed.</Description>
+        </Documentation>
+        <Aliases/>
+        <Shared/>
+        <Choice context="Common" label="Amount" notExtendable="false">
+            <Element name="CurrencyAmount" repeat="0" type="ota2-0200:CurrencyAmount">
+                <Documentation>
+                    <Description>The amount and optionally the currency code associated with it.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+        <Choice context="Common" label="Percent" notExtendable="false">
+            <Element name="Percent" repeat="0" type="ota2-0200:Percent">
+                <Documentation>
+                    <Description>A percentage.</Description>
+                </Documentation>
+            </Element>
+        </Choice>
+    </ChoiceObject>
+    
+    <CoreObject name="ReferencePoint" notExtendable="false">
+        <Documentation>
+            <Description>Specifies a location.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>The name of the reference point.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="name" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of the reference point.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Code" repeat="0" type="ota2-0200:Code">
+                <Documentation>
+                    <Description>A code that identifies the reference point.  May also include the code context and a description for the code.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Type" repeat="0" type="ReferencePoint_Enum">
+                <Documentation>
+                    <Description>Specifies the type of reference point (e.g. Airport, Museum, Train station).</Description>
+                </Documentation>
+            </Element>
+            <Element name="Location" repeat="0" type="ota2-0200:Location">
+                <Documentation>
+                    <Description>The address or geolocation information for the reference point.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

@@ -1,0 +1,1210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>1491543623</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/profile/v1</Namespace>
+    <Prefix>prof-0100</Prefix>
+    <Name>Profile</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Import fileHints="Finance_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/finance/v1" prefix="fin-0100"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/profile/v01" context="profile"/>
+    
+    <ValueWithAttrs name="Access" type="ota2:Empty">
+        <Documentation>
+            <Description>Free text comment added by the person accessing the profile record.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType</Implementer>
+        </Documentation>
+        <Attribute mandatory="true" name="action" type="ota2-0200:AccessTypeCRUD">
+            <Documentation>
+                <Description>Type of action taken on the profile.</Description>
+                <Implementer>LocalAnonymousType: AccessesType_ActionType</Implementer>
+            </Documentation>
+            <Equivalent context="profile">ActionType</Equivalent>
+            <Example context="profile">Create</Example>
+        </Attribute>
+        <Attribute mandatory="true" name="date" type="xsd:dateTime">
+            <Documentation>
+                <Description>Month, day, year and optionally in hour, minute, second of day in ISO 8601 format of the action taken on the profile.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+            </Documentation>
+            <Equivalent context="profile">ActionDateTime</Equivalent>
+            <Example context="profile">2016-08-01T09:30:00Z</Example>
+        </Attribute>
+        <Attribute name="name" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>Name of individual who originated or updated record.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType</Implementer>
+            </Documentation>
+            <Equivalent context="profile">AccessPerson</Equivalent>
+            <Example context="profile">Dave</Example>
+        </Attribute>
+        <Attribute name="system" type="ota2-0200:GUID">
+            <Documentation>
+                <Description>The identifier of the system that performed the action on the profile record.</Description>
+                <Implementer>AttributeGroup: ID_Group</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <BusinessObject name="Accesses" notExtendable="false">
+        <Documentation>
+            <Description>Element to capture creation and last update data.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="AccessesRef" reference="true" repeat="0" type="Accesses">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="created" type="xsd:dateTime">
+                <Documentation>
+                    <Description>Date and time the access group was created: Month, day, year and optionally hour, minute, second of day, in ISO 8601 format.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}dateTime</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CreateDateTime</Equivalent>
+            </Attribute>
+            <Element mandatory="true" name="Access" repeat="100000" type="Access">
+                <Documentation>
+                    <Description>Describes the action taken on the record.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Access</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Access</Equivalent>
+            </Element>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of access data between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element mandatory="true" name="CompanyProfile" repeat="0" type="CompanyProfile">
+                <Documentation>
+                    <Description>Detailed information about a company.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </BusinessObject>
+    
+    <CoreObject name="Affiliations" notExtendable="false">
+        <Documentation>
+            <Description>Defines an entity that provides travel services or benefits to a customer or company.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Organization" repeat="100000" type="Organization">
+                <Documentation>
+                    <Description>Detailed information for a membership organization that has travel benefits, programs or discounts.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OrganizationType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Organization</Equivalent>
+            </Element>
+            <Element name="CompanyProfile" repeat="100000" type="CompanyProfile">
+                <Documentation>
+                    <Description>Employer information associated to this affiliation.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EmployerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Employer</Equivalent>
+            </Element>
+            <Element name="TravelArranger" repeat="100000" type="TravelArranger">
+                <Documentation>
+                    <Description>Information on the organization responsible for arranging travel.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelArranger</Equivalent>
+            </Element>
+            <Element name="ClubMembership" repeat="100000" type="ota2-0200:ClubMembership">
+                <Documentation>
+                    <Description>A club that offers special privileges and related services for this affiliation.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TravelClubType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelClub</Equivalent>
+            </Element>
+            <Element name="Insurance" repeat="100000" type="Insurance">
+                <Documentation>
+                    <Description>Travel insurance associated to this affiliation.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}InsuranceType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Insurance</Equivalent>
+            </Element>
+            <Element mandatory="true" name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of access data between parties.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Agreements" notExtendable="false">
+        <Documentation>
+            <Description>Section of a business profile that contains information about trading partner agreements.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Certification" repeat="100000" type="Certification">
+                <Documentation>
+                    <Description>Information about certifications or accreditations.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CertificationType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Certification</Equivalent>
+            </Element>
+            <Element name="Alliance" repeat="100000" type="Alliance">
+                <Documentation>
+                    <Description>Information about alliance partnerships and consortiums.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AllianceConsortiumType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">AllianceConsortium</Equivalent>
+            </Element>
+            <Element name="Commission" repeat="100000" type="Commission">
+                <Documentation>
+                    <Description>Information about an agreement for a commission arrangement.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionInfoType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CommissionInfo</Equivalent>
+            </Element>
+            <Element name="TextParagraph" repeat="1" type="ota2-0200:TextParagraph">
+                <Documentation>
+                    <Description>Used to reflect contract details linked to a profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">ContractInformation</Equivalent>
+            </Element>
+            <Element mandatory="true" name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of access data between parties.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Alliance" notExtendable="false">
+        <Documentation>
+            <Description>Provides information about alliance partnerships and consortiums of members grouped together to obtain trading partner agreements for travel service and privileges.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Member" repeat="100000" type="AllianceMember">
+                <Documentation>
+                    <Description>Identification of a company that participates in an alliance or consortium to which the primary business entity identified in this profile belongs.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AllianceMember</Implementer>
+                </Documentation>
+                <Equivalent context="profile">AllianceMember</Equivalent>
+            </Element>
+            <Element name="EffectiveExpireDate" repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Provides the effective and expiry dates for the alliance partnership.</Description>
+                    <Implementer>AttributeGroup: EffectiveExpireOptionalDateGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="AllianceMember" type="ota2:Empty">
+        <Attribute name="memberCode" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>Identifies the alliance or consortium member by code.</Description>
+            </Documentation>
+            <Example context="profile">co1</Example>
+        </Attribute>
+        <Attribute name="companyName" type="ota2-0200:CompanyName">
+            <Documentation>
+                <Description>Identifies a company by name.</Description>
+            </Documentation>
+            <Example context="profile">MemberCompany</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Certification" type="ota2:Empty">
+        <Documentation>
+            <Description>Information about certifications or accreditation held by the company.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType</Implementer>
+        </Documentation>
+        <Equivalent context="profile">CertificationType</Equivalent>
+        <Attribute name="certId" type="ota2-0200:StringLong">
+            <Documentation>
+                <Description>The Certification Identification number assigned to a business entity by the certifying body. This number would presumably be the ID in the Unique ID.</Description>
+                <Implementer>AttributeGroup: ID_OptionalGroup</Implementer>
+            </Documentation>
+            <Example context="profile">cert546473834</Example>
+        </Attribute>
+        <Attribute name="freeText" type="ota2-0200:TextFree">
+            <Documentation>
+                <Description>Textual information to provide descriptions and/or additional information.</Description>
+            </Documentation>
+            <Example context="profile">Certified fun.</Example>
+        </Attribute>
+        <Attribute name="date_EffectiveExpire" type="ota2-0200:DateEffectiveExpire">
+            <Documentation>
+                <Description>Used to identify the effective date and/or expiration date.</Description>
+            </Documentation>
+        </Attribute>
+        <Indicator name="singleVendorIndGroupInd" publishAsElement="false">
+            <Documentation>
+                <Description>Indicates if program is affiliated with a group of related offers accumulating credits.</Description>
+                <Implementer>AttributeGroup: SingleVendorIndGroup</Implementer>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="CitizenCountryCode" type="ota2-0200:CountryCode_ISO3166">
+        <Documentation>
+            <Description>A 2 character country code as defined in ISO3166.</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+        </Documentation>
+        <Equivalent context="profile">CitizenCountryNameGroup</Equivalent>
+        <Indicator name="defaultInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates a default value should be used.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+            </Documentation>
+            <Equivalent context="profile">DefaultInd</Equivalent>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Commission" type="ota2-0200:CurrencyAmount">
+        <Documentation>
+            <Description>Provides a monetary amount and the currency code to reflect the currency in which this amount is expressed.</Description>
+        </Documentation>
+        <Equivalent context="profile">CommissionInfoType</Equivalent>
+        <Attribute name="planCode" type="ota2-0200:Code">
+            <Documentation>
+                <Description>Identifies a commission plan agreement between trading partners by plan code.</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="profile">CommissionPlanCode</Equivalent>
+        </Attribute>
+        <Attribute name="privacy" type="ota2-0200:Privacy">
+            <Documentation>
+                <Description>Allows for control of the sharing of data between parties.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="Document" notExtendable="false">
+        <Documentation>
+            <Description>Provides information on a specific document.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="docIssueAuthority" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Indicates the group or association that granted the document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocIssueAuthority</Equivalent>
+                <Example context="profile">USCIS</Example>
+            </Attribute>
+            <Attribute name="docIssueLocation" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Indicates the location where the document was issued.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocIssueLocation</Equivalent>
+                <Example context="profile">Washington, DC</Example>
+            </Attribute>
+            <Attribute name="docID" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Unique number assigned by authorities to document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocID</Equivalent>
+                <Example context="profile">31195855</Example>
+            </Attribute>
+            <Attribute name="gender" type="ota2-0200:Gender_Enum">
+                <Documentation>
+                    <Description>The gender of the document holder.</Description>
+                    <Implementer>AttributeGroup: GenderGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="birthDate" type="xsd:date">
+                <Documentation>
+                    <Description>The birth date of the document holder.</Description>
+                    <Implementer>AttributeGroup: BirthDateGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="docIssueStateProv" type="ota2-0200:StateProvCode">
+                <Documentation>
+                    <Description>State or Province where the document was issued.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StateProvCodeType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocIssueStateProv</Equivalent>
+            </Attribute>
+            <Attribute name="docIssueCountry" type="ota2-0200:CountryCode_ISO3166">
+                <Documentation>
+                    <Description>Country where the document was issued.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocIssueCountry</Equivalent>
+            </Attribute>
+            <Attribute name="birthCountry" type="ota2-0200:CountryCode_ISO3166">
+                <Documentation>
+                    <Description>Specifies the birth country of the document holder.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+                </Documentation>
+                <Equivalent context="profile">BirthCountry</Equivalent>
+            </Attribute>
+            <Attribute name="birthPlace" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Specifies the birth place of the document holder (e.g., city, state, county, province), when designating a country of birth, use BirthCountry.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">BirthPlace</Equivalent>
+                <Example context="profile">Chicago, IL USA</Example>
+            </Attribute>
+            <Attribute name="docHolderNationality" type="ota2-0200:CountryCode_ISO3166">
+                <Documentation>
+                    <Description>The country code of the nationality of the document holder.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocHolderNationality</Equivalent>
+            </Attribute>
+            <Attribute name="contactName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Provides contact name associated with the document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">ContactName</Equivalent>
+                <Example context="profile">John Smith</Example>
+            </Attribute>
+            <Attribute name="holderType" type="DocumentHolder_Enum">
+                <Documentation>
+                    <Description>Provides the type of document holder.</Description>
+                    <Implementer>LocalAnonymousType: DocumentType_HolderType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">HolderType</Equivalent>
+            </Attribute>
+            <Attribute name="remark" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A remark associated with the document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Remark</Equivalent>
+                <Example context="profile">This is a passport.</Example>
+            </Attribute>
+            <Attribute name="postalCode" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Defines the postal code (e.g., ZIP code) on the document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="profile">PostalCode</Equivalent>
+                <Example context="profile">48567</Example>
+            </Attribute>
+            <Element name="DocLimitations" repeat="9" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Used to indicate any limitations on the document (e.g. as a person may only be allowed to spend a max of 30 days in country on a visitor's visa).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocLimitations</Equivalent>
+                <Example context="profile">Max 30 days in country.</Example>
+            </Element>
+            <Element name="AdditionalName" repeat="100" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The name of an additional person listed on this document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AdditionalPersonNames</Implementer>
+                </Documentation>
+                <Equivalent context="profile">AdditionalPersonNames</Equivalent>
+                <Example context="profile">Mary Smith</Example>
+            </Element>
+            <Element name="EffectiveExpireDate" repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>The effective and expiry date of the document.</Description>
+                    <Implementer>AttributeGroup: EffectiveExpireOptionalDateGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of document data between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="DocType" repeat="0" type="ota2-0200:DocumentType_Enum">
+                <Documentation>
+                    <Description>Indicates the type of document (e.g. Passport, Military ID, Drivers License, national ID, Vaccination Certificate). Refer to OpenTravel Code List Document Type (DOC).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DocType</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Insurance" notExtendable="false">
+        <Documentation>
+            <Description>Travel insurance carried by the customer or company.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="insuranceType" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Type of insurance policy carried by the individual or company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="profile">InsuranceType</Equivalent>
+                <Example context="profile">Travel</Example>
+            </Attribute>
+            <Attribute mandatory="true" name="policyNumber" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Identifier assigned by insurance company to the insurance policy.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="profile">PolicyNumber</Equivalent>
+            </Attribute>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique reference for this insurance policy within this message.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="profile">RPH</Equivalent>
+            </Attribute>
+            <Element name="PersonName" repeat="1" type="ota2-0200:PersonName">
+                <Documentation>
+                    <Description>Name of the person insured.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">InsuredName</Equivalent>
+            </Element>
+            <Element name="Underwriter" repeat="1" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>Underwriting company providing coverage.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Underwriter</Equivalent>
+            </Element>
+            <Element mandatory="true" name="EffectiveExpireDate"
+                repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Used to identify the effective date and/or expiration date.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of data between parties.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CompanyName" repeat="0" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>Name of the insurance company.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Organization" notExtendable="false">
+        <Documentation>
+            <Description>Membership organization that has travel benefits, programs, or discounts.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="officeLocation" type="ota2-0200:OfficeLocation_Enum">
+                <Documentation>
+                    <Description>Specifes the location type of an office (e.g. main, field, division).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="OrganizationMemberName" repeat="1" type="OrganizationMemberName">
+                <Documentation>
+                    <Description>Name of the member of the organization, as listed among the options of customer names.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OrgMemberName</Implementer>
+                </Documentation>
+                <Equivalent context="profile">OrgMemberName</Equivalent>
+            </Element>
+            <Element name="Name" repeat="1" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>Name of the organization.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">OrgName</Equivalent>
+            </Element>
+            <Element name="RelatedOranization" repeat="100000" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>An organization that is related to this organization.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">RelatedOrgName</Equivalent>
+            </Element>
+            <Element name="TravelArranger" repeat="100000" type="TravelArranger">
+                <Documentation>
+                    <Description>Information on the company responsible for arranging travel for the organization.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelArranger</Equivalent>
+            </Element>
+            <Element mandatory="true"
+                name="EffectiveExpireOptionalDateGroup" repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Used to send the effective date and/or expiration date.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of data between parties.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates whether the organization is the default choice among several.</Description>
+                    <Implementer>AttributeGroup: DefaultIndGroup</Implementer>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="OrganizationMemberName" notExtendable="false">
+        <Documentation>
+            <Description/>
+            <Implementer>Extension: PersonNameType</Implementer>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="ID_LevelTitle" repeat="0" type="ota2-0200:Employee">
+                <Documentation>
+                    <Description>Provides employee information.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="PersonName" repeat="0" type="ota2-0200:PersonName">
+                <Documentation>
+                    <Description>This provides name information for a person.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="Profile" notExtendable="false">
+        <Documentation>
+            <Description>Root element for profile content.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="profile">RPH</Equivalent>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProfileRef" reference="true" repeat="0" type="Profile">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element name="Accesses" repeat="1" type="Accesses">
+                <Documentation>
+                    <Description>A collection of actions taken on a record.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AccessesType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Accesses</Equivalent>
+            </Element>
+            <Element name="Affiliations" repeat="1" type="Affiliations">
+                <Documentation>
+                    <Description>Affiliation information related to the profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AffiliationsType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Affiliations</Equivalent>
+            </Element>
+            <Element name="Agreements" repeat="1" type="Agreements">
+                <Documentation>
+                    <Description>Agreement information related to the profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AgreementsType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Agreements</Equivalent>
+            </Element>
+            <Element name="CompanyProfile" repeat="1" type="CompanyProfile">
+                <Documentation>
+                    <Description>Company information related to the profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyInfoType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CompanyInfo</Equivalent>
+            </Element>
+            <Element name="Person" repeat="1" type="Person">
+                <Documentation>
+                    <Description>Detailed customer information for this profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CustomerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Customer</Equivalent>
+            </Element>
+            <Element name="TextParagraph" repeat="1" type="ota2-0200:TextParagraph">
+                <Documentation>
+                    <Description>Comments related to the profile.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Comments</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Comments</Equivalent>
+            </Element>
+            <Element name="ShareAll" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Used to indicate whether information can be shared.</Description>
+                    <Implementer>AttributeGroup: ShareAllGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Type" repeat="0" type="ota2-0200:ProfileType_Enum">
+                <Documentation>
+                    <Description>Used to specify a profile type.</Description>
+                    <Implementer>AttributeGroup: ProfileTypeGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Status" repeat="0" type="ota2-0200:ProfileStatus_Enum">
+                <Documentation>
+                    <Description>Status of the profile. Refer to OpenTravel Code List Profile Status Code (PST).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ListOfOTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">StatusCode</Equivalent>
+            </Element>
+            <Element name="DateTimeStamp" repeat="0" type="ota2-0200:DateTimeStamp">
+                <Documentation>
+                    <Description>Creation date time, creator ID, last modification date time and last modifier ID.</Description>
+                    <Implementer>AttributeGroup: DateTimeStampGroup</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <Enumeration_Closed name="DocumentHolder_Enum">
+        <Value label="" literal="Infant">
+            <Documentation>
+                <Description>The document holder is an infant.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="HeadOfHousehold">
+            <Documentation>
+                <Description>The document holder is a head of household.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Profiles" notExtendable="false">
+        <Documentation>
+            <Description>Container element for a collection of profiles.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Profile" repeat="100000" type="Profile">
+                <Documentation>
+                    <Description>A collection of Profiles or Unique IDs of Profiles.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="PhysicalChallenge" type="ota2-0200:StringLong">
+        <Documentation>
+            <Description>Describes a person's physical challange.</Description>
+        </Documentation>
+        <Attribute name="code" type="ota2-0200:DisabilityFeature_Enum">
+            <Documentation>
+                <Description>A code to identify a person's phyical challenge.</Description>
+            </Documentation>
+        </Attribute>
+        <Indicator name="physicallyChallengedInd" publishAsElement="false">
+            <Documentation>
+                <Description>Set to true when the customer is physically challenged but the type of physical challenge is unknown.  The indicator is not necessary if the challenge is identified.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <CoreObject name="TravelArranger" notExtendable="false">
+        <Documentation>
+            <Description>Type of service making travel plans or transactions (e.g., travel agency, etc.).</Description>
+            <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:StringShort"/>
+        <Summary>
+            <Attribute name="type" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Type of service making travel plans or transactions (e.g., travel agency, etc.).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelArrangerType</Equivalent>
+                <Example context="profile">Travel Agency</Example>
+            </Attribute>
+            <Attribute name="remark" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A remark associated with the travel arranger.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Remark</Equivalent>
+                <Example context="profile">Located in Denver office.</Example>
+            </Attribute>
+            <Element name="CompanyName" repeat="0" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>Company name of the travel arranger.</Description>
+                </Documentation>
+                <Example context="profile">Johnson &amp; Johnson</Example>
+            </Element>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of travel arranger data between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates that the receiving system should assume the default value if the user specifies no overriding value or action.</Description>
+                    <Implementer>AttributeGroup: DefaultIndGroup</Implementer>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="CompanyProfile" notExtendable="false">
+        <Extension extends="ota2-0200:Company"/>
+        <Aliases/>
+        <ID/>
+        <Summary/>
+        <Detail>
+            <Element name="CurrencyCode" repeat="0" type="ota2-0200:CurrencyCode">
+                <Documentation>
+                    <Description>The currency used by this company.</Description>
+                    <Implementer>AttributeGroup: CurrencyCodeGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="TripPurpose" repeat="40" type="ota2-0200:Code">
+                <Documentation>
+                    <Description>Trip purpose codes used by this company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TripPurpose</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TripPurpose</Equivalent>
+            </Element>
+            <Element name="LoyaltyProgram" repeat="10" type="ota2-0200:LoyaltyProgram">
+                <Documentation>
+                    <Description>Loyalty program offered by the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}LoyaltyProgramType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">LoyaltyProgram</Equivalent>
+            </Element>
+            <Element name="TravelArranger" repeat="1" type="TravelArranger">
+                <Documentation>
+                    <Description>Information on the organization responsible for arranging travel for the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelArranger</Equivalent>
+            </Element>
+            <Element name="RequiredPayment" repeat="1" type="ota2-0200:RequiredPayments_Enum">
+                <Documentation>
+                    <Description>A deposit policy that is associated to this company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RequiredPaymentsType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">DepositPayment</Equivalent>
+            </Element>
+            <Element name="FormOfPayment" repeat="1" type="fin-0100:FormOfPayment">
+                <Documentation>
+                    <Description>Method of providing funds for travel by the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentForm</Implementer>
+                </Documentation>
+                <Equivalent context="profile">PaymentForm</Equivalent>
+            </Element>
+            <Element name="RelatedCompany" repeat="100" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>The name of a company affiliated with the employer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CompanyNameType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">RelatedEmployer</Equivalent>
+            </Element>
+            <Element name="ContactPerson" repeat="100" type="ota2-0200:ContactPerson">
+                <Documentation>
+                    <Description>A contact person for the company.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ContactPersonType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">ContactPerson</Equivalent>
+            </Element>
+        </Detail>
+        <Custom context="profile" label="Employer" notExtendable="false">
+            <Attribute name="officeType" type="ota2-0200:OfficeLocation_Enum">
+                <Documentation>
+                    <Description>Designates the office category within an organization.</Description>
+                    <Implementer>AttributeGroup: OfficeTypeGroup</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="division" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The division name or ID with which the contact is associated.</Description>
+                </Documentation>
+                <Example context="profile">Hotels Group</Example>
+            </Attribute>
+            <Attribute name="department" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The department name or ID with which the contact is associated.</Description>
+                </Documentation>
+                <Example context="profile">Accounting</Example>
+            </Attribute>
+            <Element name="EmployeeInfo" repeat="1" type="ota2-0200:Employee">
+                <Documentation>
+                    <Description>Information about the employee.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EmployeeInfoType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">EmployeeInfo</Equivalent>
+            </Element>
+            <Element name="InternalReferenceNumber" repeat="1" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Accounting code(s) assigned to travel for employer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FreeTextType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">InternalRefNmbr</Equivalent>
+            </Element>
+            <Element name="TravelArranger" repeat="1" type="TravelArranger">
+                <Documentation>
+                    <Description>The organization responsible for arranging travel for the employer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TravelArrangerType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">TravelArranger</Equivalent>
+            </Element>
+            <Element name="LoyaltyProgram" repeat="10" type="ota2-0200:LoyaltyProgram">
+                <Documentation>
+                    <Description>Employer's loyalty program information.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}LoyaltyProgramType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">LoyaltyProgram</Equivalent>
+            </Element>
+            <Element name="EffectiveExpireDate" repeat="0" type="ota2-0200:DateEffectiveExpire">
+                <Documentation>
+                    <Description>Used to send the effective date and/or expiration date.</Description>
+                    <Implementer>AttributeGroup: EffectiveExpireOptionalDateGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Indicator name="defaultInd" publishAsElement="false">
+                <Documentation>
+                    <Description/>
+                    <Implementer>AttributeGroup: DefaultIndGroup</Implementer>
+                </Documentation>
+            </Indicator>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="Person" notExtendable="false">
+        <Extension extends="ota2-0200:Person"/>
+        <Aliases/>
+        <ID/>
+        <Summary/>
+        <Detail>
+            <Element name="CompanyProfile" repeat="100000" type="CompanyProfile">
+                <Documentation>
+                    <Description>Company or organization that employs the customer.</Description>
+                    <Implementer>Example value: p = ABC Corporation</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="SocialMediaInfo" repeat="100000" type="ota2-0200:SocialMedia">
+                <Documentation>
+                    <Description>Specifies social media information used for communication with the person.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SocialMediaType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">SocialMediaInfo</Equivalent>
+            </Element>
+            <Element name="URL" repeat="5" type="ota2-0200:URL">
+                <Documentation>
+                    <Description>Web site address, in IETF specified format.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}URL_Type</Implementer>
+                </Documentation>
+                <Equivalent context="profile">URL</Equivalent>
+            </Element>
+        </Detail>
+        <Custom context="" label="Customer" notExtendable="false">
+            <Attribute name="customerValue" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The supplier's ranking of the customer (e.g., VIP, numerical ranking).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CustomerValue</Equivalent>
+                <Example context="profile">VIP</Example>
+            </Attribute>
+            <Attribute name="children" type="ota2-0200:NonNegativeInteger">
+                <Documentation>
+                    <Description>The number of children of the customer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Numeric1to99</Implementer>
+                </Documentation>
+                <Equivalent context="profile">ChildQuantity</Equivalent>
+                <Example context="profile">2</Example>
+            </Attribute>
+            <Element name="CitizenCountryCode" repeat="3" type="CitizenCountryCode">
+                <Documentation>
+                    <Description>Name of the (self-professed) country that is claimed for citizenship.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CitizenCountryName</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CitizenCountryName</Equivalent>
+            </Element>
+            <Element name="PetInfo" repeat="3" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Describes the customer's pet.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="profile">PetInfo</Equivalent>
+                <Example context="profile">Collie</Example>
+            </Element>
+            <Element name="FormOfPayment" repeat="100" type="fin-0100:FormOfPayment">
+                <Documentation>
+                    <Description>Methods of providing funds and guarantees for travel by the customer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentForm</Implementer>
+                </Documentation>
+                <Equivalent context="profile">PaymentForm</Equivalent>
+            </Element>
+            <Element name="ContactPerson" repeat="5" type="ota2-0200:ContactPerson">
+                <Documentation>
+                    <Description>Information on a contact person for the customer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ContactPersonType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">ContactPerson</Equivalent>
+            </Element>
+            <Element name="Document" repeat="99" type="Document">
+                <Documentation>
+                    <Description>Detailed document information for the customer (e.g.,  driver license, passport, visa).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}DocumentType</Implementer>
+                </Documentation>
+                <Equivalent context="profile">Document</Equivalent>
+            </Element>
+            <Element name="LoyaltyProgram" repeat="25" type="ota2-0200:LoyaltyProgram">
+                <Documentation>
+                    <Description>Loyalty program information for the customer.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CustLoyalty</Implementer>
+                </Documentation>
+                <Equivalent context="profile">CustLoyalty</Equivalent>
+            </Element>
+            <Element name="AdditionalLanguages" repeat="5" type="ota2-0200:Languages">
+                <Documentation>
+                    <Description>Additional languages spoken by the traveler.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AdditionalLanguage</Implementer>
+                </Documentation>
+                <Equivalent context="profile">AdditionalLanguage</Equivalent>
+            </Element>
+            <Element name="PhysicalChallenge" repeat="0" type="PhysicalChallenge">
+                <Documentation>
+                    <Description>Describes a person physical challange.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="deceasedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true the customer is deceased.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="vIP_Ind" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, indicates a very important person.</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="previouslyMarriedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates the customer was previously married. When false, indicates the customer was not previously married.</Description>
+                </Documentation>
+            </Indicator>
+        </Custom>
+    </BusinessObject>
+    
+    <Service name="ProfileService">
+        <Operation Name="Create" notExtendable="false">
+            <Request>
+                <Element mandatory="true" name="PayloadStdAttributes"
+                    repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="1" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">POS</Equivalent>
+                </Element>
+                <Element name="Profile" repeat="0" type="Profile">
+                    <Documentation>
+                        <Description>The profile to be created.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element mandatory="true" name="Profile" repeat="1" type="Profile">
+                    <Documentation>
+                        <Description>The profile created by the request,  may only include the identifier for the profile and not the full profile information.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">UniqueID</Equivalent>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Delete" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="1" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">POS</Equivalent>
+                </Element>
+                <Element mandatory="true" name="Profile" repeat="1" type="Profile">
+                    <Documentation>
+                        <Description>Identifies the profile to be deleted, may only include the idenfier for the profile to be deleted.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">UniqueID</Equivalent>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element mandatory="true" name="Profile" repeat="1" type="Profile">
+                    <Documentation>
+                        <Description>The profile deleted by the request, may only include the identifier for the profile. and not the full profile information.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">UniqueID</Equivalent>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Read" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="1" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">POS</Equivalent>
+                </Element>
+                <Element mandatory="true" name="Profile" repeat="1" type="Profile">
+                    <Documentation>
+                        <Description>Identifies the profile to be read,  may only include the identifier for the profile and not the full profile information.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">UniqueID</Equivalent>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Profile" repeat="0" type="Profile">
+                    <Documentation>
+                        <Description>The profile returned.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Update" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                        <Implementer>AttributeGroup: {http://www.opentravel.org/OTA/2003/05}OTA_PayloadStdAttributes</Implementer>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="1" type="ota2-0200:POS">
+                    <Documentation>
+                        <Description>Point of sale object.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}POS_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">POS</Equivalent>
+                </Element>
+                <Element name="Profile" repeat="0" type="Profile">
+                    <Documentation>
+                        <Description>The updated profile.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0200:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The OTA_PayloadStdAttributes defines the standard attributes that appear on the root element for all OpenTravel Messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element mandatory="true" name="Profile" repeat="1" type="Profile">
+                    <Documentation>
+                        <Description>The updated profile,  may only include the identifier for the profile and not the full profile information.</Description>
+                        <Implementer>Assigned XSD Type: {http://www.opentravel.org/OTA/2003/05}UniqueID_Type</Implementer>
+                    </Documentation>
+                    <Equivalent context="profile">UniqueID</Equivalent>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0200:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+    </Service>
+    
+</Library>

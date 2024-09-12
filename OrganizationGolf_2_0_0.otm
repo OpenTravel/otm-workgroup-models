@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>343143425</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/organization/golf/v2</Namespace>
+    <Prefix>orggf-0200</Prefix>
+    <Name>OrganizationGolf</Name>
+    <Import fileHints="Common_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Organization_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v2" prefix="org-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/organization/golf/v0" context="orggf"/>
+    
+    <BusinessObject name="Course" notExtendable="false">
+        <Documentation>
+            <Description>Details of a golf course.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CourseRef" reference="true" repeat="0" type="Course">
+                <Documentation>
+                    <Description>Refers to the obj ID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="numberOfHoles" type="ota2-0300:NonNegativeInteger">
+                <Documentation>
+                    <Description>The number of holes offered at the golf course.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="par" type="ota2-0300:NonNegativeInteger">
+                <Documentation>
+                    <Description>Par for the golf course.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="totalYardage" type="ota2-0300:NonNegativeInteger">
+                <Documentation>
+                    <Description>Total yardage for the golf course.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="yearBuilt" type="xsd:date">
+                <Documentation>
+                    <Description>The year the course was built.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="name" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The name of the golf course.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="CourseClosure" repeat="50" type="CourseClosure">
+                <Documentation>
+                    <Description>A date and time period when a golf course is closed.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CourseConditions" repeat="20" type="CourseConditions">
+                <Documentation>
+                    <Description>Information about course conditions with an optional source name or URL.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CourseRestrictions" repeat="20" type="CourseRestrictions">
+                <Documentation>
+                    <Description>A date and time period when restrictions apply to golf facility tee times.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ScoreCard" repeat="50" type="ScoreCard">
+                <Documentation>
+                    <Description>Scorecard information for the golf facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OperationSchedule" repeat="30" type="ota2-0300:OperationSchedule">
+                <Documentation>
+                    <Description>Hours of operation for the golf course.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FeeStructure" repeat="0" type="ota2-0300:RateRange">
+                <Documentation>
+                    <Description>General green fee amounts.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CourseArchitect" repeat="0" type="CourseArchitect">
+                <Documentation>
+                    <Description>Name of the designer of the golf course.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="golfCarRequiredInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, a golf car is required on this golf course.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Element name="NineHoleName" repeat="10" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The name of a specific nine holes that make up part of the course.  This applies when a course has 18 or more holes where a user could request the back nine, or the name of the nine holes if the facility names them</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </BusinessObject>
+    
+    <CoreObject name="CourseClosure" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the time or time range for the closure of the course.</Description>
+        </Documentation>
+        <Extension extends="ota2-0300:DateTimeSpanWindows"/>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary/>
+        <Detail>
+            <Element name="Description" repeat="0" type="ota2-0300:Description">
+                <Documentation>
+                    <Description>Describes the reason for the course closure.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="CourseConditions" notExtendable="false">
+        <Documentation>
+            <Description>Information about course conditions with an optional source name or URL.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="source" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The source  that provided the course conditions.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="anyURI" type="xsd:anyURI">
+                <Documentation>
+                    <Description>The URL that provided the course conditions.</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="CourseRestrictions" notExtendable="false">
+        <Documentation>
+            <Description>Restrictions that apply to this golf course.</Description>
+        </Documentation>
+        <Extension extends="ota2-0300:DateTimeSpanWindows"/>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="type" type="xsd:string">
+                <Documentation>
+                    <Description>The type of facility and/or tee time restriction.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="description" type="xsd:string">
+                <Documentation>
+                    <Description>A description of the facility and/or tee time restriction.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="DrivingRange" notExtendable="false">
+        <Documentation>
+            <Description>Driving range details for the golf facility.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="turfType" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>The type of turf on the driving range.</Description>
+                </Documentation>
+                <Example context="orggf">Grass</Example>
+            </Attribute>
+            <Attribute name="distance" type="ota2-0300:StringTiny">
+                <Documentation>
+                    <Description>Driving range distance.</Description>
+                </Documentation>
+                <Example context="orggf">500 ft</Example>
+            </Attribute>
+            <Attribute name="numberOfStations" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The number of stations at the driving range.</Description>
+                </Documentation>
+                <Example context="orggf">10</Example>
+            </Attribute>
+            <Attribute name="drivingRangeType" type="DrivingRangeType_Enum">
+                <Documentation>
+                    <Description>Describes the type of driving range (e.g. Covered, Indoor, Outdoor).</Description>
+                </Documentation>
+                <Example context="orggf">Outdoor</Example>
+            </Attribute>
+            <Indicator name="nightLightingInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, night lighting is provided.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="GolfFacilityFeatures" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="description" type="ota2-0300:String">
+                <Documentation>
+                    <Description>A description of the highlights of the facility.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="FacilityHighlights" repeat="10" type="FacilityHighlights_Enum">
+                <Documentation>
+                    <Description>Highlighted features of the golf facility.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="PracticeFacilities" notExtendable="false">
+        <Documentation>
+            <Description>Details on a the practice facilities of a golf facility.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="OperationSchedule" repeat="30" type="ota2-0300:OperationSchedule">
+                <Documentation>
+                    <Description>Operation schedules for the practice facilities.</Description>
+                </Documentation>
+            </Element>
+            <Element name="DrivingRange" repeat="10" type="DrivingRange">
+                <Documentation>
+                    <Description>Details of the driving range.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FeeStructure" repeat="0" type="ota2-0300:RateRange">
+                <Documentation>
+                    <Description>Fees associated with the practice facilities.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PracticeFacilityFeatures" repeat="20" type="PracticeFacilityFeatures_Enum">
+                <Documentation>
+                    <Description>Features of the practice facility.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="ProShop" notExtendable="false">
+        <Documentation>
+            <Description>Details of a golf facility pro shop.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProShopRef" reference="true" repeat="0" type="ProShop">
+                <Documentation>
+                    <Description>Refers to the obj ID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element name="RentalEquipment" repeat="30" type="RentalEquipment">
+                <Documentation>
+                    <Description>Club rental details.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Services" repeat="30" type="GolfServices_Enum">
+                <Documentation>
+                    <Description>Services offered by the facility.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="GolfFacilitySearchCriteria" notExtendable="false">
+        <Documentation>
+            <Description>Golf facility and tee time search criteria.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="golfFacilityName" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The name of the golf facility for which the search is being performed.</Description>
+                </Documentation>
+                <Example context="orggf">Brookside Golf</Example>
+            </Attribute>
+            <Element name="SpecifiedAmenity" repeat="99" type="ota2-0300:ListOfTinyStrings">
+                <Documentation>
+                    <Description>Amentities and services available with a product(either included in the price of the tee time or available for an extra fee), such as power carts. Note, includes pricing.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}GolfAmenitySummaryType</Implementer>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="GolfFacility" repeat="0" type="GolfFacility">
+                <Documentation>
+                    <Description>Facility course description and features information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RateRange" repeat="0" type="ota2-0300:RateRange">
+                <Documentation>
+                    <Description>A min or max rate for green fees for this search.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Location" repeat="0" type="ota2-0300:Location">
+                <Documentation>
+                    <Description>Defines the location of the search.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Radius" repeat="0" type="ota2-0300:Radius">
+                <Documentation>
+                    <Description>The radial distance for which a the search should be performed.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="ClubHouse" notExtendable="false">
+        <Documentation>
+            <Description>Details of a golf facility club house.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="ClubHouseFeatures" repeat="20" type="ClubHouseFeatures_Enum">
+                <Documentation>
+                    <Description>Features of the Club House.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Enumeration_Closed name="CourseType_Enum">
+        <Documentation>
+            <Description>The course type at the facility.</Description>
+        </Documentation>
+        <Value label="" literal="DailyFee"/>
+        <Value label="" literal="Municipal/Government/Military"/>
+        <Value label="" literal="Private"/>
+        <Value label="" literal="Private Limited Access"/>
+        <Value label="" literal="Resort"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="DrivingRangeType_Enum">
+        <Documentation>
+            <Description>Describes the type of driving range.</Description>
+        </Documentation>
+        <Value label="" literal="Covered"/>
+        <Value label="" literal="Indoor"/>
+        <Value label="" literal="Outdoor"/>
+    </Enumeration_Closed>
+    
+    <CoreObject name="GolfFacility" notExtendable="false">
+        <Documentation>
+            <Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="courseType" type="CourseType_Enum">
+                <Documentation>
+                    <Description>The course type at the facility.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="dressPolicy" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The dress code for the golf facility.</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="GolfFacilityFeatures"
+                repeat="0" type="GolfFacilityFeatures">
+                <Documentation>
+                    <Description>Facility features information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ClubHouse" repeat="0" type="ClubHouse">
+                <Documentation>
+                    <Description>Club house details.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Course" repeat="10" type="Course">
+                <Documentation>
+                    <Description>Golf course details.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ProShop" repeat="0" type="ProShop">
+                <Documentation>
+                    <Description>Pro shop details.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PracticeFacilities" repeat="0" type="PracticeFacilities">
+                <Documentation>
+                    <Description>Details of the practice facilities.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Amenity" repeat="99" type="ota2-0300:Amenity">
+                <Documentation>
+                    <Description>Amenities available at the golf facility. Note, these amenities typically apply to all tee times at the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Ancillary" repeat="99" type="ota2-0300:Ancillary">
+                <Documentation>
+                    <Description>Ancillary available at the golf facility.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="featuredInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, this facility has been marked as a featured course by the supplier.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Element name="MeetingCenter" repeat="0" type="org-0200:MeetingCenter">
+                <Documentation>
+                    <Description>Describes the meeting room facilities.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RateRange" repeat="0" type="ota2-0300:RateRange">
+                <Documentation>
+                    <Description>A rate range for tee times at this course.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+    <CoreObject name="RentalEquipment" notExtendable="false">
+        <Documentation>
+            <Description>Equipment available for rental at this facility.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Type" repeat="0" type="GolfRentalEquipment_Enum">
+                <Documentation>
+                    <Description>Type of rental equipment offered.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PersonCategory" repeat="10" type="PersonCategory_Enum">
+                <Documentation>
+                    <Description>Specifies the type of person for whom the rental equipment is offered.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="accessibleInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, this equipment offered is accessible.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Enumeration_Open name="GolfRentalEquipment_Enum">
+        <Documentation>
+            <Description>Rental equipment.</Description>
+        </Documentation>
+        <Value label="" literal="RightHandedClubs"/>
+        <Value label="" literal="LeftHandedClubs"/>
+        <Value label="" literal="GolfCars"/>
+        <Value label="" literal="StandupTransportation"/>
+        <Value label="" literal="Shoes"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PersonCategory_Enum">
+        <Value label="" literal="Juniors"/>
+        <Value label="" literal="Womens"/>
+        <Value label="" literal="Mens"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="FacilityHighlights_Enum">
+        <Documentation>
+            <Description>Items offered at a facility.</Description>
+        </Documentation>
+        <Value label="" literal="Accessible"/>
+        <Value label="" literal="ClubRental"/>
+        <Value label="" literal="DayLockers"/>
+        <Value label="" literal="Dining"/>
+        <Value label="" literal="DrivingRange"/>
+        <Value label="" literal="GolfLessons"/>
+        <Value label="" literal="GolfSchool"/>
+        <Value label="" literal="MetalSpilesAllowed"/>
+        <Value label="" literal="PracticeFacilities"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="GolfServices_Enum">
+        <Documentation>
+            <Description>Services offered at a golf facility.</Description>
+        </Documentation>
+        <Value label="" literal="ClubRegripping"/>
+        <Value label="" literal="ClubFitting"/>
+        <Value label="" literal="Lessons"/>
+        <Value label="" literal="RetailStore"/>
+        <Value label="" literal="CaddyForHire"/>
+    </Enumeration_Open>
+    
+    <ValueWithAttrs name="TeePosition" type="ota2:Empty">
+        <Documentation>
+            <Description>The tee position for the hole.</Description>
+        </Documentation>
+        <Attribute name="teePositionName" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>The name of this tee position.</Description>
+            </Documentation>
+            <Example context="orggf">Champion</Example>
+        </Attribute>
+        <Attribute name="yardage" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The yardage for this hole from this tee position.</Description>
+            </Documentation>
+            <Example context="orggf">120</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="ScoreCard" notExtendable="false">
+        <Documentation>
+            <Description>Scorecard information for the golf facility.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="courseSlope" type="xsd:string">
+                <Documentation>
+                    <Description>The slope rating of the golf course.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Example context="orggf">60</Example>
+            </Attribute>
+            <Attribute name="number" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The hole number.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="orggf">2</Example>
+            </Attribute>
+            <Attribute name="par" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The par for the hole.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</Implementer>
+                </Documentation>
+                <Example context="orggf">3</Example>
+            </Attribute>
+            <Element name="TeePosition" repeat="0" type="TeePosition">
+                <Documentation>
+                    <Description>Yardage information by tee position.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="CourseArchitect" type="ota2:Empty">
+        <Documentation>
+            <Description>Information regarding the architect of the course.</Description>
+        </Documentation>
+        <Attribute name="name" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>The name of the course architect or designer.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="year" type="ota2-0300:StringTiny">
+            <Documentation>
+                <Description>The year the course was built or renovated.  When the originalInd attribute is true this is the year the course was originally built.  When false this is the year of the renovation.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="description" type="ota2-0300:StringLong">
+            <Documentation>
+                <Description>A description relating to the architect and the design of the course.</Description>
+            </Documentation>
+        </Attribute>
+        <Indicator name="originalInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, this is the orginal course architect, when false this is the course architect for a renovation.</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Enumeration_Open name="ClubHouseFeatures_Enum">
+        <Documentation>
+            <Description>Features related to the club house.</Description>
+        </Documentation>
+        <Value label="" literal="FitnessCenter"/>
+        <Value label="" literal="LockerRoom"/>
+        <Value label="" literal="Lounge"/>
+        <Value label="" literal="MeetingFacilities"/>
+        <Value label="" literal="Restaurant"/>
+        <Value label="" literal="SnackShop"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PracticeFacilityFeatures_Enum">
+        <Documentation>
+            <Description>Features of the practice facility.</Description>
+        </Documentation>
+        <Value label="" literal="PuttingGreen"/>
+        <Value label="" literal="PracticeHoles"/>
+        <Value label="" literal="ShortGamePracticeArea"/>
+        <Value label="" literal="GolfSchool"/>
+    </Enumeration_Open>
+    
+    <Service name="Golf">
+        <Operation Name="SearchFacility" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProcessingInfo" repeat="0" type="ota2-0300:ProcessingInfo">
+                    <Documentation>
+                        <Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="GolfFacilitySearchCriteria" repeat="0" type="GolfFacilitySearchCriteria">
+                    <Documentation>
+                        <Description>Golf facility and tee time search criteria.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ProcessingInfo" repeat="0" type="ota2-0300:ProcessingInfo">
+                    <Documentation>
+                        <Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                    <Example context="orggf">When present indicates that errors or warnings occurred during processing.</Example>
+                </Element>
+                <Element name="GolfFacility" repeat="1000" type="GolfFacility">
+                    <Documentation>
+                        <Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="GolfFacility" repeat="1000" type="GolfFacility">
+                    <Documentation>
+                        <Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="ReadFacility" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <Documentation>
+                        <Description>The ID of the facility or course.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <Documentation>
+                        <Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <Documentation>
+                        <Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

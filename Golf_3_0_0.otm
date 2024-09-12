@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>3549607011</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/golf/v3</ns2:Namespace>
+    <ns2:Prefix>pg-0300</ns2:Prefix>
+    <ns2:Name>Golf</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="OrganizationGolf_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/golf/v3" prefix="orggf-0300"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="CodeList_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/golf/v0" context="pg"/>
+    
+    <ns2:CoreObject name="GolfActivity" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information associated with a tee time round reservation request.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="numberOfHoles" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of holes that the golfers wish to play within one round. If this differs by day, separate messages must be sent.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">18</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="replayRoundQty" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>(Example) If a foursome wants to play two separate rounds within one day, the number of tee times would be 2.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute mandatory="true" name="maxGolferCount"
+                referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The maximum number of golfers represented in this tee time round.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="pg">4</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="startingHole" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The tee on which the round will start. This could be a hole number, or a course designation where there are multiple courses.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Course" repeat="0" type="orggf-0300:Course">
+                <ns2:Documentation>
+                    <ns2:Description>The course for this golf activity.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="GolfFacility" repeat="0" type="orggf-0300:GolfFacility">
+                <ns2:Documentation>
+                    <ns2:Description>The golf facility for this golf activity.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TeeTime" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Tee time information associated with an availability request.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="roundID" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier applied to this tee time round.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">12181631</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="packageID" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>An identification of a package of which this tee time round is a part of.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute mandatory="true" name="numberOfHoles"
+                referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of holes that the golfers wish to play within one round. If this differs by day, separate messages must be sent.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">18</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="carQty" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of carts/buggies requested.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="replayRoundQty" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>(Example) If a foursome wants to play two separate rounds within one day, the number of tee times would be 2.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="pg">2</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="DateTimeSpanWindows"
+                repeat="0" type="ota2-0500:DateTimeSpanWindows">
+                <ns2:Documentation>
+                    <ns2:Description>The date and time for which the tee time round is reserved.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: DateTimeSpanGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Discount" repeat="99" type="ota2-0500:RateQualifier">
+                <ns2:Documentation>
+                    <ns2:Description>Promotions and other rate qualifying discounts requested for this tee time round. Note that promotions may be tied to individual golfers or to the tee time as a whole.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="LoyaltyProgram" repeat="99" type="ota2-0500:LoyaltyProgram_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Membership program(s) associated with a golfer.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}MembershipProgram</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="GolferCount" repeat="5" type="GolferCount">
+                <ns2:Documentation>
+                    <ns2:Description>Summary golfer type qualifying information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="CourseIdentifier"
+                repeat="0" type="orggf-0300:Course_ID">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the golf course for this tee time.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="NineHoleName" repeat="10" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Name for nine holes within this course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SpecifiedAmenity" repeat="99" type="ota2-0500:SpecifiedAmenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Amenities requested for this tee time round. Note that amenities may be tied to individual golfers or to the tee time as a whole.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="TeeTimeAvailability" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Golf facility and tee time search criteria.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="FacilityGolf" repeat="0" type="orggf-0300:Facility_Golf">
+                <ns2:Documentation>
+                    <ns2:Description>The identifier for a golf facility. This includes id and name.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="TeeTime" repeat="99" type="TeeTime">
+                <ns2:Documentation>
+                    <ns2:Description>Tee time information associated with an availability request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="GolferCount" type="xsd:positiveInteger">
+        <ns2:Documentation>
+            <ns2:Description>The number of golfers in this age group.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="ageQualifyingCode" referenceRepeat="0" type="ota2-0400:AgeQualifyingCode_Enum">
+            <ns2:Documentation>
+                <ns2:Description>An age qualifying code for this golfer. From the OpenTravel Age Qualifying Code List (AQC).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="golferType" referenceRepeat="0" type="GolferType_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Summary golfer type qualifying information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="handicap" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+            <ns2:Documentation>
+                <ns2:Description>A numerical value used  to identify the golfer's potential ability.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="pg">18</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Indicator name="accessibleInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, tee time rounds that accommodate accessibility needs are requested.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Enumeration_Closed name="GolferType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Golfer types with an "Other" value to support open enumeration list.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="ClubMember">
+            <ns2:Documentation>
+                <ns2:Description>TBC...</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="GuestOfMember">
+            <ns2:Documentation>
+                <ns2:Description>TBC...</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="GuestOfResort">
+            <ns2:Documentation>
+                <ns2:Description>TBC...</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LocalResident">
+            <ns2:Documentation>
+                <ns2:Description>TBC...</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+        <ns2:Value label="" literal="LoyaltyProgramMember">
+            <ns2:Documentation>
+                <ns2:Description>TBC...</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Value>
+    </ns2:Enumeration_Closed>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Activity" name="Golf"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="GolfActivity" repeat="0" type="GolfActivity">
+            <ns2:Documentation>
+                <ns2:Description>A golf activity.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:ProductQueries" name="Golf"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="TeeTimeAvailability" repeat="0" type="TeeTimeAvailability_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Golf product query for tee time availability.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:Service name="Golf">
+        <ns2:Documentation>
+            <ns2:Description/>
+            <ns2:Deprecated>All operations on Reservation are deprecated and will be removed in the next version.  Please use the operations on ReservationServices.</ns2:Deprecated>
+        </ns2:Documentation>
+        <ns2:Operation Name="GetOffers" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on Golf are deprecated and will be removed in the next version.  Please use the operations on GolfOffers.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Golf are deprecated and will be removed in the next version.  Please use the operations on GolfOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+                    <ns2:Documentation>
+                        <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProductQueries" repeat="0" type="prod-0500:ProductQueries">
+                    <ns2:Documentation>
+                        <ns2:Description>Golf facility and tee time search criteria.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Golf are deprecated and will be removed in the next version.  Please use the operations on GolfOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Absence of this object indicates a successful transaction. When this object is present, it generally indicates that an error or warning occurred but may also be used to explicitly indicate a successful transaction.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="OfferSummary" repeat="100" type="order-0400:Offer_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>A description of the facility and offers.  The offers include ancillaries (amenities).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Documentation>
+                    <ns2:Description/>
+                    <ns2:Deprecated>All operations on Golf are deprecated and will be removed in the next version.  Please use the operations on GolfOffers.</ns2:Deprecated>
+                </ns2:Documentation>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="OfferSummary" repeat="0" type="order-0400:Offer_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>A description of the facility and offers.  The offers include ancillaries (amenities).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/resources/GlobalResources/v1</ns2:Namespace>
+    <ns2:Prefix>grr-0100</ns2:Prefix>
+    <ns2:Name>OfferResource</ns2:Name>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Reservation_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/reservation/v3" prefix="res-0300"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/resources/GlobalResources/v0" context="or"/>
+    <ns2:Resource abstract="false" basePath="/"
+        businessObjectRef="order-0400:Offer" firstClass="true" name="OffersResource">
+        <ns2:Extension extends="ota2-0500:BaseResource"/>
+        <ns2:ParamGroup facetName="order-0400:Offer_ID" idGroup="true" name="ID">
+            <ns2:Parameter fieldName="Identifier" location="Path"/>
+        </ns2:ParamGroup>
+        <ns2:ActionFacet label="OfferResponse" referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="OfferListResponse"
+            referenceRepeat="1000" referenceType="Optional"/>
+        <ns2:ActionFacet label="OfferID" referenceFacet="ID"
+            referenceRepeat="0" referenceType="Required"/>
+        <ns2:ActionFacet label="Offer_Query"
+            referenceFacet="Query_Product" referenceRepeat="0" referenceType="Required"/>
+        <ns2:Action actionId="Create" common="false">
+            <ns2:Documentation>
+                <ns2:Description>Create a list of offers to satisfy the offer product query.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:ActionRequest httpMethod="POST"
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                pathTemplate="/Offers" payloadType="OffersResource_Offer_Query"/>
+            <ns2:ActionResponse
+                mimeTypes="APPLICATION_JSON APPLICATION_XML"
+                payloadType="OffersResource_OfferListResponse" statusCodes="201"/>
+        </ns2:Action>
+    </ns2:Resource>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="CancelOrder"
+        notExtendable="false" type="Query">
+        <ns2:Element mandatory="true" name="ReservationFolioIdentifier"
+            repeat="0" type="res-0300:ReservationFolio_ID"/>
+        <ns2:Element mandatory="true" name="OrderIdentifier"
+            repeat="100" type="order-0400:Order_ID"/>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="CancelOrder"
+        notExtendable="false" type="Custom">
+        <ns2:Element name="ReservationFolioIdentifier" repeat="0" type="res-0300:ReservationFolio_ID"/>
+        <ns2:Element name="OrderIdentifier" repeat="0" type="order-0400:Order_ID"/>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

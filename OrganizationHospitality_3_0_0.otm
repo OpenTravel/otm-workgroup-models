@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>2084313757</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/organization/hospitality/v3</ns2:Namespace>
+    <ns2:Prefix>orghs-0300</ns2:Prefix>
+    <ns2:Name>OrganizationHospitality</ns2:Name>
+    <ns2:Import fileHints="Common_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Organization_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v3" prefix="org-0300"/>
+    <ns2:Import fileHints="Product_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v4" prefix="prod-0400"/>
+    <ns2:Import fileHints="Hospitality_1_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/hospitality/v1" prefix="ph"/>
+    <ns2:Import fileHints="CodeList_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/organization/hospitality/v0" context="orghs"/>
+    
+    <ns2:CoreObject name="HotelDetails" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>An abbreviated short summary of hotel descriptive information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="supplierIntegrationLevel"
+                referenceRepeat="0" type="ota2-0400:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The level of integration of a property to provide automated transaction information. The lower the number, the higher the integration (e.g., a 1 means the supplier has the highest level of integration automation).</ns2:Description>
+                    <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxGroupRoomQuantity"
+                referenceRepeat="0" type="ota2-0400:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Provides the maximum number of rooms that can be booked in a property for a group.</ns2:Description>
+                    <ns2:Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</ns2:Implementer>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="currencyCode" referenceRepeat="0" type="ota2-0400:CurrencyCode_ISO4217">
+                <ns2:Documentation>
+                    <ns2:Description>The code specifying a monetary unit. Use ISO 4217, three alpha code.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaLength3</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">usd</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="hotelCodeContext" referenceRepeat="0" type="ota2-0400:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the Hotel.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">Sabre</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="tTICode" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Recreation" repeat="100000" type="Recreation">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies recreation facilities or amenities of interest.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Recreation</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BusinessService" repeat="100000" type="org-0300:BusinessService">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies business services of interest.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Service</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Policy" repeat="1" type="HotelPolicy">
+                <ns2:Documentation>
+                    <ns2:Description>Policy information for this hotel.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Policy</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MeetingCenter" repeat="100000" type="org-0300:MeetingCenter">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies property meeting facility information for a property.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelMeetingFacility</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Amenity" repeat="100000" type="ota2-0400:Amenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Property-level amenities (pool, etc) for searching.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}HotelAmenity</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Ancillary" repeat="0" type="ota2-0400:Ancillary_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Property level ancillaries that have a cost associated with them.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="HotelPolicy" type="ota2:Empty">
+        <ns2:Attribute name="checkInTime" referenceRepeat="0" type="xsd:time">
+            <ns2:Documentation>
+                <ns2:Description>The checkin time required by this hotel for a room stay.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="orghs"/>
+            <ns2:Example context="orghs">16:00:00</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="checkOutTime" referenceRepeat="0" type="xsd:time">
+            <ns2:Documentation>
+                <ns2:Description>The checkout time required by this hotel for a room stay.</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}time</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Example context="orghs">12:00:00</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="SecurityFeatures" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Name of the feature.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0400:StringShort"/>
+        <ns2:Summary>
+            <ns2:Element name="SecurityFeature" repeat="100" type="ota2-0300:SecurityFeature_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies a security feature at a propetry. Refer to OpenTravel Code list Security Feature Code (SEC).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="ota2-0400:Features" name="Accessibility"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="AccessibilityFeatures" repeat="0" type="AccessibilityFeatures">
+            <ns2:Documentation>
+                <ns2:Description>A hotel accessibility feature.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="ota2-0400:Features" name="Security"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="SecurityFeatures" repeat="0" type="SecurityFeatures_Summary">
+            <ns2:Documentation>
+                <ns2:Description>A security feature.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="AccessibilityFeatures" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Describes accessibility featrues.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0400:StringLong">
+            <ns2:Documentation>
+                <ns2:Description>A general facility description of accessiblity features.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Simple>
+        <ns2:Summary>
+            <ns2:Element name="AccessibilityFeatures" repeat="0" type="ota2-0300:DisabilityFeature_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>A list of accessiblity features available at the golf facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="Description" repeat="0" type="ota2-0400:Text">
+                <ns2:Documentation>
+                    <ns2:Description>Details about the accessibility feature.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="DetailedHotelSearchCriteria" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>The property reference identifies a specific property by using the Chain Code, the Brand Code, and the Hotel Code. The codes used are agreed upon by trading partners.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="hotelCodeContext" referenceRepeat="0" type="ota2-0400:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to communicate the context (or source of - ex Sabre, Galileo, Worldspan, Amadeus) the HotelReferenceGroup codes.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">Sabre</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="tTIcode" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Note:   This code is maintained by the Travel Technology Initiative (TTI) and provides a unique way to identify a property across a multiplicity of channels, service providers, tour companies, representation companies and third parties involved in the booking, administration and fulfillment of travel within the hospitality industry. For more information: http://www.tti.org/tticodes.html</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Features" repeat="0" type="ota2-0400:Features">
+                <ns2:Documentation>
+                    <ns2:Description>Features to be used in the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BedType" repeat="0" type="ota2-0300:BedType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Bed type for the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HotelAmenity" repeat="100" type="ota2-0400:Code">
+                <ns2:Documentation>
+                    <ns2:Description>A hotel amenity to be included in the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomAmenities" repeat="100" type="ota2-0400:Code">
+                <ns2:Documentation>
+                    <ns2:Description>A room amenity to be included in the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Rating" repeat="0" type="ota2-0400:RatingValue">
+                <ns2:Documentation>
+                    <ns2:Description>The minimum hotel rating value of the hotels to be returned (e.g. only return hotels with a 3.5 rating or higher).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="petsAllowedInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, pets are allowed at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="smokingRoomsInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this hotel facility offers smoking rooms.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="aDACompliantInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this hotel facility is ADA compliant.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="exactMatchInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, only properties/rate plans that exactly match the search criteria should be returned.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0300:Facility" name="Hotel"
+        notExtendable="false" type="Custom">
+        <ns2:Attribute name="brandName" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of a brand of hotels (e.g., Courtyard, Hampton Inn).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="chainName" referenceRepeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of the hotel chain (e.g., Hilton, Marriott, Hyatt, Starwood).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Element name="Features" repeat="0" type="ota2-0400:Features">
+            <ns2:Documentation>
+                <ns2:Description>Identifies features of a property.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="SegmentCategory" repeat="0" type="ota2-0300:SegmentCategory_Enum">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the segment (e.g., luxury, upscale, extended stay) of the property. Refer to OpenTravel Codelist Segment Category Code (SEG).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="HotelDetails" repeat="0" type="HotelDetails">
+            <ns2:Documentation>
+                <ns2:Description>Detailed hotel facility information.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="RateRange" repeat="0" type="ota2-0400:RateRange">
+            <ns2:Documentation>
+                <ns2:Description>The rate range for rooms at this facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0300:Facility" name="Hotel"
+        notExtendable="false" type="Query">
+        <ns2:Element name="HotelName" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A name or partial name of hotel used in searching for a hotel facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandCode" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifies the brand or flag of a hotel, often used for independently-owned or franchised properties who are known by a specific brand.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandName" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of a brand of hotels (e.g., Courtyard, Hampton Inn).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainCode" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The code that identifies a hotel chain or management group. The hotel chain code is decided between vendors. This attribute is optional if the hotel is an independent property that can be identified by the HotelCode attribute.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainName" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>The name of the hotel chain (e.g., Hilton, Marriott, Hyatt, Starwood).</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="Radius" repeat="0" type="ota2-0400:Radius">
+            <ns2:Documentation>
+                <ns2:Description>The radius of the search.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ReferencePoint" repeat="0" type="ota2-0400:ReferencePoint">
+            <ns2:Documentation>
+                <ns2:Description>Specifies a reference point from which the search should be preformed.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="DetailedHotelSearchCriteria" repeat="0" type="DetailedHotelSearchCriteria">
+            <ns2:Documentation>
+                <ns2:Description>Detailed search criteria for hotel facilities.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0300:Facility" name="HotelAvail"
+        notExtendable="false" type="Query">
+        <ns2:Element name="BaseHospitalityFacilityQuery" repeat="0" type="BaseHospitalityFacilityQuery">
+            <ns2:Documentation>
+                <ns2:Description>Base information for the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="PropertyInfo" repeat="0" type="prod-0400:PropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Property information such as brand code or chain code to be used within the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0300:Facility" name="HotelAvailRetrieve"
+        notExtendable="false" type="Query">
+        <ns2:Element mandatory="true" name="FacilityIdentifier"
+            repeat="100" type="org-0300:Facility_ID">
+            <ns2:Documentation>
+                <ns2:Description>Uniquely identifies a single property for a reservation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BaseHospitalityFacilityQuery" repeat="0" type="BaseHospitalityFacilityQuery">
+            <ns2:Documentation>
+                <ns2:Description>Base information used in the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0300:FacilityKey" name="Hotel"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="FacilityCode" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifies the facility.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="ChainCode" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the chain for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BrandCode" repeat="0" type="ota2-0400:StringShort">
+            <ns2:Documentation>
+                <ns2:Description>A code that identifes the brand for which the facility belongs.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="BaseHospitalityFacilityQuery" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>This object is intended to be extended for use in facility queries.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="numberOfRooms" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>1The number of rooms being queried for.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orghs">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="DateTimeSpan" repeat="0" type="ota2-0400:TimeSpan">
+                <ns2:Documentation>
+                    <ns2:Description>Arrival and departure information for the availability query.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="GuestCount" repeat="99" type="prod-0400:GuestCount">
+                <ns2:Documentation>
+                    <ns2:Description>The number of guests for this availability search.  May optionally include their ages or age categories.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateRange" repeat="0" type="ota2-0400:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>The rate range for which responses should be returned.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DetailedHotelSearchCriteria" repeat="0" type="DetailedHotelSearchCriteria">
+                <ns2:Documentation>
+                    <ns2:Description>Detailed search criteria for hotel facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomTypeCode" repeat="100" type="ota2-0400:Code">
+                <ns2:Documentation>
+                    <ns2:Description>Room type codes for which the search is to be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RatePlanCode" repeat="100" type="ph:RatePlanCode">
+                <ns2:Documentation>
+                    <ns2:Description>Rate plan codes for which the search is to be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="Recreation" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Name of the recreation.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2-0400:StringShort"/>
+        <ns2:Summary>
+            <ns2:Attribute name="recreationDescription"
+                referenceRepeat="0" type="ota2-0400:StringShort"/>
+            <ns2:Element name="Code" repeat="0" type="ota2-0300:RecreationService_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to identify a specific recreation activity. Refer to OpenTravel Code list Recreation Srvc Type (RST).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+</ns2:Library>

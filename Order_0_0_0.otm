@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/strawman/order/v0</Namespace>
+    <Prefix>soe</Prefix>
+    <Name>Order</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import fileHints="Product_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v0" prefix="prod"/>
+    <Import
+        fileHints="../../../../../../../../../../Workspace/OTM_TestData/OTM Projects/NewOTA_Libraries/Reservation.otm"
+        namespace="http://www.opentravel.org/OTM/reservation/v0" prefix="res"/>
+    <Import
+        fileHints="../../../../../../../../../../Workspace/OTM_TestData/OTM Projects/NewOTA_Libraries/Order.otm"
+        namespace="http://www.opentravel.org/OTM/order/v0" prefix="order"/>
+    <Import
+        fileHints="../../../../../../../../../../Workspace/OTM_TestData/OTM Projects/NewOTA_Libraries/Finance.otm"
+        namespace="http://www.opentravel.org/OTM/finance/v0" prefix="fin"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/strawman/order/v0" context="oOrder"/>
+    
+    <BusinessObject name="Offer" notExtendable="false">
+        <Documentation>
+            <Description>A product or products available at the given price and terms</Description>
+            <Deprecated>Replaced with OTM/Order</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="offerId" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute name="vendor" type="ota2:String_Tiny">
+                <Documentation>
+                    <Description>Specifies the vendor for this offer.</Description>
+                </Documentation>
+            </Attribute>
+            <Element mandatory="true" name="Price" repeat="0" type="xsd:decimal">
+                <Documentation>
+                    <Description>Total price for all the products. Price may include itemized price information</Description>
+                </Documentation>
+            </Element>
+            <Element name="TermsAndConditions" repeat="25" type="order:TermsAndConditions">
+                <Documentation>
+                    <Description>Specifies the terms and conditions for this offer.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Product" repeat="30" type="prod:Product">
+                <Documentation>
+                    <Description>One or more products that make up this offer.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Query context="" label="" notExtendable="false">
+            <Element mandatory="true" name="ProductQueries" repeat="2" type="prod:ProductQueries">
+                <Documentation>
+                    <Description>Use 2 if requesting round trip Offers</Description>
+                </Documentation>
+            </Element>
+        </Query>
+        <Custom context="" label="Confirmed" notExtendable="false">
+            <Attribute name="confirmationId" type="ota2:String_Tiny"/>
+            <Element name="Description" repeat="0" type="ota2:String_Long"/>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="Order" notExtendable="false">
+        <Documentation>
+            <Description/>
+            <Deprecated>Replaced with OTM/Order</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute name="totalPrice" type="xsd:decimal"/>
+            <Element mandatory="true" name="Offer" repeat="99" type="order:Offer"/>
+            <Element mandatory="true" name="Customer" repeat="99" type="res:Customer"/>
+            <Element name="Payment" repeat="5" type="fin:Payment"/>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <BusinessObject name="TermsAndConditions" notExtendable="false">
+        <Documentation>
+            <Description/>
+            <Deprecated>Replaced with OTM/Order</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute name="duration" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Specifies the duration of the trip.</Description>
+                </Documentation>
+            </Attribute>
+        </Summary>
+        <Detail/>
+        <Custom context="" label="Hospitality" notExtendable="false">
+            <Element name="Guarantee" repeat="0" type="res:Guarantee">
+                <Documentation>
+                    <Description>Guarantee information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="CancelPenalty" repeat="0" type="res:CancelPenalty">
+                <Documentation>
+                    <Description>Specifies the cancellation penalty.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Transport" notExtendable="false"/>
+    </BusinessObject>
+    
+    <Service name="Order">
+        <Operation Name="Place" notExtendable="false">
+            <Request>
+                <Element mandatory="true" name="Offer" repeat="1000" type="order:Offer"/>
+                <Element mandatory="true" name="Customer" repeat="100" type="res:Customer"/>
+                <Element mandatory="true" name="Payment" repeat="100" type="fin:Payment"/>
+            </Request>
+            <Response>
+                <Element name="Reservation" repeat="0" type="res:Reservation"/>
+            </Response>
+            <Notification/>
+        </Operation>
+    </Service>
+    
+</Library>

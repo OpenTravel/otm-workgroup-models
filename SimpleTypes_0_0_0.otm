@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>2466630738</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v0</Namespace>
+    <Prefix>OTA2</Prefix>
+    <Name>SimpleTypes</Name>
+    <Includes>SimpleTypesReviewed_0_0_0.otm</Includes>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://opentravel.org/common/v02" prefix="ota2"/>
+    <Context
+        applicationContext="http://opentravel.org/local/sg0523325/v0" context="OTA2"/>
+    
+    <Simple name="X_Code_City" pattern="([a-zA-Z]{3})?" type="xsd:string">
+        <Documentation>
+            <Description>3-letter city code -   -- TODO cite authority - whose std?  We should have a complex object that is preferred to be used.</Description>
+        </Documentation>
+        <Example context="OTA2">LON</Example>
+    </Simple>
+    
+    <Simple name="X_Code_PseudoCity" pattern="([0-9A-Z]{3,5})?" type="xsd:string">
+        <Documentation>
+            <Description>TODO - cite authority.   
+TODO - should this be part of a complex object like agency?
+Identifier that distinguishes one travel agency location from another and can also be referred to as a Subscriber ID. A Pseudo-city code (PCC) is usually a three to five character code (alpha, numeric, or combination) depending upon the GDS. PCCs are necessary when adding negotiated rates, as these rates can be "defined" or secured to an agency by using their PCC</Description>
+        </Documentation>
+        <Example context="OTA2">HDQ</Example>
+    </Simple>
+    
+    <Simple maxLength="3" minLength="3" name="X_Code_Aircraft_IATA"
+        pattern="([a-zA-Z0-9]{3})?" type="xsd:string">
+        <Documentation>
+            <Description>A three character IATA aircraft type designator.</Description>
+            <Reference>http://www.iata.org/ps/publications/pages/code-search.aspx</Reference>
+        </Documentation>
+        <Example context="OTA2">737</Example>
+    </Simple>
+    
+    <Simple maxLength="128" minLength="1" name="X_Name_Proper" type="xsd:string">
+        <Documentation>
+            <Description>DO NOT USE THIS -- use the complex type (VWA/CORE/Business) to be defined later.
+A name used to describe a person, place or thing, such as a hotel, airport or company.</Description>
+        </Documentation>
+        <Example context="OTA2">Name</Example>
+    </Simple>
+    
+    <Simple name="X_PNR_Locator" pattern="[A-Z]{6}" type="xsd:string">
+        <Documentation>
+            <Description>PNR locator: A code identifying customer reservation.</Description>
+        </Documentation>
+        <Example context="OTA2">FEDCBA</Example>
+    </Simple>
+    
+    <Simple maxLength="1" minLength="1" name="X_Class_IATA"
+        pattern="[A-Z]" type="xsd:string">
+        <Documentation>
+            <Description>IATA 1 char class code commonly referred to as Reservation Booking Designator</Description>
+        </Documentation>
+        <Example context="OTA2">Y</Example>
+    </Simple>
+    
+    <Simple maxInclusive="4" minInclusive="1"
+        name="X_Ticket_CouponNumber" type="xsd:integer">
+        <Example context="OTA2">1</Example>
+    </Simple>
+    
+    <Simple maxLength="15" minLength="13" name="X_Ticket_DocumentNumber" type="xsd:string">
+        <Documentation>
+            <Description>Character String length 13 to 15 to identify a ticketing document. Also used to identify and EMD (IATA Electronic Miscellaneous Document)</Description>
+            <Implementer>Assigned XSD Type:
+				{http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Example context="OTA2">7242117777256</Example>
+    </Simple>
+    
+    <CoreObject name="SimpleTypesExamples" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="OperatingAirline" repeat="0" type="Code_Airline_IATA">
+                <Documentation>
+                    <Description>ATA/IATA defined 2-3 character airline designator codes, (IATA Airline Coding
+Directory, Section 3)
+
+ICAO Document 8585 defines the airline code as 3 char.
+
+There are no IATA 3 char airline designator codes assigned.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="OperatingFlight" repeat="0" type="FlightNumber">
+                <Documentation>
+                    <Description>This is the base flight number without flight suffix.
+				Note - Sabre systems may not handle alpha characters in the flight
+				number.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MarketingAirline" repeat="0" type="Code_Airline_IATA"/>
+            <Element mandatory="true" name="FirstName" repeat="0" type="X_Name_Proper">
+                <Documentation>
+                    <Description>A name used to describe a person, place or thing, such as a hotel, airport or company.</Description>
+                </Documentation>
+                <Example context="OTA2">Bilbo</Example>
+            </Element>
+            <Element mandatory="true" name="LastName" repeat="0" type="X_Name_Proper">
+                <Documentation>
+                    <Description>A name used to describe a person, place or thing, such as a hotel, airport or company.</Description>
+                </Documentation>
+                <Example context="OTA2">Baggins</Example>
+            </Element>
+            <Element mandatory="true" name="PNRLocator" repeat="0" type="X_PNR_Locator">
+                <Documentation>
+                    <Description>PNR locator: A code identifying customerreservation.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="BookingClass" repeat="0" type="X_Class_IATA">
+                <Documentation>
+                    <Description>Commonly called the RBD or Reservation booking designator</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_Short" repeat="0" type="String_Short">
+                <Documentation>
+                    <Description>A string with a minimum length of 1 and a maximum length of 128.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true"
+                name="String_UpperCaseAlphaNumeric" repeat="0" type="String_UpperCaseAlphaNumeric"/>
+            <Element mandatory="true" name="String_UpperCaseAlpha"
+                repeat="0" type="String_UpperCaseAlpha"/>
+            <Element mandatory="true" name="String_Tiny" repeat="0" type="String_Tiny">
+                <Documentation>
+                    <Description>A string with a minimum length of 1 and a maximum length of 32.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_One" repeat="0" type="String_Character_One">
+                <Documentation>
+                    <Description>One character</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_Medium" repeat="0" type="String">
+                <Documentation>
+                    <Description>A string with a minimum length of 1 and a maximum length of 512.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_AlphaNumeric"
+                repeat="0" type="String_AlphaNumeric"/>
+            <Element mandatory="true"
+                name="DateTime_Local_WithoutTimeZone" repeat="0" type="DateTime_Local">
+                <Documentation>
+                    <Description>Local ISO date time type with restriction to assure time
+				does not have UTC offset or Z for Zulu. Example: 2010-12-31T11:55:00</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="DateTimeWithTimeZone"
+                repeat="0" type="DateTime_WithTimeZone">
+                <Documentation>
+                    <Description>ISO date time type with restriction to assure time has
+				the UTC offset or Z for Zulu. Example: 2010-12-31T11:55:00+06:00</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Day" repeat="0" type="Enum_DayOfWeek">
+                <Documentation>
+                    <Description>Day of the Week types.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Code_Country" repeat="0" type="Code_Country">
+                <Documentation>
+                    <Description>IATA 2 character country code as defined in ISO 3166-1</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Class" repeat="0" type="X_Class_IATA">
+                <Documentation>
+                    <Description>IATA 1 char class code commonly referred to as Reservation booking designator</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Traveller_Names" repeat="0" type="Traveller_Names"/>
+            <Element mandatory="true" name="Amount" repeat="0" type="Amount">
+                <Documentation>
+                    <Description>A numeric monetary value.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="ScheduleDepartureDate"
+                repeat="0" type="DateTime">
+                <Documentation>
+                    <Description>Define Date Time with a Local or UTC qualifier</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="ScheduleArrivalDate"
+                repeat="0" type="DateTime">
+                <Documentation>
+                    <Description>Define Date Time  with a Local or UTC qualifier</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_Long" repeat="0" type="String_Long">
+                <Documentation>
+                    <Description>A string with a minimum length of 0 and a maximum length of 4096.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="String_Text" repeat="0" type="String_Text">
+                <Documentation>
+                    <Description>A 4K string intended for free text</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="travelWithInfantInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If present and true passenger is traveling with an infant</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="Date_Time_Local_or_UTCInd" publishAsElement="true">
+                <Documentation>
+                    <Description>Define Date Time  with a Local or UTC qualifier</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="premierPassengerInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If present and true this is a premier passenger</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Simple name="X_Ticket_Type" type="String_Tiny">
+        <Documentation>
+            <Description>Specifies the type of ticket document (e.g. electronic, paper).</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="X_Meal" type="String">
+        <Documentation>
+            <Description>Airline meal types.</Description>
+        </Documentation>
+        <Example context="OTA2">VGML</Example>
+    </Simple>
+    
+    <Simple name="X_Percentage" type="xsd:decimal">
+        <Documentation>
+            <Description>Used for percentage values</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="X_Code_Tax" pattern="([A-Z0-9]{1,16})?" type="xsd:string">
+        <Documentation>
+            <Description>POSTPONE - should be part of a "tax" object.
+Up to a 16 character numeric or alphanumeric tax code.</Description>
+            <Implementer>This is used to represent a type or category of tax applied to a price or fee.</Implementer>
+        </Documentation>
+        <Example context="OTA2">XF</Example>
+    </Simple>
+    
+    <Simple name="X_Date_Birth" type="xsd:date">
+        <Documentation>
+            <Description>Date of birth in ISO 8601 format YYYY-MM-DD</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple name="X_Date_String" type="String_Short">
+        <Documentation>
+            <Description>Date field to be used when the date format is unknown and is treated merely as a string value.
+Usage</Description>
+        </Documentation>
+        <Example context="OTA2">23FEBRUARY</Example>
+    </Simple>
+    
+    <ValueWithAttrs name="Amount" type="xsd:decimal">
+        <Documentation>
+            <Description>A numeric monetary value.</Description>
+            <Implementer>Assigned XSD Type:
+				{http://services.sabre.com/STL/v01}_amount</Implementer>
+        </Documentation>
+        <Example context="OTA2">35.68</Example>
+        <Attribute name="currencyCode" type="Code_Currency">
+            <Documentation>
+                <Description/>
+                <Implementer>Assigned XSD Type:
+					{http://services.sabre.com/STL/v01}CurrencyCodeList</Implementer>
+            </Documentation>
+            <Example context="OTA2">EUR</Example>
+        </Attribute>
+        <Attribute name="currency" type="X_Name_Proper">
+            <Documentation>
+                <Description/>
+                <Implementer>Assigned XSD Type:
+					{http://services.sabre.com/STL/v01}ProperName</Implementer>
+            </Documentation>
+            <Example context="OTA2">Euro</Example>
+        </Attribute>
+        <Attribute name="decimalPlaces" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>Number of decimal places used with this currency.</Description>
+            </Documentation>
+            <Example context="OTA2">2</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Currency" type="Code_Currency">
+        <Documentation>
+            <Description/>
+            <Implementer>Assigned XSD Type:
+				{http://services.sabre.com/STL/v01}CurrencyCodeList</Implementer>
+        </Documentation>
+        <Attribute name="name" type="X_Name_Proper">
+            <Documentation>
+                <Description/>
+                <Implementer>Assigned XSD Type:
+					{http://services.sabre.com/STL/v01}ProperName</Implementer>
+            </Documentation>
+            <Example context="OTA2">US Dollar</Example>
+        </Attribute>
+        <Attribute name="decimalPlaces" type="xsd:positiveInteger"/>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="State" type="X_Code_StateProv">
+        <Documentation>
+            <Description/>
+            <Implementer>Assigned XSD Type:
+				{http://services.sabre.com/STL/v01}StateProvCode</Implementer>
+        </Documentation>
+        <Example context="OTA2">TX</Example>
+        <Attribute name="name" type="X_Name_Proper"/>
+    </ValueWithAttrs>
+    
+    <Simple name="X_Code_StandardPointLocation" pattern="[0-9]{9}" type="xsd:string">
+        <Documentation>
+            <Description>Standard Point Location Code (SPLC) is a 9 digit geographic code
+SPLC is owned and maintained by the National Motor Freight Traffic Association and is commonly used by Rail providers in the North Americas and Mexico.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Closed name="X_Enum_MealService">
+        <Value literal="Breakfast">
+            <Documentation>
+                <Description>Identifies a breakfast meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Snack">
+            <Documentation>
+                <Description>Identifies a snack meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Dinner">
+            <Documentation>
+                <Description>Identifies a dinner meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Hot Meal">
+            <Documentation>
+                <Description>Identifies a hot meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Lunch">
+            <Documentation>
+                <Description>Identifies a lunch meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Refreshments">
+            <Documentation>
+                <Description>Identifies a refreshments meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Complimentary Liquor">
+            <Documentation>
+                <Description>Identifies a complimentary liquor meal service.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Meal">
+            <Documentation>
+                <Description>Identifies a meal service exists.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Liquor for Purchase">
+            <Documentation>
+                <Description>Identifies that liquor is available for purchase.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Food for Purchase">
+            <Documentation>
+                <Description>Identifies that food is available for purchase.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Cold Meal">
+            <Documentation>
+                <Description>Identifies a cold meal service is available.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="No Meal Service">
+            <Documentation>
+                <Description>Identifies that no meal service is available.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Traveller_Names" notExtendable="false">
+        <Aliases/>
+        <Simple type="String_Short">
+            <Documentation>
+                <Description>Traveller name as a string</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Element mandatory="true" name="GivenName" repeat="3" type="X_Name_Proper">
+                <Documentation>
+                    <Description>First or Given Name</Description>
+                </Documentation>
+                <Example context="OTA2">PETER</Example>
+            </Element>
+            <Element name="MiddleName" repeat="2" type="X_Name_Proper">
+                <Documentation>
+                    <Description>Middle name or initial</Description>
+                </Documentation>
+                <Example context="OTA2">NOMIDDLE</Example>
+            </Element>
+            <Element mandatory="true" name="Surname" repeat="5" type="X_Name_Proper">
+                <Documentation>
+                    <Description>Last Name</Description>
+                </Documentation>
+                <Example context="OTA2">PAN</Example>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Taxes" notExtendable="false">
+        <Aliases/>
+        <Simple type="Empty"/>
+        <Summary>
+            <Attribute name="taxCode" type="String_Long">
+                <Documentation>
+                    <Description>Taxes</Description>
+                </Documentation>
+                <Example context="OTA2">Tax123</Example>
+            </Attribute>
+            <Attribute name="description" type="String_Long">
+                <Documentation>
+                    <Description>Taxes</Description>
+                </Documentation>
+                <Example context="OTA2">AirportTax</Example>
+            </Attribute>
+            <Element mandatory="true" name="Amount" repeat="0" type="Amount">
+                <Documentation>
+                    <Description>Taxes</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Traveller_Loyalty" type="X_MembershipID">
+        <Documentation>
+            <Description>Customer Loyalty account number</Description>
+            <Implementer>Assigned XSD Type: {http://services.sabre.com/STL/v01}MembershipID</Implementer>
+        </Documentation>
+        <Example context="OTA2">123456789123</Example>
+        <Attribute mandatory="true" name="program" type="X_Name_Proper">
+            <Documentation>
+                <Description>Company owner of the customer loyalty program</Description>
+                <Implementer>Assigned XSD Type: {http://services.sabre.com/STL/v01}ProperName</Implementer>
+            </Documentation>
+            <Example context="OTA2">WWA</Example>
+        </Attribute>
+        <Attribute name="partnerProgram" type="X_Name_Proper">
+            <Documentation>
+                <Description>Partner program e.g OnerWorld, SkyTeam, Star Akkiance etc</Description>
+                <Implementer>Assigned XSD Type: {http://services.sabre.com/STL/v01}ProperName</Implementer>
+            </Documentation>
+            <Example context="OTA2">FlyRite</Example>
+        </Attribute>
+        <Attribute name="level" type="String_Long">
+            <Documentation>
+                <Description>Level in owning program</Description>
+                <Implementer>Assigned XSD Type: {http://services.sabre.com/STL/v01}StringLength1to64</Implementer>
+            </Documentation>
+            <Example context="OTA2">Silver</Example>
+        </Attribute>
+        <Attribute name="notes" type="String_Long">
+            <Documentation>
+                <Description>Additional Information</Description>
+                <Implementer>Assigned XSD Type: {http://services.sabre.com/STL/v01}Text</Implementer>
+            </Documentation>
+            <Example context="OTA2">MVP</Example>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <Simple maxLength="8" minLength="2" name="X_Code_StateProv" type="String_AlphaNumeric">
+        <Documentation>
+            <Description>TODO - review when doing ADDRESS object(s)</Description>
+        </Documentation>
+        <Example context="OTA2">TX</Example>
+    </Simple>
+    
+    <Simple maxLength="128" minLength="1" name="X_MembershipID" type="String_Short">
+        <Documentation>
+            <Description>Membership Identifier</Description>
+        </Documentation>
+        <Example context="OTA2">2225264485514</Example>
+    </Simple>
+    
+    <Enumeration_Closed name="X_Time_Local_UTC">
+        <Value literal="Local"/>
+        <Value literal="UTC"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="X_Enum_Codes_Car_Category_ACRISS">
+        <Documentation>
+            <Description>ACRISS Car type definitions</Description>
+        </Documentation>
+        <Value literal="NewValue"/>
+        <Value literal="Mini"/>
+        <Value literal="MiniElite"/>
+        <Value literal="Economy"/>
+        <Value literal="EconomyElite"/>
+        <Value literal="Compact"/>
+        <Value literal="CompactElite"/>
+        <Value literal="Intermediate"/>
+        <Value literal="IntermediateElite"/>
+        <Value literal="Standard"/>
+        <Value literal="StandardElite"/>
+    </Enumeration_Closed>
+    
+    <Simple name="X_TransportCode" type="xsd:string"/>
+    
+    <ValueWithAttrs name="TransportNumber" type="ota2:Empty">
+        <Attribute name="flightNumber" type="FlightNumber"/>
+        <Attribute name="transportID" type="String_Tiny"/>
+    </ValueWithAttrs>
+    
+</Library>

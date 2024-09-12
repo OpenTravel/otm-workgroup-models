@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Final</ns2:Status>
+    <ns2:CrcValue>2050001460</ns2:CrcValue>
+    <ns2:Namespace>http://www.opentravel.org/OTM/organization/golf/v3</ns2:Namespace>
+    <ns2:Prefix>orggf-0300</ns2:Prefix>
+    <ns2:Name>OrganizationGolf</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Organization_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v4" prefix="org-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/organization/golf/v0" context="orggf"/>
+    
+    <ns2:BusinessObject name="Course" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details of a golf course.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CourseRef" reference="true" repeat="0" type="Course">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="numberOfHoles" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of holes offered at the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="par" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Par for the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="totalYardage" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Total yardage for the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="yearBuilt" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>The year the course was built.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="CourseClosure" repeat="50" type="CourseClosure">
+                <ns2:Documentation>
+                    <ns2:Description>A date and time period when a golf course is closed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CourseConditions" repeat="20" type="CourseConditions">
+                <ns2:Documentation>
+                    <ns2:Description>Information about course conditions with an optional source name or URL.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CourseRestrictions" repeat="20" type="CourseRestrictions">
+                <ns2:Documentation>
+                    <ns2:Description>A date and time period when restrictions apply to golf facility tee times.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ScoreCard" repeat="50" type="ScoreCard">
+                <ns2:Documentation>
+                    <ns2:Description>Scorecard information for the golf facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="OperationSchedule" repeat="30" type="ota2-0500:OperationSchedule_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Hours of operation for the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeeStructure" repeat="0" type="ota2-0500:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>General green fee amounts.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="CourseArchitect" repeat="0" type="CourseArchitect">
+                <ns2:Documentation>
+                    <ns2:Description>Name of the designer of the golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="golfCarRequiredInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, a golf car is required on this golf course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="NineHoleName" repeat="10" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of a specific nine holes that make up part of the course.  This applies when a course has 18 or more holes where a user could request the back nine, or the name of the nine holes if the facility names them</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="CourseClosure" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the time or time range for the closure of the course.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:DateTimeSpanWindows"/>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary/>
+        <ns2:Detail>
+            <ns2:Element name="Description" repeat="0" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the reason for the course closure.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="CourseConditions" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information about course conditions with an optional source name or URL.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="source" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The source  that provided the course conditions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="anyURI" referenceRepeat="0" type="xsd:anyURI">
+                <ns2:Documentation>
+                    <ns2:Description>The URL that provided the course conditions.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="CourseRestrictions" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Restrictions that apply to this golf course.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Extension extends="ota2-0500:DateTimeSpanWindows"/>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="type" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>The type of facility and/or tee time restriction.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="description" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>A description of the facility and/or tee time restriction.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="DrivingRange" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Driving range details for the golf facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="turfType" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The type of turf on the driving range.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">Grass</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="distance" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Driving range distance.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">500 ft</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="numberOfStations" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of stations at the driving range.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">10</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="drivingRangeType" referenceRepeat="0" type="DrivingRangeType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the type of driving range (e.g. Covered, Indoor, Outdoor).</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">Outdoor</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Indicator name="nightLightingInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, night lighting is provided.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="GolfFacilityFeatures" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="description" referenceRepeat="0" type="ota2-0500:String">
+                <ns2:Documentation>
+                    <ns2:Description>A description of the highlights of the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="FacilityHighlights" repeat="10" type="FacilityHighlights_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Highlighted features of the golf facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="PracticeFacilities" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details on a the practice facilities of a golf facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="OperationSchedule" repeat="30" type="ota2-0500:OperationSchedule_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Operation schedules for the practice facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="DrivingRange" repeat="10" type="DrivingRange">
+                <ns2:Documentation>
+                    <ns2:Description>Details of the driving range.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeeStructure" repeat="0" type="ota2-0500:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>Fees associated with the practice facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PracticeFacilityFeatures" repeat="20" type="PracticeFacilityFeatures_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Features of the practice facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="ProShop" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details of a golf facility pro shop.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ProShopRef" reference="true" repeat="0" type="ProShop">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element name="RentalEquipment" repeat="30" type="RentalEquipment">
+                <ns2:Documentation>
+                    <ns2:Description>Club rental details.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Services" repeat="30" type="GolfServices_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Services offered by the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="GolfFacilitySearchCriteria" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Golf facility and tee time search criteria.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="golfFacilityName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the golf facility for which the search is being performed.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">Brookside Golf</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="SpecifiedAmenity" repeat="99" type="ota2-0500:ListOfTinyStrings">
+                <ns2:Documentation>
+                    <ns2:Description>Amentities and services available with a product(either included in the price of the tee time or available for an extra fee), such as power carts. Note, includes pricing.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}GolfAmenitySummaryType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="GolfFacility" repeat="0" type="GolfFacility">
+                <ns2:Documentation>
+                    <ns2:Description>Facility course description and features information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateRange" repeat="0" type="ota2-0500:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>A min or max rate for green fees for this search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Location" repeat="0" type="ota2-0500:Location_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Defines the location of the search.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Radius" repeat="0" type="ota2-0500:Radius">
+                <ns2:Documentation>
+                    <ns2:Description>The radial distance for which a the search should be performed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="ClubHouse" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details of a golf facility club house.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="ClubHouseFeatures" repeat="20" type="ClubHouseFeatures_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Features of the Club House.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:Enumeration_Closed name="CourseType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>The course type at the facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="DailyFee"/>
+        <ns2:Value label="" literal="Municipal/Government/Military"/>
+        <ns2:Value label="" literal="Private"/>
+        <ns2:Value label="" literal="Private Limited Access"/>
+        <ns2:Value label="" literal="Resort"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:Enumeration_Closed name="DrivingRangeType_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Describes the type of driving range.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Covered"/>
+        <ns2:Value label="" literal="Indoor"/>
+        <ns2:Value label="" literal="Outdoor"/>
+    </ns2:Enumeration_Closed>
+    
+    <ns2:CoreObject name="GolfFacility" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="courseType" referenceRepeat="0" type="CourseType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The course type at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="dressPolicy" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The dress code for the golf facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="GolfFacilityFeatures"
+                repeat="0" type="GolfFacilityFeatures">
+                <ns2:Documentation>
+                    <ns2:Description>Facility features information.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ClubHouse" repeat="0" type="ClubHouse">
+                <ns2:Documentation>
+                    <ns2:Description>Club house details.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Course" repeat="10" type="Course">
+                <ns2:Documentation>
+                    <ns2:Description>Golf course details.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ProShop" repeat="0" type="ProShop">
+                <ns2:Documentation>
+                    <ns2:Description>Pro shop details.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PracticeFacilities" repeat="0" type="PracticeFacilities">
+                <ns2:Documentation>
+                    <ns2:Description>Details of the practice facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Amenity" repeat="99" type="ota2-0500:Amenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Amenities available at the golf facility. Note, these amenities typically apply to all tee times at the facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Ancillary" repeat="99" type="ota2-0500:Ancillary_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Ancillary available at the golf facility.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="featuredInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If true, this facility has been marked as a featured course by the supplier.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="MeetingCenter" repeat="0" type="org-0400:MeetingCenter">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the meeting room facilities.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RateRange" repeat="0" type="ota2-0500:RateRange">
+                <ns2:Documentation>
+                    <ns2:Description>A rate range for tee times at this course.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RentalEquipment" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Equipment available for rental at this facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="Type" repeat="0" type="GolfRentalEquipment_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Type of rental equipment offered.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="PersonCategory" repeat="10" type="PersonCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the type of person for whom the rental equipment is offered.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="accessibleInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, this equipment offered is accessible.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:Enumeration_Open name="GolfRentalEquipment_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Rental equipment.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="RightHandedClubs"/>
+        <ns2:Value label="" literal="LeftHandedClubs"/>
+        <ns2:Value label="" literal="GolfCars"/>
+        <ns2:Value label="" literal="StandupTransportation"/>
+        <ns2:Value label="" literal="Shoes"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PersonCategory_Enum">
+        <ns2:Value label="" literal="Juniors"/>
+        <ns2:Value label="" literal="Womens"/>
+        <ns2:Value label="" literal="Mens"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="FacilityHighlights_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Items offered at a facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="Accessible"/>
+        <ns2:Value label="" literal="ClubRental"/>
+        <ns2:Value label="" literal="DayLockers"/>
+        <ns2:Value label="" literal="Dining"/>
+        <ns2:Value label="" literal="DrivingRange"/>
+        <ns2:Value label="" literal="GolfLessons"/>
+        <ns2:Value label="" literal="GolfSchool"/>
+        <ns2:Value label="" literal="MetalSpilesAllowed"/>
+        <ns2:Value label="" literal="PracticeFacilities"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="GolfServices_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Services offered at a golf facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="ClubRegripping"/>
+        <ns2:Value label="" literal="ClubFitting"/>
+        <ns2:Value label="" literal="Lessons"/>
+        <ns2:Value label="" literal="RetailStore"/>
+        <ns2:Value label="" literal="CaddyForHire"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:ValueWithAttrs name="TeePosition" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>The tee position for the hole.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="teePositionName" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The name of this tee position.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="orggf">Champion</ns2:Example>
+        </ns2:Attribute>
+        <ns2:Attribute name="yardage" referenceRepeat="0" type="xsd:positiveInteger">
+            <ns2:Documentation>
+                <ns2:Description>The yardage for this hole from this tee position.</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="orggf">120</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="ScoreCard" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Scorecard information for the golf facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="courseSlope" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>The slope rating of the golf course.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">60</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="number" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The hole number.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">2</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="par" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The par for the hole.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="orggf">3</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="TeePosition" repeat="0" type="TeePosition">
+                <ns2:Documentation>
+                    <ns2:Description>Yardage information by tee position.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="CourseArchitect" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Information regarding the architect of the course.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The name of the course architect or designer.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="year" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>The year the course was built or renovated.  When the originalInd attribute is true this is the year the course was originally built.  When false this is the year of the renovation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Attribute name="description" referenceRepeat="0" type="ota2-0500:StringLong">
+            <ns2:Documentation>
+                <ns2:Description>A description relating to the architect and the design of the course.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Indicator name="originalInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, this is the orginal course architect, when false this is the course architect for a renovation.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Enumeration_Open name="ClubHouseFeatures_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Features related to the club house.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="FitnessCenter"/>
+        <ns2:Value label="" literal="LockerRoom"/>
+        <ns2:Value label="" literal="Lounge"/>
+        <ns2:Value label="" literal="MeetingFacilities"/>
+        <ns2:Value label="" literal="Restaurant"/>
+        <ns2:Value label="" literal="SnackShop"/>
+    </ns2:Enumeration_Open>
+    
+    <ns2:Enumeration_Open name="PracticeFacilityFeatures_Enum">
+        <ns2:Documentation>
+            <ns2:Description>Features of the practice facility.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Value label="" literal="PuttingGreen"/>
+        <ns2:Value label="" literal="PracticeHoles"/>
+        <ns2:Value label="" literal="ShortGamePracticeArea"/>
+        <ns2:Value label="" literal="GolfSchool"/>
+    </ns2:Enumeration_Open>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="org-0400:Facility" name="Golf" notExtendable="false" type="Custom">
+        <ns2:Element name="GolfFacility" repeat="0" type="GolfFacility"/>
+    </ns2:ContextualFacet>
+    
+    <ns2:Service name="Golf">
+        <ns2:Documentation>
+            <ns2:Description/>
+            <ns2:Deprecated>All operations on OrganizationGolf are deprecated and will be removed in the next version.  Please use the operations on sg:GolfFacility.</ns2:Deprecated>
+        </ns2:Documentation>
+        <ns2:Operation Name="SearchFacility" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on OrganizationGolf are deprecated and will be removed in the next version.  Please use the operations on sg:GolfFacility.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+                    <ns2:Documentation>
+                        <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="GolfFacilitySearchCriteria"
+                    repeat="0" type="GolfFacilitySearchCriteria">
+                    <ns2:Documentation>
+                        <ns2:Description>Golf facility and tee time search criteria.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="ProcessingInfo" repeat="0" type="ota2-0500:ProcessingInfo">
+                    <ns2:Documentation>
+                        <ns2:Description>Transaction processing directives, including display currency overrides. If no display currency information is provided, the display and pricing currency will default to the value in POS/Source/@ISOCurrency.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                    <ns2:Example context="orggf"/>
+                </ns2:Element>
+                <ns2:Element name="GolfFacility" repeat="1000" type="GolfFacility">
+                    <ns2:Documentation>
+                        <ns2:Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="GolfFacility" repeat="1000" type="GolfFacility">
+                    <ns2:Documentation>
+                        <ns2:Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="ReadFacility" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on OrganizationGolf are deprecated and will be removed in the next version.  Please use the operations on sg:GolfFacility.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <ns2:Documentation>
+                        <ns2:Description>The ID of the facility or course.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <ns2:Documentation>
+                        <ns2:Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel sending the Notification.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="GolfFacility" repeat="0" type="GolfFacility">
+                    <ns2:Documentation>
+                        <ns2:Description>Information about a golf facility, which may be a golf course proper and/or a facility such as a hotel that has an association with a nearby golf course or has one on premise.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>

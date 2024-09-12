@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>2553750466</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/organization/v2</Namespace>
+    <Prefix>org-0200</Prefix>
+    <Name>Organization</Name>
+    <Import fileHints="Common_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="OrganizationGolf_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/golf/v2" prefix="orggf-0200"/>
+    <Import
+        fileHints="OrganizationHospitality_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/hospitality/v2" prefix="orghs-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import fileHints="CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/organization/v0" context="org"/>
+    
+    <BusinessObject name="Facility" notExtendable="false">
+        <Documentation>
+            <Description>Describes a facility (e.g. Hotel Facility,Conference Facility, Golf Facility).  A facility must have a single address and a single geolocation.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FacilityRef" reference="true" repeat="0" type="Facility">
+                <Documentation>
+                    <Description>Refers to the obj ID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="name" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>Name of the facility.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="directions" type="ota2-0300:StringLong">
+                <Documentation>
+                    <Description>Directions to the facility.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Location" repeat="0" type="ota2-0300:Location">
+                <Documentation>
+                    <Description>Location information for the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="OperationSchedule" repeat="30" type="ota2-0300:OperationSchedule">
+                <Documentation>
+                    <Description>Collection of operation schedules.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MultimediaCollection" repeat="0" type="ota2-0300:MultimediaCollection">
+                <Documentation>
+                    <Description>Images, descriptions and movies that describe the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Rating" repeat="0" type="ota2-0300:Rating">
+                <Documentation>
+                    <Description>The actual award or rating received by the facility.  May also be used for user generated ratings.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Telephone" repeat="5" type="ota2-0300:Telephone">
+                <Documentation>
+                    <Description>Telephone number for the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Email" repeat="0" type="ota2-0300:Email">
+                <Documentation>
+                    <Description>Email address for the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Description" repeat="10" type="ota2-0300:Text">
+                <Documentation>
+                    <Description>Facility description.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Property" repeat="0" type="Property">
+                <Documentation>
+                    <Description>An identiefier for the property that this facility is associated with.</Description>
+                </Documentation>
+            </Element>
+            <Element name="SiteURL" repeat="0" type="ota2-0300:URL">
+                <Documentation>
+                    <Description>The URL for the facility.</Description>
+                </Documentation>
+            </Element>
+            <Element name="RelativePosition" repeat="0" type="ota2-0300:RelativePosition">
+                <Documentation>
+                    <Description>The RelativePosition object contains information about the direction, distance and travel t</Description>
+                </Documentation>
+            </Element>
+            <Element name="AccessibilityFeatures" repeat="0" type="AccessibilityFeatures">
+                <Documentation>
+                    <Description>Accessibility features offered by the facility.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Custom context="org" label="Golf" notExtendable="false">
+            <Element name="GolfFacility" repeat="0" type="orggf-0200:GolfFacility">
+                <Documentation>
+                    <Description>Golf facility information.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="org" label="Hotel" notExtendable="false">
+            <Element name="HotelFacility" repeat="0" type="orghs-0200:HotelFacility">
+                <Documentation>
+                    <Description>Hotel facility information.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="org" label="Meeting" notExtendable="false">
+            <Element name="MeetingCenter" repeat="0" type="MeetingCenter">
+                <Documentation>
+                    <Description>Meeting center details.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="Property" notExtendable="false">
+        <Documentation>
+            <Description>A property may contain one or more facilities of the same or differing types.  Example:  The property Disney Orlando has many hotels and golf courses on it.</Description>
+        </Documentation>
+        <Aliases>Resort</Aliases>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PropertyRef" reference="true" repeat="0" type="Property">
+                <Documentation>
+                    <Description>Refers to the obj ID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="name" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The name of the property.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="companyName" type="ota2-0300:StringShort">
+                <Documentation>
+                    <Description>The name of the company that owns this property.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Address" repeat="0" type="ota2-0300:Address">
+                <Documentation>
+                    <Description>The physical address of the property.</Description>
+                </Documentation>
+            </Element>
+            <Element name="URL" repeat="0" type="xsd:anyURI">
+                <Documentation>
+                    <Description>The URL for the property.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Telephone" repeat="5" type="ota2-0300:Telephone">
+                <Documentation>
+                    <Description>The phone number for this property.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Email" repeat="0" type="ota2-0300:Email">
+                <Documentation>
+                    <Description>The email for this property.</Description>
+                </Documentation>
+            </Element>
+            <Element name="MultimediaCollection" repeat="0" type="ota2-0300:MultimediaCollection">
+                <Documentation>
+                    <Description>Multimedia information for the property.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Rating" repeat="5" type="ota2-0300:Rating">
+                <Documentation>
+                    <Description>The rating for the property.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element mandatory="true" name="Facility" repeat="1000" type="Facility">
+                <Documentation>
+                    <Description>One or more facilities on this property.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </BusinessObject>
+    <Resource abstract="true" businessObjectRef="" firstClass="false" name="ServiceResource"/>
+    
+    <ValueWithAttrs name="MeetingCenter" type="ota2:Empty">
+        <Documentation>
+            <Description>Meeting center details for a facility.</Description>
+        </Documentation>
+        <Attribute name="meetingRoomCount" type="ota2-0300:NonNegativeInteger">
+            <Documentation>
+                <Description>The total number of unique meeting rooms provided at the hotel facility. For example, if the hotel has a grand ballroom that breaks into Salon A, B, and C -the total number of unique meeting rooms is three.</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Example context="org">15</Example>
+        </Attribute>
+        <Attribute name="largestSeatingCapacity" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The largest seating capacity available in the largest meeting room - generally this is for theatre-style room setup.</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Example context="org">200</Example>
+        </Attribute>
+        <Attribute name="largestRoomSpace" type="xsd:string">
+            <Documentation>
+                <Description>The amount of room space for the largest unique meeting room at the facility.</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Example context="org">2000 sq ft</Example>
+        </Attribute>
+        <Attribute name="unitOfMeasureCode" type="ota2-0300:OTA_Code">
+            <Documentation>
+                <Description>The unit of measure in a code format (e.g., inches, pixels, centimeters). Refer to OpenTravel Code List Unit of Measure Code (UOM).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+        <Attribute name="meetingRoomCode" type="ota2-0300:OTA_Code">
+            <Documentation>
+                <Description>Used as a qualifier when searching for properties. Refer to OpenTravel Code list Meeting Room Code (MRC).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Amenity" type="ota2-0300:StringShort">
+        <Documentation>
+            <Description>Name of the Amenity</Description>
+            <Implementer>Example value: ca1 = Stunning Pool</Implementer>
+            <Implementer>Example value: ca1 = Stunning Pool</Implementer>
+            <Implementer>Example value: tns = Pool</Implementer>
+            <Implementer>Example value: tns = Pool</Implementer>
+        </Documentation>
+        <Attribute name="code" type="ota2-0300:OTA_Code">
+            <Documentation>
+                <Description>Refer to OpenTravel Code List Hotel Amenity Code (HAC).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="BusinessService" type="ota2:Empty">
+        <Documentation>
+            <Description>Name of the business service.</Description>
+        </Documentation>
+        <Attribute name="businessServiceCode" type="ota2-0300:OTA_Code">
+            <Documentation>
+                <Description>Used to identify a specific business service. Refer to OpenTravel Code list Business Srvc Type (BUS).</Description>
+                <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="AccessibilityFeatures" notExtendable="false">
+        <Documentation>
+            <Description>Describes accessibility featrues.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0300:StringLong">
+            <Documentation>
+                <Description>A general facility description of accessiblity features.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Element name="AccessibilityFeatures" repeat="0" type="ota2-0200:DisabilityFeature_Enum">
+                <Documentation>
+                    <Description>A list of accessiblity features available at the golf facility.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail>
+            <Element name="Description" repeat="0" type="ota2-0300:Text">
+                <Documentation>
+                    <Description>Details about the accessibility feature.</Description>
+                </Documentation>
+            </Element>
+        </Detail>
+    </CoreObject>
+    
+</Library>

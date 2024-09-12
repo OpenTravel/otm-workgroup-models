@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>499503695</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/finance/v0</Namespace>
+    <Prefix>fin</Prefix>
+    <Name>Finance</Name>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import
+        fileHints="Common_2_0_0.otm CodeList_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v2" prefix="ota2-0200"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/finance/v0" context="fin"/>
+    
+    <ValueWithAttrs name="BankAccountType" type="ota2:Empty">
+        <Attribute name="listBankAccountType" type="ota2-0200:BankAccountType_Enum">
+            <Documentation>
+                <Description>Specifies a type of bank account (checking, savings, etc.)</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="accountCode" type="ota2-0200:CodeExternal">
+            <Documentation>
+                <Description>Code extension definition without dimension information.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="BankAcct" notExtendable="false">
+        <Documentation>
+            <Description>Customer bank account definition.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="checkNumber" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The check number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CheckNumber</Equivalent>
+                <Example context="fin">999</Example>
+            </Attribute>
+            <Element name="PrivacyGroup" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Data use and sharing permissions.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="BankAcctName" repeat="1" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Name as found on a bank account.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="fin">BankAcctName</Equivalent>
+            </Element>
+            <Element name="BankAcctNumber" repeat="1" type="BankAcctNumber">
+                <Documentation>
+                    <Description>Account number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="fin">BankAcctName</Equivalent>
+            </Element>
+            <Element mandatory="true" name="BankID" repeat="0" type="BankID">
+                <Documentation>
+                    <Description>Bank ID or routing number.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Type" repeat="1" type="BankAccountType">
+                <Documentation>
+                    <Description>Specifies a type of bank account (Savings, Checking, etc.)</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}List_BankAccountType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Type</Equivalent>
+            </Element>
+            <Indicator name="checksAcceptedInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Implementer: If true, checks are accepted.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="EncryptionToken" notExtendable="false">
+        <Documentation>
+            <Description>OpenTravel Best Practice: Use of Encrypted, Masked or Tokenized Information: Certain OpenTravel schema may have combinations payment and/or account information with other personally identifying information, such as customer name and date of birth. For enhanced customer privacy and security, it is RECOMMENDED that the payment and account information be protected, using tokenization or some other encryption method and displayed in a masked format.</Description>
+        </Documentation>
+        <Aliases>BankAcctNumber BankID CardNumber SeriesCode MagneticStripe AuthenticationVerification TransactionPassword</Aliases>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="encryptionKey" type="xsd:string">
+                <Documentation>
+                    <Description>Note: This contains a key required to retrieve the full payment instrument details compliant with PCI DSS standards.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="encryptionKeyMethod" type="xsd:string">
+                <Documentation>
+                    <Description>Developer: This contains a reference to the key generation method being used - this is NOT the key value.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="encryptionMethod" type="xsd:string">
+                <Documentation>
+                    <Description>OpenTravel Best Practice: Encryption Method: When using the OpenTravel Encryption element, it is RECOMMENDED that all trading partners be informed of all encryption methods being used in advance of implementation to ensure message processing compatibility.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="encryptedValue" type="xsd:string">
+                <Documentation>
+                    <Description>Example: 5dfc52b51bd35553df8592078de921bc</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="mask" type="ota2-0200:EncryptionTokenTypeMask">
+                <Documentation>
+                    <Description>Example: xxxxxxxxxxxx9922</Description>
+                    <Implementer>LocalAnonymousType: EncryptionTokenType_Mask</Implementer>
+                </Documentation>
+                <Example context="fin">000000000000000</Example>
+            </Attribute>
+            <Attribute name="token" type="EncryptionTokenType_Token">
+                <Documentation>
+                    <Description>Example: AEGHV234AUD54367</Description>
+                    <Implementer>LocalAnonymousType: EncryptionTokenType_Token</Implementer>
+                </Documentation>
+                <Example context="fin">000000000000000</Example>
+            </Attribute>
+            <Attribute name="tokenProviderID" type="xsd:string">
+                <Documentation>
+                    <Description>Developer: This contains a provider ID if multiple providers are used for secure information exchange.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Attribute>
+            <Attribute name="authenticationMethod" type="AuthenticationMethod_Enum">
+                <Documentation>
+                    <Description>Specifies the method that was used to authenticate the card.</Description>
+                    <Implementer>LocalAnonymousType: EncryptionTokenType_AuthenticationMethod</Implementer>
+                </Documentation>
+            </Attribute>
+            <Element name="PlainText" repeat="1" type="xsd:string">
+                <Documentation>
+                    <Description>Non-secure (plain text) value.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Warning" repeat="1" type="ota2-0200:ErrorWarning">
+                <Documentation>
+                    <Description>Identifies an error that occurred in the processing of the payment card.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}WarningType</Implementer>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="DirectBill" notExtendable="false">
+        <Documentation>
+            <Description>Company name and location for sending invoice for remittances for travel services.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="directBill_ID" type="ota2-0200:String">
+                <Documentation>
+                    <Description>Identifier for the organization to be billed directly for travel services.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="fin">DirectBill_ID</Equivalent>
+            </Attribute>
+            <Attribute name="billingAccount" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>The account assigned by the subscriber for billing reconciliation of a corporate account.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength0to64</Implementer>
+                </Documentation>
+                <Equivalent context="fin">BillingNumber</Equivalent>
+            </Attribute>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Allows for control of the sharing of direct bill data between parties.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="Company" repeat="0" type="ota2-0200:Company">
+                <Documentation>
+                    <Description>Company to which remittance should be sent.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <BusinessObject name="FormOfPayment" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the form of payment.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="FormOfPaymentRef" reference="true" repeat="0" type="FormOfPayment">
+                <Documentation>
+                    <Description>Refers to the obj ID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Attribute name="costCenterID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>A reference to identify the billing department for allocating cost of travel to company account.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CostCenterID</Equivalent>
+            </Attribute>
+            <Attribute name="paymentTransactionTypeCode" type="PaymentTransactionType_Enum">
+                <Documentation>
+                    <Description>This is used to indicate either a charge, reserve (deposit) or refund.</Description>
+                    <Implementer>LocalAnonymousType: PaymentFormType_PaymentTransactionTypeCode</Implementer>
+                </Documentation>
+                <Equivalent context="fin">PaymentTransactionTypeCode</Equivalent>
+            </Attribute>
+            <Attribute name="guaranteeID" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Provides the identifier as specified by the GuaranteeTypeCode (e.g., Corporate ID or IATA number).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="fin">GuaranteeID</Equivalent>
+            </Attribute>
+            <Attribute name="remark" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>A remark associated with the payment form.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Remark</Equivalent>
+            </Attribute>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Data use and sharing permissions.</Description>
+                </Documentation>
+            </Element>
+            <Element name="GuaranteeTypeCode" repeat="0" type="ota2-0200:PaymentType_Enum">
+                <Documentation>
+                    <Description>Used to specify the method of guarantee. Refer to OpenTravel Code List Payment Type (PMT).</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">GuaranteeTypeCode</Equivalent>
+            </Element>
+            <Indicator name="guaranteeIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates this represents a guarantee rather than a payment form.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+        <Custom context="" label="Cash" notExtendable="false">
+            <Indicator name="cashInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates that cash is being used as the form of payment.</Description>
+                </Documentation>
+            </Indicator>
+        </Custom>
+        <Custom context="" label="PaymentCard" notExtendable="false">
+            <Element name="PaymentCard" repeat="0" type="PaymentCard">
+                <Documentation>
+                    <Description>Specifies the payment card information.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="BankAccount" notExtendable="false">
+            <Element name="BankAcct" repeat="0" type="BankAcct">
+                <Documentation>
+                    <Description>Customer bank account definition.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="LoyaltyRedemption" notExtendable="false">
+            <Attribute name="redemptionQuantity" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>The quantity of loyalty units being redeemed.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="PromotionCode" repeat="0" type="ota2-0200:Code">
+                <Documentation>
+                    <Description>Used to provide a promotion code of the loyalty redemption and the list of vendors supporting the promotion (in CodeContext).</Description>
+                </Documentation>
+            </Element>
+            <Element name="LoyaltyCertificate" repeat="9" type="LoyaltyCertificate">
+                <Documentation>
+                    <Description>A certificate may be needed in order to redeem miles or points. Certificates may be used in combination with each other as part of a reservation.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="DirectBill" notExtendable="false">
+            <Element name="DirectBill" repeat="0" type="DirectBill">
+                <Documentation>
+                    <Description>Company name and location for sending invoice for remittances for travel services.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="Voucher" notExtendable="false">
+            <Element name="Voucher" repeat="0" type="Voucher">
+                <Documentation>
+                    <Description>A form of payment using a voucher or coupon.</Description>
+                </Documentation>
+            </Element>
+            <Element name="BillingAccountName" repeat="0" type="ota2-0200:CompanyName">
+                <Documentation>
+                    <Description>The name of the Billing Account for which the voucher has been issued.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Address" repeat="0" type="ota2-0200:Address">
+                <Documentation>
+                    <Description>The address of the Billing Account for which the voucher has been issued.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="" label="MiscChargeOrder" notExtendable="false">
+            <Attribute name="ticketNumber" type="ota2-0200:TicketNumber">
+                <Documentation>
+                    <Description>The ticket number of the miscellaneous charge order (MCO).</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="OriginalIssue" repeat="0" type="OriginalIssueAttributes">
+                <Documentation>
+                    <Description>Provides information about the original document on which the reissue is based.</Description>
+                </Documentation>
+            </Element>
+            <Indicator name="paperMCO_ExistInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Indicates if a paper or electronic MCO exists.</Description>
+                </Documentation>
+            </Indicator>
+        </Custom>
+        <Custom context="" label="Ticket" notExtendable="false">
+            <Attribute name="ticketNumber" type="ota2-0200:TicketNumber">
+                <Documentation>
+                    <Description>The ticket number which is exchanged.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="reasonForReroute" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Gives more information about the rerouting.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="OriginalIssueAttributes" repeat="0" type="OriginalIssueAttributes">
+                <Documentation>
+                    <Description>Provides information about the original document on which the reissue is based.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Rerouting" repeat="0" type="Rerouting">
+                <Documentation>
+                    <Description>If present, indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ConjunctionTicketNbr" repeat="16" type="ConjunctionTicketNbr">
+                <Documentation>
+                    <Description>Conjunction ticket number in case a conjunction ticket is exchanged.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <ValueWithAttrs name="LoyalLevel" type="ota2-0200:StringTiny">
+        <Documentation>
+            <Description>Indicates special privileges in program assigned to individual.</Description>
+        </Documentation>
+        <Attribute name="loyalLevel" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Indicates special privileges in program assigned to individual.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="loyalLevelCode" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>Provides a numeric code assigned to a particular loyalty level.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="LoyaltyCertificate" type="ota2:Empty">
+        <Documentation>
+            <Description>Identifies the Loyalty Program, membership, form factor used by the certificate and its current status.</Description>
+        </Documentation>
+        <Equivalent context="fin">LoyaltyCertificateGroup</Equivalent>
+        <Attribute name="iD" type="xsd:ID">
+            <Documentation>
+                <Description>A unique identifying value assigned by the creating system. The ID attribute may be used to reference a primary-key value within a database or in a particular implementation.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ID</Equivalent>
+        </Attribute>
+        <Attribute name="iD_Context" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Identifies the source of the code that identifies program or promotion within a loyalty scheme.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ID_Context</Equivalent>
+        </Attribute>
+        <Attribute name="certificateNumber" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>The loyalty redemption certificate identifier.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">CertificateNumber</Equivalent>
+        </Attribute>
+        <Attribute name="memberNumber" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Unique identifier of the member in the program.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">MemberNumber</Equivalent>
+        </Attribute>
+        <Attribute name="programName" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>This identifies the loyalty program.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ProgramName</Equivalent>
+        </Attribute>
+        <Attribute name="EffectiveDate" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the starting date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="fin">EffectiveDate</Equivalent>
+        </Attribute>
+        <Attribute name="ExpireDate" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the ending date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ExpireDate</Equivalent>
+        </Attribute>
+        <Attribute name="numberOfNights" type="xsd:positiveInteger">
+            <Documentation>
+                <Description>The number of accommodation nights that are covered by this certificate.</Description>
+                <Implementer>Changed type from {http://www.w3.org/2001/XMLSchema}nonNegativeInteger.</Implementer>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+            </Documentation>
+            <Equivalent context="fin">NmbrOfNights</Equivalent>
+        </Attribute>
+        <Attribute name="format" type="LoyaltyCertificateFormat_Enum">
+            <Documentation>
+                <Description>Indicates what form the certificate is in e.g. Paper or Electronic.</Description>
+                <Implementer>LocalAnonymousType: LoyaltyCertificateGroup_Format</Implementer>
+            </Documentation>
+            <Equivalent context="fin">Format</Equivalent>
+        </Attribute>
+        <Attribute name="status" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Used to define the status of the certificate e.g. Available, Voided, Cancelled, Reserved, Used.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+            </Documentation>
+            <Equivalent context="fin">Status</Equivalent>
+        </Attribute>
+        <Indicator name="expireDateExclusiveInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="OriginalIssueAttributes" type="ota2:Empty">
+        <Documentation>
+            <Description>Provides information about the original document on which the reissue is based.</Description>
+        </Documentation>
+        <Equivalent context="fin">OriginalIssueAttributes</Equivalent>
+        <Attribute name="ticketNumber" type="ota2-0200:TicketNumber">
+            <Documentation>
+                <Description>The original ticket number in a series if reissuances.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">OriginalTicketNumber</Equivalent>
+        </Attribute>
+        <Attribute name="issuePlace" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Place where the original ticket was issued.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="fin">OriginalIssuePlace</Equivalent>
+        </Attribute>
+        <Attribute name="issueDate" type="xsd:date">
+            <Documentation>
+                <Description>Date when the original ticket was issued.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="fin">OriginalIssueDate</Equivalent>
+        </Attribute>
+        <Attribute name="issueIATA" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>IATA office number, which issued original ticket.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+            </Documentation>
+            <Equivalent context="fin">OriginalIssueIATA</Equivalent>
+        </Attribute>
+        <Attribute name="paymentForm" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Payment type for the original ticket.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="fin">OriginalPaymentForm</Equivalent>
+        </Attribute>
+        <Attribute name="checkInhibitor" type="CheckInhibitor_Enum">
+            <Documentation>
+                <Description>When present, indicates that the check digit of the ticket number or the interline agreement do not need to be checked.</Description>
+                <Implementer>LocalAnonymousType: OriginalIssueAttributes_CheckInhibitorType</Implementer>
+            </Documentation>
+            <Equivalent context="fin">CheckInhibitorType</Equivalent>
+        </Attribute>
+        <Attribute name="coupons" type="Coupons">
+            <Documentation>
+                <Description>Gives a list of references to coupon numbers of the ticket which will be taken for payment.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfRPH</Implementer>
+            </Documentation>
+            <Equivalent context="fin">CouponRPHs</Equivalent>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="PaymentCard" notExtendable="false">
+        <Documentation>
+            <Description>Specifies the details of the debit or credit card.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2-0200:EncryptionTokenTypeMask">
+            <Documentation>
+                <Description>The masked payment card number.</Description>
+            </Documentation>
+        </Simple>
+        <Summary>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>XML ID only for use within the document.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="fin">RPH</Equivalent>
+            </Attribute>
+            <Attribute name="effectiveDate" type="ota2-0200:DateMMYY">
+                <Documentation>
+                    <Description>Start month and year.</Description>
+                    <Implementer>AttributeGroup: PaymentCardDateGroup</Implementer>
+                </Documentation>
+                <Example context="fin">0116</Example>
+            </Attribute>
+            <Attribute name="expireDate" type="ota2-0200:DateMMYY">
+                <Documentation>
+                    <Description>End month and year.</Description>
+                </Documentation>
+                <Example context="fin">0117</Example>
+            </Attribute>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Data use and sharing permissions.</Description>
+                    <Implementer>AttributeGroup: PrivacyGroup</Implementer>
+                </Documentation>
+            </Element>
+            <Element name="CardCode" repeat="0" type="CardAssociationCode">
+                <Documentation>
+                    <Description>Card code association such as VI for Visa, MC for Mastercard or AX for American Express, etc.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PaymentCardCodeType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardCode</Equivalent>
+            </Element>
+            <Element name="CardType" repeat="1" type="PaymentCardType_Issuer">
+                <Documentation>
+                    <Description>Example: BritishAirwaysVisaSignatureCard</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Issuer</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Issuer</Equivalent>
+            </Element>
+            <Element name="Issuer" repeat="1" type="ota2-0200:CodeExternal">
+                <Documentation>
+                    <Description>Example: Mastercard</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}List_PaymentCardIssuer</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardType</Equivalent>
+            </Element>
+            <Element name="CardHolderName" repeat="1" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Card holder name.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardHolderName</Equivalent>
+            </Element>
+            <Element name="CardNumber" repeat="1" type="CardNumber">
+                <Documentation>
+                    <Description>Credit card number embossed on the card.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardNumber</Equivalent>
+            </Element>
+            <Element name="AuthenticationVerification" repeat="1" type="AuthenticationVerification">
+                <Documentation>
+                    <Description>Verification digits.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">SeriesCode</Equivalent>
+            </Element>
+            <Element name="MagneticStripe" repeat="3" type="MagneticStripe">
+                <Documentation>
+                    <Description>Magnetic stripe.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EncryptionTokenType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">MagneticStripe</Equivalent>
+            </Element>
+            <Indicator name="secureInd" publishAsElement="false">
+                <Documentation>
+                    <Description>If true, all or a portion of this data is secure, via tokenization, encryption and/or masking.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail>
+            <Attribute name="countryOfIssue" type="ota2-0200:CountryCode_ISO3166">
+                <Documentation>
+                    <Description>Example: US</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ISO3166</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CountryOfIssue</Equivalent>
+            </Attribute>
+            <Attribute name="companyCardReference" type="ota2-0200:StringAlphaNumeric">
+                <Documentation>
+                    <Description>Note: This is a reference for a company sponsor for the card.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1to19</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CompanyCardReference</Equivalent>
+            </Attribute>
+            <Attribute name="remark" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Example: Travel rewards card.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Remark</Equivalent>
+            </Attribute>
+            <Element name="CardHolderId" repeat="0" type="ota2-0200:Identifier">
+                <Documentation>
+                    <Description>Card holder reference ID</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardHolderRPH</Equivalent>
+            </Element>
+            <Element name="PersonName" repeat="1" type="ota2-0200:PersonName">
+                <Documentation>
+                    <Description>Description: The details of the Card Holder's Name.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PersonNameType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CardHolderNameDetails</Equivalent>
+            </Element>
+            <Element name="Address" repeat="1" type="ota2-0200:Address">
+                <Documentation>
+                    <Description>Card holder address.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AddressType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Address</Equivalent>
+            </Element>
+            <Element name="Telephone" repeat="100000" type="ota2-0200:Telephone">
+                <Documentation>
+                    <Description>Card holder telephone number.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Telephone</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Telephone</Equivalent>
+            </Element>
+            <Element name="Email" repeat="100000" type="ota2-0200:Email">
+                <Documentation>
+                    <Description>Card holder email.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}EmailType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Email</Equivalent>
+            </Element>
+            <Element name="CustomerLoyalty" repeat="100000" type="CustomerLoyalty">
+                <Documentation>
+                    <Description>Card holder loyalty program.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CustLoyalty</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CustLoyalty</Equivalent>
+            </Element>
+            <Element name="SignatureOnFile" repeat="1" type="SignatureOnFile">
+                <Documentation>
+                    <Description>Note: This indicates if the signature is authorized as a form of guarantee. In some countries, the customer can sign the payment card slip as a form of guarantee.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SignatureOnFile</Implementer>
+                </Documentation>
+                <Equivalent context="fin">SignatureOnFile</Equivalent>
+            </Element>
+            <Element name="ThreeDomainSecurity" repeat="1" type="ThreeDomainSecurity">
+                <Documentation>
+                    <Description>Note: This contains 3-D Secure protocol information for online credit and debit card transactions for programs such as Verified by Visa, MasterCard SecureCode, J/Secure and SafeKey.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ThreeDomainSecurity</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ThreeDomainSecurity</Equivalent>
+            </Element>
+            <Indicator name="extendedPaymentInd" publishAsElement="false">
+                <Documentation>
+                    <Description>Implementer: If true, the credit card company is requested to delay the date on which the amount of this transaction is applied to the customer's account.</Description>
+                </Documentation>
+            </Indicator>
+        </Detail>
+    </CoreObject>
+    
+    <ValueWithAttrs name="PaymentCardType_Issuer" type="ota2-0200:StringShort">
+        <Documentation>
+            <Description>Code of the payment card issuer.</Description>
+            <Implementer>Extension: List_PaymentCardIssuer</Implementer>
+        </Documentation>
+        <Attribute name="issuerCode" type="ota2-0200:PaymentCardIssuer_Enum">
+            <Documentation>
+                <Description>Code Extension fields to exchange a value that is not in the list and is known to your trading partners.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="SignatureOnFile" notExtendable="false">
+        <Documentation>
+            <Description>Signature on file.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="Date_EffectiveExpire" repeat="0" type="ota2-0200:DateEffectiveExpire"/>
+            <Indicator name="signatureOnFileInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates a signature has been obtained.</Description>
+                </Documentation>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="TaxRegistrationDetails" type="ota2:Empty">
+        <Attribute name="taxID" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>The tax registration identifier e.g., Australian Business Number (ABN).</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="recipientName" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>The recipient's name.</Description>
+            </Documentation>
+        </Attribute>
+        <Attribute name="recipientAddress" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>Free text for the recipient's address.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <CoreObject name="ThreeDomainSecurity_Gateway" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="eCI" type="ota2-0200:StringCharacterOne">
+                <Documentation>
+                    <Description>Note: The ECI indicates the security level associated with an Internet purchase transaction.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ECI</Equivalent>
+            </Attribute>
+            <Attribute name="merchantID" type="xsd:string">
+                <Documentation>
+                    <Description>Example: mycart</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">MerchantID</Equivalent>
+            </Attribute>
+            <Attribute name="processorID" type="xsd:string">
+                <Documentation>
+                    <Description>Example: 201</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ProcessorID</Equivalent>
+            </Attribute>
+            <Attribute name="uRL" type="xsd:anyURI">
+                <Documentation>
+                    <Description>Transaction URL.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}anyURI</Implementer>
+                </Documentation>
+                <Equivalent context="fin">URL</Equivalent>
+            </Attribute>
+            <Element name="AuthenticationVerification" repeat="1" type="AuthenticationVerification">
+                <Documentation>
+                    <Description>Cardholder authentication value information.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AuthenticationVerificationValue</Implementer>
+                </Documentation>
+                <Equivalent context="fin">AuthenticationVerificationValue</Equivalent>
+            </Element>
+            <Element name="TransactionPassword" repeat="1" type="TransactionPassword">
+                <Documentation>
+                    <Description>Merchant transaction password information.</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}TransactionPassword</Implementer>
+                </Documentation>
+                <Equivalent context="fin">TransactionPassword</Equivalent>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="ThreeDomainSecurity" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="ThreeDomainSecurity_Gateway"
+                repeat="0" type="ThreeDomainSecurity_Gateway">
+                <Documentation>
+                    <Description>Merchant gateway information.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="ThreeDomainSecurity_Results"
+                repeat="0" type="ThreeDomainSecurity_Results">
+                <Documentation>
+                    <Description>Transaction results.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="ThreeDomainSecurity_Results" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="cAVV" type="xsd:string">
+                <Documentation>
+                    <Description>Example: AAABAFaQRwAAAAAAEZBHAAAAAAA=ECI05</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CAVV</Equivalent>
+            </Attribute>
+            <Attribute name="pAResStatus" type="ota2-0200:StringCharacterOne">
+                <Documentation>
+                    <Description>Example: Y</Description>
+                    <Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}AlphaNumericStringLength1</Implementer>
+                </Documentation>
+                <Equivalent context="fin">PAResStatus</Equivalent>
+            </Attribute>
+            <Attribute name="signatureVerfication" type="xsd:string">
+                <Documentation>
+                    <Description>Example: Y</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">SignatureVerfication</Equivalent>
+            </Attribute>
+            <Attribute name="transactionID" type="xsd:string">
+                <Documentation>
+                    <Description>Example: 9D920E9-6FCF-4A74-A4E0-D6A591D1108F</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">TransactionID</Equivalent>
+            </Attribute>
+            <Attribute name="xID" type="xsd:string">
+                <Documentation>
+                    <Description>Example: 2bxUs1emK0SCevbivcApzAcAAQk=</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+                </Documentation>
+                <Equivalent context="fin">XID</Equivalent>
+            </Attribute>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="TicketingAccountInformation" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="number" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Ticketing account number.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="costCenter" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Ticketing cost center.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="companyNumber" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Ticketing company number.</Description>
+                </Documentation>
+            </Attribute>
+            <Attribute name="clientReference" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Ticketing client reference.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="TaxRegistrationDetails" repeat="0" type="TaxRegistrationDetails">
+                <Documentation>
+                    <Description>Ticketing Goods and Services Tax (GST) details (typically the Australian market).</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <ValueWithAttrs name="Voucher" type="ota2:Empty">
+        <Documentation>
+            <Description>A form of payment using a voucher or coupon.</Description>
+        </Documentation>
+        <Equivalent context="fin">VoucherGroup</Equivalent>
+        <Attribute name="seriesCode" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Identification of a series of coupons or vouchers identified by serial number(s).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">SeriesCode</Equivalent>
+        </Attribute>
+        <Attribute name="EffectiveDate" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the starting date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="fin">EffectiveDate</Equivalent>
+        </Attribute>
+        <Attribute name="ExpireDate" type="xsd:date">
+            <Documentation>
+                <Description>Indicates the ending date.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ExpireDate</Equivalent>
+        </Attribute>
+        <Attribute name="billingNumber" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>Reference of the billing account which handles the payment transaction.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="fin">BillingNumber</Equivalent>
+        </Attribute>
+        <Attribute name="supplierIdentifier" type="ota2-0200:Identifier">
+            <Documentation>
+                <Description>Unique identifier of the electronic voucher, created by the supplier.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="fin">SupplierIdentifier</Equivalent>
+        </Attribute>
+        <Attribute name="identifier" type="xsd:ID">
+            <Documentation>
+                <Description>Unique identifier of the electronic voucher.</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to64</Implementer>
+            </Documentation>
+            <Equivalent context="fin">Identifier</Equivalent>
+        </Attribute>
+        <Attribute name="valueType" type="ota2-0200:StringTiny">
+            <Documentation>
+                <Description>Defines the type of voucher (e.g., full credit or partial credit).</Description>
+                <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+            </Documentation>
+            <Equivalent context="fin">ValueType</Equivalent>
+        </Attribute>
+        <Indicator name="groupDaysApplyInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, specifies the Group Days Apply Value can be used for this Voucher Billing Account.  This indicator is used to allow the usage of a car rental days voucher when part of an inclusive tour.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="electronicIndicatorInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates the voucher is electronic. An E-voucher is a value document issued by the Travel Agent for the customer. The e-voucher can be used as a proof of reservation, but more normally, as a full-payment or partial payment.</Description>
+            </Documentation>
+        </Indicator>
+        <Indicator name="expireDateExclusiveInd" publishAsElement="false">
+            <Documentation>
+                <Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</Description>
+            </Documentation>
+        </Indicator>
+    </ValueWithAttrs>
+    
+    <Enumeration_Closed name="Card_Enum">
+        <Value label="" literal="credit"/>
+        <Value label="" literal="debit"/>
+        <Value label="" literal="centralBill"/>
+    </Enumeration_Closed>
+    
+    <Simple name="Coupon" pattern="[0-9]{1,8}" type="xsd:string">
+        <Documentation>
+            <Description>Gives the coupon number of the ticket, which will be taken for payment.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Simple listTypeInd="true" name="Coupons" type="Coupon">
+        <Documentation>
+            <Description>Gives the coupon numbers of the ticket, which will be taken for payment.</Description>
+        </Documentation>
+    </Simple>
+    
+    <Enumeration_Closed name="ShareMarketInd_Enum">
+        <Documentation>
+            <Description>If the value=Inherit, specifies data sharing permissions for marketing purposes.</Description>
+        </Documentation>
+        <Value label="" literal="Yes"/>
+        <Value label="" literal="No"/>
+        <Value label="" literal="Inherit"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="AuthenticationMethod_Enum">
+        <Value label="" literal="SecurityCode">
+            <Documentation>
+                <Description>This confirms that the security code was used as the type of authentication.  The security code includes items such as CVV, CVV2, CVC, etc.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="MagneticStripe">
+            <Documentation>
+                <Description>This confirms that the magnetic stripe was used as the type of authentication.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Simple name="EncryptionTokenType_Token" pattern="[0-9a-zA-Z]{1,32}" type="xsd:string">
+        <Documentation>
+            <Description/>
+            <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</Implementer>
+        </Documentation>
+        <Equivalent context="fin">EncryptionTokenType_Token</Equivalent>
+    </Simple>
+    
+    <Enumeration_Closed name="LoyaltyCertificateFormat_Enum">
+        <Value label="" literal="Paper"/>
+        <Value label="" literal="Electronic"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="CheckInhibitor_Enum">
+        <Value label="" literal="CheckDigit">
+            <Documentation>
+                <Description>The CheckDigit of the TicketNumber does not need to be verified.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="InterlineAgreement">
+            <Documentation>
+                <Description>No automatic interline agreement check needs to be performed on the ticket to be reissued.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Both">
+            <Documentation>
+                <Description>Neither the ticket number check digit nor the interline agreement needs to be checked.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="PaymentTransactionType_Enum">
+        <Value label="" literal="charge">
+            <Documentation>
+                <Description>This indicates that an actual payment has been made.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="reserve">
+            <Documentation>
+                <Description>This indicates that a hold for the indicated amount has been placed on a credit card or that a cash amount has been taken from the customer to guarantee final payment.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="refund">
+            <Documentation>
+                <Description>This indicates that the payment amount of this PaymentDetail element is for a refund.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="Rerouting_Enum">
+        <Documentation>
+            <Description>Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</Description>
+        </Documentation>
+        <Value label="" literal="voluntary"/>
+        <Value label="" literal="involuntary"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="SingleVendor_Enum">
+        <Documentation>
+            <Description>Indicates if program is affiliated with a group of related offers accumulating credits.</Description>
+        </Documentation>
+        <Value label="" literal="SingleVndr">
+            <Documentation>
+                <Description>Indicates the program is not part of an alliance.</Description>
+            </Documentation>
+        </Value>
+        <Value label="" literal="Alliance">
+            <Documentation>
+                <Description>Indicates the program is part of an alliance.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <ValueWithAttrs name="ConjunctionTicketNbr" type="ota2:Empty">
+        <Documentation>
+            <Description>Conjunction ticket number in case a conjunction ticket is exchanged.</Description>
+        </Documentation>
+        <Attribute name="coupons" type="Coupons">
+            <Documentation>
+                <Description>Gives the coupon numbers of the ticket, which will be taken for payment.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <ValueWithAttrs name="Rerouting" type="Rerouting_Enum">
+        <Documentation>
+            <Description>Indicates if the rerouting, which made the exchange necessary was voluntary or involuntary.</Description>
+        </Documentation>
+        <Attribute name="reason" type="ota2-0200:StringShort">
+            <Documentation>
+                <Description>Gives more information about the rerouting.</Description>
+            </Documentation>
+        </Attribute>
+    </ValueWithAttrs>
+    
+    <Simple name="CardAssociationCode" pattern="([a-zA-Z]{2})?" type="ota2-0200:StringTiny">
+        <Example context="fin">AX</Example>
+    </Simple>
+    
+    <CoreObject name="CustomerLoyalty" notExtendable="false">
+        <Documentation>
+            <Description>Program rewarding frequent use by accumulating credits for services provided by vendors.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Attribute name="id" type="xsd:ID">
+                <Documentation>
+                    <Description>A reference placeholder for this loyalty membership.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}RPH_Type</Implementer>
+                </Documentation>
+                <Equivalent context="fin">RPH</Equivalent>
+            </Attribute>
+            <Attribute name="programID" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Identifier to indicate the company owner of the loyalty program.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ProgramID</Equivalent>
+            </Attribute>
+            <Attribute name="membershipID" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Unique identifier of the member in the program (membership number, account number, etc.).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="fin">MembershipID</Equivalent>
+            </Attribute>
+            <Attribute name="allianceLoyaltyLevelName" type="ota2-0200:StringShort">
+                <Documentation>
+                    <Description>Name of the alliance loyalty level (e.g.,OneWorld  uses Emerald, Ruby, etc and SkyTeam uses Elite, etc.)</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to128</Implementer>
+                </Documentation>
+                <Equivalent context="fin">AllianceLoyaltyLevelName</Equivalent>
+            </Attribute>
+            <Attribute name="customerType" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Original assessment of the customer by the travel agent.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CustomerType</Equivalent>
+            </Attribute>
+            <Attribute name="customerValue" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The supplier's ranking of the customer (e.g., VIP, numerical ranking).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="fin">CustomerValue</Equivalent>
+            </Attribute>
+            <Attribute name="password" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>The password for the member in the program.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</Implementer>
+                </Documentation>
+                <Equivalent context="fin">Password</Equivalent>
+            </Attribute>
+            <Attribute name="loyalLevel" type="ota2-0200:StringTiny">
+                <Documentation>
+                    <Description>Indicates special privileges in program assigned to individual.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</Implementer>
+                </Documentation>
+                <Equivalent context="fin">LoyalLevel</Equivalent>
+            </Attribute>
+            <Attribute name="loyalLevelCode" type="xsd:positiveInteger">
+                <Documentation>
+                    <Description>Provides a numeric code assigned to a particular loyalty level.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}Numeric1to3</Implementer>
+                </Documentation>
+                <Equivalent context="fin">LoyalLevelCode</Equivalent>
+            </Attribute>
+            <Attribute name="singleVendorInd" type="SingleVendor_Enum">
+                <Documentation>
+                    <Description>Indicates if program is affiliated with a group of related offers accumulating credits.</Description>
+                    <Implementer>LocalAnonymousType: CustomerLoyaltyGroup_SingleVendorInd</Implementer>
+                </Documentation>
+                <Equivalent context="fin">SingleVendorInd</Equivalent>
+            </Attribute>
+            <Attribute name="signupDate" type="xsd:date">
+                <Documentation>
+                    <Description>Indicates when the member signed up for the loyalty program.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+                </Documentation>
+                <Equivalent context="fin">SignupDate</Equivalent>
+            </Attribute>
+            <Attribute name="effectiveDate" type="xsd:date">
+                <Documentation>
+                    <Description>Indicates the starting date.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+                </Documentation>
+                <Equivalent context="fin">EffectiveDate</Equivalent>
+                <Example context="fin">0116</Example>
+            </Attribute>
+            <Attribute name="expireDate" type="xsd:date">
+                <Documentation>
+                    <Description>Indicates the ending date.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}date</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ExpireDate</Equivalent>
+                <Example context="fin">0117</Example>
+            </Attribute>
+            <Element name="TravelSector" repeat="0" type="ota2-0200:TravelSector_Enum">
+                <Documentation>
+                    <Description>Identifies the travel sector. Refer to OpenTravel Code List Travel Sector (TVS).</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</Implementer>
+                </Documentation>
+                <Equivalent context="fin">TravelSector</Equivalent>
+            </Element>
+            <Element name="Privacy" repeat="0" type="ota2-0200:Privacy">
+                <Documentation>
+                    <Description>Permission for sharing data for synchronization of information held by other travel service providers.</Description>
+                    <Implementer>LocalAnonymousType: CustomerLoyaltyGroup_ShareSynchInd</Implementer>
+                </Documentation>
+                <Equivalent context="fin">ShareSynchInd</Equivalent>
+            </Element>
+            <Element name="VendorCode" repeat="0" type="ota2-0200:Code">
+                <Documentation>
+                    <Description>Indicate the partner(s)/vendor(s) for which the customer loyalty number is valid.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfStringLength1to8</Implementer>
+                </Documentation>
+                <Equivalent context="fin">VendorCode</Equivalent>
+            </Element>
+            <Indicator name="expireDateExclusiveIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates that the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</Description>
+                </Documentation>
+            </Indicator>
+            <Indicator name="primaryLoyaltyIndicatorInd" publishAsElement="false">
+                <Documentation>
+                    <Description>When true, indicates this is the primary customer loyalty program and when false, indicates this is not the primary customer loyalty program.</Description>
+                    <Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</Implementer>
+                </Documentation>
+                <Equivalent context="fin">PrimaryLoyaltyIndicator</Equivalent>
+            </Indicator>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

@@ -1,0 +1,1451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.7.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>663061164</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/Common/v0</Namespace>
+    <Prefix>ota2</Prefix>
+    <Name>CodeList</Name>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/Common/v0" context="codes"/>
+    
+    <Enumeration_Open name="BusinessType_Enum">
+        <Value literal="Contract"/>
+        <Value literal="Group"/>
+        <Value literal="In-House Meeting"/>
+        <Value literal="Local"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="DistributionType_Enum">
+        <Documentation>
+            <Description>Defines the preferred method of communication or the method of distribution for the material.</Description>
+        </Documentation>
+        <Value literal="Fax"/>
+        <Value literal="Email"/>
+        <Value literal="Mail"/>
+        <Value literal="Courier"/>
+        <Value literal="Airport collection"/>
+        <Value literal="City office"/>
+        <Value literal="Hotel desk"/>
+        <Value literal="Will call"/>
+        <Value literal="Express mail"/>
+        <Value literal="Telephone"/>
+        <Value literal="XML"/>
+        <Value literal="FTP"/>
+        <Value literal="Website"/>
+        <Value literal="HTTP"/>
+        <Value literal="Non-XML"/>
+        <Value literal="Any"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="EventFunction_Enum">
+        <Documentation>
+            <Description>A list of functions that may take place during an event.</Description>
+        </Documentation>
+        <Value literal="Board Meeting"/>
+        <Value literal="Box Lunch"/>
+        <Value literal="Breakfast"/>
+        <Value literal="Breakfast Buffet"/>
+        <Value literal="Breakout"/>
+        <Value literal="Brunch"/>
+        <Value literal="Ceremony"/>
+        <Value literal="Changing Room"/>
+        <Value literal="Coat Check"/>
+        <Value literal="Cocktail Reception"/>
+        <Value literal="Cofee Break"/>
+        <Value literal="Continental Breakfast"/>
+        <Value literal="Continuous Break"/>
+        <Value literal="Dance"/>
+        <Value literal="Dinner"/>
+        <Value literal="Dinner Buffet"/>
+        <Value literal="Exihibits"/>
+        <Value literal="General Session"/>
+        <Value literal="Holding Room"/>
+        <Value literal="Hospitality Room"/>
+        <Value literal="In-House Meeting"/>
+        <Value literal="Interview"/>
+        <Value literal="Lunch"/>
+        <Value literal="Lunch Buffet"/>
+        <Value literal="Meal On Own"/>
+        <Value literal="Meeting"/>
+        <Value literal="Menu Tasting"/>
+        <Value literal="No Agenda Hold"/>
+        <Value literal="Off Site"/>
+        <Value literal="Office"/>
+        <Value literal="Reception"/>
+        <Value literal="Recreation"/>
+        <Value literal="Registration"/>
+        <Value literal="Rehearsal"/>
+        <Value literal="Room Ready"/>
+        <Value literal="Set Up"/>
+        <Value literal="Speaker Room"/>
+        <Value literal="Special"/>
+        <Value literal="Storage"/>
+        <Value literal="Tear Down"/>
+        <Value literal="Trade Show"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="EventType_Enum">
+        <Value literal="Anniversary"/>
+        <Value literal="Ball/Gala"/>
+        <Value literal="Banquet"/>
+        <Value literal="Bar/Bat Mitzvah"/>
+        <Value literal="Board meeting"/>
+        <Value literal="Cast/Crew Accommodations"/>
+        <Value literal="Committee meeting"/>
+        <Value literal="Concert"/>
+        <Value literal="Conference"/>
+        <Value literal="Corporate Event"/>
+        <Value literal="Customer meeting"/>
+        <Value literal="Customer event"/>
+        <Value literal="Deposition"/>
+        <Value literal="Educational meeting"/>
+        <Value literal="Entertainment"/>
+        <Value literal="Exhibition"/>
+        <Value literal="Exposition"/>
+        <Value literal="Fashion Show"/>
+        <Value literal="Fundraiser"/>
+        <Value literal="General business meeting"/>
+        <Value literal="Golf"/>
+        <Value literal="Holiday"/>
+        <Value literal="Incentive travel"/>
+        <Value literal="Interview"/>
+        <Value literal="Job Fair"/>
+        <Value literal="Legislative"/>
+        <Value literal="Local employee gathering"/>
+        <Value literal="Management"/>
+        <Value literal="New Product"/>
+        <Value literal="Off-Site Activity"/>
+        <Value literal="Off-Site Catering"/>
+        <Value literal="Outlet/Suite Event"/>
+        <Value literal="Product launch"/>
+        <Value literal="Public/consumer show"/>
+        <Value literal="Rally"/>
+        <Value literal="Ramadan"/>
+        <Value literal="Ramadan Iftar / Sohour"/>
+        <Value literal="Relocation"/>
+        <Value literal="Retreat"/>
+        <Value literal="Reunion"/>
+        <Value literal="Rooms Only"/>
+        <Value literal="Sales/Marketing"/>
+        <Value literal="Shareholders meeting"/>
+        <Value literal="Special event"/>
+        <Value literal="Sports"/>
+        <Value literal="Team-building event"/>
+        <Value literal="Training meeting"/>
+        <Value literal="Teleconference"/>
+        <Value literal="Trade show"/>
+        <Value literal="Tournament"/>
+        <Value literal="Training"/>
+        <Value literal="Video conference"/>
+        <Value literal="Wedding"/>
+        <Value literal="Wedding Related"/>
+        <Value literal="Workshop"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="InventoryBlockType_Enum">
+        <Value literal="AirlineCrew"/>
+        <Value literal="Complimentary"/>
+        <Value literal="Contract"/>
+        <Value literal="Corporate group"/>
+        <Value literal="Corporate lease"/>
+        <Value literal="Education"/>
+        <Value literal="Fraternity"/>
+        <Value literal="Government/military"/>
+        <Value literal="Insurance"/>
+        <Value literal="International association"/>
+        <Value literal="Marina"/>
+        <Value literal="National association"/>
+        <Value literal="Negotiated/special corporate"/>
+        <Value literal="Other"/>
+        <Value literal="Permanent lease"/>
+        <Value literal="Regional/state/local association"/>
+        <Value literal="Religious"/>
+        <Value literal="Social"/>
+        <Value literal="Sports"/>
+        <Value literal="Tour and travel"/>
+        <Value literal="Wholesaler"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="MeetingRoomFormat_Enum">
+        <Value literal="Ballroom"/>
+        <Value literal="Banquet"/>
+        <Value literal="Boardroom"/>
+        <Value literal="Classroom"/>
+        <Value literal="Classroom - 2 per 6 ft. tables"/>
+        <Value literal="Classroom - 3 per 6 ft. tables"/>
+        <Value literal="Classroom - 3 per 8 ft. tables"/>
+        <Value literal="Classroom - 4 per 8 ft. tables"/>
+        <Value literal="Classroom (Chevron) - 2 per 6 ft. tables"/>
+        <Value literal="Classroom (Chevron) - 3 per 6 ft. tables"/>
+        <Value literal="Classroom (Chevron) - 3 per 8 ft. tables"/>
+        <Value literal="Classroom (Chevron) - 4 per 8 ft. tables"/>
+        <Value literal="Cocktail Rounds"/>
+        <Value literal="Conference"/>
+        <Value literal="Crescent Rounds"/>
+        <Value literal="Crescent Rounds of 5"/>
+        <Value literal="Crescent Rounds of 6"/>
+        <Value literal="Custom"/>
+        <Value literal="E-shaped"/>
+        <Value literal="Existing"/>
+        <Value literal="Exhibit"/>
+        <Value literal="8' x 10' exhibits"/>
+        <Value literal="10' x 10' exhibits"/>
+        <Value literal="Rounds for 10"/>
+        <Value literal="Island exhibit"/>
+        <Value literal="Tabletop exhibits"/>
+        <Value literal="Peninsula exhibit"/>
+        <Value literal="Open square"/>
+        <Value literal="Perimeter exhibit"/>
+        <Value literal="Flow (no tables or chairs)"/>
+        <Value literal="Foyer"/>
+        <Value literal="Hollow square"/>
+        <Value literal="Perimeter Seating"/>
+        <Value literal="Reception"/>
+        <Value literal="Registration"/>
+        <Value literal="Round tables"/>
+        <Value literal="Rounds for 8"/>
+        <Value literal="Rounds for 12"/>
+        <Value literal="Royal conference"/>
+        <Value literal="Talk Show"/>
+        <Value literal="Theatre"/>
+        <Value literal="Theater - Chevron"/>
+        <Value literal="Theater - Semi-circle"/>
+        <Value literal="T-shaped"/>
+        <Value literal="U-shaped"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ReservationMethod_Enum">
+        <Value literal="Electronic rooming list"/>
+        <Value literal="Housing bureau card"/>
+        <Value literal="Housing bureau web site"/>
+        <Value literal="GDS"/>
+        <Value literal="Individual"/>
+        <Value literal="Manual rooming list"/>
+        <Value literal="Rooming list"/>
+        <Value literal="Supplier direct"/>
+        <Value literal="Supplier web site"/>
+        <Value literal="Toll free telephone"/>
+        <Value literal="3rd party web site"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="AudioVisual_Enum">
+        <Value literal="Audio recording"/>
+        <Value literal="AV Technician"/>
+        <Value literal="Background music"/>
+        <Value literal="Copier"/>
+        <Value literal="Disc player"/>
+        <Value literal="Dry erase board with eraser and markers"/>
+        <Value literal="DVD player"/>
+        <Value literal="Easel"/>
+        <Value literal="Flip chart and markers"/>
+        <Value literal="High speed internet access"/>
+        <Value literal="Installed stage"/>
+        <Value literal="Laptop computer"/>
+        <Value literal="Laser pointer"/>
+        <Value literal="LCD panel"/>
+        <Value literal="Microphone"/>
+        <Value literal="PA system"/>
+        <Value literal="Podium"/>
+        <Value literal="Polling devices"/>
+        <Value literal="Portable stage"/>
+        <Value literal="Powered speaker"/>
+        <Value literal="Projector"/>
+        <Value literal="Screen"/>
+        <Value literal="Spotlights"/>
+        <Value literal="Telephone"/>
+        <Value literal="Video camera"/>
+        <Value literal="Video conferencing"/>
+        <Value literal="Video recording"/>
+        <Value literal="Wireless microphone"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="PreferLevel_Enum">
+        <Documentation>
+            <Description>Used to specify a preference level for something that is or will be requested (e.g. a supplier of a service, a type of service, a form of payment, etc.).</Description>
+        </Documentation>
+        <Value literal="Only">
+            <Documentation>
+                <Description>Preference level that indicates request is only for a specific criterion.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Unacceptable">
+            <Documentation>
+                <Description>Preference level that indicates request is unnacceptable for a specific criterion.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Preferred">
+            <Documentation>
+                <Description>Preference level that indicates request is preferred for a specific criterion.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Required">
+            <Documentation>
+                <Description>Preference level that indicates request is required for a specific criterion.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="NoPreference">
+            <Documentation>
+                <Description>Preference level that indicates there is no preference.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="MealType_Enum">
+        <Documentation>
+            <Description>OTA Code List Airline meal types.</Description>
+        </Documentation>
+        <Value literal="RGML">
+            <Documentation>
+                <Description>Designates a regular meal.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="VLML">
+            <Documentation>
+                <Description>VLML - Vegetarian/Milk/Eggs</Description>
+            </Documentation>
+        </Value>
+        <Value literal="VGML">
+            <Documentation>
+                <Description>VGML - Vegetarian/Non Dairy</Description>
+            </Documentation>
+        </Value>
+        <Value literal="SPML">
+            <Documentation>
+                <Description>SPML - Special/Specify</Description>
+            </Documentation>
+        </Value>
+        <Value literal="SFML">
+            <Documentation>
+                <Description>SFML - Seafood</Description>
+            </Documentation>
+        </Value>
+        <Value literal="RVML">
+            <Documentation>
+                <Description>RVML - Raw Vegetarian</Description>
+            </Documentation>
+        </Value>
+        <Value literal="PRML">
+            <Documentation>
+                <Description>PRML - Low Purin</Description>
+            </Documentation>
+        </Value>
+        <Value literal="ORML">
+            <Documentation>
+                <Description>ORML - Oriental</Description>
+            </Documentation>
+        </Value>
+        <Value literal="NLML">
+            <Documentation>
+                <Description>NLML - Non-Lactose</Description>
+            </Documentation>
+        </Value>
+        <Value literal="MOML">
+            <Documentation>
+                <Description>MOML - Moslem</Description>
+            </Documentation>
+        </Value>
+        <Value literal="LSML">
+            <Documentation>
+                <Description>LSML - Low Sodium/No Salt</Description>
+            </Documentation>
+        </Value>
+        <Value literal="LPML">
+            <Documentation>
+                <Description>LPML - Low Protein</Description>
+            </Documentation>
+        </Value>
+        <Value literal="LFML">
+            <Documentation>
+                <Description>LFML - Low Cholesterol</Description>
+            </Documentation>
+        </Value>
+        <Value literal="LCML">
+            <Documentation>
+                <Description>LCML - Low Calorie</Description>
+            </Documentation>
+        </Value>
+        <Value literal="KSML">
+            <Documentation>
+                <Description>KSML - Kosher</Description>
+            </Documentation>
+        </Value>
+        <Value literal="HNML">
+            <Documentation>
+                <Description>HNML - Hindu Meal</Description>
+            </Documentation>
+        </Value>
+        <Value literal="HFML">
+            <Documentation>
+                <Description>HFML - High Fiber</Description>
+            </Documentation>
+        </Value>
+        <Value literal="GFML">
+            <Documentation>
+                <Description>GFML - Gluten Free</Description>
+            </Documentation>
+        </Value>
+        <Value literal="FPML">
+            <Documentation>
+                <Description>FPML - Fruit Meal</Description>
+            </Documentation>
+        </Value>
+        <Value literal="DBML">
+            <Documentation>
+                <Description>DBML - Diabetic</Description>
+            </Documentation>
+        </Value>
+        <Value literal="CHML">
+            <Documentation>
+                <Description>CHML - Child Meal</Description>
+            </Documentation>
+        </Value>
+        <Value literal="BLML">
+            <Documentation>
+                <Description>BLML - Bland Meal</Description>
+            </Documentation>
+        </Value>
+        <Value literal="BBML">
+            <Documentation>
+                <Description>BBML - Baby/Infant Food</Description>
+            </Documentation>
+        </Value>
+        <Value literal="AVML">
+            <Documentation>
+                <Description>AVML - Asian Veg</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="DocumentType_Enum">
+        <Documentation>
+            <Description>Defines the specific type of identification or certification document.</Description>
+        </Documentation>
+        <Value literal="NaturalizationCertificate"/>
+        <Value literal="PassportCard"/>
+        <Value literal="CrewMemberCertificate"/>
+        <Value literal="AirNexusCard"/>
+        <Value literal="MerchantMariner"/>
+        <Value literal="Non-standard"/>
+        <Value literal="KnownTravelerNumber"/>
+        <Value literal="RedressNumber"/>
+        <Value literal="PermanentResidentCard"/>
+        <Value literal="PilotsLicense"/>
+        <Value literal="RefugeeTravelDocument"/>
+        <Value literal="BorderCrossingCard"/>
+        <Value literal="VerhicleRegistrationNumber"/>
+        <Value literal="TaxexEmptionNumber"/>
+        <Value literal="InsurancePolicyNumber"/>
+        <Value literal="AlienRegistrationNumber"/>
+        <Value literal="VaccinationCertificate"/>
+        <Value literal="NationalIdentityDocument"/>
+        <Value literal="DriversLicense"/>
+        <Value literal="MilitaryIdentification"/>
+        <Value literal="Passport"/>
+        <Value literal="Visa"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="DurationUnit_Enum">
+        <Documentation>
+            <Description>Defines the 'Units' that can be applied to Stay restrictions.</Description>
+        </Documentation>
+        <Value literal="SUN">
+            <Documentation>
+                <Description>Sunday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="SAT">
+            <Documentation>
+                <Description>Saturday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="FRI">
+            <Documentation>
+                <Description>Friday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="THU">
+            <Documentation>
+                <Description>Thursday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="WED">
+            <Documentation>
+                <Description>Wednesday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="TUES">
+            <Documentation>
+                <Description>Tuesday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="MON">
+            <Documentation>
+                <Description>Monday</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Months">
+            <Documentation>
+                <Description>Duration in months.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Days">
+            <Documentation>
+                <Description>Duration in days.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Hours">
+            <Documentation>
+                <Description>Duration in hours.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Minutes">
+            <Documentation>
+                <Description>Duration in minutes.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="ReservationBookDesignator_Enum">
+        <Value literal="Displayable">
+            <Documentation>
+                <Description>Only return displayable RBDs.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="NonDisplayable">
+            <Documentation>
+                <Description>Only return non-displayable RBD's.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="All">
+            <Documentation>
+                <Description>Return all RBD's, displayable and non-displayable.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="AccommodationClass_Enum">
+        <Documentation>
+            <Description>Rail accommodation types with an "Other" value to support open enumeration list.</Description>
+        </Documentation>
+        <Value literal="HardCompartmentClass"/>
+        <Value literal="SoftCompartmentClass"/>
+        <Value literal="MixedSoftClass"/>
+        <Value literal="MixedHardClass"/>
+        <Value literal="HighGradeSoftClass"/>
+        <Value literal="SpecialClass"/>
+        <Value literal="HardClass"/>
+        <Value literal="SoftClass"/>
+        <Value literal="GranClasse"/>
+        <Value literal="Deluxe"/>
+        <Value literal="Coach"/>
+        <Value literal="Leisure"/>
+        <Value literal="Business"/>
+        <Value literal="Premium"/>
+        <Value literal="SecondClass"/>
+        <Value literal="FirstClass"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="FlightDistanceQualifier_Enum">
+        <Value literal="LongHaul">
+            <Documentation>
+                <Description>Designates a flight as a long haul.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="ShortHaul">
+            <Documentation>
+                <Description>Designates a flight as a short haul.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="BerthPosition_Enum">
+        <Documentation>
+            <Description>Identifies the position of a berth, e.g. upper, lower, middle.</Description>
+        </Documentation>
+        <Value literal="Upper"/>
+        <Value literal="Middle"/>
+        <Value literal="Lower"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="CompartmentPosition_Enum">
+        <Documentation>
+            <Description>Identifies the position of a compartment, such as upper and lower.</Description>
+        </Documentation>
+        <Value literal="CloseToRestaurantCar"/>
+        <Value literal="CloseToExit"/>
+        <Value literal="CloseToToilet"/>
+        <Value literal="MiddleOfCar"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="Deck_Enum">
+        <Documentation>
+            <Description>Identifies the train deck, such as lower level and upper level.</Description>
+        </Documentation>
+        <Value literal="Regular-OneLevelOnly"/>
+        <Value literal="LowerLevel"/>
+        <Value literal="UpperLevel"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="NonScheduled_Enum">
+        <Documentation>
+            <Description>To specify which types of non-scheduled air service should be included.</Description>
+        </Documentation>
+        <Value literal="ChartersOnly">
+            <Documentation>
+                <Description>Only include non scheduled flights that are charter flights.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="ExcludeCharters">
+            <Documentation>
+                <Description>Do not include non scheduled flights that are charters.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="All">
+            <Documentation>
+                <Description>Include both charter non scheduled flights and those that are not charters.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="Routing_Enum">
+        <Documentation>
+            <Description>Specifies the travel routing preference.</Description>
+        </Documentation>
+        <Value literal="Normal">
+            <Documentation>
+                <Description>No special conditions.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Mirror">
+            <Documentation>
+                <Description>Outbound and inbound route of travel must be the same.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="SeatPosition_Enum">
+        <Documentation>
+            <Description>Identifies the position of a seat, such as Window and Aisle.</Description>
+        </Documentation>
+        <Value literal="None"/>
+        <Value literal="Together"/>
+        <Value literal="Aisle"/>
+        <Value literal="Center"/>
+        <Value literal="Window"/>
+        <Value literal="Specific"/>
+        <Value literal="Exit"/>
+        <Value literal="Table"/>
+        <Value literal="AdjacentAisle"/>
+        <Value literal="Individual"/>
+        <Value literal="Middle"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="BedType_Enum">
+        <Documentation>
+            <Description>The type(s) of sleeping option(s) in a guest accommodation.</Description>
+        </Documentation>
+        <Value literal="Dorm bed"/>
+        <Value literal="Double/full"/>
+        <Value literal="Futon"/>
+        <Value literal="King"/>
+        <Value literal="Murphy bed"/>
+        <Value literal="Queen"/>
+        <Value literal="Run of the house"/>
+        <Value literal="Sofa bed"/>
+        <Value literal="Tatami mats"/>
+        <Value literal="Twin/single"/>
+        <Value literal="Water bed"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="GuestType_Enum">
+        <Documentation>
+            <Description>Category of guest.</Description>
+        </Documentation>
+        <Value literal="Contractor"/>
+        <Value literal="Corporate employee"/>
+        <Value literal="Corporate transient"/>
+        <Value literal="Frequent guest"/>
+        <Value literal="Government"/>
+        <Value literal="Leisure"/>
+        <Value literal="Meeting attendee"/>
+        <Value literal="Retired"/>
+        <Value literal="Subsidiary"/>
+        <Value literal="VIP"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="LocationCategory_Enum">
+        <Value literal="Airport"/>
+        <Value literal="Bay"/>
+        <Value literal="Beach"/>
+        <Value literal="Beachfront"/>
+        <Value literal="Buisness district"/>
+        <Value literal="City"/>
+        <Value literal="Downtown"/>
+        <Value literal="Entertainment district"/>
+        <Value literal="Expressway"/>
+        <Value literal="Financial district"/>
+        <Value literal="Gulf"/>
+        <Value literal="Lake"/>
+        <Value literal="Marina"/>
+        <Value literal="Mountain"/>
+        <Value literal="Oceanfront"/>
+        <Value literal="Park"/>
+        <Value literal="Resort"/>
+        <Value literal="River"/>
+        <Value literal="Rural"/>
+        <Value literal="Shopping district"/>
+        <Value literal="Suburban"/>
+        <Value literal="Theatre district"/>
+        <Value literal="Waterfront"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="OptionType_Enum">
+        <Value literal="Yes"/>
+        <Value literal="No"/>
+        <Value literal="Not applicable"/>
+        <Value literal="Not available"/>
+        <Value literal="Substitute"/>
+        <Value literal="Exceeds limit"/>
+        <Value literal="Unknown"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="RoomLocation_Enum">
+        <Documentation>
+            <Description>Specifies a hotel room location.</Description>
+        </Documentation>
+        <Value literal="Annex room"/>
+        <Value literal="Away from the elevator"/>
+        <Value literal="Back of building"/>
+        <Value literal="Concierge floor"/>
+        <Value literal="Corner"/>
+        <Value literal="East"/>
+        <Value literal="Executive floor"/>
+        <Value literal="Frequent guest floor"/>
+        <Value literal="Front of building"/>
+        <Value literal="Ground floor"/>
+        <Value literal="Ground floor inside access"/>
+        <Value literal="Ground floor outside access"/>
+        <Value literal="High floor"/>
+        <Value literal="Lobby level"/>
+        <Value literal="Low floor"/>
+        <Value literal="Main building"/>
+        <Value literal="Near stairs"/>
+        <Value literal="Near the elevator"/>
+        <Value literal="North"/>
+        <Value literal="Poolside"/>
+        <Value literal="Quiet room"/>
+        <Value literal="South"/>
+        <Value literal="Top floor"/>
+        <Value literal="Tower room"/>
+        <Value literal="West"/>
+        <Value literal="Wing room"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="BusinessService_Enum">
+        <Documentation>
+            <Description>Services, equipment, or supplies provided by the hotel that are generally supportive of work-related activities. </Description>
+        </Documentation>
+        <Value literal="Audio visual equipment"/>
+        <Value literal="Blackboard"/>
+        <Value literal="Business center"/>
+        <Value literal="Business services"/>
+        <Value literal="Calling card calls"/>
+        <Value literal="Cellular phone rental"/>
+        <Value literal="Computer"/>
+        <Value literal="Computer rental"/>
+        <Value literal="Copier"/>
+        <Value literal="E-mail service"/>
+        <Value literal="Fax Machine"/>
+        <Value literal="Fee charged for first page"/>
+        <Value literal="Fee charged for first page of outgoing fax"/>
+        <Value literal="Fee per additional page of incoming fax"/>
+        <Value literal="Fee per additional page of outgoing fax"/>
+        <Value literal="Flip charts"/>
+        <Value literal="Free fax receipt page limit"/>
+        <Value literal="Free fax transmission page limit"/>
+        <Value literal="High speed internet connection"/>
+        <Value literal="Hotel folio breakdown available to credit card company"/>
+        <Value literal="Incoming fax complimentary"/>
+        <Value literal="Individual folios available via e-mail or web"/>
+        <Value literal="International direct dialing"/>
+        <Value literal="Laptop"/>
+        <Value literal="Laptop rental"/>
+        <Value literal="LCD/Projector"/>
+        <Value literal="Local calls"/>
+        <Value literal="Local faxes"/>
+        <Value literal="Long distance calls"/>
+        <Value literal="Meeting facilities"/>
+        <Value literal="Meeting/board rooms"/>
+        <Value literal="Mobile/cellular phone available"/>
+        <Value literal="Network/internet printing available"/>
+        <Value literal="Notary public"/>
+        <Value literal="Notepads"/>
+        <Value literal="Office supplies"/>
+        <Value literal="Outgoing fax complimentary"/>
+        <Value literal="Overnight delivery/pickup"/>
+        <Value literal="Pager rental"/>
+        <Value literal="Pens"/>
+        <Value literal="Post/parcel service"/>
+        <Value literal="Printer"/>
+        <Value literal="Private offices and business services"/>
+        <Value literal="Scanner"/>
+        <Value literal="Secretarial services"/>
+        <Value literal="Staffed business center"/>
+        <Value literal="Tape recorder"/>
+        <Value literal="Toll free calls"/>
+        <Value literal="VCR/DVD machine rental"/>
+        <Value literal="Voicemail"/>
+        <Value literal="Whiteboard"/>
+        <Value literal="Wired internet connection"/>
+        <Value literal="Wireless internet connection"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="CuisineType_Enum">
+        <Documentation>
+            <Description>The type of food for which the establishment is known; the style/manner in which the food is prepared and/or served.</Description>
+        </Documentation>
+        <Value literal="Afghan"/>
+        <Value literal="American"/>
+        <Value literal="Argentinean"/>
+        <Value literal="Asian"/>
+        <Value literal="Asian-Fusion"/>
+        <Value literal="Austrian"/>
+        <Value literal="Barbeque"/>
+        <Value literal="Bavarian"/>
+        <Value literal="Brazilian"/>
+        <Value literal="Cajun"/>
+        <Value literal="California"/>
+        <Value literal="Canadian"/>
+        <Value literal="Caribbean"/>
+        <Value literal="Chinese"/>
+        <Value literal="Coffee shop"/>
+        <Value literal="Continental"/>
+        <Value literal="Creole"/>
+        <Value literal="Deli"/>
+        <Value literal="Eclectic"/>
+        <Value literal="English"/>
+        <Value literal="Ethiopian"/>
+        <Value literal="European"/>
+        <Value literal="French"/>
+        <Value literal="German"/>
+        <Value literal="Greek"/>
+        <Value literal="Grill"/>
+        <Value literal="Halal"/>
+        <Value literal="Hawaiian"/>
+        <Value literal="High-tea"/>
+        <Value literal="Indian"/>
+        <Value literal="Indonesian"/>
+        <Value literal="International"/>
+        <Value literal="Iranian"/>
+        <Value literal="Irish"/>
+        <Value literal="Italian"/>
+        <Value literal="Japanese"/>
+        <Value literal="Jewish"/>
+        <Value literal="Korean"/>
+        <Value literal="Kosher"/>
+        <Value literal="Latin American"/>
+        <Value literal="Lebanese"/>
+        <Value literal="Mediterranean"/>
+        <Value literal="Mexican"/>
+        <Value literal="Middle Eastern"/>
+        <Value literal="Mixed - cafeteria"/>
+        <Value literal="Modern Australian"/>
+        <Value literal="Modern Azerbaijan"/>
+        <Value literal="Mongolian"/>
+        <Value literal="Moroccan"/>
+        <Value literal="Multiple"/>
+        <Value literal="Muslim"/>
+        <Value literal="Pacific rim"/>
+        <Value literal="Pizza"/>
+        <Value literal="Polish"/>
+        <Value literal="Polynesian"/>
+        <Value literal="Pub"/>
+        <Value literal="Russian"/>
+        <Value literal="Sandwiches"/>
+        <Value literal="Scandinavian"/>
+        <Value literal="Scottish"/>
+        <Value literal="Seafood"/>
+        <Value literal="Soul food"/>
+        <Value literal="South American"/>
+        <Value literal="Southern US"/>
+        <Value literal="Southwest US"/>
+        <Value literal="Spanish"/>
+        <Value literal="Steak houses"/>
+        <Value literal="Swiss"/>
+        <Value literal="Tapas"/>
+        <Value literal="TexMex"/>
+        <Value literal="Thai"/>
+        <Value literal="Turkish"/>
+        <Value literal="Vegetarian"/>
+        <Value literal="Vietnamese"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="DisabilityFeature_Enum">
+        <Documentation>
+            <Description>Specifies information about a facility, amenity or service that is relevant to people with a disability.</Description>
+        </Documentation>
+        <Value literal="Americans with Disabilities Act (ADA) compliance"/>
+        <Value literal="Audible emergency alarm for sight impaired guest"/>
+        <Value literal="Bathroom vanity in guest rooms for wheelchair user's height"/>
+        <Value literal="Bed types of wheelchair accessible rooms"/>
+        <Value literal="Closet rods in guest rooms for disabled person height"/>
+        <Value literal="Complies with Local/State/Federal laws for disabled"/>
+        <Value literal="Describe in detail how your kitchen is accessible.">
+            <Documentation>
+                <Description>Include special appliances, lowered cabinets, where dishes are kept, are upper cabinets usable.</Description>
+            </Documentation>
+        </Value>
+        <Value literal="Does hotel have accessible parking?"/>
+        <Value literal="Door width in inches"/>
+        <Value literal="Elevators have Braille Instructions"/>
+        <Value literal="Emergency exit signs in Braille"/>
+        <Value literal="Emergency info in Braille"/>
+        <Value literal="Flashing door knocker available"/>
+        <Value literal="Impairment aids available"/>
+        <Value literal="Light switches in guest rooms for wheelchair user's height"/>
+        <Value literal="List available room types for disabled persons- 8 fields"/>
+        <Value literal="Height of deadbolt in guest room (in feet)"/>
+        <Value literal="Height of deadbolt in guest room (in Inches)"/>
+        <Value literal="Number of each room type equipped for disabled persons- 8 fields"/>
+        <Value literal="Number of roll-in showers available"/>
+        <Value literal="Number of accessible rooms with standard tub"/>
+        <Value literal="Number of rooms with Braille"/>
+        <Value literal="Number of rooms with wheelchair accessible showers"/>
+        <Value literal="Number of wheelchair accessible rooms"/>
+        <Value literal="Other services for persons with disabilities"/>
+        <Value literal="Height of peephole in guest room (in feet)"/>
+        <Value literal="Height of peephole in guest room (in inches)"/>
+        <Value literal="Public areas wheelchair accessible"/>
+        <Value literal="Service animals allowed on property for people with disabilities"/>
+        <Value literal="Height of thermostat in guest room (in feet)"/>
+        <Value literal="Height of thermostat in guest room (in inches)"/>
+        <Value literal="Toilet seat in guest rooms for disabled person"/>
+        <Value literal="Viabrating alarm available"/>
+        <Value literal="Visual emergency alarm for hearing impaired guest"/>
+        <Value literal="What room types have wheel-in showers? (free form stringbox)"/>
+        <Value literal="Wheelchairs available"/>
+        <Value literal="Which floors have accessible rooms"/>
+        <Value literal="Grab bars in bathroom"/>
+        <Value literal="Telephone for hearing impaired"/>
+        <Value literal="Height of light switches in guest rooms (feet)"/>
+        <Value literal="Height of light switches in guest rooms (inches)"/>
+        <Value literal="Wheelchair accessible elevators"/>
+        <Value literal="Hearing impaired services"/>
+        <Value literal="Bathtub seat"/>
+        <Value literal="Closed caption TV"/>
+        <Value literal="Safety bars in shower"/>
+        <Value literal="Television amplifier"/>
+        <Value literal="Walk-in shower"/>
+        <Value literal="Ramp access"/>
+        <Value literal="Accessible parking"/>
+        <Value literal="Accessible van parking"/>
+        <Value literal="Raised toilet seat with grab bars"/>
+        <Value literal="Bathroom doors open outwards"/>
+        <Value literal="Accommodations have bath in bedroom"/>
+        <Value literal="Elevator access to all levels"/>
+        <Value literal="Elevator near accessible rooms"/>
+        <Value literal="Emergency cord/button system in bathroom"/>
+        <Value literal="Emergency cord/button system in bedroom"/>
+        <Value literal="Emergency instructions in pictorial form"/>
+        <Value literal="Emergeny procedures for people with disabilites"/>
+        <Value literal="Facilities for people with vision impairment only"/>
+        <Value literal="Facilities for people with hearing impairment only"/>
+        <Value literal="Feather free bedding/pillows available"/>
+        <Value literal="Flat terrain between parking and entrance"/>
+        <Value literal="Hearing induction loop system installed"/>
+        <Value literal="Restaurant/bar menus available in Braille"/>
+        <Value literal="Restaurant/bar menus available in 14pt print"/>
+        <Value literal="Roll-in shower area with bathroom seat"/>
+        <Value literal="Service dogs allowed"/>
+        <Value literal="Staff proficient in sign language"/>
+        <Value literal="Staff trained in service to disabled guests"/>
+        <Value literal="Steps/staircases have handrails"/>
+        <Value literal="Steps/staircases have color markings"/>
+        <Value literal="Subtitles/closed captions available on TV"/>
+        <Value literal="Tactile/14pt print signage throughout hotel"/>
+        <Value literal="Vibrating pillows available"/>
+        <Value literal="Height of bathroom basin"/>
+        <Value literal="Height of bathroom toilet seat"/>
+        <Value literal="Height of controls at highest operable part for bath"/>
+        <Value literal="Height of controls at highest operable part for roll-in shower"/>
+        <Value literal="Height from ground of guest bed including mattress"/>
+        <Value literal="Height from ground of elevator external buttons"/>
+        <Value literal="Height from ground of elevator internal buttons"/>
+        <Value literal="Height from ground to light switches in bathroom"/>
+        <Value literal="Height of non-slip handrails adjacent to bathroom toilet"/>
+        <Value literal="Height of non-slip handrails adjacent to bath"/>
+        <Value literal="Height of non-slip handrails in shower area"/>
+        <Value literal="Width/diameter of clear floor space in front of bath"/>
+        <Value literal="Length/depth of clear floor space in front of bath"/>
+        <Value literal="Width/diameter of clear floor space in front of guest bathroom toilet"/>
+        <Value literal="Length/depth of clear floor space in front of guest bathroom toilet"/>
+        <Value literal="Width/diameter of clear floor space at main hotel entrance"/>
+        <Value literal="Width/diameter of clear floor space at main restaurant entrance"/>
+        <Value literal="Width/diameter of elevator clear door opening space"/>
+        <Value literal="Width/diameter of main corridors"/>
+        <Value literal="Width/diameter of wheelchair turning space in bathroom"/>
+        <Value literal="Width/diameter of wheelchair turning space in bedroom"/>
+        <Value literal="Width/diameter of wheelchair turning space in lobby/reception area"/>
+        <Value literal="Width/diameter of clear opening space at bathroom door"/>
+        <Value literal="Width/diameter of clear opening space at bedroom door"/>
+        <Value literal="Height from ground of elevator internal handrails"/>
+        <Value literal="Accessible baths"/>
+        <Value literal="Braille/large print literature"/>
+        <Value literal="Adapted room doors"/>
+        <Value literal="Bedroom wheelchair access"/>
+        <Value literal="Special needs menus"/>
+        <Value literal="Wide entrance"/>
+        <Value literal="Wide corridors"/>
+        <Value literal="Wide restaurant entrance"/>
+        <Value literal="Roll-in shower available"/>
+        <Value literal="Lever handles on guest room doors"/>
+        <Value literal="Lowered night guards on guest room doors"/>
+        <Value literal="Lowered electrical outlets"/>
+        <Value literal="Bathtub grab bars"/>
+        <Value literal="Adjustable height hand-held shower wand"/>
+        <Value literal="TTY/TTD compatible"/>
+        <Value literal="Bathroom doors in inches"/>
+        <Value literal="Wheelchair, passenger has own chair, trains"/>
+        <Value literal="Wheelchair, passenger has own chair, buses"/>
+        <Value literal="Wheelchair, passenger requires station wheelchair"/>
+        <Value literal="Wheelchair lift required"/>
+        <Value literal="Lower level seating required"/>
+        <Value literal="Passenger has oxygen equipment"/>
+        <Value literal="Passenger has meet and assist requirement"/>
+        <Value literal="Height from ground to light switches in guest room"/>
+        <Value literal="Height from ground to peephole in guest room door"/>
+        <Value literal="Height from ground of deadbolt in guest room"/>
+        <Value literal="Height from ground of thermostat in guest room"/>
+        <Value literal="Hotel entrance is accessible"/>
+        <Value literal="Route from accessible public entrance to registration area is accessible"/>
+        <Value literal="Guest rooms and access routes are accessible"/>
+        <Value literal="Route from accessible public entrance to restaurant is accessible"/>
+        <Value literal="Route from accessible public entrance to meeting rooms is accessible"/>
+        <Value literal="Route from accessible public entrance to exercise facility is accessible"/>
+        <Value literal="Route from accessible public entrance to pool is accessible"/>
+        <Value literal="Route from accessible public entrance to business center is accessible"/>
+        <Value literal="Route from accessible public entrance to spa is accessible"/>
+        <Value literal="Accessible rooms"/>
+        <Value literal="Registration desk is wheelchair accessible"/>
+        <Value literal="Concierge desk is wheelchair accessible"/>
+        <Value literal="Hotel restaurant is wheelchair accessible"/>
+        <Value literal="Exercise facility is wheelchair accessible"/>
+        <Value literal="Pool is wheelchair accessible"/>
+        <Value literal="Business center  is wheelchair accessible"/>
+        <Value literal="Accessible self parking available"/>
+        <Value literal="Van accessible parking in self parking"/>
+        <Value literal="Complementary accessible transportation with advanced notice"/>
+        <Value literal="Portable bathtub seats"/>
+        <Value literal="Assistive listening devices for meetings upon request"/>
+        <Value literal="Number of accessible meeting rooms"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="RecreationService_Enum">
+        <Documentation>
+            <Description>Describes the recreational activities available to a guest which may or may not be operated by or located at the hotel.</Description>
+        </Documentation>
+        <Value literal="Animal watching"/>
+        <Value literal="Antique shopping"/>
+        <Value literal="Archery"/>
+        <Value literal="Badminton court"/>
+        <Value literal="Baseball diamond"/>
+        <Value literal="Basketball court"/>
+        <Value literal="Beach"/>
+        <Value literal="Bike rental"/>
+        <Value literal="Bike trail"/>
+        <Value literal="Billiards"/>
+        <Value literal="Bird watching"/>
+        <Value literal="Boat tours"/>
+        <Value literal="Boating"/>
+        <Value literal="Bocce court"/>
+        <Value literal="Bowling alley"/>
+        <Value literal="Boxing"/>
+        <Value literal="Camping"/>
+        <Value literal="Canoeing"/>
+        <Value literal="Children's pool"/>
+        <Value literal="Children's program"/>
+        <Value literal="Children's program, onsite"/>
+        <Value literal="Cricket pitch"/>
+        <Value literal="Cross country skiing"/>
+        <Value literal="Dancing"/>
+        <Value literal="Dart board"/>
+        <Value literal="Direct access to a beach"/>
+        <Value literal="Diving"/>
+        <Value literal="Dog racing"/>
+        <Value literal="Downhill skiing"/>
+        <Value literal="Driving range"/>
+        <Value literal="Extensive health club"/>
+        <Value literal="Fishing"/>
+        <Value literal="Fitness center"/>
+        <Value literal="Fly fishing"/>
+        <Value literal="Football field"/>
+        <Value literal="Gambling"/>
+        <Value literal="Garden"/>
+        <Value literal="Golf"/>
+        <Value literal="Golf location (onsite/nearby)"/>
+        <Value literal="Health club"/>
+        <Value literal="Helicopter/airplane sightseeing"/>
+        <Value literal="Hiking trail"/>
+        <Value literal="Horse racing"/>
+        <Value literal="Horseback riding"/>
+        <Value literal="Hot tub"/>
+        <Value literal="Hunting"/>
+        <Value literal="Ice skating"/>
+        <Value literal="Indoor pool"/>
+        <Value literal="Indoor tennis courts"/>
+        <Value literal="Indoor/outdoor connecting pool"/>
+        <Value literal="Jet-ski"/>
+        <Value literal="Jogging trail"/>
+        <Value literal="Karaoke"/>
+        <Value literal="Kayaking"/>
+        <Value literal="Kids beach club"/>
+        <Value literal="Kids equestrian club"/>
+        <Value literal="Kids golf academy"/>
+        <Value literal="Lake"/>
+        <Value literal="Limited health club"/>
+        <Value literal="Massage services"/>
+        <Value literal="Miniature golf"/>
+        <Value literal="Mountain biking trail"/>
+        <Value literal="Mountain climbing"/>
+        <Value literal="Museum/gallery"/>
+        <Value literal="Nature preserve trail"/>
+        <Value literal="Nightclub"/>
+        <Value literal="Ocean"/>
+        <Value literal="Outdoor pool"/>
+        <Value literal="Outdoor tennis courts"/>
+        <Value literal="Outlet shopping"/>
+        <Value literal="Paddle court"/>
+        <Value literal="Parasailing"/>
+        <Value literal="Playground"/>
+        <Value literal="Polo"/>
+        <Value literal="Pool"/>
+        <Value literal="Putt putt golf"/>
+        <Value literal="Racquetball court"/>
+        <Value literal="River"/>
+        <Value literal="River rafting"/>
+        <Value literal="Rock climbing"/>
+        <Value literal="Safari"/>
+        <Value literal="Sailing"/>
+        <Value literal="Sauna"/>
+        <Value literal="Scuba diving"/>
+        <Value literal="Shopping"/>
+        <Value literal="Sightseeing tours"/>
+        <Value literal="Skating rink"/>
+        <Value literal="Skeet shooting"/>
+        <Value literal="Ski in/out facilities"/>
+        <Value literal="Skydiving"/>
+        <Value literal="Snorkeling"/>
+        <Value literal="Snow boarding"/>
+        <Value literal="Snow mobiling"/>
+        <Value literal="Snow skiing"/>
+        <Value literal="Soccer field"/>
+        <Value literal="Solarium"/>
+        <Value literal="Spa facility"/>
+        <Value literal="Sports court"/>
+        <Value literal="Sports events"/>
+        <Value literal="Squash court"/>
+        <Value literal="Steam bath"/>
+        <Value literal="Sun tanning bed"/>
+        <Value literal="Sunbathing"/>
+        <Value literal="Surfing"/>
+        <Value literal="Table tennis"/>
+        <Value literal="Teen programs"/>
+        <Value literal="Tennis court"/>
+        <Value literal="Tennis professional"/>
+        <Value literal="Theatre"/>
+        <Value literal="Tubing"/>
+        <Value literal="Upscale shopping"/>
+        <Value literal="Velodrome"/>
+        <Value literal="Volleyball"/>
+        <Value literal="Walking track"/>
+        <Value literal="Water activities"/>
+        <Value literal="Water-skiing"/>
+        <Value literal="Weightlifting"/>
+        <Value literal="Whirlpool"/>
+        <Value literal="Windsurfing"/>
+        <Value literal="Wine tasting"/>
+        <Value literal="Winter sports"/>
+        <Value literal="Wrestling"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="SecurityFeature">
+        <Documentation>
+            <Description>Identifies security features of the services, meeting rooms, guest rooms, and restaurants of a property.</Description>
+        </Documentation>
+        <Value literal="2nd lock on guest doors"/>
+        <Value literal="Audible alarm smoke detectors in guest rooms"/>
+        <Value literal="Audible alarms in hallways"/>
+        <Value literal="Audible alarms in public areas"/>
+        <Value literal="Auto link to fire station"/>
+        <Value literal="Automated External Defibrillator (AED) on-site"/>
+        <Value literal="Building meets all current local, state and country building codes"/>
+        <Value literal="Carbon monoxide detector"/>
+        <Value literal="Complies with Local/State/Federal fire laws"/>
+        <Value literal="Connecting doors have deadbolts"/>
+        <Value literal="Dead bolts on guest room doors"/>
+        <Value literal="Electronic room key"/>
+        <Value literal="Elevator auto recall"/>
+        <Value literal="Emergency back-up generators"/>
+        <Value literal="Emergency evacuation plan"/>
+        <Value literal="Emergency exits on each floor"/>
+        <Value literal="Emergency info in room"/>
+        <Value literal="Emergency lighting"/>
+        <Value literal="Evacuation drills"/>
+        <Value literal="Exterior doors (except lobby entrance) require key access at night"/>
+        <Value literal="FEMA approved"/>
+        <Value literal="Fire extinguishers"/>
+        <Value literal="Fire extinguishers in hallways"/>
+        <Value literal="Fire extinguishers in public areas"/>
+        <Value literal="First aid available"/>
+        <Value literal="Guest room doors self-closing"/>
+        <Value literal="Hard wired smoke detectors"/>
+        <Value literal="Health club facilities (pool/gym) require key access for entrance"/>
+        <Value literal="Hours security"/>
+        <Value literal="If no 24 hour security, what are the hours?"/>
+        <Value literal="Lighted parking area"/>
+        <Value literal="Multiple exits on each floor"/>
+        <Value literal="Patrolled parking area"/>
+        <Value literal="Private security available"/>
+        <Value literal="Property has elevators"/>
+        <Value literal="Public address system"/>
+        <Value literal="Room access through exterior corridor"/>
+        <Value literal="Room access through interior corridor"/>
+        <Value literal="Room accessible through balcony sliding glass doors"/>
+        <Value literal="Room windows open"/>
+        <Value literal="Safety chains on guest doors"/>
+        <Value literal="Secondary locks on room windows"/>
+        <Value literal="Secondary locks on sliding glass doors"/>
+        <Value literal="Secured floors"/>
+        <Value literal="Security"/>
+        <Value literal="Security 24 hours/day"/>
+        <Value literal="Security escorts available on request"/>
+        <Value literal="Smoke detector in guest rooms"/>
+        <Value literal="Smoke detector in hallways"/>
+        <Value literal="Smoke detector in public areas"/>
+        <Value literal="Sprinklers in guest rooms"/>
+        <Value literal="Sprinklers in hallways"/>
+        <Value literal="Sprinklers in public areas"/>
+        <Value literal="Staff Red Cross certified in CPR"/>
+        <Value literal="Staff trained in Automated External Defibrillator (AED) usage"/>
+        <Value literal="Staff trained in CPR"/>
+        <Value literal="Staff trained in duplicate key issue"/>
+        <Value literal="Staff trained in first aid"/>
+        <Value literal="Swingbolt lock"/>
+        <Value literal="Ventilated stair wells"/>
+        <Value literal="Video cameras at entrance"/>
+        <Value literal="Video cameras in public areas"/>
+        <Value literal="Video surveillance monitored 24 hrs a day"/>
+        <Value literal="Video surveillance of parking"/>
+        <Value literal="Video surveillance recorded 24 hrs a day"/>
+        <Value literal="Viewports in guest room doors"/>
+        <Value literal="VIP Security"/>
+        <Value literal="Visual alarm in guest rooms"/>
+        <Value literal="Visual alarms in hallways"/>
+        <Value literal="Visual alarms in public areas"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="Gender_Enum">
+        <Value literal="Male"/>
+        <Value literal="Female"/>
+        <Value literal="Unknown"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="MaritalStatus_Enum">
+        <Documentation>
+            <Description>The marital status of a person.</Description>
+        </Documentation>
+        <Value literal="Annulled"/>
+        <Value literal="Co-habiting"/>
+        <Value literal="Divorced"/>
+        <Value literal="Engaged"/>
+        <Value literal="Married"/>
+        <Value literal="Separated"/>
+        <Value literal="Single"/>
+        <Value literal="Widowed"/>
+        <Value literal="Unknown"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="EventStatus_Enum">
+        <Documentation>
+            <Description>Describes the status of planning for an event.</Description>
+        </Documentation>
+        <Value literal="Event Planned"/>
+        <Value literal="Event Scheduled (no details at this time)"/>
+        <Value literal="No Event"/>
+        <Value literal="Off Site Event"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ProfileStatus_Enum">
+        <Documentation>
+            <Description>Status of the profile.</Description>
+        </Documentation>
+        <Value literal="Active"/>
+        <Value literal="Inactive"/>
+        <Value literal="Lapsed"/>
+        <Value literal="Marked for Deletion"/>
+        <Value literal="Terminated"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ProfileType_Enum">
+        <Documentation>
+            <Description>Specifies the type of profile.</Description>
+        </Documentation>
+        <Value literal="Airline"/>
+        <Value literal="Arranger"/>
+        <Value literal="Association"/>
+        <Value literal="Authorized signer"/>
+        <Value literal="Billing contact"/>
+        <Value literal="Car rental"/>
+        <Value literal="Corporation"/>
+        <Value literal="CRO"/>
+        <Value literal="Cruise line"/>
+        <Value literal="Customer"/>
+        <Value literal="Employee"/>
+        <Value literal="Event host"/>
+        <Value literal="GDS"/>
+        <Value literal="General service contractor"/>
+        <Value literal="Group"/>
+        <Value literal="Hotel"/>
+        <Value literal="Internet broker"/>
+        <Value literal="Representation company"/>
+        <Value literal="Supplier partner"/>
+        <Value literal="Tour operator"/>
+        <Value literal="Travel agency"/>
+        <Value literal="Travel agent"/>
+        <Value literal="Wholesaler"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="TravelPurpose_Enum">
+        <Documentation>
+            <Description>Specifies the reason the person is traveling.</Description>
+        </Documentation>
+        <Value literal="Business"/>
+        <Value literal="Personal/leisure"/>
+        <Value literal="Group or meeting"/>
+        <Value literal="Conference"/>
+        <Value literal="Charter"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="VoluntaryIndicator_Enum">
+        <Documentation>
+            <Description>TODO - why is this payment form instead of Voluntary indicator or boolean?</Description>
+        </Documentation>
+        <Value literal="voluntary"/>
+        <Value literal="involuntary"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="RequiredPayments_Enum">
+        <Value literal="GuaranteeRequired"/>
+        <Value literal="None"/>
+        <Value literal="CC/DC/Voucher"/>
+        <Value literal="Profile"/>
+        <Value literal="Deposit"/>
+        <Value literal="PrePay">
+            <Documentation>
+                <Description>Indicates prepayment, typically this means payment is required at booking.</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="OfficeLocation_Enum">
+        <Documentation>
+            <Description>Specifes the location type of an office (e.g. main, field, division).</Description>
+        </Documentation>
+        <Value literal="Main"/>
+        <Value literal="Field"/>
+        <Value literal="Division"/>
+        <Value literal="Regional"/>
+        <Value literal="Remote"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Open name="Status_Enum">
+        <Documentation>
+            <Description>The status condition.</Description>
+        </Documentation>
+        <Value literal="Complete"/>
+        <Value literal="Incomplete"/>
+        <Value literal="Not processed"/>
+        <Value literal="Unknown"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="ErrorWarningType_Enum">
+        <Documentation>
+            <Description>Tthe category of error or warning.</Description>
+        </Documentation>
+        <Value literal="Advisory"/>
+        <Value literal="Application error"/>
+        <Value literal="Authentication"/>
+        <Value literal="Authentication timeout"/>
+        <Value literal="Authorization"/>
+        <Value literal="Business rule"/>
+        <Value literal="No implementation"/>
+        <Value literal="Processing exception"/>
+        <Value literal="Protocol violation"/>
+        <Value literal="Required field missing"/>
+        <Value literal="Unknown"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PhoneLocation_Enum">
+        <Documentation>
+            <Description>Where the phone is located.</Description>
+        </Documentation>
+        <Value literal="Brand reservations office"/>
+        <Value literal="Central reservations office"/>
+        <Value literal="Home"/>
+        <Value literal="Managing company"/>
+        <Value literal="Mobile"/>
+        <Value literal="Office"/>
+        <Value literal="Property direct"/>
+        <Value literal="Property reservation Office"/>
+        <Value literal="Sales office"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PhoneUseType_Enum">
+        <Value literal="Contact"/>
+        <Value literal="Daytime contact"/>
+        <Value literal="Emergency contact"/>
+        <Value literal="Evening contact"/>
+        <Value literal="Guest use"/>
+        <Value literal="Mobile"/>
+        <Value literal="Pickup contact"/>
+        <Value literal="Toll free number"/>
+        <Value literal="Travel arranger"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Open name="PhoneTechType_Enum">
+        <Documentation>
+            <Description>Defines the technology associated with this phone number.</Description>
+        </Documentation>
+        <Value literal="Voice"/>
+        <Value literal="Fax"/>
+        <Value literal="Pager"/>
+        <Value literal="TTY"/>
+    </Enumeration_Open>
+    
+    <Enumeration_Closed name="TimeUnit_Enum">
+        <Value literal="Day"/>
+        <Value literal="Full duration"/>
+        <Value literal="Hour"/>
+        <Value literal="Minute"/>
+        <Value literal="Month"/>
+        <Value literal="Second"/>
+        <Value literal="Week"/>
+        <Value literal="Year"/>
+    </Enumeration_Closed>
+    
+    <Enumeration_Closed name="OffsetDropTime_Enum">
+        <Documentation>
+            <Description>An enumerated type indicating when the deadline drop time goes into effect.</Description>
+        </Documentation>
+        <Value literal="Before arrival"/>
+        <Value literal="After booking"/>
+        <Value literal="After confirmation"/>
+        <Value literal="After arrival"/>
+        <Value literal="After departure"/>
+    </Enumeration_Closed>
+    
+</Library>

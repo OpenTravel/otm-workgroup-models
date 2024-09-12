@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_05 OTA2_LibraryModel_v1.5.0.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>3443479132</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/reservation/v1</Namespace>
+    <Prefix>res-0100</Prefix>
+    <Name>Reservation</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import fileHints="Common_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <Import fileHints="Order_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v2" prefix="order-0200"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/reservation/v0" context="res"/>
+    
+    <BusinessObject name="Reservation" notExtendable="false">
+        <Documentation>
+            <Description>A container associating travelers and orders pertaining to a particular trip or event.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ReservationRef" reference="true" repeat="0" type="Reservation">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="OrderConfirmation"
+                repeat="99" type="order-0200:Order_Confirmation">
+                <Documentation>
+                    <Description>A collection of confirmed offers.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="Receipt" repeat="99" type="Receipt">
+                <Documentation>
+                    <Description>Receipt for the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TimeSpan" repeat="0" type="ota2-0300:TimeSpan">
+                <Documentation>
+                    <Description>Specifies the start date and end date that covers the whole reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Traveler" repeat="99" type="ota2-0300:Traveler">
+                <Documentation>
+                    <Description>For travelers uniquely identified in the order this should just be the traveler ID.  For travelers not identified in the orders, this may be more detailed information about the traveler.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ContactPerson" repeat="0" type="ota2-0300:ContactPerson">
+                <Documentation>
+                    <Description>Information pertaining to the contact for the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Comment" repeat="30" type="ota2-0300:Comment">
+                <Documentation>
+                    <Description>Comments pertaining to the reservation.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+        <Query context="" label="ByTraveler" notExtendable="false">
+            <Element name="TravelerCriteria" repeat="0" type="TravelerCriteria">
+                <Documentation>
+                    <Description>Traveler information on which the query is being preformed.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Verification" repeat="0" type="Verification">
+                <Documentation>
+                    <Description>Verification Information for the travler.</Description>
+                </Documentation>
+            </Element>
+            <Element name="TimeSpan" repeat="0" type="ota2-0300:TimeSpan">
+                <Documentation>
+                    <Description>The time span for which the query is to be performed.</Description>
+                </Documentation>
+            </Element>
+        </Query>
+        <Custom context="" label="Cancellation" notExtendable="false">
+            <Element name="CancellationID" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>Confirmation of the cancellation.</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+    </BusinessObject>
+    
+    <BusinessObject name="Receipt" notExtendable="false">
+        <Documentation>
+            <Description>An identifier provided by the vendor or supplier confirming the reservation.</Description>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="objID" type="xsd:ID">
+                <Documentation>
+                    <Description>A unique identifier within this document for this object.</Description>
+                </Documentation>
+            </Attribute>
+            <Element name="Identifier" repeat="0" type="ota2-0300:Identifier">
+                <Documentation>
+                    <Description>A unique identifier defined by an external authority for this object.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ReceiptRef" reference="true" repeat="0" type="Receipt">
+                <Documentation>
+                    <Description>Refers to the objID on an object defined elsewhere in the current document.</Description>
+                </Documentation>
+            </Element>
+        </ID>
+        <Summary>
+            <Element mandatory="true" name="Payment" repeat="0" type="order-0200:Payment">
+                <Documentation>
+                    <Description>Payment details for the reservation.  Intended to be used when the reservation holder processes a single payment for all of the orders in the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element mandatory="true" name="OrderIdentifier" repeat="0" type="order-0200:Order_ID">
+                <Documentation>
+                    <Description>An identifier to the order for which this receipt applies.</Description>
+                </Documentation>
+            </Element>
+            <Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                <Documentation>
+                    <Description>Identifies the reservation for which this receipt applies.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <CoreObject name="Verification" notExtendable="false">
+        <Documentation>
+            <Description>Fields that can be used to control access to reservations.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="PersonNameSummary" repeat="0" type="ota2-0300:PersonName_Summary">
+                <Documentation>
+                    <Description>Person name information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Email_Simple" repeat="0" type="ota2-0300:Email_Simple">
+                <Documentation>
+                    <Description>Email associated with the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Telephone_Simple" repeat="0" type="ota2-0300:Telephone_Simple">
+                <Documentation>
+                    <Description>The telephone number associated with the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PaymentCard_Masked" repeat="0" type="ota2-0300:EncryptionTokenTypeMask">
+                <Documentation>
+                    <Description>Masked payment card number that can be used to control access to reservations.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="TravelerCriteria" notExtendable="false">
+        <Documentation>
+            <Description>Criteria used to retreive a reservation for a specific traveler.</Description>
+        </Documentation>
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element name="PersonIdentifier" repeat="0" type="ota2-0300:Person_ID">
+                <Documentation>
+                    <Description>The person identifier with which the search should be performed.</Description>
+                </Documentation>
+            </Element>
+            <Element name="PersonNameSummary" repeat="0" type="ota2-0300:PersonName_Summary">
+                <Documentation>
+                    <Description>Person name information.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Email_Simple" repeat="0" type="ota2-0300:Email_Simple">
+                <Documentation>
+                    <Description>Email associated with the reservation.</Description>
+                </Documentation>
+            </Element>
+            <Element name="Telephone_Simple" repeat="0" type="ota2-0300:Telephone_Simple">
+                <Documentation>
+                    <Description>The telephone number associated with the reservation.</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <Service name="Reservation">
+        <Operation Name="Create" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Order" repeat="100" type="order-0200:Order">
+                    <Documentation>
+                        <Description>The details of the order being reserved.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Reservation" repeat="0" type="Reservation">
+                    <Documentation>
+                        <Description>The reservation identifier (confirmation number) and optionally the details of the reservation.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Reservation" repeat="0" type="Reservation">
+                    <Documentation>
+                        <Description>The reservation identifier (confirmation number) and optionally the details of the reservation.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+        <Operation Name="Read" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                    <Documentation>
+                        <Description>The reservation identifier of the reservation to be retrieved.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Verification" repeat="0" type="Verification">
+                    <Documentation>
+                        <Description>Information that may be used to verify the correct reservation is being returned.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Reservation" repeat="0" type="Reservation">
+                    <Documentation>
+                        <Description>The reservation requested.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Search" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ReservationQueryByTraveler" repeat="0" type="Reservation_Query_ByTraveler">
+                    <Documentation>
+                        <Description>Information on which the query should be performed.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Reservation" repeat="100" type="Reservation">
+                    <Documentation>
+                        <Description>Reservations, if any, that meet the search criteria.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+        <Operation Name="Cancel" notExtendable="false">
+            <Request>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ReservationIdentifier" repeat="0" type="Reservation_ID">
+                    <Documentation>
+                        <Description>The reservation identifier of the reservation to be retrieved.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Verification" repeat="0" type="Verification">
+                    <Documentation>
+                        <Description>Information that may be used to verify the correct reservation is being returned.</Description>
+                    </Documentation>
+                </Element>
+            </Request>
+            <Response>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ReservationCancellation" repeat="0" type="Reservation_Cancellation">
+                    <Documentation>
+                        <Description>Cancellation details for the reservation.</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification>
+                <Element name="PayloadStdAttributes" repeat="0" type="ota2-0300:PayloadStdAttributes">
+                    <Documentation>
+                        <Description>The standard attributes that appear on the root element for all OpenTravel messages.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="POS" repeat="0" type="ota2-0300:POS">
+                    <Documentation>
+                        <Description>Point of Sale (POS) identifies the party or connection channel making the request.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="Result" repeat="0" type="ota2-0300:Result">
+                    <Documentation>
+                        <Description>When present indicates that errors or warnings occurred during processing.</Description>
+                    </Documentation>
+                </Element>
+                <Element name="ReservationCancellation" repeat="0" type="Reservation_Cancellation">
+                    <Documentation>
+                        <Description>Cancellation details for the reservation.</Description>
+                    </Documentation>
+                </Element>
+            </Notification>
+        </Operation>
+    </Service>
+    
+</Library>

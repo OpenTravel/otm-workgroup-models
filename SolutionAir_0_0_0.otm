@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Final</Status>
+    <CrcValue>3159887959</CrcValue>
+    <Namespace>http://www.opentravel.org/OTM/demo/test/SolutionAir/v0</Namespace>
+    <Prefix>sola</Prefix>
+    <Name>SolutionAir</Name>
+    <Import namespace="http://opentravel.org/common/v02" prefix="ota2"/>
+    <Import fileHints="SolutionOTA_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/demo/test/SolutionOTA/v0" prefix="solo"/>
+    <Context
+        applicationContext="http://opentravel.org/local/90002773/SolutionAir/v0" context="sola"/>
+    <Context applicationContext="sol" context="sol"/>
+    
+    <BusinessObject name="Segment" notExtendable="false">
+        <Extension extends="solo:Segment"/>
+        <Aliases/>
+        <ID/>
+        <Summary/>
+        <Detail>
+            <Element name="Meal" repeat="0" type="Enum_Meal"/>
+        </Detail>
+        <Query context="sol" label="Request" notExtendable="false"/>
+    </BusinessObject>
+    
+    <Enumeration_Closed name="Enum_Meal">
+        <Value literal="B">
+            <Documentation>
+                <Description>Breakfast</Description>
+            </Documentation>
+        </Value>
+        <Value literal="L">
+            <Documentation>
+                <Description>Lunch</Description>
+            </Documentation>
+        </Value>
+        <Value literal="D">
+            <Documentation>
+                <Description>Dinner</Description>
+            </Documentation>
+        </Value>
+    </Enumeration_Closed>
+    
+    <CoreObject name="Meal" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="ProductIdentifier"
+                repeat="0" type="solo:Product_ID"/>
+            <Element mandatory="true" name="MealCode" repeat="3" type="Enum_Meal">
+                <Documentation>
+                    <Description>Meal(s) served</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+    <CoreObject name="Solution" notExtendable="false">
+        <Aliases/>
+        <Simple type="ota2:Empty"/>
+        <Summary>
+            <Element mandatory="true" name="SegmentDetail" repeat="5" type="Segment_Detail"/>
+        </Summary>
+        <Detail/>
+    </CoreObject>
+    
+</Library>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/strawman/price/v0</Namespace>
+    <Prefix>sop</Prefix>
+    <Name>Price</Name>
+    <Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota1"/>
+    <Import
+        fileHints="../../../../../../../../../../Workspace/OTM_TestData/OTM Projects/NewOTA_Libraries/Product.otm"
+        namespace="http://www.opentravel.org/OTM/product/v0" prefix="prod"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/demo/transportation/tarrif/v0" context="oPrice"/>
+    
+    <BusinessObject name="Fare" notExtendable="false">
+        <Documentation>
+            <Description/>
+            <Deprecated>Replaced with Finance</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="fareBasis" type="ota1:String_Tiny"/>
+            <Attribute mandatory="true" name="amount" type="xsd:decimal"/>
+            <Element name="SegmentRef" reference="true" repeat="5" type="prod:Segment"/>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <BusinessObject name="AncillaryCost" notExtendable="false">
+        <Documentation>
+            <Description/>
+            <Deprecated>Replaced with Finance</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="cost" type="xsd:decimal"/>
+            <Element mandatory="true" name="AncillaryProduct" repeat="0" type="prod:AncillaryProduct"/>
+            <Element name="SegmentRef" reference="true" repeat="0" type="prod:Segment">
+                <Documentation>
+                    <Description>used if the cost of an AncillaryProduct is different based on the particular Segment</Description>
+                </Documentation>
+            </Element>
+        </Summary>
+        <Detail/>
+    </BusinessObject>
+    
+    <BusinessObject name="Price" notExtendable="false">
+        <Documentation>
+            <Description>Extended facets contain breakdown of total amount</Description>
+            <Deprecated>Replaced with Finance</Deprecated>
+        </Documentation>
+        <Aliases/>
+        <ID>
+            <Attribute name="id" type="xsd:ID"/>
+        </ID>
+        <Summary>
+            <Attribute mandatory="true" name="totalAmount" type="xsd:decimal"/>
+            <Element name="AncillaryCost" repeat="10" type="AncillaryCost"/>
+        </Summary>
+        <Detail/>
+        <Custom context="oPrice" label="Transportation" notExtendable="false">
+            <Element mandatory="true" name="Fare" repeat="6" type="Fare">
+                <Documentation>
+                    <Description>Used if fares by segment(s) is provided</Description>
+                </Documentation>
+            </Element>
+        </Custom>
+        <Custom context="oPrice" label="Hospitality" notExtendable="false">
+            <Element name="Rate" repeat="0" type="ota1:String_Tiny"/>
+        </Custom>
+    </BusinessObject>
+    
+</Library>

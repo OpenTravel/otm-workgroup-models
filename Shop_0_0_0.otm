@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library xmlns="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_04 OTA2_LibraryModel_v1.4.6.xsd">
+    
+    <VersionScheme>OTA2</VersionScheme>
+    <Status>Draft</Status>
+    <Namespace>http://www.opentravel.org/OTM/strawman/shop/v0</Namespace>
+    <Prefix>sos</Prefix>
+    <Name>Shop</Name>
+    <Import fileHints="Common_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/common/v0" prefix="c"/>
+    <Import fileHints="Product_0_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v0" prefix="prod"/>
+    <Import
+        fileHints="../../../../../../../../../../Workspace/OTM_TestData/OTM Projects/NewOTA_Libraries/Order.otm"
+        namespace="http://www.opentravel.org/OTM/order/v0" prefix="order"/>
+    <Context
+        applicationContext="http://www.opentravel.org/OTM/demo/transportation/shop/v0" context="___ToBeRemoved___"/>
+    
+    <Service name="Shop">
+        <Documentation>
+            <Description/>
+            <Deprecated>Use Product Query</Deprecated>
+        </Documentation>
+        <Operation Name="OffersRetrieve" notExtendable="false">
+            <Request>
+                <Element name="OfferConfirmed" repeat="0" type="order:Offer_Confirmed"/>
+                <Element mandatory="true" name="OfferQuery" repeat="0" type="order:Offer_Query"/>
+            </Request>
+            <Response>
+                <Element mandatory="true" name="Result" repeat="0" type="c:Result"/>
+                <Element name="Offer" repeat="100" type="order:Offer"/>
+                <Element name="Product" repeat="500" type="prod:Product">
+                    <Documentation>
+                        <Description>Present if Product in Offer is used as a reference</Description>
+                    </Documentation>
+                </Element>
+            </Response>
+            <Notification/>
+        </Operation>
+    </Service>
+    
+</Library>

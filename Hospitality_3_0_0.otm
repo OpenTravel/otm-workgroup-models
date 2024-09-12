@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/hospitality/v3</ns2:Namespace>
+    <ns2:Prefix>ph-0300</ns2:Prefix>
+    <ns2:Name>Hospitality</ns2:Name>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="CodeList_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v4" prefix="ota2-0400"/>
+    <ns2:Import fileHints="Order_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/order/v4" prefix="order-0400"/>
+    <ns2:Import fileHints="Product_5_1_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5_1" prefix="prod-0501"/>
+    <ns2:Import fileHints="Common_5_1_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5_1" prefix="ota2-0501"/>
+    <ns2:Import fileHints="Organization_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v5" prefix="org-0500"/>
+    <ns2:Import fileHints="Organization_4_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/organization/v4" prefix="org-0400"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/hospitality/v0" context="ph"/>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:Product" name="Hospitality3"
+        notExtendable="false" type="Custom">
+        <ns2:Attribute name="numberOfRooms" referenceRepeat="0" type="xsd:integer">
+            <ns2:Documentation>
+                <ns2:Description>The number of rooms associated with this hospitality product.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Attribute>
+        <ns2:Element mandatory="true" name="RoomStay" repeat="0" type="RoomStay">
+            <ns2:Documentation>
+                <ns2:Description>A hospitality guest room product.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="GuestCount" repeat="99" type="prod-0500:GuestCount">
+            <ns2:Documentation>
+                <ns2:Description>The ages or age types of the guests occupying the room.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="DateTimeSpanWindows" repeat="0" type="ota2-0500:DateTimeSpanWindows">
+            <ns2:Documentation>
+                <ns2:Description>The Time Span encompassing arrival and departure for the Room Stay.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace=""
+        facetOwner="prod-0500:ProductQueries" name="Hospitality3"
+        notExtendable="false" type="Choice">
+        <ns2:Element name="RoomStay" repeat="0" type="RoomStay">
+            <ns2:Documentation>
+                <ns2:Description>Hospitality query for a room stay.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:BusinessObject name="RoomStay" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Details on the Room Stay including Guest Counts, Time Span of this Room Stay, pointers to Res Guests, guest Memberships, Comments and Special Requests pertaining to this particular Room Stay and finally finacial information related to the Room Stay, including Guarantee, Deposit and Payment and Cancellation Penalties.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomStayRef" reference="true" repeat="0" type="RoomStay">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="invBlockCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Code that identifies an inventory block.  Used for group blocks and single room blocks.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">xyzzy</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="RoomType" repeat="1" type="RoomType">
+                <ns2:Documentation>
+                    <ns2:Description>The RoomType element is used to contain all the room type information.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RoomTypes</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="RatePlan" repeat="1" type="RatePlan">
+                <ns2:Documentation>
+                    <ns2:Description>The rate plan element is used to contain all the rate plan information for a single Rate Plan Code (ex RACK).  The rate plan contains everything included with the room stay outside of the room.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}RatePlans</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="DateTimeSpanWindows"
+                repeat="1" type="ota2-0500:DateTimeSpanWindows">
+                <ns2:Documentation>
+                    <ns2:Description>The Time Span encompassing the start and end date for which this room stay product exists.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}DateTimeSpanType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SpecialRequest" repeat="50" type="SpecialRequest">
+                <ns2:Documentation>
+                    <ns2:Description>The SpecialRequest object indicates special requests for the whole Reservation, or a particular Room Stay or Service.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}SpecialRequestType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FacilityRef" reference="true" repeat="0" type="org-0500:Facility">
+                <ns2:Documentation>
+                    <ns2:Description>The hotel facility object for the room stay.  May include the hotel facility object or a reference to the hotel facility object.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}BasicPropertyInfo</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="language" referenceRepeat="0" type="xsd:language">
+                <ns2:Documentation>
+                    <ns2:Description>Language of the response for the RoomStay (property). Note that the requested language may not be available for all properties and so the language of the response for each property may vary.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}language</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="ph">en</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Comment" repeat="10" type="ota2-0500:Comment">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of Comment objects. Comments which apply to the whole Reservation or a particular Room Stay or Service.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommentType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="RoomStay"
+        name="Candidate" notExtendable="false" type="Query">
+        <ns2:Element name="ArrivalDepartureDates" repeat="0" type="ota2-0500:DateEffectiveExpire">
+            <ns2:Documentation>
+                <ns2:Description>Identifies the start and/or end dates.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="BasicHotelPropertyInfo" repeat="0" type="ota2-0501:BasicHotelPropertyInfo">
+            <ns2:Documentation>
+                <ns2:Description>Identifies a specific hotel or city for which the availability search applies.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="RoomType" repeat="0" type="RoomType">
+            <ns2:Documentation>
+                <ns2:Description>Identifies a type of room.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="GuestCount" repeat="0" type="prod-0500:GuestCount">
+            <ns2:Documentation>
+                <ns2:Description>The number of guests for the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="RoomRateQueryRange" repeat="0" type="RoomRate_Query_Range">
+            <ns2:Documentation>
+                <ns2:Description>The rate range for the query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:BusinessObject name="RoomType" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Provides details regarding rooms, usually guest rooms.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element name="RoomCharacteristics" repeat="0" type="RoomCharacteristics">
+                <ns2:Documentation>
+                    <ns2:Description>Provides details of the room type.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: RoomGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Description" repeat="1" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Textual information regarding the room.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Amenity" repeat="1000" type="ota2-0500:Amenity_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of amenity information.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Amenities</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomOccupancy" repeat="10" type="RoomOccupancy">
+                <ns2:Documentation>
+                    <ns2:Description>Provides parameters of occupancy limits.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Occupancy</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Code" repeat="0" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>(Formerly, RoomInventoryCode) A code value that indicates the type of room for which this request is made, e.g.: double, king, etc. Values may use the Hotel Descriptive Content table or a codes specific to the property or hotel.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Tier" repeat="0" type="ota2-0500:OTA_Code">
+                <ns2:Documentation>
+                    <ns2:Description>TODO:  Create enumerated list.  Indicates the category of the room. Typical values would be Moderate, Standard, or Deluxe. Refer to OpenTravel Code List Segment Category Code (SEG).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomAmenities" repeat="100" type="ota2-0500:Code">
+                <ns2:Documentation>
+                    <ns2:Description>Provides a list of amentities for this room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="RatePlan" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information significant to defining a rate plan.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="ratePlanID" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A text field used to provide a special  ID code that is associated with the rate and is required in the reservation request in order to obtain the rate. Examples are a corporate ID number, a promotion code or a membership number.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">RatePlanID</ns2:Equivalent>
+                <ns2:Example context="ph">AAAB</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="ratePlanName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Provides the name of the rate plan or group. Typically used with RatePlanType to further describe the rate plan.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to64</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">RatePlanName</ns2:Equivalent>
+                <ns2:Example context="ph">AAA with Breakfast</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Description" repeat="1" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Describes the rate plan.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph"/>
+                <ns2:Example context="ph"/>
+            </ns2:Element>
+            <ns2:Element name="RatePlanInclusions" repeat="50" type="RatePlanInclusions">
+                <ns2:Documentation>
+                    <ns2:Description>Items that are included with the rate plan.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RatePlanCode" repeat="0" type="ota2-0501:RatePlanCode">
+                <ns2:Documentation>
+                    <ns2:Description>The RatePlanCode assigned by the receiving system for the inventory item in response to a new rate plan notification. (Implementation Notes: This would only be returned when the notification is of type New and the sender is translating RatePlanCode values. On subsequent transactions for this rate plan, the sender would populate the RatePlanCode attribute with this value returned by the receiver.)</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to16</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">RatePlanCode</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="RatePlanType" repeat="0" type="ota2-0400:RatePlanType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>An enumerated type that allows the query to specify a rate category type, and provides major categories for comparison across brands. Refer to OpenTravel Code List Rate Plan Type (RPT).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">RatePlanType</ns2:Equivalent>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="Commission" repeat="1" type="Commission">
+                <ns2:Documentation>
+                    <ns2:Description>Commission associated with the RatePlan. This can be a percentage or a flat amount.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">Commission</ns2:Equivalent>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RoomOccupancy" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Occupany for the room.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="minOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Minimum number of persons allowed in a unit of accommodation or place.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of persons allowed in a unit of accommodation or place.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">4</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="standardOccupancy" referenceRepeat="0" type="ota2-0500:NonNegativeInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Standard number of persons allowed in a unit of accommodation or place.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="AgeQualifying" repeat="20" type="ota2-0400:AgeQualifyingCode_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the age parameters for the occupancy of this guest room type.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="SpecialRequest" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>This identifies a special request for this reservation and is typically hotel-specific.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Attribute name="numberOfUnits" referenceRepeat="0" type="xsd:integer">
+            <ns2:Documentation>
+                <ns2:Description>Allows you to pass the number of units that the special request is for (e.g., if 4 rooms are booked you may want 3 with double/double beds and 1 with a king).</ns2:Description>
+                <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}integer</ns2:Implementer>
+            </ns2:Documentation>
+            <ns2:Equivalent context="ph">NumberOfUnits</ns2:Equivalent>
+            <ns2:Example context="ph">1</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="RatePlanInclusions" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Defines charges that are included in this rate plan.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="Description" repeat="1" type="ota2-0500:Description">
+                <ns2:Documentation>
+                    <ns2:Description>Description of what is included in the rate plan.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">RatePlanInclusionDesciption</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="MealsIncluded" repeat="0" type="prod-0500:MealsIncluded">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies meals that are included with this rate plan.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="taxInclusiveInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates that tax is included in the rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="serviceFeeInclusiveInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates that service fees are included in the rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="Commission" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Contains details pertaining to commissions.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="percent" referenceRepeat="0" type="ota2-0500:Percent">
+                <ns2:Documentation>
+                    <ns2:Description>The percent applied to the commissionable amount to determine the commission payable amount.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Percentage</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">Percent</ns2:Equivalent>
+                <ns2:Example context="ph">10</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="reasonCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the reason why a commission is not paid or not paid in full.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">ReasonCode</ns2:Equivalent>
+                <ns2:Example context="ph">No Show</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="maxCommissionUnitApplies"
+                referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Maximum number of units for which the commission will be applied. This may be used in conjunction with the frequency attribute.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}positiveInteger</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">MaxCommissionUnitApplies</ns2:Equivalent>
+                <ns2:Example context="ph">5</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="capAmount" referenceRepeat="0" type="ota2-0500:Money">
+                <ns2:Documentation>
+                    <ns2:Description>The highest monetary value that may be paid for the commission.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}Money</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">CapAmount</ns2:Equivalent>
+                <ns2:Example context="ph">100.00</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="CurrencyCode" repeat="0" type="ota2-0500:CurrencyCode_ISO4217">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the currency to be applied to the amounts located in the child elements.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: CurrencyCodeGroup</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="ph">USD</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="Frequency" repeat="0" type="ota2-0400:ChargeUnit_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>This is the frequency at which the commission is applied (e.g. per stay, daily). Refer to OpenTravel Code List Charge Type (CHG).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">Frequency</ns2:Equivalent>
+                <ns2:Example context="ph"/>
+            </ns2:Element>
+            <ns2:Element name="PersonIdentifier" repeat="1" type="ota2-0500:Person_ID">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the recipient of the commission.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}UniqueID_Type</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">UniqueID</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="CommissionableAmount" repeat="1" type="CommissionableAmount">
+                <ns2:Documentation>
+                    <ns2:Description>The amount on which commission is calculated.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionableAmount</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">CommissionableAmount</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="PrepaidAmount" repeat="1" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>The amount of commission paid to the agency prior to the service being rendered.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}PrepaidAmount</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">PrepaidAmount</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="FlatCommission" repeat="1" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>A fixed commission amount.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}FlatCommission</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">FlatCommission</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="PayableAmount" repeat="1" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>The amount of commission to be paid.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}CommissionPayableAmount</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">CommissionPayableAmount</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="Comment" repeat="1" type="ota2-0500:Comment">
+                <ns2:Documentation>
+                    <ns2:Description>Text related to the commission.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}ParagraphType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">Comment</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="StatusType" repeat="0" type="ota2-0400:Status_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the status of the commission payment itself (e.g. no-show indicates that a different commission may be applied if the reservation is not fulfilled).</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: CommissionType_StatusType</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">StatusType</ns2:Equivalent>
+            </ns2:Element>
+            <ns2:Element name="BillToID" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies a person or company who should be billed for the commission amount.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://chameleon.anonymous/ns}StringLength1to8</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Equivalent context="ph">BillToID</ns2:Equivalent>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="CommissionableAmount" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="CurrencyAmount" repeat="0" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>Provides the currency amount on which the commission is applied.</ns2:Description>
+                    <ns2:Implementer>AttributeGroup: CurrencyAmountGroup</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="ttaxInclusiveInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that the commission is calculated using the rate including tax. When false, indicates that the commission is calculated using the net rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RoomCharacteristics" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Used to define a room (eg. its location, configuration, view).  These are items that are part of the room and cannot easily be removed.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="LocationCode" repeat="0" type="ota2-0400:RoomLocation_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the location of the room within the hotel structure. Typical values would be "Near Exit","Close to elevator", "Low Floor" or "High Floor". Refer to OpenTravel Code List Room Location Type (RLT).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="BedTypeCode" repeat="0" type="ota2-0400:BedType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the type of bed(s) found in the room. Typical values would be Double, Twin, Queen, or King. Refer to OpenTravel Code List Bed Type Code (BED).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}ListOfOTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Category" repeat="0" type="ota2-0400:SegmentCategory_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the category of the room. Typical values would be Moderate, Standard, or Deluxe. Refer to OpenTravel Code List Segment Category Code (SEG).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ClassificationCode" repeat="0" type="ota2-0400:GuestRoomInfo_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the room classification (e.g., cabin, apartment). Refer to OpenTravel Code List Guest Room Info (GRI).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ViewCode" repeat="0" type="ota2-0400:RoomViewType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the view of the room. Typical values would be "Ocean view", "Pool view" or "Garden View". Refer to OpenTravel Code List Room View Type (RVT).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeatureAccessibility" repeat="100" type="ota2-0501:Feature_Access">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies an accessibility feature of the room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FeatureSecurity" repeat="100" type="ota2-0501:Feature_Secure">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies a security feature of the room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="nonSmokingInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Non-smoking indicator.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="compositeInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates that the room (suite) is a composite of smaller units.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="gender" referenceRepeat="0" type="ota2-0400:Gender_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to request or specify a gender assignment for a room. Note: Typically used by Hosteliers.</ns2:Description>
+                    <ns2:Implementer>LocalAnonymousType: RoomGroup_RoomGender</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="invBlockCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A code or identification number that identifies the room  stay as part of a group, package tour, or block of rooms designated in the inventory.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to32</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="architectureCode" referenceRepeat="0" type="ota2-0500:OTA_Code">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the architectural style of a room. Refer to OpenTravel Code List Architectural Style Code (ARC).</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}OTA_CodeType</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="floor" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>Floor on which the room is located.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}Numeric1to999</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="typeCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Specific system room type code, ex: A1K, A1Q etc.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}StringLength1to16</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="sizeMeasurement" referenceRepeat="0" type="xsd:string">
+                <ns2:Documentation>
+                    <ns2:Description>Textual description of room dimensions.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}string</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="numberOfBedrooms" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>The number of bedrooms in the unit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="numberOfBathrooms" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>The number of bathrooms in the unit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="unitNumber" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>The number or name identifying the unit.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Indicator name="sharedRoomInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>If TRUE, the room requires or has sharing available. Note: Typically used by Hosteliers.</ns2:Description>
+                    <ns2:Implementer>Assigned XSD Type: {http://www.w3.org/2001/XMLSchema}boolean</ns2:Implementer>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="AccessibilityFeature" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Accessibility features.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>The quantity of this feature in the room.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">2</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="description" referenceRepeat="0" type="ota2-0500:StringLong">
+                <ns2:Documentation>
+                    <ns2:Description>The description of the accessibility feature.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">Door locks at wheelchair height.</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="AccessibilityFeature" repeat="0" type="ota2-0400:DisabilityFeature_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>An accessibility feature of the item being described.  May be a guest room, a facility or other item.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="SecurityFeature" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Security features.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="quantity" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>The quantity of this feature in the room.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="description" referenceRepeat="0" type="ota2-0500:StringLong">
+                <ns2:Documentation>
+                    <ns2:Description>The description of the security feature.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">Smoke alarm in room.</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="SecurityFeature" repeat="0" type="ota2-0400:SecurityFeature_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>An accessibility feature of the room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="HospitalityOffers" notExtendable="false">
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="HospitalityOffersRef" reference="true"
+                repeat="0" type="HospitalityOffers">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the obj ID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="FacilityIdentifier"
+                repeat="1" type="org-0400:Facility_ID">
+                <ns2:Documentation>
+                    <ns2:Description>An identififer for the property to which the offers apply.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Offer" repeat="10000" type="order-0400:Offer">
+                <ns2:Documentation>
+                    <ns2:Description>Offers that meet the criteria in the offer request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReferenceListProduct" repeat="0" type="prod-0501:ReferenceList_Product">
+                <ns2:Documentation>
+                    <ns2:Description>Allows products to be defined once and associated with different offers by reference.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:BusinessObject name="RoomRate" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the details of a room rate.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomRateRef" reference="true" repeat="0" type="RoomRate">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="effectiveDate"
+                referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the starting date for this room rate.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">2017-08-22</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="expireDate" referenceRepeat="0" type="xsd:date">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the end date for this room rate.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">2018-08-22</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="bookingCode" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>This is used to indicate the item booked and is primarily used to exchange information with GDSs.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">A1KRACKB</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Rate" repeat="0" type="ota2-0500:RoomPrice">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the rate for the room.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="expireDateExclusiveInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, the ExpireDate is the first day after the applicable period (e.g. when expire date is Oct 15  the last date of the period is Oct 14).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="source" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the source of the rate (e.g. room block, negotiated rate, promotion).</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="ph">Promotion</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Taxes" repeat="0" type="ota2-0500:Taxes_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Taxes associated to the room rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Fees" repeat="0" type="ota2-0500:Fees_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>A fee associated to the room rate.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="RoomRate"
+        name="Range" notExtendable="false" type="Query">
+        <ns2:Element name="StartRate" repeat="0" type="ota2-0500:RoomPrice">
+            <ns2:Documentation>
+                <ns2:Description>Starting price for the rate range query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+        <ns2:Element name="EndRate" repeat="0" type="ota2-0500:RoomPrice">
+            <ns2:Documentation>
+                <ns2:Description>Ending price for the rate range query.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+</ns2:Library>

@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:Library
+    xmlns:ns2="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.OpenTravel.org/ns/OTA2/LibraryModel_v01_06 OTA2_LibraryModel_v1.6.0.xsd">
+    
+    <ns2:VersionScheme>OTA2</ns2:VersionScheme>
+    <ns2:Status>Draft</ns2:Status>
+    <ns2:Namespace>http://www.opentravel.org/OTM/product/eRFP/v3</ns2:Namespace>
+    <ns2:Prefix>rfp-0300</ns2:Prefix>
+    <ns2:Name>eRFP</ns2:Name>
+    <ns2:Import namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+    <ns2:Import namespace="http://www.opentravel.org/OTM/Common/v0" prefix="ota2"/>
+    <ns2:Import fileHints="CodeList_3_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v3" prefix="ota2-0300"/>
+    <ns2:Import fileHints="Common_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/Common/v5" prefix="ota2-0500"/>
+    <ns2:Import fileHints="Product_5_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/v5" prefix="prod-0500"/>
+    <ns2:Import fileHints="Hospitality_2_0_0.otm"
+        namespace="http://www.opentravel.org/OTM/product/hospitality/v2" prefix="ph-0200"/>
+    <ns2:Context
+        applicationContext="http://www.opentravel.org/OTM/product/eRFP/v0" context="rfp"/>
+    
+    <ns2:BusinessObject name="Contact" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Contact for the event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ContactRef" reference="true" repeat="0" type="Contact">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="comments" referenceRepeat="0" type="ota2-0500:StringLong">
+                <ns2:Documentation>
+                    <ns2:Description>Comments related to the contact.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Indicator name="primaryInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates that his is the primary contact.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Contact"
+        name="Company" notExtendable="false" type="Custom">
+        <ns2:Element name="CompanySummary" repeat="0" type="ota2-0500:Company_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Detailed information about a company.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    <ns2:ContextualFacet facetNamespace="" facetOwner="Contact"
+        name="Person" notExtendable="false" type="Custom">
+        <ns2:Element name="PersonSummary" repeat="0" type="ota2-0500:Person_Summary">
+            <ns2:Documentation>
+                <ns2:Description>Detailed information about a contact person.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Element>
+    </ns2:ContextualFacet>
+    
+    <ns2:CoreObject name="Contacts" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of contact information for each contact.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="Contact" repeat="100" type="Contact">
+                <ns2:Documentation>
+                    <ns2:Description>Information related to a single contact.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="EventBlock" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Information pertaining to the event requirements.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EventBlockRef" reference="true"
+                repeat="0" type="EventBlock">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Attribute name="peakMeetingRoom" referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>Number of meeting rooms needed on the peak day of the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 3</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">3</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="EventDay" repeat="100" type="EventDay">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies event information for a single day.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="FoodAndBeveragesBudget" repeat="0" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies budget for food and beverage only.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="EventDay" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Function details for a specific day of the event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="dayNumber"
+                referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number which indicates the day of the room requirements (e.g. 1, 2, 3, etc).</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 1</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="EventFunction" repeat="100" type="EventFunction">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the details of the function.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="EventStatus" repeat="0" type="ota2-0300:EventStatus_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The status for events for this day.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="EventFunction" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the details of the function.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="eventId" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier for this event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="startTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The time the event is scheduled to begin.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="endTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The time the event is scheduled to finish.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="attendeeQuantity" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of people attending this event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 50</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">50</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="functionName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name of the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Break-out session</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Break-out session</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="meetingSpaceId" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies a specific meeting room.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 246542</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">246542</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="meetingSpaceName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>The name identifying the meeting room or space.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Grand Ballroom</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Grand Ballroom</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="EventFunctionType" repeat="0" type="ota2-0300:EventFunction_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the type of event being requested (e.g. breakfast meeting or reception).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="MeetingSpaceSize" repeat="0" type="SpaceSize">
+                <ns2:Documentation>
+                    <ns2:Description>This identifies the space requirement.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="twentyFourHourHoldInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates a room is held on a 24-hour basis (i.e., ensures a room set-up is not disturbed).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="comments" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Comments regarding the event function.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Comments about this function.</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Comments about this function.</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="AVNeeds" repeat="100" type="ota2-0300:AudioVisual_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>AV requirements for this function.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomSetup" repeat="0" type="ota2-0300:MeetingRoomFormat_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the arrangement of the meeting space (e.g. conference or banquet style). Refer to OpenTravel Code List Meeting Room Format Code (MRF).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EventSubFunction" repeat="100" type="EventSubFunction">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the details of a subfunction taking place within a function.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="EventSubFunction" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the details of the sub function.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="name" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Used to identify the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Roll-in lunch</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Roll-in lunch</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="startTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The time the event is scheduled to begin.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="endTime" referenceRepeat="0" type="xsd:time">
+                <ns2:Documentation>
+                    <ns2:Description>The time the event is scheduled to finish.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="attendeeQuantity" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of people attending this event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 50</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">50</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="Id" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique ID for this event subfunction.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="SubFunctionType" repeat="0" type="ota2-0300:EventFunction_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Indicates the type of event being requested (e.g. breakfast meeting, reception).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Element name="AVNeeds" repeat="100" type="ota2-0300:AudioVisual_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>AV requirments for this sub-function.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="RequestInfo" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifics about the Event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="id" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>Unique identifier supplied by the requesting system.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Attribute name="rFPName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A name identifiying the RFP.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Booking for ABC Convention</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">ABC Convention</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="responseDue" referenceRepeat="0" type="ota2-0500:DateTimeWithTimeZone">
+                <ns2:Documentation>
+                    <ns2:Description>The date the requestor requires a response/proposal.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">2017-11-05T08:15:30-05:00</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="decisionDue" referenceRepeat="0" type="ota2-0500:DateTimeWithTimeZone">
+                <ns2:Documentation>
+                    <ns2:Description>The date in which the client intends to make a decision.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">2017-11-05T08:15:30-05:00</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="totalAttendees" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>An estimate of the total number of attendees for the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 200</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">500</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="peakRoomQuantity" referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number of rooms needed for the peak night of the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 100</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">100</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="rFPDescription" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>A comment field used to convey free form information about the RFP</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Text about the event.</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Text about the event.</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="eventName" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>A name identifiying the event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="EventType" repeat="0" type="ota2-0300:EventType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The type of event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Conference</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Conference</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="BusinessType" repeat="0" type="ota2-0300:BusinessType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The business category for this event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Group</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Group</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="MarketSegment" repeat="0" type="ota2-0300:InventoryBlockType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Used to identify the market segment for the meeting.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Corporate Group</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Corporate Group</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="TotalEventBudget" repeat="0" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>A general indication of the planner's budget for the event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="LargestMeetingSpace" repeat="0" type="SpaceSize">
+                <ns2:Documentation>
+                    <ns2:Description>The largest meeting room required for the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 1000 sq ft</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">1000 sq ft</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="TotalMeetingSpace" repeat="0" type="SpaceSize">
+                <ns2:Documentation>
+                    <ns2:Description>The total amount of meeting space needed for the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 7000 sq ft</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">7000 sq ft</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="ExpectedCommissionRate" repeat="0" type="ota2-0500:AmountPercent">
+                <ns2:Documentation>
+                    <ns2:Description>The commission rate expected for this event.</ns2:Description>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">5</ns2:Example>
+            </ns2:Element>
+            <ns2:Element name="PreferredContactMethod" repeat="0" type="ota2-0300:DistributionType_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>The prefered method of contact.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Email</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Email</ns2:Example>
+            </ns2:Element>
+            <ns2:Indicator name="roomBlockInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates a room block is requested. When false, indicates no room block is requested and RoomBlock will not be passed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="eventBlockInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates function space is required. When false, indicates no function space is required and EventBlock will not be passed.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+            <ns2:Indicator name="commisionInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, commission will be paid on this event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:BusinessObject name="E_RFP" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:ID>
+            <ns2:Attribute name="objID" referenceRepeat="0" type="xsd:ID">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier within this document for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="Identifier" repeat="0" type="ota2-0500:Identifier">
+                <ns2:Documentation>
+                    <ns2:Description>A unique identifier defined by an external authority for this object.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="E_RFPRef" reference="true" repeat="0" type="E_RFP">
+                <ns2:Documentation>
+                    <ns2:Description>Refers to the objID on an object defined elsewhere in the current document.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:ID>
+        <ns2:Summary>
+            <ns2:Element mandatory="true" name="RequestInfo" repeat="0" type="RequestInfo">
+                <ns2:Documentation>
+                    <ns2:Description>Specifics about the Event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Contacts" repeat="0" type="Contacts">
+                <ns2:Documentation>
+                    <ns2:Description>Profile information for the submitter of the request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Dates" repeat="1" type="Dates">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of dates which allows you to request preferred and/or alternate dates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="Sites" repeat="0" type="Sites">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of sites for which the request is being submitted (e.g. a hotel, national sales office, convention center).</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="RoomBlock" repeat="0" type="RoomBlock">
+                <ns2:Documentation>
+                    <ns2:Description>This is information pertaining to room requirements for this request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="EventBlock" repeat="0" type="EventBlock">
+                <ns2:Documentation>
+                    <ns2:Description>This is information pertaining to the event requirements for this request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="comments" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Comments related to the request.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="AdditionalInfo" repeat="0" type="AdditionalInfo">
+                <ns2:Documentation>
+                    <ns2:Description>A collection of additional information requests.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Detail>
+    </ns2:BusinessObject>
+    
+    <ns2:CoreObject name="RoomBlock" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the details for a room block.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="organizerCheckInDaysBefore"
+                referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the number of days the organizers will be checking in before the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 2</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">2</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="organizerCheckOutDaysAfter"
+                referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the number of days the organizers will be staying after the event.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 1</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="BudgetedRoomRate" repeat="0" type="ota2-0500:CurrencyAmount">
+                <ns2:Documentation>
+                    <ns2:Description>A general indication of the planner's budget for individual room nights and/or delegate rates.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element mandatory="true" name="StayDay" repeat="100" type="StayDay">
+                <ns2:Documentation>
+                    <ns2:Description>Room requirements for a particular day of the room block.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Element name="ReservationMethod" repeat="0" type="ota2-0300:ReservationMethod_Enum">
+                <ns2:Documentation>
+                    <ns2:Description>Rooming List, Individual, Housing Agency</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="sleepingRoomInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, sleeping rooms are required.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="SpaceSize" type="xsd:decimal">
+        <ns2:Documentation>
+            <ns2:Description>The numeric value associated with the measurement.</ns2:Description>
+            <ns2:Implementer>Example value: rfp1 = 1200</ns2:Implementer>
+            <ns2:Implementer>Example value: rfp1 = 1200</ns2:Implementer>
+        </ns2:Documentation>
+        <ns2:Example context="rfp">1200</ns2:Example>
+        <ns2:Attribute name="unitOfMeasure" referenceRepeat="0" type="ota2-0500:StringTiny">
+            <ns2:Documentation>
+                <ns2:Description>This is the standard unit of measure name (e.g., it could be generic such as metric or imperial or specific such as inches, feet, yards, miles, millimeters, centimeters, meters, kilometers- according to usage).</ns2:Description>
+            </ns2:Documentation>
+            <ns2:Example context="rfp">Sq. Ft.</ns2:Example>
+        </ns2:Attribute>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:CoreObject name="Sites" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>A collection of site information.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Element name="Site" repeat="100" type="prod-0500:Site">
+                <ns2:Documentation>
+                    <ns2:Description>The site information for the RFP.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="StayDay" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Sleeping room details for a specific day of the event.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="dayNumber"
+                referenceRepeat="0" type="xsd:positiveInteger">
+                <ns2:Documentation>
+                    <ns2:Description>The number which indicates the day of the room requirements (e.g. 1, 2, 3, etc).</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 1</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">1</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element mandatory="true" name="StayDayRoom"
+                repeat="100" type="StayDayRoom">
+                <ns2:Documentation>
+                    <ns2:Description>Identifies the room requirements.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="StayDayRoom" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the room requirements for this day of the room block.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute mandatory="true" name="numberOfUnits"
+                referenceRepeat="0" type="xsd:integer">
+                <ns2:Documentation>
+                    <ns2:Description>This is the required number of rooms for a particular day for a particular room type.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = 75</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">75</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Attribute name="occupancyType" referenceRepeat="0" type="ota2-0500:StringShort">
+                <ns2:Documentation>
+                    <ns2:Description>Single, Double, Triple, Quad. Not ENUM.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Single</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Single</ns2:Example>
+            </ns2:Attribute>
+            <ns2:Element name="RoomType" repeat="0" type="ph-0200:RoomType">
+                <ns2:Documentation>
+                    <ns2:Description>This is where a requester specifies the room type they wish to procure (e.g. king, double, double double, accessible). This is NOT an OpenTravel Codelist due to the infinite number of possible room types.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+        </ns2:Summary>
+        <ns2:Detail>
+            <ns2:Attribute name="comments" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Comment related to the StayDayRoom.</ns2:Description>
+                    <ns2:Implementer>Example value: rfp1 = Comments about this stay day.</ns2:Implementer>
+                </ns2:Documentation>
+                <ns2:Example context="rfp">Comments about this stay day.</ns2:Example>
+            </ns2:Attribute>
+        </ns2:Detail>
+    </ns2:CoreObject>
+    
+    <ns2:CoreObject name="Dates" notExtendable="false">
+        <ns2:Documentation>
+            <ns2:Description>Specifies the date(s) or date window(s) for the RFP.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Aliases/>
+        <ns2:Simple type="ota2:Empty"/>
+        <ns2:Summary>
+            <ns2:Attribute name="comments" referenceRepeat="0" type="ota2-0500:StringTiny">
+                <ns2:Documentation>
+                    <ns2:Description>Comments regarding the set of date ranges as a whole.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Attribute>
+            <ns2:Element name="DateTimeSpanWindowsSummary" repeat="100" type="ota2-0500:DateTimeSpanWindows_Summary">
+                <ns2:Documentation>
+                    <ns2:Description>Specifies the date range or date windows for the event.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Element>
+            <ns2:Indicator name="flexibleInd" publishAsElement="false">
+                <ns2:Documentation>
+                    <ns2:Description>When true, indicates that the event dates are flexible.</ns2:Description>
+                </ns2:Documentation>
+            </ns2:Indicator>
+        </ns2:Summary>
+        <ns2:Detail/>
+    </ns2:CoreObject>
+    
+    <ns2:ValueWithAttrs name="AdditionalInfo" type="ota2:Empty">
+        <ns2:Documentation>
+            <ns2:Description>Group of indicators specifiying what additional information is provided.</ns2:Description>
+        </ns2:Documentation>
+        <ns2:Indicator name="attachDocumentInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, there is a document attachment.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="aVNeedsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that there are audio visual requirements for this event.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="decisionFactorsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that there are specific decision factors for this event.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="contractualRequirementsInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that there are contractual requirements for this event.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="billingInfoInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that billing information is provided for this event.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="otherSuppliersInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that other suppliers are required for this event.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+        <ns2:Indicator name="thirdPartyPlannerInd" publishAsElement="false">
+            <ns2:Documentation>
+                <ns2:Description>When true, indicates that there is third party planner information included in the RFP.</ns2:Description>
+            </ns2:Documentation>
+        </ns2:Indicator>
+    </ns2:ValueWithAttrs>
+    
+    <ns2:Service name="ERFP">
+        <ns2:Documentation>
+            <ns2:Description/>
+            <ns2:Deprecated>All operations on ERFP are deprecated and will be removed in the next version.  Please use the operations on HospitalityRFP.</ns2:Deprecated>
+        </ns2:Documentation>
+        <ns2:Operation Name="Create" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on ERFP are deprecated and will be removed in the next version.  Please use the operations on HospitalityRFP.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).  The response may include full eRFP object or just and identifer for the E_RFP.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>Infomation pertaining to a request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="Delete" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on ERFP are deprecated and will be removed in the next version.  Please use the operations on HospitalityRFP.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFPIdentifier" repeat="0" type="E_RFP_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>The identifier for the RFP to be deleted.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="Read" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on ERFP are deprecated and will be removed in the next version.  Please use the operations on HospitalityRFP.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFPIdentifier" repeat="0" type="E_RFP_ID">
+                    <ns2:Documentation>
+                        <ns2:Description>An ID for the request for proposal (meeting room and/or sleeping room information for a group) to be returned.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>The request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+        <ns2:Operation Name="Update" notExtendable="false">
+            <ns2:Documentation>
+                <ns2:Description/>
+                <ns2:Deprecated>All operations on ERFP are deprecated and will be removed in the next version.  Please use the operations on HospitalityRFP.</ns2:Deprecated>
+            </ns2:Documentation>
+            <ns2:Request>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Request>
+            <ns2:Response>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).  The response may include the full E_RFP object or simply and identifer for the E_RFP.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Response>
+            <ns2:Notification>
+                <ns2:Element name="PayloadStdAttributes" repeat="0" type="ota2-0500:PayloadStdAttributes">
+                    <ns2:Documentation>
+                        <ns2:Description>The standard attributes that appear on the root element for all OpenTravel messages.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="POS" repeat="0" type="ota2-0500:POS_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>Point of Sale (POS) identifies the party or connection channel making the request.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="Result" repeat="0" type="ota2-0500:Result_Summary">
+                    <ns2:Documentation>
+                        <ns2:Description>When present indicates that errors or warnings occurred during processing.</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+                <ns2:Element name="E_RFP" repeat="0" type="E_RFP">
+                    <ns2:Documentation>
+                        <ns2:Description>A request for proposal (meeting room and/or sleeping room information for a group).</ns2:Description>
+                    </ns2:Documentation>
+                </ns2:Element>
+            </ns2:Notification>
+        </ns2:Operation>
+    </ns2:Service>
+    
+</ns2:Library>
